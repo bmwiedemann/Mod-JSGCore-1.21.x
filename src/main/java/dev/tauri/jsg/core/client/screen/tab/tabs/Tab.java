@@ -196,7 +196,7 @@ public abstract class Tab implements ITab {
         currentOffsetX = startingOffsetX;
 
         if (animate) {
-            float effTick = Objects.requireNonNull(mc.level).getGameTime() - animationStart + mc.getPartialTick();
+            float effTick = Objects.requireNonNull(mc.level).getGameTime() - animationStart + mc.getTimer().getGameTimeDeltaPartialTick(true);
 
             if (effTick < animationTime) {
                 currentOffsetX += Math.round(offsetPerTick * effTick);

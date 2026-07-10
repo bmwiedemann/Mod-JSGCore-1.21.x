@@ -108,8 +108,7 @@ public class IntConfigEntry extends dev.tauri.jsg.core.client.screen.config.entr
     @Override
     public void tick() {
         super.tick();
-        textField.tick();
-    }
+            }
 
     @Override
     public @Nullable GuiEventListener getFocused() {

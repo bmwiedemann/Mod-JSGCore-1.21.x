@@ -62,7 +62,7 @@ public abstract class TabScrollAble extends Tab {
         return false;
     }
 
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double pDelta) {
         if (!this.isVisible()) {
             return false;
         } else {

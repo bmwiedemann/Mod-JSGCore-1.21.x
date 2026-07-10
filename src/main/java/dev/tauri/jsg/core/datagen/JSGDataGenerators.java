@@ -17,8 +17,8 @@ public class JSGDataGenerators {
         var exFileHelper = event.getExistingFileHelper();
         var lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new dev.tauri.jsg.core.datagen.JSGRecipeProvider(output));
-        generator.addProvider(event.includeServer(), JSGLootTableProvider.create(output));
+        generator.addProvider(event.includeServer(), new dev.tauri.jsg.core.datagen.JSGRecipeProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), JSGLootTableProvider.create(output, lookupProvider));
 
         generator.addProvider(event.includeClient(), new JSGBlockStateProvider(output, exFileHelper));
         generator.addProvider(event.includeClient(), new JSGItemModelProvider(output, exFileHelper));

@@ -53,7 +53,7 @@ public class NotebookMergeRecipe extends ShapelessRecipe {
     @Override
     @NotNull
     @ParametersAreNonnullByDefault
-    public ItemStack assemble(CraftingInput inv, HolderLookup.Provider pHolderLookup.Provider) {
+    public ItemStack assemble(CraftingInput inv, HolderLookup.Provider pRegistries) {
         int outputCount = 0;
         var pages = new ListTag();
 

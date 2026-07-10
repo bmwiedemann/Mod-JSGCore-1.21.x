@@ -34,7 +34,7 @@ public class InputHandler {
 
     @SubscribeEvent
     public static void onMouseEvent(InputEvent.MouseScrollingEvent event) {
-        boolean next = event.getScrollDelta() < 0;
+        boolean next = event.getScrollDeltaY() < 0;
         if (checkForItem(CoreItems.NOTEBOOK_ITEM.get())) {
             var hand = getHand(CoreItems.NOTEBOOK_ITEM.get());
             NotebookActionEnum action = null;

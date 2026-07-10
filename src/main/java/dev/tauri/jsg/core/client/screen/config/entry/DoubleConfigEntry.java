@@ -108,8 +108,7 @@ public class DoubleConfigEntry extends AbstractConfigEntry {
     @Override
     public void tick() {
         super.tick();
-        textField.tick();
-    }
+            }
 
     @Override
     public @Nullable GuiEventListener getFocused() {

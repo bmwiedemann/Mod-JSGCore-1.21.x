@@ -60,11 +60,11 @@ public class AddressNotebookPageType<DATA extends IAddressNotebookPageData> exte
         super(renderable, deserializer, serializer, hoverConsumer, randomDataGenerator, colorGetter);
     }
 
-    public AddressNotebookPageType(Supplier<NotebookPageRenderable<DATA>> renderable, @Nullable Function<CompoundTag, DATA> deserializer, @Nullable Function<DATA, CompoundTag> serializer, TriConsumer<ItemStack, Level, Pair<List<Component>, TooltipFlag>> hoverConsumer, DataGenerator<DATA> randomDataGenerator, BiFunction<RegistryAccess, ResourceKey<Biome>, Integer> colorGetter) {
+    public AddressNotebookPageType(Supplier<NotebookPageRenderable<DATA>> renderable, @Nullable Function<CompoundTag, DATA> deserializer, @Nullable Function<DATA, CompoundTag> serializer, TriConsumer<ItemStack, net.minecraft.world.item.Item.TooltipContext, Pair<List<Component>, TooltipFlag>> hoverConsumer, DataGenerator<DATA> randomDataGenerator, BiFunction<RegistryAccess, ResourceKey<Biome>, Integer> colorGetter) {
         super(renderable, deserializer, serializer, hoverConsumer, randomDataGenerator, colorGetter);
     }
 
-    public AddressNotebookPageType(Supplier<NotebookPageRenderable<DATA>> renderable, Function<CompoundTag, DATA> deserializer, Function<DATA, CompoundTag> serializer, DataGenerator<DATA> randomDataGenerator, TriConsumer<ItemStack, Level, Pair<List<Component>, TooltipFlag>> hoverConsumer) {
+    public AddressNotebookPageType(Supplier<NotebookPageRenderable<DATA>> renderable, Function<CompoundTag, DATA> deserializer, Function<DATA, CompoundTag> serializer, DataGenerator<DATA> randomDataGenerator, TriConsumer<ItemStack, net.minecraft.world.item.Item.TooltipContext, Pair<List<Component>, TooltipFlag>> hoverConsumer) {
         super(renderable, deserializer, serializer, randomDataGenerator, hoverConsumer);
     }
 

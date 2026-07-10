@@ -19,7 +19,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyCustomDataFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
@@ -33,10 +33,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 public class JSGBlockLootTables extends BlockLootSubProvider {
-    protected static final LootItemCondition.Builder HAS_SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
 
-    public JSGBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    public JSGBlockLootTables(net.minecraft.core.HolderLookup.Provider registries) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
     @Override
@@ -72,8 +71,8 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1f))
                         .setBonusRolls(ConstantValue.exactly(0))
                         .add(applyExplosionDecay(block.get(), LootItem.lootTableItem(block.get()))
-                                .when(HAS_SILK_TOUCH)
-                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS.get(color).get()).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))
+                                .when(hasSilkTouch())
+                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS.get(color).get()).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))))
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
                                         .otherwise(applyExplosionDecay(CoreItems.CRYSTALS.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
                                 )
@@ -82,8 +81,8 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1f))
                         .setBonusRolls(ConstantValue.exactly(0))
                         .add(applyExplosionDecay(block.get(), LootItem.lootTableItem(block.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(0))))
-                                .when(HAS_SILK_TOUCH)
-                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))
+                                .when(hasSilkTouch())
+                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3))).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))))
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
                                         .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))))
                                 )
@@ -100,7 +99,7 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                             .setRolls(ConstantValue.exactly(1f))
                             .setBonusRolls(ConstantValue.exactly(0))
                             .add(applyExplosionDecay(budding.get(), LootItem.lootTableItem(budding.get()))
-                                    .when(HAS_SILK_TOUCH)
+                                    .when(hasSilkTouch())
                                     .otherwise(applyExplosionDecay(seed, LootItem.lootTableItem(seed))
                                             .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))
                                             .otherwise(applyExplosionDecay(seed, LootItem.lootTableItem(seed).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
@@ -111,7 +110,7 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                             .setRolls(ConstantValue.exactly(1f))
                             .setBonusRolls(ConstantValue.exactly(0))
                             .add(applyExplosionDecay(budding.get(), LootItem.lootTableItem(budding.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(0))))
-                                    .when(HAS_SILK_TOUCH)
+                                    .when(hasSilkTouch())
                                     .otherwise(applyExplosionDecay(drop, LootItem.lootTableItem(drop).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))))
                                             .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))
                                     )
@@ -141,8 +140,8 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1f))
                         .setBonusRolls(ConstantValue.exactly(0))
                         .add(applyExplosionDecay(block.get(), LootItem.lootTableItem(block.get()))
-                                .when(HAS_SILK_TOUCH)
-                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS.get(color).get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                                .when(hasSilkTouch())
+                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS.get(color).get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE)))
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))
                                 )
                         )
@@ -161,8 +160,8 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1f))
                         .setBonusRolls(ConstantValue.exactly(0))
                         .add(applyExplosionDecay(block.get(), LootItem.lootTableItem(block.get())
-                                .when(HAS_SILK_TOUCH))
-                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))
+                                .when(hasSilkTouch()))
+                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))))
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))
                                         .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))))
                                 )
@@ -174,8 +173,8 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1f))
                         .setBonusRolls(ConstantValue.exactly(0))
                         .add(applyExplosionDecay(block.get(), LootItem.lootTableItem(block.get())
-                                .when(HAS_SILK_TOUCH))
-                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))
+                                .when(hasSilkTouch()))
+                                .otherwise(applyExplosionDecay(CoreItems.CRYSTALS_SMALL.get(color).get(), LootItem.lootTableItem(CoreItems.CRYSTALS_SMALL.get(color).get()).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))))
                                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))
                                 )
                         )
@@ -198,10 +197,10 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
     }
 
     protected void dropOre(Block block, Item item, NumberProvider dropsCount) {
-        add(block, createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(dropsCount)).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        add(block, createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(dropsCount)).apply(ApplyBonusCount.addOreBonusCount(this.registries.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE))))));
     }
 
-    protected void dropAndCopyNBT(Block block, CopyNbtFunction.Builder copyNbtFunctionBuilder) {
+    protected void dropAndCopyNBT(Block block, CopyCustomDataFunction.Builder copyNbtFunctionBuilder) {
         add(block, LootTable.lootTable()
                 .withPool(applyExplosionCondition(block, LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1f))
