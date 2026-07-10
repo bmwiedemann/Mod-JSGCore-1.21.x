@@ -66,9 +66,8 @@ public class HandHeldDeviceRenderer {
 
     public static void drawSemiCircle(PoseStack poseStack, MultiBufferSource source, int light, float x, float y, float z, float startAngle, float endAngle, int segments, float innerRadius, float lineWidth, float r, float g, float b, float a) {
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder buffer = tesselator.getBuilder();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        buffer.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder buffer = tesselator.begin(VertexFormat.Mode.TRIANGLE_STRIP, DefaultVertexFormat.POSITION_COLOR);
         var outerRadius = innerRadius + lineWidth;
         var angleDiff = (endAngle - startAngle);
         for (int i = 0; i <= segments; i++) {
@@ -106,7 +105,7 @@ public class HandHeldDeviceRenderer {
         bufferbuilder.addVertex(matrix, (x + width), (y + height), z).setUv(((u + width) * f), ((v + height) * f1));
         bufferbuilder.addVertex(matrix, (x + width), y, z).setUv(((u + width) * f), (v * f1));
         bufferbuilder.addVertex(matrix, x, y, z).setUv((u * f), (v * f1));
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         poseStack.popPose();
     }
 

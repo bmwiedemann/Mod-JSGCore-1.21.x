@@ -68,7 +68,7 @@ public class PageRenderer {
         bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(1, 1).setLight(light);
         bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y + h, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(1, 0).setLight(light);
         bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y + h, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(0, 0).setLight(light);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         poseStack.popPose();
     }
 
@@ -86,7 +86,7 @@ public class PageRenderer {
         bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y, z).setColor(1, 1, 1, alpha);
         bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y + h, z).setColor(1, 1, 1, alpha);
         bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y + h, z).setColor(1, 1, 1, alpha);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         RenderSystem.setShaderColor(1, 1, 1, 1);
         poseStack.popPose();
     }
@@ -203,7 +203,7 @@ public class PageRenderer {
                         .setLight(light)
                         .setNormal(normal, 0, 1, 0)
                         ;
-                BufferUploader.drawWithShader(bufferbuilder.end());
+                BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
             });
             poseStack.popPose();
             z += 0.0001f;

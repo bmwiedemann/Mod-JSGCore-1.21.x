@@ -129,7 +129,6 @@ public class CustomSkyObjectRenderer {
         if (sunRiseColor != null) {
             poseStack.pushPose();
             float f3 = Mth.sin(angle) < 0.0F ? 0 : 180;
-            BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
             RenderSystem.setShader(GameRenderer::getPositionColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             poseStack.mulPose(Axis.YP.rotationDegrees(f3 + getObjectHorizontalAngle(timeOfDay, false)));
@@ -140,7 +139,7 @@ public class CustomSkyObjectRenderer {
             float b = sunRiseColor.getBlue() / 255f;
             float a = sunRiseColor.getAlpha() / 255f;
             Matrix4f matrix4f = poseStack.last().pose();
-            bufferbuilder.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
+            BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
             bufferbuilder.addVertex(matrix4f, 0.0F, 100.0F, 0.0F).setColor(r, g, b, a);
             for (int j = 0; j <= 16; ++j) {
                 float f7 = (float) j * ((float) Math.PI * 2F) / 16.0F;
@@ -149,7 +148,7 @@ public class CustomSkyObjectRenderer {
                 bufferbuilder.addVertex(matrix4f, f8 * 120.0F, f9 * 120.0F, -f9 * 40.0F * a).setColor(r, g, b, 0.0F);
             }
 
-            BufferUploader.drawWithShader(bufferbuilder.end());
+            BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
             poseStack.popPose();
         }
     }
