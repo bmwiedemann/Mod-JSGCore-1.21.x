@@ -44,9 +44,9 @@ public class JSGBoat<T extends Enum<T> & JSGBoatTypeWrapper.Type & StringReprese
         return boatTypeWrapper.byId.apply(entityData.get(DATA_ID_TYPE));
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_ID_TYPE, 0);
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ID_TYPE, 0);
     }
 
     protected void addAdditionalSaveData(CompoundTag pCompound) {

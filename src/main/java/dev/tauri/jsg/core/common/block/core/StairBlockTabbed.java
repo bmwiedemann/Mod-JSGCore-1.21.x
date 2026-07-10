@@ -8,6 +8,6 @@ import java.util.function.Supplier;
 
 public class StairBlockTabbed extends StairBlock implements ITabbedItem {
     public StairBlockTabbed(Supplier<BlockState> state, Properties properties) {
-        super(state, properties);
+        super(state.get(), properties);
     }
 }

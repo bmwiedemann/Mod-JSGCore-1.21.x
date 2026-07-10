@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.block;
 
+import com.mojang.serialization.MapCodec;
 import dev.tauri.jsg.core.common.block.util.IItemBlock;
 import dev.tauri.jsg.core.common.item.ITabbedItem;
 import dev.tauri.jsg.core.common.item.JSGBlockItem;
@@ -34,6 +35,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class LemonBlock extends FallingBlock implements ITabbedItem, IItemBlock {
+    @Override
+    protected MapCodec<? extends net.minecraft.world.level.block.FallingBlock> codec() {
+        return simpleCodec(properties -> this);
+    }
+
     public LemonBlock() {
         super(Properties.of().sound(SoundType.CROP).randomTicks().noOcclusion());
         this.registerDefaultState(

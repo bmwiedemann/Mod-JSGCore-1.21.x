@@ -35,11 +35,6 @@ public class CoreCreativeTab extends CreativeModeTab {
         return icons.get((int) (JSGMinecraftHelper.getClientTick() / 100) % icons.size());
     }
 
-    @Override
-    @NotNull
-    public ResourceLocation getBackgroundLocation() {
-        return JSGMapping.rl("minecraft:textures/gui/container/creative_inventory/tab_items.png");
-    }
 
     public static class Builder extends CreativeModeTab.Builder {
         public Builder() {

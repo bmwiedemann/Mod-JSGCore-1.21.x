@@ -2,6 +2,7 @@ package dev.tauri.jsg.core.common.registry;
 
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.config.JSGCoreConfig;
+import dev.tauri.jsg.core.common.datafixer.CoreDataFixers;
 import net.neoforged.bus.api.IEventBus;
 
 public class JSGCoreRegistriesInit {
@@ -18,6 +19,8 @@ public class JSGCoreRegistriesInit {
         CoreStateTypes.init();
         CoreStructureTypes.init();
         CoreFluids.init();
+
+        CoreDataFixers.register();
     }
 
     public static void register(IEventBus eventBus) {

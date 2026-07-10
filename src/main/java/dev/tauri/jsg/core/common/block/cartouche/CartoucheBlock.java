@@ -24,6 +24,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -60,7 +61,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
     public final CartoucheType type;
 
     public CartoucheBlock(Supplier<BlockState> material, CartoucheType type) {
-        super(Properties.copy(material.get().getBlock()).pushReaction(PushReaction.DESTROY).isViewBlocking((BlockState state, BlockGetter getter, BlockPos pos) -> false).noOcclusion().requiresCorrectToolForDrops());
+        super(Properties.ofFullCopy(material.get().getBlock()).pushReaction(PushReaction.DESTROY).isViewBlocking((BlockState state, BlockGetter getter, BlockPos pos) -> false).noOcclusion().requiresCorrectToolForDrops());
         this.registerDefaultState(
                 defaultBlockState()
                         .setValue(JSGProperties.FACING_HORIZONTAL_PROPERTY, Direction.NORTH)
@@ -172,11 +173,11 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
 
     @Override
     @ParametersAreNonnullByDefault
-    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+    public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
         if (!pLevel.isClientSide) {
             preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
         }
-        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+        return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 
     @Override
@@ -218,7 +219,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
     @NotNull
     @ParametersAreNonnullByDefault
     @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected ItemInteractionResult useItemOn(net.minecraft.world.item.ItemStack heldStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         var height = state.getOptionalValue(JSGProperties.CARTOUCHE_BLOCK_INDEX).orElse(0);
         var rotation = RotationUtil.getRotation(state);
         var bePos = RotationUtil.rotate(new BlockPos(0, -height, 0), rotation).offset(pos);
@@ -232,7 +233,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
                     if (!player.isCreative())
                         usedStack.shrink(1);
                 }
-                return InteractionResult.sidedSuccess(level.isClientSide());
+                return ItemInteractionResult.sidedSuccess(level.isClientSide());
             }
             if (usedStack.getItem() instanceof GlowInkSacItem) {
                 if (!level.isClientSide()) {
@@ -241,7 +242,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
                     if (!player.isCreative())
                         usedStack.shrink(1);
                 }
-                return InteractionResult.sidedSuccess(level.isClientSide());
+                return ItemInteractionResult.sidedSuccess(level.isClientSide());
             }
             var mainStack = player.getItemInHand(InteractionHand.MAIN_HAND);
             var offStack = player.getItemInHand(InteractionHand.OFF_HAND);
@@ -252,10 +253,10 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
                         player.addItem(stack);
                         offStack.shrink(1);
                         level.playSound(null, player.blockPosition(), SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, SoundSource.PLAYERS, 1f, 1f);
-                        mainStack.hurt(1, level.random, (ServerPlayer) player);
+                        mainStack.hurtAndBreak(1, (net.minecraft.server.level.ServerLevel) level, (ServerPlayer) player, item -> {});
                     }
                 }
-                return InteractionResult.sidedSuccess(level.isClientSide());
+                return ItemInteractionResult.sidedSuccess(level.isClientSide());
             }
             if (mainStack.getItem() == CoreItems.JSG_HAMMER.get() && ItemNBT.hasTag(offStack)) {
                 var pageTag = ItemNBT.getTag(offStack);
@@ -272,16 +273,16 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
                                 if (!level.isClientSide) {
                                     cartouche.setAddress(pageData);
                                     level.playSound(null, player.blockPosition(), SoundEvents.ANVIL_USE, SoundSource.PLAYERS, 1f, 1f);
-                                    mainStack.hurt(1, level.random, (ServerPlayer) player);
+                                    mainStack.hurtAndBreak(1, (net.minecraft.server.level.ServerLevel) level, (ServerPlayer) player, item -> {});
                                 }
-                                return InteractionResult.sidedSuccess(level.isClientSide());
+                                return ItemInteractionResult.sidedSuccess(level.isClientSide());
                             }
                         }
                     }
                 }
             }
         }
-        return super.use(state, level, pos, player, hand, hitResult);
+        return super.useItemOn(heldStack, state, level, pos, player, hand, hitResult);
     }
 
 

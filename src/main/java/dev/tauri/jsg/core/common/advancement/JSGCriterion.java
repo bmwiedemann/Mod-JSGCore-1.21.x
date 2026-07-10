@@ -1,24 +1,27 @@
 package dev.tauri.jsg.core.common.advancement;
 
-import com.google.gson.JsonObject;
-import dev.tauri.jsg.core.JSGCore;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
-import net.minecraft.advancements.critereon.DeserializationContext;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JSGCriterion extends SimpleCriterionTrigger<JSGCriterion.TriggerInstance> {
 
     protected static final List<JSGCriterion> INSTANCES = new ArrayList<>();
+
+    private static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player)
+    ).apply(instance, TriggerInstance::new));
 
     public final ResourceLocation id;
 
@@ -33,32 +36,28 @@ public class JSGCriterion extends SimpleCriterionTrigger<JSGCriterion.TriggerIns
     }
 
     @Override
-    @ParametersAreNonnullByDefault
-    protected @NotNull TriggerInstance createInstance(JsonObject pJson, ContextAwarePredicate pPredicate, DeserializationContext pDeserializationContext) {
-        return new TriggerInstance(id, pPredicate);
+    public @NotNull Codec<TriggerInstance> codec() {
+        return CODEC;
     }
 
     public @NotNull TriggerInstance createInstance() {
-        return new TriggerInstance(id, ContextAwarePredicate.ANY);
+        return new TriggerInstance(Optional.empty());
     }
 
-    @Override
-    @Nonnull
+    public @NotNull Criterion<TriggerInstance> createCriterion() {
+        return this.createCriterion(createInstance());
+    }
+
     public ResourceLocation getId() {
         return id;
     }
 
-    public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-
-        public TriggerInstance(ResourceLocation pCriterion, ContextAwarePredicate pPlayer) {
-            super(pCriterion, pPlayer);
-        }
+    public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
     }
 
     public static void registerInternally() {
         for (JSGCriterion a : INSTANCES) {
-            CriteriaTriggers.register(a);
+            CriteriaTriggers.register(a.id.toString(), a);
         }
-        JSGCore.logger.info("Successfully registered Advancement Triggers!");
     }
 }

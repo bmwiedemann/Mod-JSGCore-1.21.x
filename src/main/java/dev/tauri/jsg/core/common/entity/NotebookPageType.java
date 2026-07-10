@@ -62,7 +62,7 @@ public class NotebookPageType<D extends INotebookPageData> {
     public NotebookPageType(Supplier<NotebookPageRenderable<D>> renderable,
                             @Nullable Function<CompoundTag, D> deserializer,
                             @Nullable Function<D, CompoundTag> serializer,
-                            TriConsumer<ItemStack, Level, Pair<List<Component>, TooltipFlag>> hoverConsumer,
+                            TriConsumer<ItemStack, net.minecraft.world.item.Item.TooltipContext, Pair<List<Component>, TooltipFlag>> hoverConsumer,
                             DataGenerator<D> randomDataGenerator,
                             BiFunction<RegistryAccess, ResourceKey<Biome>, Integer> colorGetter) {
         this(renderable, deserializer, serializer, (stack, level, components, flag, data) -> hoverConsumer.accept(stack, level, Pair.of(components, flag)), randomDataGenerator, colorGetter);
@@ -71,7 +71,7 @@ public class NotebookPageType<D extends INotebookPageData> {
     public NotebookPageType(Supplier<NotebookPageRenderable<D>> renderable, Function<CompoundTag, D> deserializer,
                             Function<D, CompoundTag> serializer,
                             DataGenerator<D> randomDataGenerator,
-                            TriConsumer<ItemStack, Level, Pair<List<Component>, TooltipFlag>> hoverConsumer) {
+                            TriConsumer<ItemStack, net.minecraft.world.item.Item.TooltipContext, Pair<List<Component>, TooltipFlag>> hoverConsumer) {
         this(renderable, deserializer, serializer, randomDataGenerator, (stack, level, components, flag, data) -> hoverConsumer.accept(stack, level, Pair.of(components, flag)));
     }
 

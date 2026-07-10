@@ -52,7 +52,7 @@ public class BlackChalkItem extends JSGItem implements SignApplicator {
 
         if (success) {
             sign.setChanged();
-            sign.saveWithFullMetadata();
+            sign.saveWithFullMetadata(level.registryAccess());
             level.sendBlockUpdated(sign.getBlockPos(), sign.getBlockState(), sign.getBlockState(), 3);
 
             level.playSound(null, sign.getBlockPos(), SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
