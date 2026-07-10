@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -37,7 +37,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegistryHelperGeneric.GenericBlockBuilder> {
-    public BlockRegistryHelperGeneric(Supplier<DeferredRegister<Block>> registry) {
+    public BlockRegistryHelperGeneric(Supplier<JSGDeferredRegister<Block>> registry) {
         super(registry, GenericBlockBuilder::new);
     }
 

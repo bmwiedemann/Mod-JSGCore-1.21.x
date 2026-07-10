@@ -1,25 +1,36 @@
 package dev.tauri.jsg.core.common.util;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import java.util.List;
-import java.util.Objects;
 
 @SuppressWarnings("all")
 public class TagFetcher {
     public static List<Item> getItemsInTag(TagKey<Item> tag) {
-        return Objects.requireNonNull(ForgeRegistries.ITEMS.tags()).getTag(tag).stream().toList();
+        return BuiltInRegistries.ITEM.getTag(tag)
+                .map(named -> named.stream().map(Holder::value).toList())
+                .orElse(List.of());
     }
 
     public static List<Block> getBlocksInTag(TagKey<Block> tag) {
-        return Objects.requireNonNull(ForgeRegistries.BLOCKS.tags()).getTag(tag).stream().toList();
+        return BuiltInRegistries.BLOCK.getTag(tag)
+                .map(named -> named.stream().map(Holder::value).toList())
+                .orElse(List.of());
     }
 
     public static List<Biome> getBiomesInTag(TagKey<Biome> tag) {
-        return Objects.requireNonNull(ForgeRegistries.BIOMES.tags()).getTag(tag).stream().toList();
+        // Biomes are a datapack registry on NeoForge; resolvable only with a running server.
+        var server = ServerLifecycleHooks.getCurrentServer();
+        if (server == null) return List.of();
+        return server.registryAccess().registryOrThrow(Registries.BIOME).getTag(tag)
+                .map(named -> named.stream().map(Holder::value).toList())
+                .orElse(List.of());
     }
 }

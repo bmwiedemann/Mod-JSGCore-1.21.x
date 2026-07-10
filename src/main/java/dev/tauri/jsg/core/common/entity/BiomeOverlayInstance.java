@@ -34,7 +34,7 @@ public record BiomeOverlayInstance(String unlocalizedName, String suffix, int co
     }
 
     public static BiomeOverlayInstance getBiomeOverlayByItem(ItemStack stack, boolean canBeNull) {
-        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().getEntries()) {
+        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().entrySet()) {
             var id = overlay.getKey().location();
             var tag = ItemTags.create(JSGMapping.rl(id.getNamespace(), "biome_overlay/" + id.getPath()));
             if (stack.is(tag)) return overlay.getValue();
@@ -44,7 +44,7 @@ public record BiomeOverlayInstance(String unlocalizedName, String suffix, int co
 
     @NotNull
     public static BiomeOverlayInstance getBiomeOverlayByBiome(Holder<Biome> biome) {
-        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().getEntries()) {
+        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().entrySet()) {
             var id = overlay.getKey().location();
             var tag = TagKey.create(Registries.BIOME, JSGMapping.rl(id.getNamespace(), "biome_overlay/" + id.getPath()));
             if (biome.is(tag)) return overlay.getValue();
@@ -54,7 +54,7 @@ public record BiomeOverlayInstance(String unlocalizedName, String suffix, int co
 
     @NotNull
     public static List<BiomeOverlayInstance> values() {
-        return new ArrayList<>(JSGCoreRegistries.R_BIOME_OVERLAY.get().getValues());
+        return new ArrayList<>(JSGCoreRegistries.R_BIOME_OVERLAY.get().stream().toList());
     }
 
     @Override
@@ -89,7 +89,7 @@ public record BiomeOverlayInstance(String unlocalizedName, String suffix, int co
 
     @NotNull
     public static BiomeOverlayInstance byId(ResourceLocation id) {
-        return Optional.ofNullable(JSGCoreRegistries.R_BIOME_OVERLAY.get().getValue(id)).orElseGet(CoreBiomeOverlays.NORMAL);
+        return Optional.ofNullable(JSGCoreRegistries.R_BIOME_OVERLAY.get().get(id)).orElseGet(CoreBiomeOverlays.NORMAL);
     }
 
     public ResourceLocation getId() {

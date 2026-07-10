@@ -9,9 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.ForgeRegistry;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.minecraft.core.registries.BuiltInRegistries;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -73,7 +72,7 @@ public class TabBuilder {
         builder.title(Component.translatable("itemGroup." + id.getNamespace() + "." + id.getPath()));
         builder.displayItems((parameters, output) -> {
             List<Map.Entry<ResourceKey<Item>, Item>> list = new ArrayList<>();
-            for (var entry : ForgeRegistries.ITEMS.getEntries()) {
+            for (var entry : BuiltInRegistries.ITEM.entrySet()) {
                 var item = entry.getValue();
                 if (!(item instanceof ITabbedItem tabbedItem)) continue;
                 var tabs = tabbedItem.getTabs();
@@ -82,12 +81,9 @@ public class TabBuilder {
                     continue;
                 list.add(entry);
             }
-            list = list.stream().sorted((l, r) -> {
-                if (ForgeRegistries.ITEMS instanceof ForgeRegistry<?> registry) {
-                    return Integer.compare(registry.getID(l.getKey().location()), registry.getID(r.getKey().location()));
-                }
-                return l.getKey().location().compareNamespaced(r.getKey().location());
-            }).toList();
+            list = list.stream().sorted((l, r) ->
+                    Integer.compare(BuiltInRegistries.ITEM.getId(l.getValue()), BuiltInRegistries.ITEM.getId(r.getValue()))
+            ).toList();
             for (var item : list) {
                 output.accept(new ItemStack(item.getValue()));
                 if (item.getValue() instanceof IMultiItem multiItem) {

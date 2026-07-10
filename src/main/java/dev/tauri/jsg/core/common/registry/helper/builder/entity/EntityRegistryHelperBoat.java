@@ -10,8 +10,8 @@ import dev.tauri.jsg.core.common.registry.helper.builder.RegistryObjectBuilder;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -19,9 +19,9 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class EntityRegistryHelperBoat extends RegistryHelper<EntityType<?>, EntityRegistryHelperBoat.BoatEntityBuilder> {
-    public final Supplier<DeferredRegister<Item>> itemRegistry;
+    public final Supplier<JSGDeferredRegister<Item>> itemRegistry;
 
-    public EntityRegistryHelperBoat(Supplier<DeferredRegister<Item>> itemRegistry, Supplier<DeferredRegister<EntityType<?>>> registry) {
+    public EntityRegistryHelperBoat(Supplier<JSGDeferredRegister<Item>> itemRegistry, Supplier<JSGDeferredRegister<EntityType<?>>> registry) {
         super(registry, BoatEntityBuilder::new);
         this.itemRegistry = itemRegistry;
     }

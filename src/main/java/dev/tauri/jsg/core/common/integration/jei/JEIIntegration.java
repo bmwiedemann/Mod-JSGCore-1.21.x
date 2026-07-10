@@ -18,7 +18,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -46,7 +46,7 @@ public final class JEIIntegration implements IModPlugin {
     @Override
     @ParametersAreNonnullByDefault
     public void registerExtraIngredients(IExtraIngredientRegistration registration) {
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
+        BuiltInRegistries.ITEM.forEach(item -> {
             if (item instanceof IMultiItem multiItem) {
                 multiItem.addAdditional((stack, visibility) -> registration.addExtraItemStacks(List.of(stack)));
             }

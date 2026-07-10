@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.client.IModelsHolder;
 import dev.tauri.jsg.core.common.util.JSGAxisAlignedBB;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +46,7 @@ public enum CartoucheType {
         return box.grow(0, height - 1, 0);
     }
 
-    public static Map<CartoucheType, RegistryObject<Block>> registerTypes(Supplier<DeferredRegister<Block>> register, String baseName, Supplier<BlockState> material) {
+    public static Map<CartoucheType, RegistryObject<Block>> registerTypes(Supplier<JSGDeferredRegister<Block>> register, String baseName, Supplier<BlockState> material) {
         var map = new HashMap<CartoucheType, RegistryObject<Block>>();
         for (var t : values()) {
             map.put(t, register.get().register(t.prefix + baseName + t.suffix, () -> new CartoucheBlock(material, t)));

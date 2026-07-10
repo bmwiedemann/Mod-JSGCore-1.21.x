@@ -7,8 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class PositionedSound implements dev.tauri.jsg.core.common.sound.IPositio
         REGISTRY.put(ordinal, this);
     }
 
-    public PositionedSound register(DeferredRegister<SoundEvent> soundRegistry) {
+    public PositionedSound register(JSGDeferredRegister<SoundEvent> soundRegistry) {
         this.event = soundRegistry.register(resourceLocation.getPath(), () -> SoundEvent.createFixedRangeEvent(resourceLocation, 64));
         return this;
     }

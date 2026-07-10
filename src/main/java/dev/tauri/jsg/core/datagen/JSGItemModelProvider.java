@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.minecraft.core.registries.BuiltInRegistries;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.Objects;
 
@@ -37,11 +37,11 @@ public class JSGItemModelProvider extends ItemModelProvider {
     }
 
     private void blockOBJModel(RegistryObject<Block> block, ItemDisplayContext... renderTypes) {
-        itemOBJModel(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block.get())), renderTypes);
+        itemOBJModel(Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(block.get())), renderTypes);
     }
 
     private void itemOBJModel(RegistryObject<Item> item, ItemDisplayContext... renderTypes) {
-        itemOBJModel(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item.get())), renderTypes);
+        itemOBJModel(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item.get())), renderTypes);
     }
 
     private void itemOBJModel(ResourceLocation item, ItemDisplayContext... renderTypes) {

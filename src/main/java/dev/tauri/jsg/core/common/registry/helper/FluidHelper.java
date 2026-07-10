@@ -20,8 +20,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -36,13 +36,13 @@ public class FluidHelper {
         return new HashMap<>(MOLTEN_FLUIDS);
     }
 
-    private final Supplier<DeferredRegister<Fluid>> fluidRegister;
-    private final Supplier<DeferredRegister<FluidType>> fluidTypeRegister;
-    private final Supplier<DeferredRegister<Item>> itemRegister;
-    private final Supplier<DeferredRegister<Block>> blockRegister;
+    private final Supplier<JSGDeferredRegister<Fluid>> fluidRegister;
+    private final Supplier<JSGDeferredRegister<FluidType>> fluidTypeRegister;
+    private final Supplier<JSGDeferredRegister<Item>> itemRegister;
+    private final Supplier<JSGDeferredRegister<Block>> blockRegister;
 
-    public FluidHelper(Supplier<DeferredRegister<Fluid>> fluidRegister, Supplier<DeferredRegister<FluidType>> fluidTypeRegister,
-                       Supplier<DeferredRegister<Item>> itemRegister, Supplier<DeferredRegister<Block>> blockRegister) {
+    public FluidHelper(Supplier<JSGDeferredRegister<Fluid>> fluidRegister, Supplier<JSGDeferredRegister<FluidType>> fluidTypeRegister,
+                       Supplier<JSGDeferredRegister<Item>> itemRegister, Supplier<JSGDeferredRegister<Block>> blockRegister) {
         this.fluidRegister = fluidRegister;
         this.fluidTypeRegister = fluidTypeRegister;
         this.itemRegister = itemRegister;

@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.minecraft.core.registries.BuiltInRegistries;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 public class JSGBlockStateProvider extends BlockStateProvider {
     public JSGBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -38,7 +38,7 @@ public class JSGBlockStateProvider extends BlockStateProvider {
     }
 
     public static ResourceLocation getRL(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block);
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

@@ -2,7 +2,7 @@ package dev.tauri.jsg.core.common.sound;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 public interface ISoundEvent {
     int getOrdinal();

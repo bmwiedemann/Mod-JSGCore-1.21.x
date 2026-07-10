@@ -27,7 +27,7 @@ public abstract class SymbolType<T extends SymbolInterface> {
         SymbolType<?> next = null;
         SymbolType<?> last = current;
         boolean getLast = false;
-        for (var type : JSGCoreRegistries.R_SYMBOL_TYPE.get().getEntries()) {
+        for (var type : JSGCoreRegistries.R_SYMBOL_TYPE.get().entrySet()) {
             if (getLast) {
                 last = type.getValue();
                 continue;
@@ -54,9 +54,9 @@ public abstract class SymbolType<T extends SymbolInterface> {
 
     @Nonnull
     public static SymbolType<?> getRandom() {
-        var index = new Random().nextInt(JSGCoreRegistries.R_SYMBOL_TYPE.get().getEntries().size());
+        var index = new Random().nextInt(JSGCoreRegistries.R_SYMBOL_TYPE.get().entrySet().size());
         int i = 0;
-        for (var type : JSGCoreRegistries.R_SYMBOL_TYPE.get().getEntries()) {
+        for (var type : JSGCoreRegistries.R_SYMBOL_TYPE.get().entrySet()) {
             if (i == index)
                 return type.getValue();
             i++;
@@ -65,7 +65,7 @@ public abstract class SymbolType<T extends SymbolInterface> {
     }
 
     public static List<? extends SymbolType<?>> values(SymbolUsage symbolUsage) {
-        return JSGCoreRegistries.R_SYMBOL_TYPE.get().getEntries().stream()
+        return JSGCoreRegistries.R_SYMBOL_TYPE.get().entrySet().stream()
                 .filter(e -> e.getValue().getSymbolUsage().equals(symbolUsage))
                 .map(Map.Entry::getValue)
                 .toList();
@@ -93,7 +93,7 @@ public abstract class SymbolType<T extends SymbolInterface> {
 
     @Nullable
     public static SymbolType<?> byId(ResourceLocation id) {
-        return JSGCoreRegistries.R_SYMBOL_TYPE.get().getValue(id);
+        return JSGCoreRegistries.R_SYMBOL_TYPE.get().get(id);
     }
 
     @OnlyIn(Dist.CLIENT)

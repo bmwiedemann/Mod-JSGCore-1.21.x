@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 public record StateType(String name) {
     public static StateType byId(ResourceLocation id) {
-        return JSGCoreRegistries.R_STATE_TYPE.get().getValue(id);
+        return JSGCoreRegistries.R_STATE_TYPE.get().get(id);
     }
 
     public ResourceLocation getId() {

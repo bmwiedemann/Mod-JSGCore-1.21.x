@@ -168,7 +168,7 @@ public class TextureLoader implements ITextureLoader {
 
     protected void loadTexture(ProgressMeter progress, String texturePath, ResourceManager resourceManager) {
         texturePath = texturePath.replaceFirst("assets/" + modId + "/", "").split("\\.")[0];
-        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().getValues()) {
+        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get()) {
             if (overlay.suffix().isEmpty()) continue;
             if (texturePath.endsWith(overlay.suffix()))
                 return;
@@ -209,12 +209,12 @@ public class TextureLoader implements ITextureLoader {
     }
 
     protected void generateOverlayTextures(String texturePathFull, NativeImage originalImage, ResourceManager resourceManager, ResourceLocation originalTextureLocation) {
-        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().getValues()) {
+        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get()) {
             if (overlay.suffix().isEmpty()) continue;
             if (texturePathFull.split("\\.")[0].endsWith(overlay.suffix()))
                 return;
         }
-        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get().getValues()) {
+        for (var overlay : JSGCoreRegistries.R_BIOME_OVERLAY.get()) {
             if (overlay.suffix().isEmpty()) continue;
             var overlayLocation = overlay.getOverlayTexture();
             if (overlayLocation == null) continue;

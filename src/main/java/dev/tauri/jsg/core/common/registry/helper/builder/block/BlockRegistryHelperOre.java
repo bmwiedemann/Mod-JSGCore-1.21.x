@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -30,7 +30,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class BlockRegistryHelperOre extends RegistryHelper<Block, BlockRegistryHelperOre.OreBlockBuilder> {
-    public BlockRegistryHelperOre(Supplier<DeferredRegister<Block>> registry) {
+    public BlockRegistryHelperOre(Supplier<JSGDeferredRegister<Block>> registry) {
         super(registry, OreBlockBuilder::new);
     }
 

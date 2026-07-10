@@ -23,8 +23,8 @@ import net.minecraft.world.item.enchantment.DigDurabilityEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ItemRegistryHelperGeneric extends RegistryHelper<Item, ItemRegistryHelperGeneric.GenericItemBuilder> {
-    public ItemRegistryHelperGeneric(Supplier<DeferredRegister<Item>> registry) {
+    public ItemRegistryHelperGeneric(Supplier<JSGDeferredRegister<Item>> registry) {
         super(registry, GenericItemBuilder::new);
     }
 
