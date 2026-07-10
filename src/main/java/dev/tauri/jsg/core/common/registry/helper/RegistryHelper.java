@@ -47,9 +47,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.network.IContainerFactory;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class RegistryHelper {
     protected Runnable entityRendererRegisterRun = () -> {
     };
     protected Supplier<List<BlockEntityRendererPair<?>>> blockEntityRenderers = List::of;
-    protected List<DeferredRegister<?>> registerList = new ArrayList<>();
+    protected List<JSGDeferredRegister<?>> registerList = new ArrayList<>();
 
     public void register(IEventBus eventBus) {
         if (blockRegistry != null) {
@@ -95,7 +95,7 @@ public class RegistryHelper {
         registerList.forEach(r -> r.register(eventBus));
     }
 
-    public void toRegister(DeferredRegister<?> deferredRegister) {
+    public void toRegister(JSGDeferredRegister<?> deferredRegister) {
         registerList.add(deferredRegister);
     }
 
@@ -118,204 +118,204 @@ public class RegistryHelper {
         return this;
     }
 
-    public DeferredRegister<FluidType> fluidType() {
+    public JSGDeferredRegister<FluidType> fluidType() {
         if (fluidTypeRegistry == null) {
-            fluidTypeRegistry = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, modId);
+            fluidTypeRegistry = JSGDeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, modId);
             toRegister(fluidTypeRegistry);
         }
         return fluidTypeRegistry;
     }
 
-    public DeferredRegister<Fluid> fluid() {
+    public JSGDeferredRegister<Fluid> fluid() {
         if (fluidRegistry == null) {
-            fluidRegistry = DeferredRegister.create(ForgeRegistries.FLUIDS, modId);
+            fluidRegistry = JSGDeferredRegister.create(Registries.FLUID, modId);
             toRegister(fluidRegistry);
         }
         return fluidRegistry;
     }
 
-    public DeferredRegister<PoiType> poi() {
+    public JSGDeferredRegister<PoiType> poi() {
         if (villagerPoiRegistry == null) {
-            villagerPoiRegistry = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, modId);
+            villagerPoiRegistry = JSGDeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, modId);
             toRegister(villagerPoiRegistry);
         }
         return villagerPoiRegistry;
     }
 
-    public DeferredRegister<VillagerType> villagerType() {
+    public JSGDeferredRegister<VillagerType> villagerType() {
         if (villagerTypeRegistry == null) {
-            villagerTypeRegistry = DeferredRegister.create(Registries.VILLAGER_TYPE, modId);
+            villagerTypeRegistry = JSGDeferredRegister.create(Registries.VILLAGER_TYPE, modId);
             toRegister(villagerTypeRegistry);
         }
         return villagerTypeRegistry;
     }
 
-    public DeferredRegister<VillagerProfession> villagerProfession() {
+    public JSGDeferredRegister<VillagerProfession> villagerProfession() {
         if (villagerProfessionRegistry == null) {
-            villagerProfessionRegistry = DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, modId);
+            villagerProfessionRegistry = JSGDeferredRegister.create(Registries.VILLAGER_PROFESSION, modId);
             toRegister(villagerProfessionRegistry);
         }
         return villagerProfessionRegistry;
     }
 
-    public DeferredRegister<EntityType<?>> entity() {
+    public JSGDeferredRegister<EntityType<?>> entity() {
         if (entityRegistry == null) {
-            entityRegistry = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, modId);
+            entityRegistry = JSGDeferredRegister.create(Registries.ENTITY_TYPE, modId);
             toRegister(entityRegistry);
         }
         return entityRegistry;
     }
 
-    public DeferredRegister<StructureType<?>> structureType() {
+    public JSGDeferredRegister<StructureType<?>> structureType() {
         if (structureTypeRegistry == null) {
-            structureTypeRegistry = DeferredRegister.create(Registries.STRUCTURE_TYPE, modId);
+            structureTypeRegistry = JSGDeferredRegister.create(Registries.STRUCTURE_TYPE, modId);
             toRegister(structureTypeRegistry);
         }
         return structureTypeRegistry;
     }
 
-    public DeferredRegister<Feature<?>> feature() {
+    public JSGDeferredRegister<Feature<?>> feature() {
         if (featureRegistry == null) {
-            featureRegistry = DeferredRegister.create(ForgeRegistries.FEATURES, modId);
+            featureRegistry = JSGDeferredRegister.create(Registries.FEATURE, modId);
             toRegister(featureRegistry);
         }
         return featureRegistry;
     }
 
-    public DeferredRegister<MenuType<?>> menu() {
+    public JSGDeferredRegister<MenuType<?>> menu() {
         if (menuTypeRegistry == null) {
-            menuTypeRegistry = DeferredRegister.create(ForgeRegistries.MENU_TYPES, modId);
+            menuTypeRegistry = JSGDeferredRegister.create(Registries.MENU, modId);
             toRegister(menuTypeRegistry);
         }
         return menuTypeRegistry;
     }
 
-    public DeferredRegister<StateType> state() {
+    public JSGDeferredRegister<StateType> state() {
         if (stateTypeRegistry == null) {
-            stateTypeRegistry = DeferredRegister.create(JSGCoreRegistries.STATE_TYPE, modId);
+            stateTypeRegistry = JSGDeferredRegister.create(JSGCoreRegistries.STATE_TYPE, modId);
             toRegister(stateTypeRegistry);
         }
         return stateTypeRegistry;
     }
 
-    public DeferredRegister<SymbolUsage> symbolUsage() {
+    public JSGDeferredRegister<SymbolUsage> symbolUsage() {
         if (symbolUsageRegistry == null) {
-            symbolUsageRegistry = DeferredRegister.create(JSGCoreRegistries.SYMBOL_USAGE, modId);
+            symbolUsageRegistry = JSGDeferredRegister.create(JSGCoreRegistries.SYMBOL_USAGE, modId);
             toRegister(symbolUsageRegistry);
         }
         return symbolUsageRegistry;
     }
 
-    public DeferredRegister<SymbolType<?>> symbolType() {
+    public JSGDeferredRegister<SymbolType<?>> symbolType() {
         if (symbolTypeRegistry == null) {
-            symbolTypeRegistry = DeferredRegister.create(JSGCoreRegistries.SYMBOL_TYPE, modId);
+            symbolTypeRegistry = JSGDeferredRegister.create(JSGCoreRegistries.SYMBOL_TYPE, modId);
             toRegister(symbolTypeRegistry);
         }
         return symbolTypeRegistry;
     }
 
-    public DeferredRegister<SoundEvent> sound() {
+    public JSGDeferredRegister<SoundEvent> sound() {
         if (soundRegistry == null) {
-            soundRegistry = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, modId);
+            soundRegistry = JSGDeferredRegister.create(Registries.SOUND_EVENT, modId);
             toRegister(soundRegistry);
         }
         return soundRegistry;
     }
 
-    public DeferredRegister<CreativeModeTab> tab() {
+    public JSGDeferredRegister<CreativeModeTab> tab() {
         if (tabRegistry == null) {
-            tabRegistry = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, modId);
+            tabRegistry = JSGDeferredRegister.create(Registries.CREATIVE_MODE_TAB, modId);
             toRegister(tabRegistry);
         }
         return tabRegistry;
     }
 
-    public DeferredRegister<BlockEntityType<?>> be() {
+    public JSGDeferredRegister<BlockEntityType<?>> be() {
         if (beRegistry == null) {
-            beRegistry = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, modId);
+            beRegistry = JSGDeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modId);
             toRegister(beRegistry);
         }
         return beRegistry;
     }
 
-    public DeferredRegister<Block> block() {
+    public JSGDeferredRegister<Block> block() {
         if (blockRegistry == null) {
-            blockRegistry = DeferredRegister.create(ForgeRegistries.BLOCKS, modId);
+            blockRegistry = JSGDeferredRegister.create(Registries.BLOCK, modId);
             toRegister(blockRegistry);
         }
         return blockRegistry;
     }
 
-    public DeferredRegister<Item> item() {
+    public JSGDeferredRegister<Item> item() {
         if (itemRegistry == null) {
-            itemRegistry = DeferredRegister.create(ForgeRegistries.ITEMS, modId);
+            itemRegistry = JSGDeferredRegister.create(Registries.ITEM, modId);
             toRegister(itemRegistry);
         }
         return itemRegistry;
     }
 
-    public DeferredRegister<ScheduledTaskType> scheduledTask() {
+    public JSGDeferredRegister<ScheduledTaskType> scheduledTask() {
         if (scheduledTaskTypeRegistry == null) {
-            scheduledTaskTypeRegistry = DeferredRegister.create(JSGCoreRegistries.SCHEDULED_TASK_TYPE, modId);
+            scheduledTaskTypeRegistry = JSGDeferredRegister.create(JSGCoreRegistries.SCHEDULED_TASK_TYPE, modId);
             toRegister(scheduledTaskTypeRegistry);
         }
         return scheduledTaskTypeRegistry;
     }
 
-    public DeferredRegister<BiomeOverlayInstance> biomeOverlay() {
+    public JSGDeferredRegister<BiomeOverlayInstance> biomeOverlay() {
         if (biomeOverlayRegistry == null) {
-            biomeOverlayRegistry = DeferredRegister.create(JSGCoreRegistries.BIOME_OVERLAY, modId);
+            biomeOverlayRegistry = JSGDeferredRegister.create(JSGCoreRegistries.BIOME_OVERLAY, modId);
             toRegister(biomeOverlayRegistry);
         }
         return biomeOverlayRegistry;
     }
 
-    public DeferredRegister<NotebookPageType<?>> notebookPage() {
+    public JSGDeferredRegister<NotebookPageType<?>> notebookPage() {
         if (notebookPageTypeRegistry == null) {
-            notebookPageTypeRegistry = DeferredRegister.create(JSGCoreRegistries.NOTEBOOK_PAGE_TYPE, modId);
+            notebookPageTypeRegistry = JSGDeferredRegister.create(JSGCoreRegistries.NOTEBOOK_PAGE_TYPE, modId);
             toRegister(notebookPageTypeRegistry);
         }
         return notebookPageTypeRegistry;
     }
 
-    public DeferredRegister<IPointOfOriginType> pooType() {
+    public JSGDeferredRegister<IPointOfOriginType> pooType() {
         if (pointOfOriginTypeRegistry == null) {
-            pointOfOriginTypeRegistry = DeferredRegister.create(JSGCoreRegistries.POINT_OF_ORIGIN_TYPE, modId);
+            pointOfOriginTypeRegistry = JSGDeferredRegister.create(JSGCoreRegistries.POINT_OF_ORIGIN_TYPE, modId);
             toRegister(pointOfOriginTypeRegistry);
         }
         return pointOfOriginTypeRegistry;
     }
 
-    public DeferredRegister<Raycaster> raycaster() {
+    public JSGDeferredRegister<Raycaster> raycaster() {
         if (raycasterRegistry == null) {
-            raycasterRegistry = DeferredRegister.create(JSGCoreRegistries.RAYCASTER, modId);
+            raycasterRegistry = JSGDeferredRegister.create(JSGCoreRegistries.RAYCASTER, modId);
             toRegister(raycasterRegistry);
         }
         return raycasterRegistry;
     }
 
-    protected DeferredRegister<Item> itemRegistry;
-    protected DeferredRegister<Block> blockRegistry;
-    protected DeferredRegister<CreativeModeTab> tabRegistry;
-    protected DeferredRegister<BlockEntityType<?>> beRegistry;
-    protected DeferredRegister<SoundEvent> soundRegistry;
-    protected DeferredRegister<EntityType<?>> entityRegistry;
-    protected DeferredRegister<VillagerProfession> villagerProfessionRegistry;
-    protected DeferredRegister<VillagerType> villagerTypeRegistry;
-    protected DeferredRegister<PoiType> villagerPoiRegistry;
-    protected DeferredRegister<StructureType<?>> structureTypeRegistry;
-    protected DeferredRegister<Feature<?>> featureRegistry;
-    protected DeferredRegister<MenuType<?>> menuTypeRegistry;
-    protected DeferredRegister<Fluid> fluidRegistry;
-    protected DeferredRegister<FluidType> fluidTypeRegistry;
-    protected DeferredRegister<ScheduledTaskType> scheduledTaskTypeRegistry;
-    protected DeferredRegister<BiomeOverlayInstance> biomeOverlayRegistry;
-    protected DeferredRegister<NotebookPageType<?>> notebookPageTypeRegistry;
-    protected DeferredRegister<SymbolType<?>> symbolTypeRegistry;
-    protected DeferredRegister<SymbolUsage> symbolUsageRegistry;
-    protected DeferredRegister<StateType> stateTypeRegistry;
-    protected DeferredRegister<IPointOfOriginType> pointOfOriginTypeRegistry;
-    protected DeferredRegister<Raycaster> raycasterRegistry;
+    protected JSGDeferredRegister<Item> itemRegistry;
+    protected JSGDeferredRegister<Block> blockRegistry;
+    protected JSGDeferredRegister<CreativeModeTab> tabRegistry;
+    protected JSGDeferredRegister<BlockEntityType<?>> beRegistry;
+    protected JSGDeferredRegister<SoundEvent> soundRegistry;
+    protected JSGDeferredRegister<EntityType<?>> entityRegistry;
+    protected JSGDeferredRegister<VillagerProfession> villagerProfessionRegistry;
+    protected JSGDeferredRegister<VillagerType> villagerTypeRegistry;
+    protected JSGDeferredRegister<PoiType> villagerPoiRegistry;
+    protected JSGDeferredRegister<StructureType<?>> structureTypeRegistry;
+    protected JSGDeferredRegister<Feature<?>> featureRegistry;
+    protected JSGDeferredRegister<MenuType<?>> menuTypeRegistry;
+    protected JSGDeferredRegister<Fluid> fluidRegistry;
+    protected JSGDeferredRegister<FluidType> fluidTypeRegistry;
+    protected JSGDeferredRegister<ScheduledTaskType> scheduledTaskTypeRegistry;
+    protected JSGDeferredRegister<BiomeOverlayInstance> biomeOverlayRegistry;
+    protected JSGDeferredRegister<NotebookPageType<?>> notebookPageTypeRegistry;
+    protected JSGDeferredRegister<SymbolType<?>> symbolTypeRegistry;
+    protected JSGDeferredRegister<SymbolUsage> symbolUsageRegistry;
+    protected JSGDeferredRegister<StateType> stateTypeRegistry;
+    protected JSGDeferredRegister<IPointOfOriginType> pointOfOriginTypeRegistry;
+    protected JSGDeferredRegister<Raycaster> raycasterRegistry;
 
 
     // STATIC

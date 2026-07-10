@@ -2,7 +2,7 @@ package dev.tauri.jsg.core.common.item;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.ParametersAreNonnullByDefault;

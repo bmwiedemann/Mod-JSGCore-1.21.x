@@ -74,7 +74,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
 
     @Override
     public Optional<IPointOfOriginType> getPoOType(ResourceLocation namespace) {
-        return Optional.ofNullable(JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get().getValue(namespace));
+        return Optional.ofNullable(JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get().get(namespace));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
         var jsonFile = new File(configFolder, "jsg/PointOfOrigins.json");
         if (!jsonFile.exists()) {
             writeServer(jsonFile, Util.make(Maps.newHashMap(), (map) -> {
-                for (var type : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get().getValues()) {
+                for (var type : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get()) {
                     map.put(type.getPoONamespaceIdentifier().toString(), type.getPoODefaults().stream().map(ResourceLocation::toString).toList());
                 }
             }));
@@ -98,7 +98,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
             }.getType();
             Map<String, List<String>> inputMap = new HashMap<>(new GsonBuilder().create().fromJson(fr, jsonType));
             boolean changed = false;
-            for (var defaultType : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get().getValues()) {
+            for (var defaultType : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get()) {
                 var typeId = defaultType.getPoONamespaceIdentifier();
                 if (!inputMap.containsKey(typeId.toString()) || inputMap.get(typeId.toString()).isEmpty()) {
                     inputMap.put(typeId.toString(), defaultType.getPoODefaults().stream().map(ResourceLocation::toString).toList());
@@ -125,7 +125,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
             if (!loaderJson.exists()) return;
             try (var addonJson = new FileReader(loaderJson)) {
                 Map<String, List<String>> addonInputMap = new HashMap<>(new GsonBuilder().create().fromJson(addonJson, jsonType));
-                for (var defaultType : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get().getValues()) {
+                for (var defaultType : JSGCoreRegistries.R_POINT_OF_ORIGIN_TYPE.get()) {
                     var typeId = defaultType.getPoONamespaceIdentifier();
                     if (!addonInputMap.containsKey(typeId.toString()) || addonInputMap.get(typeId.toString()).isEmpty())
                         continue;

@@ -16,15 +16,15 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
 public class CoreBlocks {
-    private static final DeferredRegister<Block> REGISTER = JSGCore.REGISTRY_HELPER.block();
+    private static final JSGDeferredRegister<Block> REGISTER = JSGCore.REGISTRY_HELPER.block();
 
     
     public static final RegistryObject<Block> INVISIBLE_BLOCK = REGISTER.register("invisible_block", InvisibleBlock::new);

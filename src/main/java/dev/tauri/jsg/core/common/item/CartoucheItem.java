@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

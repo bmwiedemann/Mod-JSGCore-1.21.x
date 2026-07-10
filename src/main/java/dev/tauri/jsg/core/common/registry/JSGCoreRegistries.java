@@ -14,8 +14,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.IForgeRegistry;
-import net.neoforged.neoforge.registries.RegistryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,23 +32,21 @@ public class JSGCoreRegistries {
     public static final ResourceKey<Registry<Raycaster>> RAYCASTER = ResourceKey.createRegistryKey(JSGMapping.rl(JSGCore.MOD_ID, "raycaster"));
 
 
-    public static final Supplier<IForgeRegistry<BiomeOverlayInstance>> R_BIOME_OVERLAY = create(BIOME_OVERLAY);
-    public static final Supplier<IForgeRegistry<ScheduledTaskType>> R_SCHEDULED_TASK_TYPE = create(SCHEDULED_TASK_TYPE);
-    public static final Supplier<IForgeRegistry<NotebookPageType<?>>> R_NOTEBOOK_PAGE_TYPE = create(NOTEBOOK_PAGE_TYPE);
-    public static final Supplier<IForgeRegistry<SymbolType<?>>> R_SYMBOL_TYPE = create(SYMBOL_TYPE);
-    public static final Supplier<IForgeRegistry<SymbolUsage>> R_SYMBOL_USAGE = create(SYMBOL_USAGE);
-    public static final Supplier<IForgeRegistry<StateType>> R_STATE_TYPE = create(STATE_TYPE);
-    public static final Supplier<IForgeRegistry<IPointOfOriginType>> R_POINT_OF_ORIGIN_TYPE = create(POINT_OF_ORIGIN_TYPE);
-    public static final Supplier<IForgeRegistry<Raycaster>> R_RAYCASTER = create(RAYCASTER);
+    public static final Supplier<Registry<BiomeOverlayInstance>> R_BIOME_OVERLAY = create(BIOME_OVERLAY);
+    public static final Supplier<Registry<ScheduledTaskType>> R_SCHEDULED_TASK_TYPE = create(SCHEDULED_TASK_TYPE);
+    public static final Supplier<Registry<NotebookPageType<?>>> R_NOTEBOOK_PAGE_TYPE = create(NOTEBOOK_PAGE_TYPE);
+    public static final Supplier<Registry<SymbolType<?>>> R_SYMBOL_TYPE = create(SYMBOL_TYPE);
+    public static final Supplier<Registry<SymbolUsage>> R_SYMBOL_USAGE = create(SYMBOL_USAGE);
+    public static final Supplier<Registry<StateType>> R_STATE_TYPE = create(STATE_TYPE);
+    public static final Supplier<Registry<IPointOfOriginType>> R_POINT_OF_ORIGIN_TYPE = create(POINT_OF_ORIGIN_TYPE);
+    public static final Supplier<Registry<Raycaster>> R_RAYCASTER = create(RAYCASTER);
 
-    private static <T> Supplier<IForgeRegistry<T>> create(ResourceKey<Registry<T>> id) {
-        return create(id, () -> RegistryBuilder.of(id.location()));
-    }
-
-    private static <T> Supplier<IForgeRegistry<T>> create(ResourceKey<Registry<T>> id, Supplier<RegistryBuilder<T>> builder) {
+    private static <T> Supplier<Registry<T>> create(ResourceKey<Registry<T>> id) {
         DeferredRegister<T> dr = DeferredRegister.create(id, id.location().getNamespace());
         REGISTERS.add(dr);
-        return dr.makeRegistry(builder);
+        // Forge custom registries were synced to clients by default; keep that behavior on NeoForge.
+        Registry<T> registry = dr.makeRegistry(builder -> builder.sync(true));
+        return () -> registry;
     }
 
     public static void init() {

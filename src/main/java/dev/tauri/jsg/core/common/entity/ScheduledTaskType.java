@@ -27,6 +27,6 @@ public record ScheduledTaskType(String name, int waitTicks, boolean overtime) {
 
     @Nullable
     public static ScheduledTaskType valueOf(ResourceLocation id) {
-        return JSGCoreRegistries.R_SCHEDULED_TASK_TYPE.get().getValue(id);
+        return JSGCoreRegistries.R_SCHEDULED_TASK_TYPE.get().get(id);
     }
 }

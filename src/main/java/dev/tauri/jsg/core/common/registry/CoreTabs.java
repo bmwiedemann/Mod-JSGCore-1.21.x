@@ -14,7 +14,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;

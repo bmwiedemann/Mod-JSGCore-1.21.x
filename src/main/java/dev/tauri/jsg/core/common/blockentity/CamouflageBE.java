@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -140,7 +140,7 @@ public abstract class CamouflageBE extends JSGBlockEntity implements BEStateProv
     public void load(@NotNull CompoundTag compound) {
         if (compound.contains("camoBlock_data")) {
             var camoBlockData = compound.getCompound("camoBlock_data");
-            Block block = ForgeRegistries.BLOCKS.getValue(JSGMapping.rl(camoBlockData.getString("id")));
+            Block block = BuiltInRegistries.BLOCK.get(JSGMapping.rl(camoBlockData.getString("id")));
             if (block != null) {
                 camoBlock = block.defaultBlockState();
                 if (camoBlockData.contains("properties")) {

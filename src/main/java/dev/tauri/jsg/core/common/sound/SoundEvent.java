@@ -1,8 +1,8 @@
 package dev.tauri.jsg.core.common.sound;
 
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class SoundEvent implements dev.tauri.jsg.core.common.sound.ISoundEvent {
         REGISTRY.put(ordinal, this);
     }
 
-    public SoundEvent register(DeferredRegister<net.minecraft.sounds.SoundEvent> soundRegistry) {
+    public SoundEvent register(JSGDeferredRegister<net.minecraft.sounds.SoundEvent> soundRegistry) {
         this.event = soundRegistry.register(resourceLocation.getPath(), () -> net.minecraft.sounds.SoundEvent.createFixedRangeEvent(resourceLocation, 64));
         return this;
     }

@@ -18,7 +18,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.crafting.conditions.IConditionBuilder;
-import net.neoforged.neoforge.registries.RegistryObject;
+import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;

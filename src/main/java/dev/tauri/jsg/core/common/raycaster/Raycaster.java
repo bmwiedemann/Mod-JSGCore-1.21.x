@@ -25,7 +25,7 @@ import java.util.List;
 @EventBusSubscriber(modid = JSGCore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public abstract class Raycaster {
     public static boolean checkInstancesAndActivate(BlockState clickedBlock, Level level, BlockPos pos, Player player, InteractionHand hand) {
-        var raycasters = JSGCoreRegistries.R_RAYCASTER.get().getValues();
+        var raycasters = JSGCoreRegistries.R_RAYCASTER.get().stream().toList();
         if (raycasters == null) return false;
         for (var raycaster : raycasters) {
             if (raycaster.testBlockState(clickedBlock))

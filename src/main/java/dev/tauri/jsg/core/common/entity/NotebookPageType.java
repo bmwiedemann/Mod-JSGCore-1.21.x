@@ -214,7 +214,7 @@ public class NotebookPageType<D extends INotebookPageData> {
     public static NotebookPageType<?> pageTypeFromCompound(CompoundTag compound) {
         var typeId = compound.getString("pageTypeId");
         if (typeId.isEmpty()) return null;
-        return JSGCoreRegistries.R_NOTEBOOK_PAGE_TYPE.get().getValue(JSGMapping.rl(typeId));
+        return JSGCoreRegistries.R_NOTEBOOK_PAGE_TYPE.get().get(JSGMapping.rl(typeId));
     }
 
     @Nullable

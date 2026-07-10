@@ -1,15 +1,15 @@
 package dev.tauri.jsg.core.common.registry.helper.builder;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
+import dev.tauri.jsg.core.common.registry.JSGDeferredRegister;
 
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public abstract class RegistryHelper<T, B extends RegistryObjectBuilder<?>> {
-    public final Supplier<DeferredRegister<T>> registry;
+    public final Supplier<JSGDeferredRegister<T>> registry;
     public final BiFunction<RegistryHelper<T, B>, String, B> builderGetter;
 
-    public RegistryHelper(Supplier<DeferredRegister<T>> registry, BiFunction<RegistryHelper<T, B>, String, B> builderGetter) {
+    public RegistryHelper(Supplier<JSGDeferredRegister<T>> registry, BiFunction<RegistryHelper<T, B>, String, B> builderGetter) {
         this.registry = registry;
         this.builderGetter = builderGetter;
     }
