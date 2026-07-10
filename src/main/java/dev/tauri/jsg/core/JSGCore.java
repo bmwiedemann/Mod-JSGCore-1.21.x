@@ -103,13 +103,13 @@ public class JSGCore {
         InternalIntegrations.tryLoad();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(dev.tauri.jsg.core.common.advancement.JSGCriterion::onRegisterTriggers);
         NeoForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         PointOfOriginsLoader.INSTANCE.loadServer();
         JSGAddons.onCoreCommonSetup();
-        JSGCriterion.registerInternally();
         CoreFluids.registerCauldrons();
     }
 
