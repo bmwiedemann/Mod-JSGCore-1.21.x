@@ -4,8 +4,8 @@ import dev.tauri.jsg.core.client.screen.tab.OpenTabHolderInterface;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.neoforged.neoforge.network.NetworkDirection;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.NetworkDirection;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class SetOpenTabSlotIdToServer extends JSGPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         if (ctx.getDirection() != NetworkDirection.PLAY_TO_SERVER) return;
         ctx.setPacketHandled(true);
         ServerPlayer player = ctx.getSender();

@@ -1,11 +1,11 @@
 package dev.tauri.jsg.core.common.packet.packets;
 
+import dev.tauri.jsg.core.common.packet.PacketContext;
+import dev.tauri.jsg.core.common.packet.SimplePacketHandler;
 import net.minecraft.network.FriendlyByteBuf;
-import net.neoforged.neoforge.network.NetworkEvent;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
-import java.util.function.Supplier;
-
-public abstract class JSGPacket {
+public abstract class JSGPacket implements CustomPacketPayload {
     public JSGPacket() {
     }
 
@@ -13,11 +13,11 @@ public abstract class JSGPacket {
 
     public abstract void fromBytes(FriendlyByteBuf buf);
 
-    public abstract void handle(NetworkEvent.Context ctx);
+    public abstract void handle(PacketContext ctx);
 
-    public boolean handleSupplier(Supplier<NetworkEvent.Context> contextSupplier) {
-        handle(contextSupplier.get());
-        return true;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return SimplePacketHandler.typeOf(getClass());
     }
 
     public JSGPacket(FriendlyByteBuf buf) {

@@ -10,8 +10,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.neoforged.neoforge.network.NetworkDirection;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.NetworkDirection;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.function.Supplier;
@@ -56,7 +56,7 @@ public class StateUpdatePacketToClient extends PositionedPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         if (ctx.getDirection() != NetworkDirection.PLAY_TO_CLIENT) return;
         ctx.setPacketHandled(true);
         LocalPlayer player = Minecraft.getInstance().player;

@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.blockentity;
 
+import dev.tauri.jsg.core.common.packet.TargetPoint;
 import dev.tauri.jsg.core.common.entity.State;
 import dev.tauri.jsg.core.common.entity.StateType;
 import dev.tauri.jsg.core.common.packet.JSGCorePacketHandler;
@@ -24,7 +25,7 @@ public interface StateProviderInterface extends IStateProvider {
         JSGCorePacketHandler.sendToClient(new StateUpdatePacketToClient(getStateHandlerBlockPos(), type, state), getTargetPoint());
     }
 
-    PacketDistributor.TargetPoint getTargetPoint();
+    TargetPoint getTargetPoint();
 
     BlockPos getStateHandlerBlockPos();
 }

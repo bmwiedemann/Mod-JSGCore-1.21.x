@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.common.sound.IPositionedSound;
 import dev.tauri.jsg.core.common.sound.PositionedSound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.neoforged.neoforge.network.NetworkDirection;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.NetworkDirection;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 
 public class SoundPositionedPlayToClient extends PositionedPacket {
     public IPositionedSound soundEnum;
@@ -38,7 +38,7 @@ public class SoundPositionedPlayToClient extends PositionedPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         if (ctx.getDirection() != NetworkDirection.PLAY_TO_CLIENT) return;
         ctx.setPacketHandled(true);
         ctx.enqueueWork(() -> {

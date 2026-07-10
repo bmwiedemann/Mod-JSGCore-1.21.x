@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.blockentity;
 
+import dev.tauri.jsg.core.common.packet.TargetPoint;
 import dev.tauri.jsg.core.common.block.core.InvisibleBlock;
 import dev.tauri.jsg.core.common.entity.State;
 import dev.tauri.jsg.core.common.entity.StateType;
@@ -32,12 +33,12 @@ import java.util.stream.Stream;
 
 public abstract class CamouflageBE extends JSGBlockEntity implements BEStateProvider {
     private BlockState camoBlock = Blocks.AIR.defaultBlockState();
-    private PacketDistributor.TargetPoint targetPointInternal;
+    private TargetPoint targetPointInternal;
 
     public void onCamoBlockChanged() {
         if (level == null || level.isClientSide) return;
         if (targetPointInternal == null) {
-            targetPointInternal = new PacketDistributor.TargetPoint(getBlockPos().getX(), getBlockPos().getY(), getBlockPos().getZ(), 512, level.dimension());
+            targetPointInternal = new TargetPoint(getBlockPos().getX(), getBlockPos().getY(), getBlockPos().getZ(), 512, level.dimension());
         }
         getAndSendState(CoreStateTypes.CAMO_STATE.get());
     }
