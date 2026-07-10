@@ -37,15 +37,14 @@ public class HandHeldDeviceRenderer {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Matrix4f matrix = poseStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
 
-        bufferbuilder.vertex(matrix, x, y, z).uv(1, 1).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y, z).uv(0, 1).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y + h, z).uv(0, 0).endVertex();
-        bufferbuilder.vertex(matrix, x, y + h, z).uv(1, 0).endVertex();
+        bufferbuilder.addVertex(matrix, x, y, z).setUv(1, 1);
+        bufferbuilder.addVertex(matrix, x + w, y, z).setUv(0, 1);
+        bufferbuilder.addVertex(matrix, x + w, y + h, z).setUv(0, 0);
+        bufferbuilder.addVertex(matrix, x, y + h, z).setUv(1, 0);
 
-        tessellator.end();
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         poseStack.popPose();
     }
 
@@ -54,15 +53,14 @@ public class HandHeldDeviceRenderer {
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         Matrix4f matrix = poseStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
-        bufferbuilder.vertex(matrix, x, y, z).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y, z).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y + h, z).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, x, y + h, z).color(r, g, b, a).endVertex();
+        bufferbuilder.addVertex(matrix, x, y, z).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, x + w, y, z).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, x + w, y + h, z).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, x, y + h, z).setColor(r, g, b, a);
 
-        tessellator.end();
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         poseStack.popPose();
     }
 
@@ -78,21 +76,21 @@ public class HandHeldDeviceRenderer {
             float cos = (float) Math.cos(angle);
             float sin = (float) Math.sin(angle);
 
-            buffer.vertex(poseStack.last().pose(),
+            buffer.addVertex(poseStack.last().pose(),
                             x + cos * outerRadius,
                             y + sin * outerRadius,
                             z)
-                    .color(r, g, b, a)
-                    .endVertex();
+                    .setColor(r, g, b, a)
+                    ;
 
-            buffer.vertex(poseStack.last().pose(),
+            buffer.addVertex(poseStack.last().pose(),
                             x + cos * innerRadius,
                             y + sin * innerRadius,
                             z)
-                    .color(r, g, b, a)
-                    .endVertex();
+                    .setColor(r, g, b, a)
+                    ;
         }
-        tesselator.end();
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawModalRectWithCustomSizedTexture(PoseStack poseStack, MultiBufferSource source, int light, float x, float y, float z, float u, float v, float width, float height, float textureWidth, float textureHeight) {
@@ -103,12 +101,11 @@ public class HandHeldDeviceRenderer {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Matrix4f matrix = poseStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, x, y + height, z).uv((u * f), ((v + height) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y + height), z).uv(((u + width) * f), ((v + height) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), y, z).uv(((u + width) * f), (v * f1)).endVertex();
-        bufferbuilder.vertex(matrix, x, y, z).uv((u * f), (v * f1)).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, x, y + height, z).setUv((u * f), ((v + height) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), (y + height), z).setUv(((u + width) * f), ((v + height) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), y, z).setUv(((u + width) * f), (v * f1));
+        bufferbuilder.addVertex(matrix, x, y, z).setUv((u * f), (v * f1));
         BufferUploader.drawWithShader(bufferbuilder.end());
         poseStack.popPose();
     }

@@ -63,12 +63,11 @@ public class PageRenderer {
         Matrix4f matrix = poseStack.last().pose();
 
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
-        bufferbuilder.vertex(matrix, 0.04f + x, 0.79f - y, z).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).uv(0, 1).uv2(light).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x + w, 0.79f - y, z).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).uv(1, 1).uv2(light).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x + w, 0.79f - y + h, z).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).uv(1, 0).uv2(light).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x, 0.79f - y + h, z).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).uv(0, 0).uv2(light).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+        bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(0, 1).setLight(light);
+        bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(1, 1).setLight(light);
+        bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y + h, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(1, 0).setLight(light);
+        bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y + h, z).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, alpha).setUv(0, 0).setLight(light);
         BufferUploader.drawWithShader(bufferbuilder.end());
         poseStack.popPose();
     }
@@ -82,12 +81,11 @@ public class PageRenderer {
         Matrix4f matrix = poseStack.last().pose();
 
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-        bufferbuilder.vertex(matrix, 0.04f + x, 0.79f - y, z).color(1, 1, 1, alpha).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x + w, 0.79f - y, z).color(1, 1, 1, alpha).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x + w, 0.79f - y + h, z).color(1, 1, 1, alpha).endVertex();
-        bufferbuilder.vertex(matrix, 0.04f + x, 0.79f - y + h, z).color(1, 1, 1, alpha).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y, z).setColor(1, 1, 1, alpha);
+        bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y, z).setColor(1, 1, 1, alpha);
+        bufferbuilder.addVertex(matrix, 0.04f + x + w, 0.79f - y + h, z).setColor(1, 1, 1, alpha);
+        bufferbuilder.addVertex(matrix, 0.04f + x, 0.79f - y + h, z).setColor(1, 1, 1, alpha);
         BufferUploader.drawWithShader(bufferbuilder.end());
         RenderSystem.setShaderColor(1, 1, 1, 1);
         poseStack.popPose();
@@ -170,42 +168,41 @@ public class PageRenderer {
             float finalTopOffset = topOffset;
             EmissiveRenderer.renderWithLightOverlay(poseStack, light, false, () -> ITexture.bindTextureWithMc(tex), () -> {
                 Matrix4f matrix = poseStack.last().pose();
-                var normal = poseStack.last().normal();
+                var normal = poseStack.last().setNormal();
                 Tesselator tessellator = Tesselator.getInstance();
-                BufferBuilder bufferbuilder = tessellator.getBuilder();
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
+                BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
                 bufferbuilder
-                        .vertex(matrix, 0.0f, finalBottomOffset, finalZ)
-                        .color(1, 1, 1, 0.99f)
-                        .uv(0, 0.8046875f * (1 - finalBottomOffset))
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal, 0, 1, 0)
-                        .endVertex();
+                        .addVertex(matrix, 0.0f, finalBottomOffset, finalZ)
+                        .setColor(1, 1, 1, 0.99f)
+                        .setUv(0, 0.8046875f * (1 - finalBottomOffset))
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal, 0, 1, 0)
+                        ;
                 bufferbuilder
-                        .vertex(matrix, 0.7f + 0.117f, finalBottomOffset, finalZ)
-                        .color(1, 1, 1, 0.99f)
-                        .uv(0.65625f, 0.8046875f * (1 - finalBottomOffset))
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal, 0, 1, 0)
-                        .endVertex();
+                        .addVertex(matrix, 0.7f + 0.117f, finalBottomOffset, finalZ)
+                        .setColor(1, 1, 1, 0.99f)
+                        .setUv(0.65625f, 0.8046875f * (1 - finalBottomOffset))
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal, 0, 1, 0)
+                        ;
                 bufferbuilder
-                        .vertex(matrix, 0.7f + 0.117f, 1 - finalTopOffset, finalZ)
-                        .color(1, 1, 1, 0.99f)
-                        .uv(0.65625f, 0.8046875f * finalTopOffset)
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal, 0, 1, 0)
-                        .endVertex();
+                        .addVertex(matrix, 0.7f + 0.117f, 1 - finalTopOffset, finalZ)
+                        .setColor(1, 1, 1, 0.99f)
+                        .setUv(0.65625f, 0.8046875f * finalTopOffset)
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal, 0, 1, 0)
+                        ;
                 bufferbuilder
-                        .vertex(matrix, 0.0f, 1 - finalTopOffset, finalZ)
-                        .color(1, 1, 1, 0.99f)
-                        .uv(0, 0.8046875f * finalTopOffset)
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal, 0, 1, 0)
-                        .endVertex();
+                        .addVertex(matrix, 0.0f, 1 - finalTopOffset, finalZ)
+                        .setColor(1, 1, 1, 0.99f)
+                        .setUv(0, 0.8046875f * finalTopOffset)
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal, 0, 1, 0)
+                        ;
                 BufferUploader.drawWithShader(bufferbuilder.end());
             });
             poseStack.popPose();

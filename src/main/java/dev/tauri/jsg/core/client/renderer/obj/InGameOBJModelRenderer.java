@@ -104,13 +104,13 @@ public class InGameOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
                 uv1 = getCorrectUVWithSprite(uv1.getX(), uv1.getY(), textureAtlasSprite);
 
                 bufferbuilder
-                        .vertex(model.vertices[i], model.vertices[i + 1], model.vertices[i + 2])
-                        .color(1, 1, 1, 1f)
-                        .uv(uv1.x, uv1.y)
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(light)
-                        .normal(normal1.x(), normal1.y(), normal1.z())
-                        .endVertex();
+                        .addVertex(model.vertices[i], model.vertices[i + 1], model.vertices[i + 2])
+                        .setColor(1, 1, 1, 1f)
+                        .setUv(uv1.x, uv1.y)
+                        .setOverlay(OverlayTexture.NO_OVERLAY)
+                        .setLight(light)
+                        .setNormal(normal1.x(), normal1.y(), normal1.z())
+                        ;
             }
             uploadBuffer(modelBuffer, bufferbuilder, light, textureAtlasSprite, shouldBeginAgain);
         }

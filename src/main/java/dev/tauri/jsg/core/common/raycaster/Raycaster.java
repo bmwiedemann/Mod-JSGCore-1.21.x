@@ -162,7 +162,7 @@ public abstract class Raycaster {
 
             for (BlockPos activatedBlock : blocks) {
                 var block = world.getBlockState(activatedBlock);
-                if (event.isCancelable() && !event.isCanceled() && Raycaster.checkInstancesAndActivate(block, world, activatedBlock, player, event.getHand())) {
+                if (!event.isCanceled() && Raycaster.checkInstancesAndActivate(block, world, activatedBlock, player, event.getHand())) {
                     event.setCanceled(true);
                     player.swing(event.getHand());
                     break;

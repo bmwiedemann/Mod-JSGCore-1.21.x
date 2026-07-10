@@ -86,22 +86,22 @@ public class CustomSkyObjectRenderer {
             RenderSystem.setShaderColor(1, 1, 1, 1);
 
         bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferBuilder.vertex(poseStack.last().pose(), -size, 100.0F, -size).uv(
+        bufferBuilder.addVertex(poseStack.last().pose(), -size, 100.0F, -size).setUv(
                 uvGetter.getUV(this, 0, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 0, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
-        ).endVertex();
-        bufferBuilder.vertex(poseStack.last().pose(), size, 100.0F, -size).uv(
+        );
+        bufferBuilder.addVertex(poseStack.last().pose(), size, 100.0F, -size).setUv(
                 uvGetter.getUV(this, 1, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 1, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
-        ).endVertex();
-        bufferBuilder.vertex(poseStack.last().pose(), size, 100.0F, size).uv(
+        );
+        bufferBuilder.addVertex(poseStack.last().pose(), size, 100.0F, size).setUv(
                 uvGetter.getUV(this, 2, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 2, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
-        ).endVertex();
-        bufferBuilder.vertex(poseStack.last().pose(), -size, 100.0F, size).uv(
+        );
+        bufferBuilder.addVertex(poseStack.last().pose(), -size, 100.0F, size).setUv(
                 uvGetter.getUV(this, 3, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 3, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
-        ).endVertex();
+        );
         tessellator.end();
 
         poseStack.popPose();
@@ -141,12 +141,12 @@ public class CustomSkyObjectRenderer {
             float a = sunRiseColor.getAlpha() / 255f;
             Matrix4f matrix4f = poseStack.last().pose();
             bufferbuilder.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
-            bufferbuilder.vertex(matrix4f, 0.0F, 100.0F, 0.0F).color(r, g, b, a).endVertex();
+            bufferbuilder.addVertex(matrix4f, 0.0F, 100.0F, 0.0F).setColor(r, g, b, a);
             for (int j = 0; j <= 16; ++j) {
                 float f7 = (float) j * ((float) Math.PI * 2F) / 16.0F;
                 float f8 = Mth.sin(f7);
                 float f9 = Mth.cos(f7);
-                bufferbuilder.vertex(matrix4f, f8 * 120.0F, f9 * 120.0F, -f9 * 40.0F * a).color(r, g, b, 0.0F).endVertex();
+                bufferbuilder.addVertex(matrix4f, f8 * 120.0F, f9 * 120.0F, -f9 * 40.0F * a).setColor(r, g, b, 0.0F);
             }
 
             BufferUploader.drawWithShader(bufferbuilder.end());
