@@ -17,9 +17,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.StartupMessageManager;
-import net.neoforged.fml.loading.progress.ProgressMeter;
 import net.neoforged.fml.loading.progress.StartupNotificationManager;
+import net.neoforged.fml.loading.progress.ProgressMeter;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -140,7 +139,7 @@ public class TextureLoader implements ITextureLoader {
             // ----------------------------------
             // LOAD NORMAL TEXTURES
             long start = System.currentTimeMillis();
-            ProgressMeter progress = StartupMessageManager.addProgressBar(modName.get() + " - Loading Textures", texturePaths.size());
+            ProgressMeter progress = StartupNotificationManager.addProgressBar(modName.get() + " - Loading Textures", texturePaths.size());
             JSGCore.logger.info("Started loading textures for domain {}...", modId);
             for (String texturePath : texturePaths) {
                 loadTexture(progress, texturePath, resourceManager);
@@ -152,7 +151,7 @@ public class TextureLoader implements ITextureLoader {
             // ----------------------------------
             // LOAD EVENT HORIZONS
             start = System.currentTimeMillis();
-            progress = StartupMessageManager.addProgressBar(modName.get() + " - Animated Textures", ehPaths.size());
+            progress = StartupNotificationManager.addProgressBar(modName.get() + " - Animated Textures", ehPaths.size());
             JSGCore.logger.info("Started loading animated textures for domain {}...", modId);
             for (String texturePath : ehPaths) {
                 loadTexture(progress, texturePath, resourceManager);
