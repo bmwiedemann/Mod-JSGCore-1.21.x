@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.entity;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.client.entity.NotebookPageRenderable;
 import dev.tauri.jsg.core.client.entity.NotebookPageRenderableWrapper;
 import dev.tauri.jsg.core.common.item.notebook.PageNotebookItemFilled;
@@ -175,7 +176,7 @@ public class NotebookPageType<D extends INotebookPageData> {
     }
 
     public ItemStack uploadToPage(ItemStack page, @Nullable D data, ResourceKey<Biome> biome) {
-        page.setTag(createCompoundTag(data, biome));
+        ItemNBT.setTag(page, createCompoundTag(data, biome));
         return page;
     }
 
@@ -205,7 +206,7 @@ public class NotebookPageType<D extends INotebookPageData> {
         }
 
         public ItemStack uploadToPage(ItemStack page, ResourceKey<Biome> biome) {
-            page.setTag(createCompoundTag(biome));
+            ItemNBT.setTag(page, createCompoundTag(biome));
             return page;
         }
     }

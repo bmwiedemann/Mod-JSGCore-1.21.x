@@ -198,14 +198,24 @@ public abstract class JSGEnergyStorage implements IEnergyStorage, INBTSerializab
         return energyToString(getTrueEnergyStored(), getTrueMaxEnergyStored());
     }
 
+    
     @Override
+    public CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     public CompoundTag serializeNBT() {
         var compound = new CompoundTag();
         compound.putLong("energy", energy);
         return compound;
     }
 
-    @Override
+    
     public void deserializeNBT(CompoundTag compound) {
         if (compound.contains("energy", CompoundTag.TAG_INT))
             this.energy = compound.getInt("energy");

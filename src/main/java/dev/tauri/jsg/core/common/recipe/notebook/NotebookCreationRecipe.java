@@ -1,14 +1,15 @@
 package dev.tauri.jsg.core.common.recipe.notebook;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.item.notebook.NotebookItem;
 import dev.tauri.jsg.core.common.registry.CoreItems;
 import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -20,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 public class NotebookCreationRecipe extends ShapelessRecipe {
     public NotebookCreationRecipe() {
-        super(JSGMapping.rl(JSGCore.MOD_ID, "notebook_creation"), "notebook_creation", CraftingBookCategory.MISC,
+        super("notebook_creation", CraftingBookCategory.MISC,
                 NotebookRecipeUtils.NOTEBOOK.copy(),
                 NonNullList.of(
                         Ingredient.of(ItemStack.EMPTY),
@@ -32,10 +33,10 @@ public class NotebookCreationRecipe extends ShapelessRecipe {
 
     @Override
     @ParametersAreNonnullByDefault
-    public boolean matches(CraftingContainer inv, Level pLevel) {
+    public boolean matches(CraftingInput inv, Level pLevel) {
         int matchCount = 0;
 
-        for (int i = 0; i < inv.getContainerSize(); i++) {
+        for (int i = 0; i < inv.size(); i++) {
             var stack = inv.getItem(i);
             var item = stack.getItem();
 
@@ -50,15 +51,15 @@ public class NotebookCreationRecipe extends ShapelessRecipe {
 
     @NotNull
     @ParametersAreNonnullByDefault
-    public ItemStack assemble(CraftingContainer inv, RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(CraftingInput inv, HolderLookup.Provider pHolderLookup.Provider) {
         var pages = new ListTag();
 
-        for (int i = 0; i < inv.getContainerSize(); i++) {
+        for (int i = 0; i < inv.size(); i++) {
             var stack = inv.getItem(i);
             var item = stack.getItem();
 
             if (item == CoreItems.NOTEBOOK_PAGE_FILLED.get()) {
-                CompoundTag compound = stack.getTag();
+                CompoundTag compound = ItemNBT.getTag(stack);
 
                 if (!NotebookRecipeUtils.tagListContains(pages, compound)) {
                     pages.add(compound);

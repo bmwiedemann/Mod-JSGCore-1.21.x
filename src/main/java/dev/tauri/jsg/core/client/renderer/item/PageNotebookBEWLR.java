@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.client.renderer.item;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -20,8 +21,8 @@ public class PageNotebookBEWLR extends BlockEntityWithoutLevelRenderer {
     @Override
     @ParametersAreNonnullByDefault
     public void renderByItem(ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack stack, MultiBufferSource bufferSource, int light, int overlay) {
-        if (itemStack.hasTag()) {
-            PageRenderer.renderByCompound(stack, bufferSource, light, itemDisplayContext, itemStack.getTag());
+        if (ItemNBT.hasTag(itemStack)) {
+            PageRenderer.renderByCompound(stack, bufferSource, light, itemDisplayContext, ItemNBT.getTag(itemStack));
         }
     }
 }

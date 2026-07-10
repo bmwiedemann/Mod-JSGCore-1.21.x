@@ -7,7 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import java.util.Objects;
 import net.neoforged.neoforge.items.IItemHandler;
 
 import java.util.Iterator;
@@ -22,7 +23,9 @@ public interface IUpgradable {
     }
 
     default IItemHandler getItemHandler() {
-        return self().getCapability(ForgeCapabilities.ITEM_HANDLER, null).resolve().orElseThrow();
+        var be = self();
+        return Objects.requireNonNull(Objects.requireNonNull(be.getLevel())
+                .getCapability(Capabilities.ItemHandler.BLOCK, be.getBlockPos(), null));
     }
 
     default boolean hasUpgrade(IUpgrade upgrade) {

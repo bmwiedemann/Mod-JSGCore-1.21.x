@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.packet.packets;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.common.item.notebook.NotebookActionEnum;
 import dev.tauri.jsg.core.common.registry.CoreItems;
 import dev.tauri.jsg.core.common.registry.CoreSoundEvents;
@@ -47,8 +48,8 @@ public class NotebookActionPacketToServer extends JSGPacket {
         ctx.enqueueWork(() -> {
             var stack = player.getItemInHand(hand);
 
-            if (stack.getItem() == CoreItems.NOTEBOOK_ITEM.get() && stack.hasTag()) {
-                var compound = stack.getOrCreateTag();
+            if (stack.getItem() == CoreItems.NOTEBOOK_ITEM.get() && ItemNBT.hasTag(stack)) {
+                var compound = ItemNBT.getOrCreateTag(stack);
                 int selected = compound.getInt("selected");
 
                 if (action == NotebookActionEnum.ADDRESS_CHANGE) {
@@ -64,7 +65,7 @@ public class NotebookActionPacketToServer extends JSGPacket {
                         JSGSoundHelper.playSoundEvent(world, player.blockPosition(), CoreSoundEvents.PAGE_FLIP);
                     }
                 }
-                stack.setTag(compound);
+                ItemNBT.setTag(stack, compound);
             }
         });
     }

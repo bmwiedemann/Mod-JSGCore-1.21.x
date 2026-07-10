@@ -65,7 +65,17 @@ public class PointOfOrigin implements StringRepresentable, INBTSerializable<Comp
         return JSGMapping.rl(id.getNamespace(), (model ? "models" : "textures") + "/point_of_origins/" + forType.getPoONamespaceIdentifier().getNamespace() + "/" + forType.getPoONamespaceIdentifier().getPath() + "/" + id.getPath() + "/" + variant);
     }
 
+    
     @Override
+    public CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     public CompoundTag serializeNBT() {
         var compound = new CompoundTag();
         compound.putString("id", id.toString());
@@ -77,7 +87,7 @@ public class PointOfOrigin implements StringRepresentable, INBTSerializable<Comp
         return Component.translatableWithFallback("poo." + id.getNamespace() + "." + forType.getPoONamespaceIdentifier().getNamespace() + "." + forType.getPoONamespaceIdentifier().getPath().replace('/', '.') + "." + id.getPath().replace('/', '.'), fallback);
     }
 
-    @Override
+    
     public void deserializeNBT(CompoundTag compound) {
     }
 

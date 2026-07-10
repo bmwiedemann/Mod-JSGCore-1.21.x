@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.client.listener;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.client.LoadersHolder;
@@ -50,8 +51,8 @@ public class CoreClientEventHandler {
     public static void registerColoredItems(RegisterColorHandlersEvent.Item event) {
         event.register((stack, layerIndex) -> {
             if (layerIndex != 1) return -1;
-            if (!stack.hasTag()) return -1;
-            var tag = stack.getOrCreateTag();
+            if (!ItemNBT.hasTag(stack)) return -1;
+            var tag = ItemNBT.getOrCreateTag(stack);
             if (!tag.contains("biome")) return -1;
             var access = Optional.ofNullable(Minecraft.getInstance().level).map(Level::registryAccess)
                     .orElseGet(() -> Optional.ofNullable(Minecraft.getInstance().getConnection()).map(ClientPacketListener::registryAccess)

@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.client.renderer.item;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.item.notebook.NotebookItem;
@@ -28,8 +29,8 @@ public class NotebookItemBEWLR extends BlockEntityWithoutLevelRenderer {
     @Override
     @ParametersAreNonnullByDefault
     public void renderByItem(ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack stack, MultiBufferSource bufferSource, int light, int overlay) {
-        if (itemStack.hasTag()) {
-            var compound = itemStack.getOrCreateTag();
+        if (ItemNBT.hasTag(itemStack)) {
+            var compound = ItemNBT.getOrCreateTag(itemStack);
             var pageTag = NotebookItem.getSelectedPageFromCompound(compound);
 
             final var list = compound.getList("addressList", Tag.TAG_COMPOUND);
