@@ -77,7 +77,7 @@ public class NotebookItem extends JSGItem {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
         if (ItemNBT.hasTag(stack)) {
             var compound = ItemNBT.getOrCreateTag(stack);
             var list = compound.getList("pages", Tag.TAG_COMPOUND);

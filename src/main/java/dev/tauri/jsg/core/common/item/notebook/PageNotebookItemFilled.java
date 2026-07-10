@@ -61,11 +61,11 @@ public class PageNotebookItemFilled extends JSGItem {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
         if (ItemNBT.hasTag(stack)) {
             Optional.ofNullable(NotebookPageType.pageTypeFromCompound(ItemNBT.getOrCreateTag(stack)))
                     .map((t) -> t.dataWrapper(ItemNBT.getOrCreateTag(stack)))
-                    .ifPresent(dw -> dw.type().hoverConsumer().accept(stack, level, components, tooltipFlag, dw.data()));
+                    .ifPresent(dw -> dw.type().hoverConsumer().accept(stack, context, components, tooltipFlag, dw.data()));
         }
     }
 

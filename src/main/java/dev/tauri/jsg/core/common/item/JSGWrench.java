@@ -41,7 +41,7 @@ public class JSGWrench extends JSGItem {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
         ItemHelper.applyGenericToolTip(this.getDescriptionId(), components, tooltipFlag);
         components.add(Component.empty());
         components.add(Component.literal(String.format("%.2f", (((double) (getMaxDamage(stack) - getDamage(stack)) / ((double) getMaxDamage(stack))) * 100)) + "%").withStyle(ChatFormatting.GRAY));
