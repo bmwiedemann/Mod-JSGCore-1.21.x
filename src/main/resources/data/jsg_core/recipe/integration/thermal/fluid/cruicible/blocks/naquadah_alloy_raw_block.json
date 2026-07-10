@@ -1,11 +1,5 @@
 {
   "type": "thermal:crucible",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:storage_blocks/naquadah"
   },
@@ -15,5 +9,11 @@
       "amount": 810
     }
   ],
-  "energy": 72900
+  "energy": 72900,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:alloy",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "inputs": [
     {
       "amount": 90,
@@ -20,5 +14,11 @@
     "amount": 180,
     "tag": "c:molten_naquadah_refined"
   },
-  "temperature": 1250
+  "temperature": 1250,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

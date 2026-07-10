@@ -1,11 +1,5 @@
 {
   "type": "thermal:chiller",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredients": [
     {
       "fluid_tag": "c:molten_naquadah_refined",
@@ -18,5 +12,11 @@
       "count": 1
     }
   ],
-  "energy": 72900
+  "energy": 72900,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

@@ -1,11 +1,5 @@
 {
   "type": "create:crushing",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "ingredients": [
     {
       "tag": "c:plates/naquadah_alloy"
@@ -15,6 +9,12 @@
   "results": [
     {
       "item": "jsg_core:naquadah_dust"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

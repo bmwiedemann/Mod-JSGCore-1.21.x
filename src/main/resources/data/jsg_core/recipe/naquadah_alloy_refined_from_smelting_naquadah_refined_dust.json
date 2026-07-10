@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "jsg_core:naquadah_refined_dust"
   },
-  "result": "jsg_core:naquadah_alloy_refined"
+  "result": {
+    "id": "jsg_core:naquadah_alloy_refined"
+  }
 }

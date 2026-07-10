@@ -1,17 +1,17 @@
 {
   "type": "thermal:press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:ingots/titanium"
   },
   "result": [
     {
       "item": "jsg_core:plate_titanium"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
     }
   ]
 }

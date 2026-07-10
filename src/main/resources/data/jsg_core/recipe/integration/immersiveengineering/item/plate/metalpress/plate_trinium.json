@@ -1,16 +1,17 @@
 {
   "type": "immersiveengineering:metal_press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 2400,
   "input": {
     "tag": "c:ingots/trinium"
   },
   "mold": "immersiveengineering:mold_plate",
-  "result": {"id": "jsg_core:plate_trinium"
-  }
+  "result": {
+    "id": "jsg_core:plate_trinium"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

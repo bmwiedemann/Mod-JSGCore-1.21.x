@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:melting",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "ingredient": {
     "tag": "c:storage_blocks/naquadah_alloy"
   },
@@ -14,5 +8,11 @@
     "tag": "c:molten_naquadah_alloy"
   },
   "temperature": 1100,
-  "time": 212
+  "time": 212,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

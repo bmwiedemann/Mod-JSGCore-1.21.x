@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "jsg_core:sand_trinium_ore"
   },
-  "result": "jsg_core:trinium_ingot"
+  "result": {
+    "id": "jsg_core:trinium_ingot"
+  }
 }

@@ -1,11 +1,5 @@
 {
   "type": "create:filling",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "ingredients": [
     {
       "item": "jsg_core:circuit_control_base"
@@ -18,6 +12,12 @@
   "results": [
     {
       "item": "jsg_core:circuit_control_crystal"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

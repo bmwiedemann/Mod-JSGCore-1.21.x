@@ -1,11 +1,5 @@
 {
   "type": "thermal:pulverizer",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:ingots/naquadah_alloy"
   },
@@ -14,5 +8,11 @@
       "item": "jsg_core:naquadah_dust"
     }
   ],
-  "energy_mod": 0.5
+  "energy_mod": 0.5,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

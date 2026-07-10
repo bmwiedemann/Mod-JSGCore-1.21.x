@@ -1,16 +1,17 @@
 {
   "type": "immersiveengineering:metal_press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 2400,
   "input": {
     "tag": "c:ingots/titanium"
   },
   "mold": "immersiveengineering:mold_plate",
-  "result": {"id": "jsg_core:plate_titanium"
-  }
+  "result": {
+    "id": "jsg_core:plate_titanium"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

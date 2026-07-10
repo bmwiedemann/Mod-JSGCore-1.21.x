@@ -1,17 +1,17 @@
 {
   "type": "thermal:press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:ingots/naquadah_alloy"
   },
   "result": [
     {
       "item": "jsg_core:plate_naquadah"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
     }
   ]
 }

@@ -1,11 +1,5 @@
 {
   "type": "thermal:bottler",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredients": [
     {
       "item": "jsg_core:circuit_control_base"
@@ -20,5 +14,11 @@
       "item": "jsg_core:circuit_control_crystal"
     }
   ],
-  "energy": 500
+  "energy": 500,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

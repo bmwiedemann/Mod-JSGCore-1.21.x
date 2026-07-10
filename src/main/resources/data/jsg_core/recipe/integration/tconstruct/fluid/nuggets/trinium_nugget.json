@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:melting",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "ingredient": {
     "tag": "c:nuggets/trinium"
   },
@@ -14,5 +8,11 @@
     "tag": "c:molten_trinium"
   },
   "temperature": 1400,
-  "time": 25
+  "time": 25,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

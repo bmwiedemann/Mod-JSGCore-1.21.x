@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 3000,
   "input": {
     "item": "minecraft:calcite"
@@ -16,5 +10,11 @@
     },
     "count": 4
   },
-  "secondaries": []
+  "secondaries": [],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

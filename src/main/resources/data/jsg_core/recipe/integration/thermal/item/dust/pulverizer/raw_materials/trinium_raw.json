@@ -1,11 +1,5 @@
 {
   "type": "thermal:pulverizer",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:raw_materials/trinium"
   },
@@ -16,5 +10,11 @@
     }
   ],
   "experience": 0.1,
-  "energy_mod": 1.2
+  "energy_mod": 1.2,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

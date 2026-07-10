@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 6000,
   "input": {
     "tag": "c:ores/titanium"
@@ -22,6 +16,12 @@
       "output": {
         "item": "immersiveengineering:dust_iron"
       }
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
     }
   ]
 }

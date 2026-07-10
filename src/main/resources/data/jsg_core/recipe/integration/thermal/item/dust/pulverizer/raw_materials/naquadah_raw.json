@@ -1,11 +1,5 @@
 {
   "type": "thermal:pulverizer",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:raw_materials/naquadah"
   },
@@ -15,5 +9,11 @@
       "chance": 1.25
     }
   ],
-  "experience": 0.1
+  "experience": 0.1,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

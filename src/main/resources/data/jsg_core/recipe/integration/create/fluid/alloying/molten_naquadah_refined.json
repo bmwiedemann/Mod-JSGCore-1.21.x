@@ -1,15 +1,5 @@
 {
   "type": "create:mixing",
-  "conditions": [
-    {
-      "type" : "c:tag_empty",
-      "tag" : "c:dusts/quartz"
-    },
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "heatRequirement": "superheated",
   "ingredients": [
     {
@@ -24,6 +14,16 @@
     {
       "amount": 180,
       "fluid": "jsg_core:naquadah_molten_refined_still"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "c:tag_empty",
+      "tag": "c:dusts/quartz"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

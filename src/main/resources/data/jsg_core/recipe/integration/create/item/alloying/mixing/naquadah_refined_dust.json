@@ -1,15 +1,5 @@
 {
   "type": "create:mixing",
-  "conditions": [
-    {
-      "type" : "c:tag_empty",
-      "tag" : "c:dusts/quartz"
-    },
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "ingredients": [
     [
       {
@@ -19,14 +9,24 @@
         "tag": "c:ingots/naquadah_alloy"
       }
     ],
-      {
-        "tag": "c:gems/quartz"
-      }
+    {
+      "tag": "c:gems/quartz"
+    }
   ],
   "results": [
     {
       "count": 2,
       "item": "jsg_core:naquadah_refined_dust"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "c:tag_empty",
+      "tag": "c:dusts/quartz"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }
