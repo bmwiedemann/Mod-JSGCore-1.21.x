@@ -1,30 +1,36 @@
 package dev.tauri.jsg.core.common.loot;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.storage.loot.LootDataManager;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LootTableInjector {
     public interface IAddition {
-        void inject(LootDataManager lootDataManager, List<LootPool> targetLootPools);
+        void inject(MinecraftServer server, List<LootPool> targetLootPools);
     }
 
     public record ElementAddition(ResourceLocation tablePath, LootPool pool) implements IAddition {
         @Override
-        public void inject(LootDataManager lootDataManager, List<LootPool> targetLootPools) {
+        public void inject(MinecraftServer server, List<LootPool> targetLootPools) {
             targetLootPools.add(pool);
         }
     }
 
     public record TableAddition(ResourceLocation tablePath, ResourceLocation sourceTable) implements IAddition {
         @Override
-        public void inject(LootDataManager lootDataManager, List<LootPool> targetLootPools) {
-            targetLootPools.addAll(lootDataManager.getLootTable(sourceTable).pools);
+        public void inject(MinecraftServer server, List<LootPool> targetLootPools) {
+            targetLootPools.addAll(getTable(server, sourceTable).pools);
         }
+    }
+
+    private static LootTable getTable(MinecraftServer server, ResourceLocation id) {
+        return server.reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, id));
     }
 
     public static class Builder {
@@ -67,15 +73,17 @@ public class LootTableInjector {
     private static final List<Builder> BUILDERS = new ArrayList<>();
 
     public static void inject(MinecraftServer server) {
-        var lootDataManager = server.getLootData();
         for (var builder : BUILDERS) {
             for (var targetPool : builder.targets) {
-                var target = lootDataManager.getLootTable(targetPool);
+                var target = getTable(server, targetPool);
+                if (target == LootTable.EMPTY) continue;
+                // loot tables are codec-built with immutable pool lists; swap in a mutable copy (field is AT'd non-final)
+                target.pools = new ArrayList<>(target.pools);
                 if (builder.clearPoolFirst) {
                     target.pools.clear();
                 }
                 for (var addition : builder.additions) {
-                    addition.inject(lootDataManager, target.pools);
+                    addition.inject(server, target.pools);
                 }
             }
         }

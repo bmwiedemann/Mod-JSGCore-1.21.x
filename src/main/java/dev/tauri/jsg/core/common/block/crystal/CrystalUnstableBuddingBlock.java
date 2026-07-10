@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -52,17 +53,17 @@ public class CrystalUnstableBuddingBlock extends CrystalBuddingBlock {
     @ParametersAreNonnullByDefault
     @SuppressWarnings("deprecation")
     @NotNull
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected ItemInteractionResult useItemOn(net.minecraft.world.item.ItemStack heldStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pPlayer.getItemInHand(pHand).is(CoreItemTags.CRYSTAL_FERTILIZERS)) {
             if (!pLevel.isClientSide) {
                 if (!pPlayer.isCreative())
                     pPlayer.getItemInHand(pHand).shrink(1);
                 growUp(pState, pLevel, pPos, pLevel.random, false);
                 pLevel.playSound(null, pPos, SoundEvents.STONE_HIT, SoundSource.BLOCKS, 1, 1);
-                return InteractionResult.SUCCESS;
-            } else return InteractionResult.sidedSuccess(true);
+                return ItemInteractionResult.SUCCESS;
+            } else return ItemInteractionResult.sidedSuccess(true);
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return super.useItemOn(heldStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     protected void growUp(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom, boolean chanceToDestroy) {

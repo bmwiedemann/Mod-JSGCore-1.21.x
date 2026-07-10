@@ -6,6 +6,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class ButtonBlockTabbed extends ButtonBlock implements ITabbedItem {
     public ButtonBlockTabbed(Properties pProperties, BlockSetType pType, int pTicksToStayPressed, boolean pArrowsCanPress) {
-        super(pProperties, pType, pTicksToStayPressed, pArrowsCanPress);
+        super(pType, pTicksToStayPressed, pProperties);
     }
 }

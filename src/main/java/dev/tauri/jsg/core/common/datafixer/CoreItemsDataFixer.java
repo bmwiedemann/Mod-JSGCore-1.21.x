@@ -3,22 +3,15 @@ package dev.tauri.jsg.core.common.datafixer;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.registry.CoreItems;
 import dev.tauri.jsg.core.mapping.JSGMapping;
-import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.MissingMappingsEvent;
-
-import java.util.List;
 
 public class CoreItemsDataFixer {
-    public static void fixMappings(List<MissingMappingsEvent.Mapping<Item>> listToFix) {
-        listToFix.forEach(mapping -> {
-            if (mapping.getKey().equals(JSGMapping.rl(JSGCore.MOD_ID, "capacitor_block"))) {
-                mapping.remap(CoreItems.CRYSTAL_ENERGY_BASIC.get());
-                return;
-            }
-            if (mapping.getKey().equals(JSGMapping.rl(JSGCore.MOD_ID, "capacitor_block_creative"))) {
-                mapping.remap(CoreItems.CRYSTAL_ENERGY_CREATIVE.get());
-                return;
-            }
-        });
+    /**
+     * MissingMappingsEvent is gone on NeoForge; renamed ids are handled with registry
+     * aliases, which must be added during mod construction (before registry events).
+     */
+    public static void registerAliases() {
+        var items = JSGCore.REGISTRY_HELPER.item().unwrap();
+        items.addAlias(JSGMapping.rl(JSGCore.MOD_ID, "capacitor_block"), CoreItems.CRYSTAL_ENERGY_BASIC.getId());
+        items.addAlias(JSGMapping.rl(JSGCore.MOD_ID, "capacitor_block_creative"), CoreItems.CRYSTAL_ENERGY_CREATIVE.getId());
     }
 }

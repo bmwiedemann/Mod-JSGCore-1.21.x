@@ -33,8 +33,7 @@ public class InvisibleBlock extends Block implements SimpleWaterloggedBlock, dev
             .isSuffocating((BlockState pState, BlockGetter pLevel, BlockPos pPos) -> false)
             .isRedstoneConductor((BlockState state, BlockGetter getter, BlockPos pos) -> false)
             .isViewBlocking((BlockState state, BlockGetter getter, BlockPos pos) -> false)
-            .noParticlesOnBreak()
-            .pushReaction(PushReaction.BLOCK);
+                        .pushReaction(PushReaction.BLOCK);
 
     public InvisibleBlock() {
         super(INVISIBLE_BLOCK_PROPS);

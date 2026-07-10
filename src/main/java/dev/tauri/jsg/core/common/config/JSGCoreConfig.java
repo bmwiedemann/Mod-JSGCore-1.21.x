@@ -5,7 +5,7 @@ import dev.tauri.jsg.core.client.ConfigScreenClientRegister;
 import dev.tauri.jsg.core.common.config.values.JSGConfigValue;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import net.neoforged.fml.DistExecutor;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.ModConfig;
 
@@ -86,9 +86,9 @@ public class JSGCoreConfig {
     public static void register(String modId, String path, List<JSGConfigChild> list) {
         for (JSGConfigChild child : list) {
             child.builtSpec = child.builder.get().build();
-            ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, child.builtSpec, path + child.name + ".toml");
+            ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, child.builtSpec, path + child.name + ".toml");
         }
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> (DistExecutor.SafeRunnable) () -> ConfigScreenClientRegister.register(modId, list));
+        if (FMLEnvironment.dist.isClient()) ConfigScreenClientRegister.register(modId, list);
     }
 
     public static void load() {

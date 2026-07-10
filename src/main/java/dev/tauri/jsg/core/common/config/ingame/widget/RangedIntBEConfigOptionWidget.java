@@ -5,17 +5,17 @@ import dev.tauri.jsg.core.common.config.ingame.BEConfigOptionWidget;
 import dev.tauri.jsg.core.common.config.ingame.option.type.IntegerBEConfigOption;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.client.gui.widget.ForgeSlider;
+import net.neoforged.neoforge.client.gui.widget.ExtendedSlider;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class RangedIntBEConfigOptionWidget extends BEConfigOptionWidget<Integer> {
-    protected final ForgeSlider sliderButton;
+    protected final ExtendedSlider sliderButton;
 
     public RangedIntBEConfigOptionWidget(BEConfig config, String optionId, int tabWidth, IntegerBEConfigOption configOption) {
         super(config, optionId, configOption, tabWidth, 16, Component.empty());
-        this.sliderButton = new ForgeSlider(0, 0, tabWidth, 16,
+        this.sliderButton = new ExtendedSlider(0, 0, tabWidth, 16,
                 Component.empty(), Component.empty(),
                 configOption.getMin().orElse(Integer.MIN_VALUE), configOption.getMax().orElse(Integer.MAX_VALUE), configOption.getValue(), true) {
             @Override

@@ -8,7 +8,7 @@ import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 public class JSGOreBlock extends DropExperienceBlock implements ITabbedItem {
     public JSGOreBlock(Properties pProperties) {
-        super(pProperties.strength(4.5F, 3.0F).requiresCorrectToolForDrops(), UniformInt.of(2, 5));
+        super(UniformInt.of(2, 5), pProperties.strength(4.5F, 3.0F).requiresCorrectToolForDrops());
     }
 
     @Override
