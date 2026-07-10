@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -109,8 +110,8 @@ public class BlockRegistryHelperOre extends RegistryHelper<Block, BlockRegistryH
 
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, itemStack, blockGetter, components, tooltipFlag);
+                public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, itemStack, context, components, tooltipFlag);
                 }
             });
         }
@@ -170,8 +171,8 @@ public class BlockRegistryHelperOre extends RegistryHelper<Block, BlockRegistryH
 
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, itemStack, blockGetter, components, tooltipFlag);
+                public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, itemStack, context, components, tooltipFlag);
                 }
             });
         }
@@ -207,8 +208,8 @@ public class BlockRegistryHelperOre extends RegistryHelper<Block, BlockRegistryH
 
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, itemStack, blockGetter, components, tooltipFlag);
+                public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, itemStack, context, components, tooltipFlag);
                 }
             });
         }
@@ -244,8 +245,8 @@ public class BlockRegistryHelperOre extends RegistryHelper<Block, BlockRegistryH
 
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, itemStack, blockGetter, components, tooltipFlag);
+                public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, itemStack, context, components, tooltipFlag);
                 }
             });
         }

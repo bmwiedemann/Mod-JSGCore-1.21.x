@@ -6,12 +6,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbility;
@@ -76,7 +77,7 @@ public class BlockRegistryHelperWood extends RegistryHelper<Block, BlockRegistry
         }
 
 
-        public RegistryObject<Block> buildSapling(Supplier<AbstractTreeGrower> grower) {
+        public RegistryObject<Block> buildSapling(Supplier<TreeGrower> grower) {
             return registryHelper.registry.get().register(name, () -> new SaplingBlockTabbed(grower.get(), properties) {
                 @Override
                 public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
@@ -107,8 +108,8 @@ public class BlockRegistryHelperWood extends RegistryHelper<Block, BlockRegistry
 
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, itemStack, blockGetter, components, tooltipFlag);
+                public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, itemStack, context, components, tooltipFlag);
                 }
             });
         }
