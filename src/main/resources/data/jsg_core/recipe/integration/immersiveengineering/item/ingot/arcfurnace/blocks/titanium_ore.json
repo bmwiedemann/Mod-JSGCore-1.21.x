@@ -1,0 +1,26 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "additives": [],
+  "energy": 102400,
+  "input": {
+    "tag": "c:ores/titanium"
+  },
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "jsg_core:titanium_ingot"
+      },
+      "count": 2
+    }
+  ],
+  "slag": {
+    "tag": "c:slag"
+  },
+  "time": 200
+}

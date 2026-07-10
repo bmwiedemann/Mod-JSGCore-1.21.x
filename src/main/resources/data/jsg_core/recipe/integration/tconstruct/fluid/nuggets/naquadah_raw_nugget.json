@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:nuggets/naquadah"
+  },
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_naquadah"
+  },
+  "temperature": 1000,
+  "time": 22
+}

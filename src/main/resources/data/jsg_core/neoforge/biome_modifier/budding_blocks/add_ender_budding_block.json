@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#jsg_core:has_budding_ender",
+  "features": [
+    "jsg_core:budding_ender_crystal"
+  ],
+  "step": "underground_ores"
+}

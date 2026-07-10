@@ -1,0 +1,23 @@
+{
+  "type": "thermal:press",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "c:ingots/trinium",
+      "count": 4
+    },
+    {
+      "item": "thermal:press_gear_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "jsg_core:gear_trinium"
+    }
+  ]
+}

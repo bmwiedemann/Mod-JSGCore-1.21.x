@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:plates/trinium"
+  },
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_trinium"
+  },
+  "temperature": 1400,
+  "time": 76
+}

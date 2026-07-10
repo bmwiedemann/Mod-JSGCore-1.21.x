@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:notebook_page",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    [
+      {
+        "item": "minecraft:ink_sac"
+      },
+      {
+        "item": "minecraft:glow_ink_sac"
+      }
+    ],
+    {
+      "tag": "c:feathers"
+    }
+  ],
+  "result": {"id": "jsg_core:page_notebook_empty"
+  }
+}

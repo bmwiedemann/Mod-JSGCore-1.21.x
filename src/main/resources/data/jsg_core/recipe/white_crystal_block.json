@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:white_crystal_block",
+  "key": {
+    "#": {
+      "item": "jsg_core:white_crystal"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {"id": "jsg_core:white_crystal_block"
+  },
+  "show_notification": true
+}

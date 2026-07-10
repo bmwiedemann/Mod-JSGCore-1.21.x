@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:red_nether_bricks_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:red_nether_bricks"
+    }
+  },
+  "pattern": [
+    " B ",
+    " B ",
+    " B "
+  ],
+  "result": {"id": "jsg_core:six_symbol_red_nether_bricks_cartouche"
+  },
+  "show_notification": true
+}

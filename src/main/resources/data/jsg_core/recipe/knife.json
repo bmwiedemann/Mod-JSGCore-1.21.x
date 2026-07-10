@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "jsg_core:knife",
+  "key": {
+    "I": {
+      "tag": "jsg_core:ingots/titanium"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " I",
+    "S "
+  ],
+  "result": {"id": "jsg_core:knife"
+  },
+  "show_notification": true
+}

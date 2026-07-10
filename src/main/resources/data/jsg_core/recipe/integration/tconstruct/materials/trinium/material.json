@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material_fluid",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "fluid": {
+    "tag": "c:molten_trinium",
+    "amount": 90
+  },
+  "temperature": 1400,
+  "output": "jsg_core:trinium"
+}

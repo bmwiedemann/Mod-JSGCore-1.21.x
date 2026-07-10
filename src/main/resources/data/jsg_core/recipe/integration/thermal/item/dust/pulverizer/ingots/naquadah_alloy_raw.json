@@ -1,0 +1,18 @@
+{
+  "type": "thermal:pulverizer",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:ingots/naquadah"
+  },
+  "result": [
+    {
+      "item": "jsg_core:naquadah_raw_dust"
+    }
+  ],
+  "energy_mod": 0.5
+}

@@ -1,0 +1,25 @@
+{
+  "type": "thermal:chiller",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredients": [
+    {
+      "fluid_tag": "c:molten_titanium",
+      "amount": 90
+    },
+    {
+      "item": "thermal:chiller_ingot_cast"
+    }
+  ],
+  "result": [
+    {
+      "item": "jsg:titanium_ingot",
+      "count": 1
+    }
+  ],
+  "energy": 8100
+}

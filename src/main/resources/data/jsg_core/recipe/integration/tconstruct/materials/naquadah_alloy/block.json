@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:storage_blocks/naquadah_alloy"
+  },
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/naquadah_alloy"
+  },
+  "material": "jsg_core:naquadah_alloy",
+  "needed": 1,
+  "value": 9
+}

@@ -1,0 +1,20 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "additives": [],
+  "energy": 51200,
+  "input": {
+    "tag": "c:dusts/trinium"
+  },
+  "results": [
+    {
+      "item": "jsg_core:trinium_ingot"
+    }
+  ],
+  "time": 100
+}

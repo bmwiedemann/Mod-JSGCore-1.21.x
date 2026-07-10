@@ -1,0 +1,24 @@
+{
+  "type": "thermal:press",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "c:gems/red",
+      "count": 4
+    },
+    {
+      "item": "thermal:press_packing_2x2_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "jsg_core:red_crystal_block"
+    }
+  ],
+  "energy": 400
+}

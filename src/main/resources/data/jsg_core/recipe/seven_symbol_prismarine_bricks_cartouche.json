@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:prismarine_bricks_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:prismarine_bricks"
+    },
+    "C": {
+      "item": "jsg_core:six_symbol_prismarine_bricks_cartouche"
+    }
+  },
+  "pattern": [
+    "B ",
+    "C "
+  ],
+  "result": {"id": "jsg_core:seven_symbol_prismarine_bricks_cartouche"
+  },
+  "show_notification": true
+}

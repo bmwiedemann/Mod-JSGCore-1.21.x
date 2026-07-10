@@ -1,0 +1,18 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "tag": "c:ores/titanium"
+    }
+  },
+  "output": {
+    "count": 2,
+    "item": "jsg_core:titanium_dust"
+  }
+}

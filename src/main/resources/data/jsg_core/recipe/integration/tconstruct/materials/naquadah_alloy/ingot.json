@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:ingots/naquadah_alloy"
+  },
+  "material": "jsg_core:naquadah_alloy",
+  "needed": 1,
+  "value": 1
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:raw_trinium_ore_block",
+  "key": {
+    "#": {
+      "tag": "jsg_core:raw_materials/trinium"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {"id": "jsg_core:raw_trinium_ore_block"
+  },
+  "show_notification": true
+}

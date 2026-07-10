@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:efficiency_upgrade",
+  "key": {
+    "C": {
+      "tag": "jsg_core:gems/white"
+    },
+    "G": {
+      "tag": "jsg_core:gears/trinium"
+    },
+    "P": {
+      "tag": "c:glass_panes/colorless"
+    }
+  },
+  "pattern": [
+    "P P",
+    "GCG",
+    "PPP"
+  ],
+  "result": {"id": "jsg_core:crystal_upgrade_efficiency"
+  },
+  "show_notification": true
+}

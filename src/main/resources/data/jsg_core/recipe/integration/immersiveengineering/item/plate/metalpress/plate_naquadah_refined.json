@@ -1,0 +1,16 @@
+{
+  "type": "immersiveengineering:metal_press",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "energy": 2400,
+  "input": {
+    "tag": "c:ingots/naquadah_refined"
+  },
+  "mold": "immersiveengineering:mold_plate",
+  "result": {"id": "jsg_core:plate_naquadah_refined"
+  }
+}

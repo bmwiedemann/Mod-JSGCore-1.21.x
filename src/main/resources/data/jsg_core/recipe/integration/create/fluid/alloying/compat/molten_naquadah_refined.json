@@ -1,0 +1,37 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:not",
+      "value" : {
+        "type" : "c:tag_empty",
+        "tag" : "c:dusts/quartz"
+      }
+    },
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heatRequirement": "superheated",
+  "ingredients": [
+    [
+      {
+        "tag": "c:gems/quartz"
+      },
+      {
+        "tag": "c:dusts/quartz"
+      }
+    ],
+    {
+      "amount": 90,
+      "fluidTag": "c:molten_naquadah_alloy"
+    }
+  ],
+  "results": [
+    {
+      "amount": 180,
+      "fluid": "jsg_core:naquadah_molten_refined_still"
+    }
+  ]
+}

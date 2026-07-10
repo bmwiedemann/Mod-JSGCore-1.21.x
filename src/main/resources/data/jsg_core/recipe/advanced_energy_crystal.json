@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:advanced_energy_crystal",
+  "key": {
+    "B": {
+      "item": "jsg_core:basic_energy_crystal"
+    },
+    "C": {
+      "tag": "jsg_core:gems/yellow"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "I": {
+      "item": "jsg_core:circuit_control_crystal"
+    },
+    "S": {
+      "tag": "jsg_core:gems/yellow_small"
+    }
+  },
+  "pattern": [
+    "SIB",
+    "CEC",
+    "BIS"
+  ],
+  "result": {"id": "jsg_core:advanced_energy_crystal"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:storage_blocks/titanium"
+  },
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_titanium"
+  },
+  "temperature": 950,
+  "time": 194
+}

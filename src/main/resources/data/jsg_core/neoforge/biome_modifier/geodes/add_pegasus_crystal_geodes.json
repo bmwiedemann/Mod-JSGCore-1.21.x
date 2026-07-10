@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#jsg_core:has_geodes_pegasus",
+  "features": [
+    "jsg_core:pegasus_crystal_geode"
+  ],
+  "step": "underground_ores"
+}

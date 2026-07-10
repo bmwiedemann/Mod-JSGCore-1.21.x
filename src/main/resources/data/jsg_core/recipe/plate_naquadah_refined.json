@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:naquadah_refined_plate",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/naquadah_refined"
+    },
+    {
+      "item": "jsg_core:hammer"
+    }
+  ],
+  "result": {"id": "jsg_core:plate_naquadah_refined"
+  }
+}

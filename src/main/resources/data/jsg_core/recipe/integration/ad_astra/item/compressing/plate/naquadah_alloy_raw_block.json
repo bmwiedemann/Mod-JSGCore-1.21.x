@@ -1,0 +1,18 @@
+{
+  "type": "ad_astra:compressing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "ad_astra"
+    }
+  ],
+  "cookingtime": 800,
+  "energy": 20,
+  "ingredient": {
+    "tag": "c:storage_blocks/naquadah"
+  },
+  "result": {
+    "count": 9,
+    "id": "jsg_core:plate_naquadah_raw"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crushing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "tag": "c:ingots/naquadah_alloy"
+    }
+  },
+  "output": {
+    "item": "jsg_core:naquadah_dust"
+  }
+}
