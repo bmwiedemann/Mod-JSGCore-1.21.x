@@ -2,7 +2,6 @@ package dev.tauri.jsg.core.common.advancement;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -55,9 +54,16 @@ public class JSGCriterion extends SimpleCriterionTrigger<JSGCriterion.TriggerIns
     public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
     }
 
-    public static void registerInternally() {
-        for (JSGCriterion a : INSTANCES) {
-            CriteriaTriggers.register(a.id.toString(), a);
-        }
+    /**
+     * 1.21: the trigger_type registry is frozen after registry events, so triggers must be
+     * registered from RegisterEvent (also required for datagen, where common setup never runs).
+     * All JSGCriterion instances are created during mod construction, which precedes registry events.
+     */
+    public static void onRegisterTriggers(net.neoforged.neoforge.registries.RegisterEvent event) {
+        event.register(net.minecraft.core.registries.Registries.TRIGGER_TYPE, helper -> {
+            for (JSGCriterion a : INSTANCES) {
+                helper.register(a.id, a);
+            }
+        });
     }
 }
