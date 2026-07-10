@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.registry;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.block.cartouche.CartoucheType;
 import dev.tauri.jsg.core.common.integration.Integrations;
@@ -9,16 +10,16 @@ import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = JSGCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JSGCore.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class CoreTabs {
     public static final RegistryObject<CreativeModeTab> TAB_TOOLS = JSGCore.REGISTRY_HELPER.tab().register("tools", TabBuilder.create(JSGMapping.rl(JSGCore.MOD_ID, "tools")).build());
     public static final RegistryObject<CreativeModeTab> TAB_ENERGY = JSGCore.REGISTRY_HELPER.tab().register("energy", TabBuilder.create(JSGMapping.rl(JSGCore.MOD_ID, "energy"))

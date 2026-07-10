@@ -2,8 +2,8 @@ package dev.tauri.jsg.core.client;
 
 import dev.tauri.jsg.core.client.screen.config.ConfigScreen;
 import dev.tauri.jsg.core.common.config.JSGConfigChild;
-import net.minecraftforge.client.ConfigScreenHandler;
-import net.minecraftforge.fml.ModLoadingContext;
+import net.neoforged.neoforge.client.ConfigScreenHandler;
+import net.neoforged.fml.ModLoadingContext;
 
 import java.util.List;
 

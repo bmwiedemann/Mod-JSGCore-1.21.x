@@ -3,8 +3,8 @@ package dev.tauri.jsg.core.common.integration;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.integration.cctweaked.methods.ICCDevice;
 import dev.tauri.jsg.core.common.integration.oc2.methods.IOCDevice;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
+import net.neoforged.neoforge.capabilities.Capability;
+import net.neoforged.neoforge.common.util.LazyOptional;
 
 public class ComputerDeviceHolder implements dev.tauri.jsg.core.common.integration.IComputerDeviceHolder {
     private LazyOptional<ICCDevice> ccDevice = LazyOptional.empty();

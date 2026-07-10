@@ -1,7 +1,7 @@
 package dev.tauri.jsg.core;
 
 import net.minecraft.Util;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.HashMap;

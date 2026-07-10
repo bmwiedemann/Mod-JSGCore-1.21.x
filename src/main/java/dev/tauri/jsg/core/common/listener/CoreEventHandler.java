@@ -1,12 +1,13 @@
 package dev.tauri.jsg.core.common.listener;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.common.block.core.InvisibleBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
 public class CoreEventHandler {
 
     @SubscribeEvent

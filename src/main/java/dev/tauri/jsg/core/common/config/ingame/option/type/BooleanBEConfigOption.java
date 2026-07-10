@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.common.config.ingame.BEConfigOptionWidget;
 import dev.tauri.jsg.core.common.config.ingame.widget.BooleanBEConfigOptionWidget;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

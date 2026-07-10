@@ -17,11 +17,11 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -99,7 +99,7 @@ public class FluidHelper {
         public RegistryObject<JSGFluidCauldron> cauldron;
         public final Map<Item, CauldronInteraction> cauldronInteractionMap = CauldronInteraction.newInteractionMap();
 
-        public ForgeFlowingFluid.Properties properties;
+        public BaseFlowingFluid.Properties properties;
         public String name;
 
 
@@ -109,9 +109,9 @@ public class FluidHelper {
 
 
             still = helper.fluidRegister.get().register(name + "_still",
-                    () -> new ForgeFlowingFluid.Source(getProps()));
+                    () -> new BaseFlowingFluid.Source(getProps()));
             flowing = helper.fluidRegister.get().register(name + "_flowing",
-                    () -> new ForgeFlowingFluid.Flowing(getProps()));
+                    () -> new BaseFlowingFluid.Flowing(getProps()));
 
             block = helper.blockRegister.get().register(name,
                     () -> new LiquidBlock(still, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
@@ -121,7 +121,7 @@ public class FluidHelper {
 
             cauldron = helper.blockRegister.get().register(name + "_cauldron", () -> new JSGFluidCauldron(type, cauldronInteractionMap));
 
-            properties = new ForgeFlowingFluid.Properties(
+            properties = new BaseFlowingFluid.Properties(
                     type, still, flowing)
                     .bucket(bucket)
                     .block(block)
@@ -129,7 +129,7 @@ public class FluidHelper {
                     .levelDecreasePerBlock(2);
         }
 
-        public ForgeFlowingFluid.Properties getProps() {
+        public BaseFlowingFluid.Properties getProps() {
             return properties;
         }
 

@@ -5,7 +5,7 @@ import dev.tauri.jsg.core.common.config.ingame.BEConfigOptionWidget;
 import dev.tauri.jsg.core.common.config.ingame.option.type.IntegerBEConfigOption;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.client.gui.widget.ForgeSlider;
+import net.neoforged.neoforge.client.gui.widget.ForgeSlider;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

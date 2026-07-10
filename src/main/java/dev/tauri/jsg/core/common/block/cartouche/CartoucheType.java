@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.client.IModelsHolder;
 import dev.tauri.jsg.core.common.util.JSGAxisAlignedBB;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.HashMap;
 import java.util.Map;

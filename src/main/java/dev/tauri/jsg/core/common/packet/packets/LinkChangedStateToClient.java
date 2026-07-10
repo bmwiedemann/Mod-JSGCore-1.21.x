@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.common.blockentity.ILinkable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.NetworkEvent;
 
 public class LinkChangedStateToClient extends PositionedPacket {
     BlockPos linkedPos;

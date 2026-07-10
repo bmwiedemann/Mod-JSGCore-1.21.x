@@ -2,9 +2,9 @@ package dev.tauri.jsg.core.common.config.values;
 
 import dev.tauri.jsg.core.client.screen.config.entry.*;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +22,9 @@ public abstract class JSGConfigValue {
     public abstract String getPath();
 
     public static class BooleanValue extends JSGConfigValue implements Supplier<Boolean> {
-        public ForgeConfigSpec.BooleanValue booleanValue;
+        public ModConfigSpec.BooleanValue booleanValue;
 
-        public BooleanValue(ForgeConfigSpec.Builder builder, String path, boolean defaultValue, String... comment) {
+        public BooleanValue(ModConfigSpec.Builder builder, String path, boolean defaultValue, String... comment) {
             super(List.of(comment));
             this.booleanValue = builder
                     .comment(comment)
@@ -57,11 +57,11 @@ public abstract class JSGConfigValue {
     }
 
     public static class IntValue extends JSGConfigValue implements Supplier<Integer> {
-        public ForgeConfigSpec.IntValue intValue;
+        public ModConfigSpec.IntValue intValue;
         protected int min;
         protected int max;
 
-        public IntValue(ForgeConfigSpec.Builder builder, String path, int defaultValue, int min, int max, String... comment) {
+        public IntValue(ModConfigSpec.Builder builder, String path, int defaultValue, int min, int max, String... comment) {
             super(List.of(comment));
             this.intValue = builder
                     .comment(comment)
@@ -104,17 +104,17 @@ public abstract class JSGConfigValue {
     }
 
     public static class DoubleValue extends JSGConfigValue implements Supplier<Double> {
-        public ForgeConfigSpec.DoubleValue value;
+        public ModConfigSpec.DoubleValue value;
         protected boolean slider;
         protected double min;
         protected double max;
 
-        public DoubleValue(ForgeConfigSpec.Builder builder, String path, double defaultValue, double min, double max, boolean hasSlider, String... comment) {
+        public DoubleValue(ModConfigSpec.Builder builder, String path, double defaultValue, double min, double max, boolean hasSlider, String... comment) {
             this(builder, path, defaultValue, min, max, comment);
             this.slider = hasSlider;
         }
 
-        public DoubleValue(ForgeConfigSpec.Builder builder, String path, double defaultValue, double min, double max, String... comment) {
+        public DoubleValue(ModConfigSpec.Builder builder, String path, double defaultValue, double min, double max, String... comment) {
             super(List.of(comment));
             this.slider = false;
             this.value = builder
@@ -164,9 +164,9 @@ public abstract class JSGConfigValue {
     }
 
     public static class LongValue extends JSGConfigValue implements Supplier<Long> {
-        public ForgeConfigSpec.LongValue longValue;
+        public ModConfigSpec.LongValue longValue;
 
-        public LongValue(ForgeConfigSpec.Builder builder, String path, long defaultValue, long min, long max, String... comment) {
+        public LongValue(ModConfigSpec.Builder builder, String path, long defaultValue, long min, long max, String... comment) {
             super(List.of(comment));
             this.longValue = builder
                     .comment(comment)
@@ -202,12 +202,12 @@ public abstract class JSGConfigValue {
     public static class RGBAValue extends JSGConfigValue implements Supplier<Integer> {
         public Component path;
         public String sPath;
-        public ForgeConfigSpec.IntValue redValue;
-        public ForgeConfigSpec.IntValue greenValue;
-        public ForgeConfigSpec.IntValue blueValue;
-        public Optional<ForgeConfigSpec.IntValue> alphaValue = Optional.empty();
+        public ModConfigSpec.IntValue redValue;
+        public ModConfigSpec.IntValue greenValue;
+        public ModConfigSpec.IntValue blueValue;
+        public Optional<ModConfigSpec.IntValue> alphaValue = Optional.empty();
 
-        public RGBAValue(ForgeConfigSpec.Builder builder, String path, int red, int blue, int green, String... comment) {
+        public RGBAValue(ModConfigSpec.Builder builder, String path, int red, int blue, int green, String... comment) {
             super(List.of(comment));
             this.sPath = String.join(".", path);
             this.path = Component.literal(sPath);
@@ -220,7 +220,7 @@ public abstract class JSGConfigValue {
                     .defineInRange(path + ".blue", green, 0, 255);
         }
 
-        public RGBAValue(ForgeConfigSpec.Builder builder, String path, int red, int blue, int green, int alpha, String... comment) {
+        public RGBAValue(ModConfigSpec.Builder builder, String path, int red, int blue, int green, int alpha, String... comment) {
             super(List.of(comment));
             builder.comment(comment);
             this.redValue = builder.defineInRange(path + ".red", red, 0, 255);
@@ -305,9 +305,9 @@ public abstract class JSGConfigValue {
     }
 
     public static class EnumValue<T extends Enum<T>> extends JSGConfigValue implements Supplier<T> {
-        public ForgeConfigSpec.EnumValue<T> enumValue;
+        public ModConfigSpec.EnumValue<T> enumValue;
 
-        public EnumValue(ForgeConfigSpec.Builder builder, String path, T defaultValue, String... comment) {
+        public EnumValue(ModConfigSpec.Builder builder, String path, T defaultValue, String... comment) {
             super(List.of(comment));
             this.enumValue = builder
                     .comment(comment)
@@ -340,9 +340,9 @@ public abstract class JSGConfigValue {
     }
 
     public static class ListStringValue extends JSGConfigValue {
-        public ForgeConfigSpec.ConfigValue<List<? extends String>> value;
+        public ModConfigSpec.ConfigValue<List<? extends String>> value;
 
-        public ListStringValue(ForgeConfigSpec.Builder builder, String path, List<? extends String> defaultValue, String... comment) {
+        public ListStringValue(ModConfigSpec.Builder builder, String path, List<? extends String> defaultValue, String... comment) {
             super(List.of(comment));
             this.value = builder
                     .comment(comment)

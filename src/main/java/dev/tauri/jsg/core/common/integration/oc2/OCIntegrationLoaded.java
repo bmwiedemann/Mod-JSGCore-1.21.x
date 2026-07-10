@@ -4,10 +4,10 @@ import dev.tauri.jsg.core.common.integration.ComputerDeviceProvider;
 import dev.tauri.jsg.core.common.integration.oc2.methods.IOCDevice;
 import li.cil.oc2.api.bus.device.Device;
 import li.cil.oc2.api.bus.device.object.ObjectDevice;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.common.capabilities.CapabilityToken;
-import net.minecraftforge.common.util.LazyOptional;
+import net.neoforged.neoforge.capabilities.Capability;
+import net.neoforged.neoforge.capabilities.CapabilityManager;
+import net.neoforged.neoforge.capabilities.CapabilityToken;
+import net.neoforged.neoforge.common.util.LazyOptional;
 
 import java.util.Optional;
 

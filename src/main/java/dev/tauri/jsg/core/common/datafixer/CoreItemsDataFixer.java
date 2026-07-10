@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.registry.CoreItems;
 import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.MissingMappingsEvent;
+import net.neoforged.neoforge.registries.MissingMappingsEvent;
 
 import java.util.List;
 

@@ -22,9 +22,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.ItemAbility;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -117,7 +117,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -154,7 +154,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -191,7 +191,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -228,7 +228,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -266,7 +266,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -304,7 +304,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -342,7 +342,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -371,7 +371,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
             return registryHelper.registry.get().register(name, () -> new ButtonBlockTabbed(properties, type, duration, arrowCanPress) {
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -400,7 +400,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
             return registryHelper.registry.get().register(name, () -> new PressurePlateBlockTabbed(sensitivity, properties, type) {
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -428,7 +428,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
             return registryHelper.registry.get().register(name, () -> new DoorBlockTabbed(properties, type) {
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -456,7 +456,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
             return registryHelper.registry.get().register(name, () -> new TrapdoorBlockTabbed(properties, type) {
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -493,7 +493,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -530,7 +530,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {
@@ -567,7 +567,7 @@ public class BlockRegistryHelperGeneric extends RegistryHelper<Block, BlockRegis
                 }
 
                 @Override
-                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
                     if (toolStateModifiers != null) {
                         for (var e : toolStateModifiers.entrySet()) {
                             if (e.getKey().test(context.getItemInHand())) {

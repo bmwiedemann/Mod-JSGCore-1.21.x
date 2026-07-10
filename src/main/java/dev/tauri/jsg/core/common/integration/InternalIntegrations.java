@@ -5,7 +5,7 @@ import dev.tauri.jsg.core.common.integration.cctweaked.CCIntegrationWrapper;
 import dev.tauri.jsg.core.common.integration.oc2.OCIntegrationWrapper;
 import dev.tauri.jsg.core.common.integration.oculus.OculusAPIWrapper;
 import dev.tauri.jsg.core.common.integration.tconstruct.TConstructIntegration;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 public class InternalIntegrations {
     static {

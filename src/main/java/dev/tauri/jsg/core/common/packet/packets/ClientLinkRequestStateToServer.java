@@ -3,7 +3,7 @@ package dev.tauri.jsg.core.common.packet.packets;
 import dev.tauri.jsg.core.common.blockentity.ILinkable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.NetworkEvent;
 
 public class ClientLinkRequestStateToServer extends PositionedPacket {
 

@@ -8,7 +8,7 @@ import dev.tauri.jsg.core.common.registry.JSGCoreRegistries;
 import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

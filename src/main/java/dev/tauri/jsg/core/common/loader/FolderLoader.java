@@ -1,7 +1,7 @@
 package dev.tauri.jsg.core.common.loader;
 
 import dev.tauri.jsg.core.JSGCore;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 import java.io.File;
 import java.io.IOException;

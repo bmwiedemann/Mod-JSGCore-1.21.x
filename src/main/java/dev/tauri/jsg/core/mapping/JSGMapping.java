@@ -4,15 +4,15 @@ import net.minecraft.resources.ResourceLocation;
 
 public class JSGMapping {
     public static ResourceLocation rl(String modId, String path) {
-        return new ResourceLocation(modId, path);
+        return ResourceLocation.fromNamespaceAndPath(modId, path);
     }
 
     public static ResourceLocation rl(String path) {
-        return new ResourceLocation(path);
+        return ResourceLocation.parse(path);
     }
 
     public static ResourceLocation fixRL(String id) {
         if (!id.contains(":")) id = "jsg:" + id;
-        return new ResourceLocation(id);
+        return ResourceLocation.parse(id);
     }
 }

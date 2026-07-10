@@ -5,9 +5,9 @@ import dev.tauri.jsg.core.client.model.IModelLoader;
 import dev.tauri.jsg.core.client.texture.ITextureLoader;
 import dev.tauri.jsg.core.common.loader.PointOfOriginsLoader;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.StartupMessageManager;
-import net.minecraftforge.fml.loading.progress.ProgressMeter;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.StartupMessageManager;
+import net.neoforged.fml.loading.progress.ProgressMeter;
 
 import java.util.HashMap;
 import java.util.Map;

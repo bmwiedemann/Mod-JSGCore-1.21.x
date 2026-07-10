@@ -5,7 +5,7 @@ import dev.tauri.jsg.core.common.packet.packets.ClientLinkRequestStateToServer;
 import dev.tauri.jsg.core.common.packet.packets.LinkChangedStateToClient;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public interface ILinkable<T> extends dev.tauri.jsg.core.common.blockentity.ILinkableBE<T> {
     @Override

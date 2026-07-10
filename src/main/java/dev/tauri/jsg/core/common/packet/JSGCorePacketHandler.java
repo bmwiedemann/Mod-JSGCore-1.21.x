@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.packet.packets.*;
 import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class JSGCorePacketHandler {
 

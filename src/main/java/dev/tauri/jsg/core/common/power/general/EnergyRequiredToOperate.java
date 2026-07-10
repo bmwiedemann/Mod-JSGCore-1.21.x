@@ -1,7 +1,7 @@
 package dev.tauri.jsg.core.common.power.general;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 
 public class EnergyRequiredToOperate implements INBTSerializable<CompoundTag> {
 

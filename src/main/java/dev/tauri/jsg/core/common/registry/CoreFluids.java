@@ -8,7 +8,7 @@ import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.List;
 

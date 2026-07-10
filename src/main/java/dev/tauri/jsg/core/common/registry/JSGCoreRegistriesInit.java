@@ -2,7 +2,7 @@ package dev.tauri.jsg.core.common.registry;
 
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.config.JSGCoreConfig;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.neoforged.bus.api.IEventBus;
 
 public class JSGCoreRegistriesInit {
     public static void init() {

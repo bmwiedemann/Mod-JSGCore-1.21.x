@@ -8,7 +8,7 @@ import dev.tauri.jsg.core.common.registry.helper.FluidHelper;
 import dev.tauri.jsg.core.common.registry.helper.RegistryHelper;
 import net.minecraft.Util;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;

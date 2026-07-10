@@ -1,7 +1,7 @@
 package dev.tauri.jsg.core.common.power.general;
 
 import dev.tauri.jsg.core.common.power.JSGEnergyStorage;
-import net.minecraftforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
 import java.util.ArrayList;
 import java.util.List;

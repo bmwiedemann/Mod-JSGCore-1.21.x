@@ -66,7 +66,7 @@ public class LinkingHelper {
         for (BlockPos target : BlockPos.betweenClosed(startPos.subtract(radius), startPos.offset(radius))) {
             // prevent server from shutdown caused by WatchDog
             if (bypassWatchdog && world instanceof ServerLevel sl)
-                sl.getServer().nextTickTime = Util.getMillis();
+                sl.getServer().nextTickTimeNanos = Util.getNanos();
 
             if (world.getBlockState(target).is(allowedBlock) && !(blacklist.contains(target)) && posPredicate.test(target)) {
                 double distanceSq = startPos.distSqr(target);

@@ -1,8 +1,8 @@
 package dev.tauri.jsg.core.common.sound;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.Collection;
 import java.util.HashMap;

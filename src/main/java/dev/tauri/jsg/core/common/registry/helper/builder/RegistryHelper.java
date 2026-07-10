@@ -1,6 +1,6 @@
 package dev.tauri.jsg.core.common.registry.helper.builder;
 
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
