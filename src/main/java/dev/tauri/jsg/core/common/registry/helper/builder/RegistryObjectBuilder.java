@@ -2,6 +2,7 @@ package dev.tauri.jsg.core.common.registry.helper.builder;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -39,6 +40,6 @@ public abstract class RegistryObjectBuilder<T extends RegistryHelper<?, ?>> {
 
     public interface TooltipApplier<T> {
         @ParametersAreNonnullByDefault
-        void apply(T item, ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag);
+        void apply(T item, ItemStack itemStack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag);
     }
 }

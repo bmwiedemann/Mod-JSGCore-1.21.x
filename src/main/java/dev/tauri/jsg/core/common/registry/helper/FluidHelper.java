@@ -97,7 +97,7 @@ public class FluidHelper {
         public RegistryObject<LiquidBlock> block;
 
         public RegistryObject<JSGFluidCauldron> cauldron;
-        public final Map<Item, CauldronInteraction> cauldronInteractionMap = CauldronInteraction.newInteractionMap();
+        public final CauldronInteraction.InteractionMap cauldronInteractionMap;
 
         public BaseFlowingFluid.Properties properties;
         public String name;
@@ -106,6 +106,7 @@ public class FluidHelper {
         public MoltenFluid(FluidHelper helper, RegistryObject<FluidType> type, String name) {
             this.type = type;
             this.name = name;
+            this.cauldronInteractionMap = CauldronInteraction.newInteractionMap("jsg_" + name);
 
 
             still = helper.fluidRegister.get().register(name + "_still",
@@ -114,7 +115,7 @@ public class FluidHelper {
                     () -> new BaseFlowingFluid.Flowing(getProps()));
 
             block = helper.blockRegister.get().register(name,
-                    () -> new LiquidBlock(still, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
+                    () -> new LiquidBlock(still.get(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
 
             bucket = helper.itemRegister.get().register(name + "_bucket",
                     () -> new JSGBucketItem(still, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));

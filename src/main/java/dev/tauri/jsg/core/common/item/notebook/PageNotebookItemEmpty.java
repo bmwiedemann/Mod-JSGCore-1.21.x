@@ -26,7 +26,7 @@ public class PageNotebookItemEmpty extends JSGItem {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
         components.add(Component.translatable("item.jsg_core.page_notebook.empty").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
     }
 

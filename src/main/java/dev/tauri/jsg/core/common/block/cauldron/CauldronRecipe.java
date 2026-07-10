@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -67,13 +67,13 @@ public abstract class CauldronRecipe {
     }
 
 
-    public CauldronRecipe setRecipeHandlers(Map<Item, CauldronInteraction> recipeHandlers) {
-        this.baseFluidInteractionMaps = List.of(recipeHandlers);
+    public CauldronRecipe setRecipeHandlers(CauldronInteraction.InteractionMap recipeHandlers) {
+        this.baseFluidInteractionMaps = List.of(recipeHandlers.map());
         return this;
     }
 
-    public CauldronRecipe setRecipeHandlers(List<Map<Item, CauldronInteraction>> recipeHandlers) {
-        this.baseFluidInteractionMaps = recipeHandlers;
+    public CauldronRecipe setRecipeHandlers(List<CauldronInteraction.InteractionMap> recipeHandlers) {
+        this.baseFluidInteractionMaps = recipeHandlers.stream().map(CauldronInteraction.InteractionMap::map).toList();
         return this;
     }
 
@@ -129,7 +129,7 @@ public abstract class CauldronRecipe {
             baseFluidInteractionMaps.forEach(map -> map.put(itemToMelt.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) -> {
                 if (!pLevel.isClientSide) {
                     if (getRequireHeating() && !FluidCauldronBE.isCauldronHeated(pLevel, pBlockPos))
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
@@ -140,9 +140,9 @@ public abstract class CauldronRecipe {
                                 .orElse(null);
                     }
                     if (oldFluid == null)
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     if (oldFluid.getFluid() != baseFluid.get())
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     var newFluid = this.newFluid.get() != null ? new FluidStack(this.newFluid.get(), oldFluid.getAmount()) : null;
 
@@ -169,7 +169,7 @@ public abstract class CauldronRecipe {
                     pLevel.playSound(null, pBlockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     pLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, pBlockPos);
                 }
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
             }));
         }
 
@@ -219,7 +219,7 @@ public abstract class CauldronRecipe {
             baseFluidInteractionMaps.forEach(map -> map.put(itemToMelt.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) -> {
                 if (!pLevel.isClientSide) {
                     if (getRequireHeating() && !FluidCauldronBE.isCauldronHeated(pLevel, pBlockPos))
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
@@ -231,10 +231,10 @@ public abstract class CauldronRecipe {
                     }
                     var newFluid = getFluidResult().get();
                     if (oldFluid != null && oldFluid.getAmount() >= 1000)
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     if (oldFluid != null && newFluid != null && newFluid.getFluid() != oldFluid.getFluid()) {
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     }
 
 
@@ -265,7 +265,7 @@ public abstract class CauldronRecipe {
                     pLevel.playSound(null, pBlockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     pLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, pBlockPos);
                 }
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
             }));
         }
 
@@ -311,7 +311,7 @@ public abstract class CauldronRecipe {
             baseFluidInteractionMaps.forEach(map -> map.put(Blocks.SNOW_BLOCK.asItem(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) -> {
                 if (!pLevel.isClientSide) {
                     if (getRequireHeating() && !FluidCauldronBE.isCauldronHeated(pLevel, pBlockPos))
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
@@ -322,11 +322,11 @@ public abstract class CauldronRecipe {
                                 .orElse(null);
                     }
                     if (baseFluid.get() != null && oldFluid == null)
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     if (baseFluid.get() != null && oldFluid != null && oldFluid.getFluid() != baseFluid.get().getFluid())
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     if (baseFluid.get() != null && oldFluid != null && oldFluid.getAmount() < baseFluid.get().getAmount()) {
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     }
 
                     Item item = pStack.getItem();
@@ -359,7 +359,7 @@ public abstract class CauldronRecipe {
                     pLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, pBlockPos);
                     ItemHandlerHelper.spawnItemStack(pLevel, pBlockPos.above(), drop.get());
                 }
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
             }));
         }
 
@@ -413,7 +413,7 @@ public abstract class CauldronRecipe {
             baseFluidInteractionMaps.forEach(map -> map.put(itemToBath.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) -> {
                 if (!pLevel.isClientSide) {
                     if (getRequireHeating() && !FluidCauldronBE.isCauldronHeated(pLevel, pBlockPos))
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
 
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
@@ -424,11 +424,11 @@ public abstract class CauldronRecipe {
                                 .orElse(null);
                     }
                     if (baseFluid.get() != null && oldFluid == null)
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     if (baseFluid.get() != null && oldFluid != null && oldFluid.getFluid() != baseFluid.get().getFluid())
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     if (baseFluid.get() != null && oldFluid != null && oldFluid.getAmount() < baseFluid.get().getAmount()) {
-                        return InteractionResult.FAIL;
+                        return ItemInteractionResult.FAIL;
                     }
 
                     Item item = pStack.getItem();
@@ -459,7 +459,7 @@ public abstract class CauldronRecipe {
                     pLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, pBlockPos);
                     ItemHandlerHelper.spawnItemStack(pLevel, pBlockPos.above(), drop.get());
                 }
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
             }));
         }
 
@@ -495,13 +495,13 @@ public abstract class CauldronRecipe {
 
         @Override
         public void insertInteractions() {
-            CauldronInteraction.EMPTY.put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
+            CauldronInteraction.EMPTY.map().put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
                     emptyBucket(pLevel, pBlockPos, pPlayer, pHand, pStack, forFluid.cauldron.get().defaultBlockState(), SoundEvents.BUCKET_EMPTY_LAVA)
             );
-            CauldronInteraction.LAVA.put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
+            CauldronInteraction.LAVA.map().put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
                     emptyBucket(pLevel, pBlockPos, pPlayer, pHand, pStack, forFluid.cauldron.get().defaultBlockState(), SoundEvents.BUCKET_EMPTY_LAVA)
             );
-            CauldronInteraction.WATER.put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
+            CauldronInteraction.WATER.map().put(forFluid.bucket.get(), (BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pHand, ItemStack pStack) ->
                     emptyBucket(pLevel, pBlockPos, pPlayer, pHand, pStack, forFluid.cauldron.get().defaultBlockState(), SoundEvents.BUCKET_EMPTY_LAVA)
             );
 
@@ -530,7 +530,7 @@ public abstract class CauldronRecipe {
                 pLevel.gameEvent(null, GameEvent.FLUID_PICKUP, pPos);
             }
 
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
         }
     }
 
@@ -546,6 +546,6 @@ public abstract class CauldronRecipe {
             pLevel.gameEvent(null, GameEvent.FLUID_PLACE, pPos);
         }
 
-        return InteractionResult.sidedSuccess(pLevel.isClientSide);
+        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
     }
 }

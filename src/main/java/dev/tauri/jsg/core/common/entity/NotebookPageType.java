@@ -136,7 +136,7 @@ public class NotebookPageType<D extends INotebookPageData> {
     }
 
     public interface HoverConsumer<DATA extends INotebookPageData> {
-        void accept(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag, @Nullable DATA data);
+        void accept(ItemStack stack, net.minecraft.world.item.Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag, @Nullable DATA data);
     }
 
     public void serializeNBT(CompoundTag compound, D data) {

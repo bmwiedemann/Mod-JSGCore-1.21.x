@@ -92,8 +92,8 @@ public class ItemRegistryHelperGeneric extends RegistryHelper<Item, ItemRegistry
             return registryHelper.registry.get().register(name, () -> new JSGItem(properties.stacksTo(maxStack), tabs) {
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, stack, level, components, tooltipFlag);
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, stack, context, components, tooltipFlag);
                 }
             });
         }
@@ -102,8 +102,8 @@ public class ItemRegistryHelperGeneric extends RegistryHelper<Item, ItemRegistry
             return registryHelper.registry.get().register(name, () -> new JSGUpgradeItem(properties.stacksTo(maxStack), tabs, upgrade) {
                 @Override
                 @ParametersAreNonnullByDefault
-                public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-                    tooltipApplier.apply(this, stack, level, components, tooltipFlag);
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                    tooltipApplier.apply(this, stack, context, components, tooltipFlag);
                 }
             });
         }
@@ -128,8 +128,8 @@ public class ItemRegistryHelperGeneric extends RegistryHelper<Item, ItemRegistry
 
                     @Override
                     @ParametersAreNonnullByDefault
-                    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-                        tooltipApplier.apply(this, stack, level, components, tooltipFlag);
+                    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
+                        tooltipApplier.apply(this, stack, context, components, tooltipFlag);
                         components.add(Component.empty());
                         components.add(Component.literal(String.format("%.2f", (((double) (getMaxDamage(stack) - getDamage(stack)) / ((double) getMaxDamage(stack))) * 100)) + "%").withStyle(ChatFormatting.GRAY));
                     }

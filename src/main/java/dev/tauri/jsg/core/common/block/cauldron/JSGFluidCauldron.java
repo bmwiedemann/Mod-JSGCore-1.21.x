@@ -18,7 +18,6 @@ import net.neoforged.neoforge.fluids.FluidType;
 import org.jspecify.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Map;
 import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
@@ -26,8 +25,8 @@ import java.util.function.Supplier;
 public class JSGFluidCauldron extends LayeredCauldronBlock implements ITickableBEBlock {
     protected final Supplier<FluidType> fluidType;
 
-    public JSGFluidCauldron(Supplier<FluidType> fluidType, Map<Item, CauldronInteraction> interactionMap) {
-        super(BlockBehaviour.Properties.copy(Blocks.CAULDRON), (precipitation) -> false, interactionMap);
+    public JSGFluidCauldron(Supplier<FluidType> fluidType, CauldronInteraction.InteractionMap interactionMap) {
+        super(net.minecraft.world.level.biome.Biome.Precipitation.NONE, interactionMap, BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
         this.fluidType = fluidType;
     }
 

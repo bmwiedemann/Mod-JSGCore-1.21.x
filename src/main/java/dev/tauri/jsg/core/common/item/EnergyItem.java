@@ -156,7 +156,7 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> components, TooltipFlag tooltipFlag) {
         if (isCreative()) return;
         var energyStorageOpt = java.util.Optional.ofNullable(stack.getCapability(Capabilities.EnergyStorage.ITEM));
         energyStorageOpt.ifPresent(energyStorage -> {
