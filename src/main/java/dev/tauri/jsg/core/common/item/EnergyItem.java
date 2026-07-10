@@ -1,6 +1,5 @@
 package dev.tauri.jsg.core.common.item;
 
-import dev.tauri.jsg.core.common.capability.ItemEnergyCapabilityProvider;
 import dev.tauri.jsg.core.common.power.JSGEnergyStorage;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -12,8 +11,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.capabilities.ForgeCapabilities;
-import net.neoforged.neoforge.capabilities.ICapabilityProvider;
+import dev.tauri.jsg.core.common.power.general.ItemEnergyStorage;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import dev.tauri.jsg.core.common.registry.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,7 +74,7 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
 
     @Override
     public boolean isFoil(ItemStack itemStack) {
-        var energyStorageOpt = itemStack.getCapability(ForgeCapabilities.ENERGY, null).resolve();
+        var energyStorageOpt = java.util.Optional.ofNullable(itemStack.getCapability(Capabilities.EnergyStorage.ITEM));
         return energyStorageOpt.map(energyStorage -> energyStorage.getEnergyStored() > 0).orElse(false);
     }
 
@@ -88,10 +87,51 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
         return isCreative();
     }
 
-    @Nullable
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-        return new ItemEnergyCapabilityProvider(stack, capacity.get(), maxReceive.get(), maxExtract.get(), isCreative());
+    public ItemEnergyStorage createEnergyStorage(final ItemStack stack) {
+        final boolean creative = isCreative();
+        return new ItemEnergyStorage(stack, capacity.get(), maxReceive.get(), maxExtract.get()) {
+            @Override
+            public boolean isCreative() {
+                return creative;
+            }
+
+            @Override
+            public long setEnergy(long energy, boolean notify) {
+                return super.setEnergy(creative ? Integer.MAX_VALUE : energy, notify);
+            }
+
+            @Override
+            public long getTrueEnergyStored() {
+                if (creative)
+                    return Integer.MAX_VALUE;
+                return super.getTrueEnergyStored();
+            }
+
+            @Override
+            public long extractLongEnergy(long max, boolean simulate) {
+                if (creative) {
+                    return max;
+                }
+                return super.extractLongEnergy(max, simulate);
+            }
+
+            @Override
+            public long receiveLongEnergy(long max, boolean simulate) {
+                if (creative) {
+                    return 0;
+                }
+                return super.receiveLongEnergy(max, simulate);
+            }
+
+            @Override
+            public boolean canReceive() {
+                if (creative) {
+                    // Creative item should not receive any energy...
+                    return false;
+                }
+                return super.canReceive();
+            }
+        };
     }
 
     @Override
@@ -102,7 +142,7 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
     @Override
     public int getBarWidth(ItemStack itemStack) {
         if (isCreative()) return Item.MAX_BAR_WIDTH;
-        var energyStorageOpt = itemStack.getCapability(ForgeCapabilities.ENERGY, null).resolve();
+        var energyStorageOpt = java.util.Optional.ofNullable(itemStack.getCapability(Capabilities.EnergyStorage.ITEM));
         return energyStorageOpt
                 .map(energyStorage -> (int) (JSGEnergyStorage.getEnergyPercent(energyStorage) * Item.MAX_BAR_WIDTH))
                 .orElse(0);
@@ -118,7 +158,7 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
     @ParametersAreNonnullByDefault
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
         if (isCreative()) return;
-        var energyStorageOpt = stack.getCapability(ForgeCapabilities.ENERGY, null).resolve();
+        var energyStorageOpt = java.util.Optional.ofNullable(stack.getCapability(Capabilities.EnergyStorage.ITEM));
         energyStorageOpt.ifPresent(energyStorage -> {
             components.add(Component.literal(ChatFormatting.GRAY + JSGEnergyStorage.energyToString(energyStorage)));
             components.add(Component.literal(ChatFormatting.GRAY + String.format("%.2f", JSGEnergyStorage.getEnergyPercent(energyStorage) * 100) + "%"));
@@ -129,7 +169,7 @@ public class EnergyItem extends JSGItem implements ICreativeThing, IMultiItem {
     public void addAdditional(CreativeModeTab.Output output) {
         if (isCreative()) return;
         var stack = new ItemStack(this);
-        var caps = stack.getCapability(ForgeCapabilities.ENERGY, null).resolve();
+        var caps = java.util.Optional.ofNullable(stack.getCapability(Capabilities.EnergyStorage.ITEM));
         if (caps.isEmpty()) return;
         var energyStorage = caps.get();
         if (!(energyStorage instanceof JSGEnergyStorage itemEnergyStorage)) return;

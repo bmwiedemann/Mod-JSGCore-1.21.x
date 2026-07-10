@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.power.general;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.common.power.JSGEnergyStorage;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
@@ -45,7 +46,7 @@ public class ItemEnergyStorage extends JSGEnergyStorage {
     }
 
     public void updateEnergyFromItem() {
-        var tag = stack.getOrCreateTag();
+        var tag = ItemNBT.getOrCreateTag(stack);
         if (tag.contains("energy", Tag.TAG_INT)) {
             this.energy = tag.getInt("energy");
             return;
@@ -55,6 +56,6 @@ public class ItemEnergyStorage extends JSGEnergyStorage {
 
     @Override
     public void onEnergyChanged() {
-        stack.getOrCreateTag().putLong("energy", energy);
+        ItemNBT.getOrCreateTag(stack).putLong("energy", energy);
     }
 }

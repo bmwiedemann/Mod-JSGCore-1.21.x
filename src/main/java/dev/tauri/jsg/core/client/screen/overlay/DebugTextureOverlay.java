@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.client.screen.overlay;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.client.loader.texture.Texture;
 import dev.tauri.jsg.core.client.loader.texture.TextureLoader;
 import dev.tauri.jsg.core.client.screen.util.GuiHelper;
@@ -17,7 +18,7 @@ public class DebugTextureOverlay {
         if (player.isSpectator()) return;
         var item = player.getItemInHand(InteractionHand.MAIN_HAND);
         if (!item.is(Items.DEBUG_STICK)) return;
-        var tag = item.getTag();
+        var tag = ItemNBT.getTag(item);
         if (tag == null) return;
         if (!tag.contains("debugTexturePath")) return;
         var texPath = JSGMapping.rl(tag.getString("debugTexturePath"));

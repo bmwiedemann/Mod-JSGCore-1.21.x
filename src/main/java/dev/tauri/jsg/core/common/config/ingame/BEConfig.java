@@ -77,7 +77,17 @@ public class BEConfig implements INBTSerializable<CompoundTag> {
         }
     }
 
+    
     @Override
+    public CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     public final CompoundTag serializeNBT() {
         return serializeNBT(new CompoundTag());
     }
@@ -90,7 +100,7 @@ public class BEConfig implements INBTSerializable<CompoundTag> {
         return compound;
     }
 
-    @Override
+    
     public void deserializeNBT(@NotNull CompoundTag compound) {
         var ids = compound.getAllKeys();
         ids.forEach(id -> Optional.ofNullable(options.get(id)).ifPresent((option) -> option.deserializeFromNBT(id, compound)));

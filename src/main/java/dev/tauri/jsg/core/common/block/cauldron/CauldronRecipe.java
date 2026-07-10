@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.capabilities.ForgeCapabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -135,7 +134,7 @@ public abstract class CauldronRecipe {
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
                     if (oldCauldron != null) {
-                        oldFluid = oldCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve()
+                        oldFluid = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(oldCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null)
                                 .filter(handler -> handler.getTanks() > 0)
                                 .map(handler -> handler.getFluidInTank(0))
                                 .orElse(null);
@@ -156,7 +155,7 @@ public abstract class CauldronRecipe {
 
                     var newCauldron = pLevel.getBlockEntity(pBlockPos);
                     if (newCauldron != null) {
-                        var newCauldronCap = newCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve();
+                        var newCauldronCap = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(newCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null);
                         if (newCauldronCap.isPresent() && newFluid != null) {
                             for (var tank = 0; tank < newCauldronCap.get().getTanks(); tank++) {
                                 Optional.of(newCauldronCap.get().getFluidInTank(tank))
@@ -225,7 +224,7 @@ public abstract class CauldronRecipe {
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
                     if (oldCauldron != null) {
-                        oldFluid = oldCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve()
+                        oldFluid = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(oldCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null)
                                 .filter(handler -> handler.getTanks() > 0)
                                 .map(handler -> handler.getFluidInTank(0))
                                 .orElse(null);
@@ -248,7 +247,7 @@ public abstract class CauldronRecipe {
 
                     var newCauldron = pLevel.getBlockEntity(pBlockPos);
                     if (newCauldron != null) {
-                        var newCauldronCap = newCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve();
+                        var newCauldronCap = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(newCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null);
                         if (newCauldronCap.isPresent()) {
                             var copy = oldFluid != null ? oldFluid.copy() : null;
                             for (var tank = 0; tank < newCauldronCap.get().getTanks(); tank++) {
@@ -317,7 +316,7 @@ public abstract class CauldronRecipe {
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
                     if (oldCauldron != null) {
-                        oldFluid = oldCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve()
+                        oldFluid = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(oldCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null)
                                 .filter(handler -> handler.getTanks() > 0)
                                 .map(handler -> handler.getFluidInTank(0))
                                 .orElse(null);
@@ -344,7 +343,7 @@ public abstract class CauldronRecipe {
 
                     var newCauldron = pLevel.getBlockEntity(pBlockPos);
                     if (newCauldron != null) {
-                        var newCauldronCap = newCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve();
+                        var newCauldronCap = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(newCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null);
                         if (newCauldronCap.isPresent()) {
                             var copy = oldFluid.copy();
                             for (var tank = 0; tank < newCauldronCap.get().getTanks(); tank++) {
@@ -419,7 +418,7 @@ public abstract class CauldronRecipe {
                     var oldCauldron = pLevel.getBlockEntity(pBlockPos);
                     FluidStack oldFluid = null;
                     if (oldCauldron != null) {
-                        oldFluid = oldCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve()
+                        oldFluid = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(oldCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null)
                                 .filter(handler -> handler.getTanks() > 0)
                                 .map(handler -> handler.getFluidInTank(0))
                                 .orElse(null);
@@ -446,7 +445,7 @@ public abstract class CauldronRecipe {
 
                     var newCauldron = pLevel.getBlockEntity(pBlockPos);
                     if (newCauldron != null) {
-                        var newCauldronCap = newCauldron.getCapability(ForgeCapabilities.FLUID_HANDLER).resolve();
+                        var newCauldronCap = java.util.Optional.<net.neoforged.neoforge.fluids.capability.IFluidHandler>ofNullable(newCauldron instanceof dev.tauri.jsg.core.common.blockentity.JSGFluidHandlerBE fhbe ? fhbe.getFluidHandler(null) : null);
                         if (newCauldronCap.isPresent()) {
                             var copy = oldFluid.copy();
                             for (var tank = 0; tank < newCauldronCap.get().getTanks(); tank++) {

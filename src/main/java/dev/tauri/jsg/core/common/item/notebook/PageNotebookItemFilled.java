@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.item.notebook;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.client.renderer.item.PageNotebookBEWLR;
 import dev.tauri.jsg.core.common.entity.NotebookPageType;
 import dev.tauri.jsg.core.common.item.JSGItem;
@@ -53,17 +54,17 @@ public class PageNotebookItemFilled extends JSGItem {
     @ParametersAreNonnullByDefault
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if (pLevel.isClientSide) return;
-        var compound = NotebookPageType.getFixedTag(pStack.getOrCreateTag());
+        var compound = NotebookPageType.getFixedTag(ItemNBT.getOrCreateTag(pStack));
         if (compound == null) return;
-        pStack.setTag(compound);
+        ItemNBT.setTag(pStack, compound);
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        if (stack.hasTag()) {
-            Optional.ofNullable(NotebookPageType.pageTypeFromCompound(stack.getOrCreateTag()))
-                    .map((t) -> t.dataWrapper(stack.getOrCreateTag()))
+        if (ItemNBT.hasTag(stack)) {
+            Optional.ofNullable(NotebookPageType.pageTypeFromCompound(ItemNBT.getOrCreateTag(stack)))
+                    .map((t) -> t.dataWrapper(ItemNBT.getOrCreateTag(stack)))
                     .ifPresent(dw -> dw.type().hoverConsumer().accept(stack, level, components, tooltipFlag, dw.data()));
         }
     }
@@ -75,8 +76,8 @@ public class PageNotebookItemFilled extends JSGItem {
      * @return color
      */
     public static int getColorForBiome(@NotNull ItemStack stack, @Nullable RegistryAccess level, @NotNull ResourceKey<Biome> biome) {
-        if (stack.hasTag()) {
-            return Optional.ofNullable(NotebookPageType.pageTypeFromCompound(stack.getOrCreateTag()))
+        if (ItemNBT.hasTag(stack)) {
+            return Optional.ofNullable(NotebookPageType.pageTypeFromCompound(ItemNBT.getOrCreateTag(stack)))
                     .map(NotebookPageType::colorGetter)
                     .map(colorGetter -> colorGetter.apply(level, biome)).orElse(0x303000);
         }

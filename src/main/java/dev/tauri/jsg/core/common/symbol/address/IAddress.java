@@ -15,6 +15,20 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public interface IAddress extends INBTSerializable<CompoundTag> {
+    CompoundTag serializeNBT();
+
+    void deserializeNBT(CompoundTag compound);
+
+    @Override
+    default CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    default void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     SymbolInterface get(int symbolIndex);
 
     int getSize();

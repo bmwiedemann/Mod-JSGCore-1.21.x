@@ -221,7 +221,17 @@ public abstract class Activation<K> implements INBTSerializable<CompoundTag> {
         active = buf.readBoolean();
     }
 
+    
     @Override
+    public CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     public CompoundTag serializeNBT() {
         var compound = new CompoundTag();
         compound.putLong("stateChanged", stateChange);
@@ -230,7 +240,7 @@ public abstract class Activation<K> implements INBTSerializable<CompoundTag> {
         return compound;
     }
 
-    @Override
+    
     public void deserializeNBT(CompoundTag compound) {
         stateChange = compound.getLong("stateChange");
         dim = compound.getBoolean("dim");

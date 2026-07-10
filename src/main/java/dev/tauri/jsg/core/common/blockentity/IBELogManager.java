@@ -9,7 +9,35 @@ import org.slf4j.event.Level;
 import java.util.LinkedList;
 
 public interface IBELogManager extends INBTSerializable<CompoundTag> {
+    CompoundTag serializeNBT();
+
+    void deserializeNBT(CompoundTag compound);
+
+    @Override
+    default CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    default void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     interface ILogLine extends INBTSerializable<CompoundTag> {
+        CompoundTag serializeNBT();
+
+        void deserializeNBT(CompoundTag compound);
+
+        @Override
+        default CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+            return serializeNBT();
+        }
+
+        @Override
+        default void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+            deserializeNBT(compound);
+        }
+
         Component component();
 
         Level level();

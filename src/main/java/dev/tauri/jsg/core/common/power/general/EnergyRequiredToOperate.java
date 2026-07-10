@@ -44,7 +44,17 @@ public class EnergyRequiredToOperate implements INBTSerializable<CompoundTag> {
         return this;
     }
 
+    
     @Override
+    public CompoundTag serializeNBT(net.minecraft.core.HolderLookup.Provider provider) {
+        return serializeNBT();
+    }
+
+    @Override
+    public void deserializeNBT(net.minecraft.core.HolderLookup.Provider provider, CompoundTag compound) {
+        deserializeNBT(compound);
+    }
+
     public CompoundTag serializeNBT() {
         var compound = new CompoundTag();
         compound.putLong("keepAlive", keepAlive);
@@ -52,7 +62,7 @@ public class EnergyRequiredToOperate implements INBTSerializable<CompoundTag> {
         return compound;
     }
 
-    @Override
+    
     public void deserializeNBT(CompoundTag compound) {
         if (compound.contains("keepAlive", CompoundTag.TAG_INT)) {
             keepAlive = compound.getInt("keepAlive");

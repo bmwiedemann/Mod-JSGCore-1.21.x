@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.block.cartouche;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.common.block.TickableBEBlock;
 import dev.tauri.jsg.core.common.block.util.IItemBlock;
 import dev.tauri.jsg.core.common.blockentity.CartoucheBE;
@@ -256,8 +257,8 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide());
             }
-            if (mainStack.getItem() == CoreItems.JSG_HAMMER.get() && offStack.hasTag()) {
-                var pageTag = offStack.getTag();
+            if (mainStack.getItem() == CoreItems.JSG_HAMMER.get() && ItemNBT.hasTag(offStack)) {
+                var pageTag = ItemNBT.getTag(offStack);
                 if (pageTag != null) {
                     CompoundTag addressTag;
                     if (pageTag.contains("pages"))

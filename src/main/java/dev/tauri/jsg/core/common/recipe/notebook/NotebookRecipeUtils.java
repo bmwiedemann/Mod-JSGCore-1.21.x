@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.recipe.notebook;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.common.item.notebook.PageNotebookItemFilled;
 import dev.tauri.jsg.core.common.registry.CoreItems;
 import net.minecraft.nbt.CompoundTag;
@@ -31,7 +32,7 @@ public class NotebookRecipeUtils {
         var pageStack = new ItemStack(CoreItems.NOTEBOOK_PAGE_FILLED.get(), 1);
         var compound = new CompoundTag();
         PageNotebookItemFilled.setName(compound, name);
-        pageStack.setTag(compound);
+        ItemNBT.setTag(pageStack, compound);
         return pageStack;
     }
 
@@ -41,10 +42,10 @@ public class NotebookRecipeUtils {
         var list = new ListTag();
 
         compound.put("pages", list);
-        notebook.setTag(compound);
+        ItemNBT.setTag(notebook, compound);
 
         for (ItemStack stack : pages) {
-            list.add(stack.getTag());
+            list.add(ItemNBT.getTag(stack));
         }
 
         return notebook;

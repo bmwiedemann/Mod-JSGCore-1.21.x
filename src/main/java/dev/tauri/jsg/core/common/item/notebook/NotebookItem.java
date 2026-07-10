@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.item.notebook;
 
+import dev.tauri.jsg.core.common.util.ItemNBT;
 import dev.tauri.jsg.core.client.renderer.item.NotebookItemBEWLR;
 import dev.tauri.jsg.core.common.entity.NotebookPageType;
 import dev.tauri.jsg.core.common.item.JSGItem;
@@ -53,8 +54,8 @@ public class NotebookItem extends JSGItem {
     @ParametersAreNonnullByDefault
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if (pLevel.isClientSide) return;
-        if (pStack.hasTag()) {
-            var compound = pStack.getOrCreateTag();
+        if (ItemNBT.hasTag(pStack)) {
+            var compound = ItemNBT.getOrCreateTag(pStack);
             if (!compound.contains("addressList")) return;
             if (compound.contains("pages")) return;
             ListTag newPagesList = null;
@@ -69,7 +70,7 @@ public class NotebookItem extends JSGItem {
             if (newPagesList != null) {
                 compound.put("pages", newPagesList);
                 compound.putInt("selected", 0);
-                pStack.setTag(compound);
+                ItemNBT.setTag(pStack, compound);
             }
         }
     }
@@ -77,8 +78,8 @@ public class NotebookItem extends JSGItem {
     @Override
     @ParametersAreNonnullByDefault
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        if (stack.hasTag()) {
-            var compound = stack.getOrCreateTag();
+        if (ItemNBT.hasTag(stack)) {
+            var compound = ItemNBT.getOrCreateTag(stack);
             var list = compound.getList("pages", Tag.TAG_COMPOUND);
 
             for (var item : list) {
@@ -93,11 +94,11 @@ public class NotebookItem extends JSGItem {
         if (oldStack.getItem() != newStack.getItem())
             return true;
 
-        if (!oldStack.hasTag() || !newStack.hasTag())
+        if (!ItemNBT.hasTag(oldStack) || !ItemNBT.hasTag(newStack))
             return true;
 
-        int oldSelected = oldStack.getOrCreateTag().getInt("selected");
-        int newSelected = newStack.getOrCreateTag().getInt("selected");
+        int oldSelected = ItemNBT.getOrCreateTag(oldStack).getInt("selected");
+        int newSelected = ItemNBT.getOrCreateTag(newStack).getInt("selected");
 
         return oldSelected != newSelected;
     }
@@ -137,14 +138,14 @@ public class NotebookItem extends JSGItem {
         var compound = new CompoundTag();
         compound.put("pages", pages);
         compound.putInt("selected", 0);
-        output.setTag(compound);
+        ItemNBT.setTag(output, compound);
 
         return output;
     }
 
     @Nonnull
     public static ItemStack popCurrentPage(ItemStack notebook) {
-        var tag = notebook.getOrCreateTag();
+        var tag = ItemNBT.getOrCreateTag(notebook);
         var index = tag.getInt("selected");
         return popPage(notebook, index);
     }
@@ -152,11 +153,11 @@ public class NotebookItem extends JSGItem {
     @Nonnull
     public static ItemStack popPage(ItemStack notebook, int index) {
         try {
-            var tag = notebook.getOrCreateTag();
+            var tag = ItemNBT.getOrCreateTag(notebook);
             var list = tag.getList("pages", Tag.TAG_COMPOUND);
             var pageNBT = (CompoundTag) list.get(index);
             var page = new ItemStack(CoreItems.NOTEBOOK_PAGE_FILLED.get());
-            page.setTag(pageNBT);
+            ItemNBT.setTag(page, pageNBT);
             list.remove(index);
             tag.put("pages", list);
             var currentIndex = tag.getInt("selected");
@@ -164,7 +165,7 @@ public class NotebookItem extends JSGItem {
                 currentIndex = (list.size() - 1);
                 tag.putInt("selected", currentIndex);
             }
-            notebook.setTag(tag);
+            ItemNBT.setTag(notebook, tag);
             if (list.isEmpty() || currentIndex < 0) notebook.setCount(0);
             return page;
         } catch (IndexOutOfBoundsException ignored) {
