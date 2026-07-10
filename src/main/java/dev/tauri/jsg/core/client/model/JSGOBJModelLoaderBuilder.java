@@ -27,7 +27,7 @@ public class JSGOBJModelLoaderBuilder<T extends ModelBuilder<T>> extends CustomL
     protected List<ItemDisplayContext> renderTypes = new ArrayList<>();
 
     public JSGOBJModelLoaderBuilder(T parent, ExistingFileHelper existingFileHelper) {
-        super(JSGMapping.rl(JSGCore.MOD_ID, "handheld_item_model"), parent, existingFileHelper);
+        super(JSGMapping.rl(JSGCore.MOD_ID, "handheld_item_model"), parent, existingFileHelper, false);
     }
 
     public JSGOBJModelLoaderBuilder<T> renderTypes(ItemDisplayContext... renderTypes) {

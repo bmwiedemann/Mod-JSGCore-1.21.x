@@ -185,7 +185,7 @@ public class JSGBlockLootTables extends BlockLootSubProvider {
     @Override
     @NotNull
     protected Iterable<Block> getKnownBlocks() {
-        return JSGCore.REGISTRY_HELPER.block().getEntries().stream().map(RegistryObject::get)::iterator;
+        return JSGCore.REGISTRY_HELPER.block().getEntries().stream().map(holder -> (Block) holder.get())::iterator;
     }
 
     protected void dropNothing(Block block) {

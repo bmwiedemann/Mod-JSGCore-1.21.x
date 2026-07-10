@@ -33,9 +33,9 @@ public class LegacyOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
         Tesselator tesselator = Tesselator.getInstance();
         Matrix4f matrix = poseStack.last().pose();
 
+        BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
         EmissiveRenderer.renderWithLightOverlay(poseStack, light, false, () -> {
             RenderSystem.setShaderColor(r, g, b, a);
-            BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
             var vertices = model.vertices;
             int vertexCount = vertices.length;
             var textureCoords = model.textureCoords;
@@ -83,7 +83,7 @@ public class LegacyOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
                 texCoordOffset += 6;
             }
         }, () -> {
-            tesselator.end();
+            com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
             RenderSystem.setShaderColor(1, 1, 1, 1);
         }, GameRenderer::getPositionTexShader);
     }

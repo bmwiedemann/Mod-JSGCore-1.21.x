@@ -50,13 +50,11 @@ public class InGameOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
     }
 
     protected void uploadBuffer(VertexBuffer buffer, BufferBuilder bufferbuilder, int light, @Nullable TextureAtlasSprite textureAtlasSprite, boolean shouldBeginAgain) {
-        BufferBuilder.RenderedBuffer rb = bufferbuilder.end();
-        buffer.bind();
-        buffer.upload(rb);
-        VertexBuffer.unbind();
-
-        if (shouldBeginAgain) {
-            bufferbuilder.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.NEW_ENTITY);
+        var rb = bufferbuilder.build();
+        if (rb != null) {
+            buffer.bind();
+            buffer.upload(rb);
+            VertexBuffer.unbind();
         }
 
         if (JSGCore.oculusWrapper.isShaderPackActive()) {
@@ -84,17 +82,9 @@ public class InGameOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
         var modelBuffer = getBuffer(light, textureAtlasSprite);
         if (modelBuffer == null) {
             boolean shouldBeginAgain = false;
-            BufferBuilder bufferbuilder;
-            if (usedTexture != null && (bufferSource.getBuffer(RenderTypes.OBJ_TYPE.apply(usedTexture, EmissiveRenderer.getShaderInstanceSupplier(emissiveRendering, poseStack, light, null))) instanceof BufferBuilder customBuilder)) {
-                bufferbuilder = customBuilder;
-                shouldBeginAgain = true;
-            } else {
-                bufferbuilder = Tesselator.getInstance().getBuilder();
-            }
+            // 1.21: buffers are single-use; always build our own from the Tesselator
+            BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.NEW_ENTITY);
             modelBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-            if (!bufferbuilder.building()) {
-                bufferbuilder.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.NEW_ENTITY);
-            }
             int vertexCount = model.vertices.length;
 
             for (int i = 0; i < vertexCount; i += 3) {

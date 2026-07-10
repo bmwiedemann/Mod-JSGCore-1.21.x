@@ -150,7 +150,7 @@ public class CoreItems {
      */
 
     public static final RegistryObject<JSGItem> TRAP_LEMON = CoreRegistryHelpers.ITEM_HELPER.builder("trap_lemon").clearTooltip().setInTabs(List.of(CoreTabs.TAB_TOOLS)).setMaxStack(32).buildGeneric();
-    public static final RegistryObject<JSGItem> FOOD_LEMON = CoreRegistryHelpers.ITEM_HELPER.builder("slice_lemon").setProperties(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1f).effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 1, false, false), 0.3f).alwaysEat().build())).clearTooltip().buildGeneric();
+    public static final RegistryObject<JSGItem> FOOD_LEMON = CoreRegistryHelpers.ITEM_HELPER.builder("slice_lemon").setProperties(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).effect(new MobEffectInstance(MobEffects.POISON, 200, 1, false, false), 0.3f).alwaysEdible().build())).clearTooltip().buildGeneric();
 
 
     public static final Map<ICrystalColor, RegistryObject<? extends Item>> CRYSTAL_SEEDS = Map.of(

@@ -89,7 +89,7 @@ public abstract class TabbedContainerScreen<T extends AbstractContainerMenu & de
             for (Tab tab : tabs) {
                 if (tab instanceof TabScrollAble && tab.isVisible() && tab.isOpen()) {
                     if (tab.isCursorOnTabBody((int) v, (int) v1)) {
-                        ((TabScrollAble) tab).mouseScrolled(v, v1, v2);
+                        ((TabScrollAble) tab).mouseScrolled(v, v1, 0, v2);
                         return true;
                     }
                 }

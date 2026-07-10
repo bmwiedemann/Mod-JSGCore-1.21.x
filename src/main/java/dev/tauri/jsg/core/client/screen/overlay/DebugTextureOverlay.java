@@ -9,10 +9,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Items;
-import net.neoforged.neoforge.client.gui.overlay.ForgeGui;
+import net.minecraft.client.DeltaTracker;
 
 public class DebugTextureOverlay {
-    public static void render(ForgeGui forgeGui, GuiGraphics graphics, float partialTicks, int packedLight, int packedOverlay) {
+    public static void render(GuiGraphics graphics, DeltaTracker deltaTracker) {
         var player = Minecraft.getInstance().player;
         if (player == null) return;
         if (player.isSpectator()) return;

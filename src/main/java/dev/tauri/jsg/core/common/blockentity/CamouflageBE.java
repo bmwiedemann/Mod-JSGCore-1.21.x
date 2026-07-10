@@ -118,7 +118,7 @@ public abstract class CamouflageBE extends JSGBlockEntity implements BEStateProv
 
 
     @Override
-    public void saveAdditional(@NotNull CompoundTag compound) {
+    protected void saveAdditional(@NotNull CompoundTag compound, net.minecraft.core.HolderLookup.@NotNull Provider registries) {
         var camoBlockData = new CompoundTag();
         String[] data = camoBlock.toString().split("\\[");
         camoBlockData.putString("id", data[0].replace("Block{", "").replace("}", ""));
@@ -134,11 +134,11 @@ public abstract class CamouflageBE extends JSGBlockEntity implements BEStateProv
         }
         // compound.putInt("camoBlock_id", Block.getId(camoBlock));
         compound.put("camoBlock_data", camoBlockData);
-        super.saveAdditional(compound);
+        super.saveAdditional(compound, registries);
     }
 
     @Override
-    public void load(@NotNull CompoundTag compound) {
+    protected void loadAdditional(@NotNull CompoundTag compound, net.minecraft.core.HolderLookup.@NotNull Provider registries) {
         if (compound.contains("camoBlock_data")) {
             var camoBlockData = compound.getCompound("camoBlock_data");
             Block block = BuiltInRegistries.BLOCK.get(JSGMapping.rl(camoBlockData.getString("id")));
@@ -155,7 +155,7 @@ public abstract class CamouflageBE extends JSGBlockEntity implements BEStateProv
             }
         } else if (compound.contains("camoBlock_id"))
             camoBlock = Block.stateById(compound.getInt("camoBlock_id"));
-        super.load(compound);
+        super.loadAdditional(compound, registries);
     }
 
     @SuppressWarnings("unchecked")

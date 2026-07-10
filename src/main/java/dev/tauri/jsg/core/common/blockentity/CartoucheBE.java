@@ -155,7 +155,6 @@ public class CartoucheBE extends CamouflageBE implements ITickable, BEStateProvi
         setChanged();
     }
 
-    @Override
     public JSGAxisAlignedBB getRenderBoundingBox() {
         return RotationUtil.rotate(new JSGAxisAlignedBB(0, 0, 0, 1, 3, 0.3), RotationUtil.getRotation(getBlockState()), new Vec3(0.5, 0.5, 0.5)).offset(getBlockPos());
     }
@@ -211,7 +210,7 @@ public class CartoucheBE extends CamouflageBE implements ITickable, BEStateProvi
 
     @Override
     @ParametersAreNonnullByDefault
-    public void saveAdditional(CompoundTag compound) {
+    public void saveAdditional(CompoundTag compound, net.minecraft.core.HolderLookup.Provider registries) {
         compound.putBoolean("needRegeneration", needRegeneration);
         if (regenerationForDim != null)
             compound.putString("regenerationForDim", regenerationForDim.toString());
@@ -222,12 +221,12 @@ public class CartoucheBE extends CamouflageBE implements ITickable, BEStateProvi
         }
         compound.putInt("color", color.getId());
         compound.putBoolean("shiny", shiny);
-        super.saveAdditional(compound);
+        super.saveAdditional(compound, registries);
     }
 
     @Override
     @ParametersAreNonnullByDefault
-    public void load(CompoundTag compound) {
+    public void loadAdditional(CompoundTag compound, net.minecraft.core.HolderLookup.Provider registries) {
         needRegeneration = compound.getBoolean("needRegeneration");
         if (compound.contains("regenerationForDim"))
             regenerationForDim = JSGMapping.rl(compound.getString("regenerationForDim"));
@@ -239,7 +238,7 @@ public class CartoucheBE extends CamouflageBE implements ITickable, BEStateProvi
         if (compound.contains("color"))
             color = DyeColor.byId(compound.getInt("color"));
         shiny = compound.getBoolean("shiny");
-        super.load(compound);
+        super.loadAdditional(compound, registries);
     }
 
     @Override

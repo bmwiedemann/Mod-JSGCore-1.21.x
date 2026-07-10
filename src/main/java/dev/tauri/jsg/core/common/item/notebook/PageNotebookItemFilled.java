@@ -97,7 +97,7 @@ public class PageNotebookItemFilled extends JSGItem {
 
     public static void setName(CompoundTag page, String name) {
         CompoundTag display = new CompoundTag();
-        display.putString("Name", Component.Serializer.toJson(Component.literal(name)));
+        display.putString("Name", Component.Serializer.toJson(Component.literal(name), net.minecraft.core.RegistryAccess.EMPTY));
         page.put("display", display);
     }
 
@@ -109,7 +109,7 @@ public class PageNotebookItemFilled extends JSGItem {
         if (compound != null && compound.contains("display")) {
             CompoundTag display = compound.getCompound("display");
             if (display.contains("Name")) {
-                return Optional.of(Objects.requireNonNull(Component.Serializer.fromJson(display.getString("Name"))).getString());
+                return Optional.of(Objects.requireNonNull(Component.Serializer.fromJson(display.getString("Name"), net.minecraft.core.RegistryAccess.EMPTY)).getString());
             }
         }
 

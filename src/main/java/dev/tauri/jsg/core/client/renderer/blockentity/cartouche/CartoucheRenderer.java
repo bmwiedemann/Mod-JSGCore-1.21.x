@@ -158,7 +158,7 @@ public class CartoucheRenderer implements BlockEntityRenderer<CartoucheBE>, Link
 
                 Tesselator tessellator = Tesselator.getInstance();
                 var matrix = poseStack.last().pose();
-                var normalMat = poseStack.last().setNormal();
+                var normalMat = poseStack.last();
                 BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
                 bufferbuilder.addVertex(matrix, finalXx, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
                 bufferbuilder.addVertex(matrix, finalXx + finalW, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);

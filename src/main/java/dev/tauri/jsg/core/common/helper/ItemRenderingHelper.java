@@ -21,7 +21,7 @@ public class ItemRenderingHelper {
         PlayerRenderer playerRenderer = (PlayerRenderer) Minecraft.getInstance().getEntityRenderDispatcher().getRenderer(player);
         stack.pushPose();
 
-        RenderSystem.setShaderTexture(0, player.getSkinTextureLocation());
+        RenderSystem.setShaderTexture(0, player.getSkin().texture());
         if (hand == HumanoidArm.RIGHT) {
             playerRenderer.renderRightHand(stack, bufferSource, light, player);
         } else {

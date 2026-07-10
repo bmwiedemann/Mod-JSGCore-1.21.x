@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class ConfigList extends ObjectSelectionList<AbstractConfigEntry> {
     public ConfigList(Minecraft minecraft, int screenWidth, int screenHeight, int yStart, int yEnd, int itemHeight) {
-        super(minecraft, screenWidth, screenHeight, yStart, yEnd, itemHeight);
+        super(minecraft, screenWidth, yEnd - yStart, yStart, itemHeight);
     }
 
     public ConfigList(JSGConfigChild jsgConfigChild, Minecraft minecraft, int screenWidth, int screenHeight, int yStart, int yEnd, int itemHeight) {

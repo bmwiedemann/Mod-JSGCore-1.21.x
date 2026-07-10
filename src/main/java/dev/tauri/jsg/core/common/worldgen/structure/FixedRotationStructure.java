@@ -46,7 +46,7 @@ public class FixedRotationStructure extends Structure {
     public static DataResult<FixedRotationStructure> verifyRange(FixedRotationStructure structure) {
         int i = switch (structure.terrainAdaptation()) {
             case NONE -> 0;
-            case BURY, BEARD_THIN, BEARD_BOX -> 12;
+            case BURY, BEARD_THIN, BEARD_BOX, ENCAPSULATE -> 12;
         };
         return structure.maxDistanceFromCenter + i > MAX_TOTAL_STRUCTURE_RANGE ? DataResult.error(() -> ("Structure size including terrain adaptation must not exceed " + MAX_TOTAL_STRUCTURE_RANGE)) : DataResult.success(structure);
     }

@@ -35,9 +35,7 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
         if (modelBuffer == null) {
             Tesselator tesselator = Tesselator.getInstance();
             modelBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-            if (!bufferbuilder.building()) {
-                BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
-            }
+            BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
             int vertexCount = model.vertices.length;
             for (int i = 0; i < vertexCount; i += 3) {
                 var uv1 = new Vector2f(model.textureCoords[i / 3 * 2], model.textureCoords[i / 3 * 2 + 1]);
@@ -47,7 +45,7 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
                         .setUv(uv1.x, uv1.y)
                         ;
             }
-            var rb = bufferbuilder.end();
+            var rb = bufferbuilder.buildOrThrow();
             modelBuffer.bind();
             modelBuffer.upload(rb);
             VertexBuffer.unbind();
@@ -69,7 +67,7 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
             modelBuffer.bind();
         }, () -> {
             @SuppressWarnings("all")
-            Matrix4f projectionMatrix = (new Matrix4f()).setOrtho(0.0F, (float) ((double) Minecraft.getInstance().getWindow().getWidth() / Minecraft.getInstance().getWindow().getGuiScale()), (float) ((double) Minecraft.getInstance().getWindow().getHeight() / Minecraft.getInstance().getWindow().getGuiScale()), 0.0F, -1000.0F, net.neoforged.neoforge.client.ForgeHooksClient.getGuiFarPlane());
+            Matrix4f projectionMatrix = (new Matrix4f()).setOrtho(0.0F, (float) ((double) Minecraft.getInstance().getWindow().getWidth() / Minecraft.getInstance().getWindow().getGuiScale()), (float) ((double) Minecraft.getInstance().getWindow().getHeight() / Minecraft.getInstance().getWindow().getGuiScale()), 0.0F, -1000.0F, net.neoforged.neoforge.client.ClientHooks.getGuiFarPlane());
             modelBuffer.drawWithShader(poseStack.last().pose(), projectionMatrix, Objects.requireNonNull(RenderSystem.getShader()));
             VertexBuffer.unbind();
             GL46C.glDisable(GL46C.GL_DEPTH_CLAMP);

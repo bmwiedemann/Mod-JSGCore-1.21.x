@@ -71,13 +71,6 @@ public class IconButtonWithScreen extends ButtonWithIcon implements ForegroundRe
     }
 
     @Override
-    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        if (this.visible) {
-            this.renderWidget(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-        }
-    }
-
-    @Override
     protected void renderWidget(GuiGraphics graphics, int mouseX, int mouseY, float pPartialTick) {
         this.isHovered = this.visible && updateHover(mouseX, mouseY);
         super.renderWidget(graphics, mouseX, mouseY, pPartialTick);
@@ -121,7 +114,7 @@ public class IconButtonWithScreen extends ButtonWithIcon implements ForegroundRe
 
     @Override
     public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double pDelta) {
-        if (showScreen() && subScreen.mouseScrolled(pMouseX, pMouseY, pDelta)) return true;
+        if (showScreen() && subScreen.mouseScrolled(pMouseX, pMouseY, 0, pDelta)) return true;
         return super.mouseScrolled(pMouseX, pMouseY, scrollX, pDelta);
     }
 

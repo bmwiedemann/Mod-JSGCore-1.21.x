@@ -89,7 +89,7 @@ public class HandHeldDeviceRenderer {
                     .setColor(r, g, b, a)
                     ;
         }
-        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(buffer.buildOrThrow());
     }
 
     public static void drawModalRectWithCustomSizedTexture(PoseStack poseStack, MultiBufferSource source, int light, float x, float y, float z, float u, float v, float width, float height, float textureWidth, float textureHeight) {

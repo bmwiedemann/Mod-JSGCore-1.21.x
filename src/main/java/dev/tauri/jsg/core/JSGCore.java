@@ -1,6 +1,7 @@
 package dev.tauri.jsg.core;
 
 import net.neoforged.fml.common.EventBusSubscriber;
+import dev.tauri.jsg.core.mapping.JSGMapping;
 import dev.tauri.jsg.core.client.CoreLoadersHolder;
 import dev.tauri.jsg.core.client.LoadersHolder;
 import dev.tauri.jsg.core.client.loader.model.ModelLoader;
@@ -139,7 +140,7 @@ public class JSGCore {
 
         @SubscribeEvent
         public static void onLoadersRegister(ModelEvent.RegisterGeometryLoaders event) {
-            event.register("handheld_item_model", JSGBlockModel.Loader.INSTANCE);
+            event.register(JSGMapping.rl(JSGCore.MOD_ID, "handheld_item_model"), JSGBlockModel.Loader.INSTANCE);
         }
     }
 }

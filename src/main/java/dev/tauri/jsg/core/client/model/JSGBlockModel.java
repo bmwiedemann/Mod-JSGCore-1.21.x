@@ -138,15 +138,15 @@ public class JSGBlockModel extends BlockModel implements IUnbakedGeometry<JSGBlo
     }
 
     @Override
-    public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
-        return bake(baker, this, spriteGetter, modelState, modelLocation, true);
+    public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
+        return bake(baker, this, spriteGetter, modelState, true);
     }
 
     @Override
     @ParametersAreNonnullByDefault
     @NotNull
-    public BakedModel bake(ModelBaker pBaker, BlockModel pModel, Function<Material, TextureAtlasSprite> pSpriteGetter, ModelState pState, ResourceLocation pLocation, boolean pGuiLight3d) {
-        return new dev.tauri.jsg.core.client.model.JSGBakedModelWrapper(super.bake(pBaker, pModel, pSpriteGetter, pState, pLocation, pGuiLight3d), customRenderTypes, ignoreJsonTransformations);
+    public BakedModel bake(ModelBaker pBaker, BlockModel pModel, Function<Material, TextureAtlasSprite> pSpriteGetter, ModelState pState, boolean pGuiLight3d) {
+        return new dev.tauri.jsg.core.client.model.JSGBakedModelWrapper(super.bake(pBaker, pModel, pSpriteGetter, pState, pGuiLight3d), customRenderTypes, ignoreJsonTransformations);
     }
 
     @Override

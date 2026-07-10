@@ -322,7 +322,7 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
         PoseStack poseStack = new PoseStack();
         poseStack.mulPose(modelViewMatrix);
         if (Integrations.STELLAR_VIEW.isLoaded()) {
-            return StellarViewCompatibility.renderSky(level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, setupFog);
+            return StellarViewCompatibility.renderSky(level, ticks, partialTick, modelViewMatrix, camera, projectionMatrix, isFoggy, setupFog);
         }
 
         setupFog.run();
