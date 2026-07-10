@@ -1,0 +1,67 @@
+package dev.tauri.jsg.core.client.listener;
+
+import dev.tauri.jsg.core.JSGCore;
+import dev.tauri.jsg.core.client.LoadersHolder;
+import dev.tauri.jsg.core.client.screen.overlay.DebugTextureOverlay;
+import dev.tauri.jsg.core.common.item.notebook.PageNotebookItemFilled;
+import dev.tauri.jsg.core.common.registry.CoreItems;
+import dev.tauri.jsg.core.mapping.JSGMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.Unit;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import java.util.Optional;
+
+@Mod.EventBusSubscriber(modid = JSGCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class CoreClientEventHandler {
+
+    @SubscribeEvent
+    public static void registerBindings(RegisterKeyMappingsEvent event) {
+        for (var m : InputHandler.KEY_BINDINGS)
+            event.register(m);
+    }
+
+    @SubscribeEvent
+    public static void onResourcesReload(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener((pPreparationBarrier, pResourceManager, pPreparationsProfiler, pReloadProfiler, pBackgroundExecutor, pGameExecutor) ->
+                pPreparationBarrier.wait(Unit.INSTANCE).thenRunAsync(() -> {
+                    LoadersHolder.load(pReloadProfiler);
+                    // turn off music
+                    try {
+                        Minecraft.getInstance().getSoundManager().stop();
+                    } catch (Exception ignored) {
+                    }
+                }, pBackgroundExecutor));
+    }
+
+    @SubscribeEvent
+    public static void registerColoredItems(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, layerIndex) -> {
+            if (layerIndex != 1) return -1;
+            if (!stack.hasTag()) return -1;
+            var tag = stack.getOrCreateTag();
+            if (!tag.contains("biome")) return -1;
+            var access = Optional.ofNullable(Minecraft.getInstance().level).map(Level::registryAccess)
+                    .orElseGet(() -> Optional.ofNullable(Minecraft.getInstance().getConnection()).map(ClientPacketListener::registryAccess)
+                            .orElseGet(() -> Optional.ofNullable(Minecraft.getInstance().getSingleplayerServer()).map(MinecraftServer::registryAccess).orElse(null)));
+            var biomeLocation = JSGMapping.rl(tag.getString("biome"));
+            return PageNotebookItemFilled.getColorForBiome(stack, access, ResourceKey.create(Registries.BIOME, biomeLocation));
+        }, CoreItems.NOTEBOOK_PAGE_FILLED.get());
+    }
+
+    @SubscribeEvent
+    public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+        event.registerAboveAll("texture_debug_overlay", DebugTextureOverlay::render);
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "jsg_core:block/ore/cube_bottom_top_double",
+  "textures": {
+    "bottomNormal": "minecraft:block/sandstone_bottom",
+    "sideNormal": "minecraft:block/sandstone",
+    "topNormal": "minecraft:block/sandstone_top",
+    "particle": "minecraft:block/sandstone",
+    "overlay": "jsg_core:block/budding/budding_unstable_overlay_stage_2",
+    "topOverlay": "jsg_core:block/budding/budding_red_unstable_overlay_stage_2"
+  }
+}

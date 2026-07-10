@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:raw_trinium_ore",
+  "ingredients": [
+    {
+      "tag": "jsg_core:storage_blocks/raw_trinium"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jsg_core:trinium_raw"
+  }
+}

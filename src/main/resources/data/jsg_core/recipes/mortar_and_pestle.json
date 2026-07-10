@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "jsg_core:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "jsg_core:pestle"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:mortar_and_pestle"
+  }
+}

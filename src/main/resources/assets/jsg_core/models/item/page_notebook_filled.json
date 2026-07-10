@@ -1,0 +1,13 @@
+{
+    "loader": "jsg_core:handheld_item_model",
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "jsg_core:item/tools/page_base",
+        "layer1": "jsg_core:item/tools/page_overlay"
+    },
+    "custom_render_types": [
+        "FIRST_PERSON_LEFT_HAND",
+        "FIRST_PERSON_RIGHT_HAND",
+        "FIXED"
+    ]
+}

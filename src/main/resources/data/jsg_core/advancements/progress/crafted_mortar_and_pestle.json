@@ -1,0 +1,33 @@
+{
+  "parent": "jsg_core:progress/page_empty",
+  "criteria": {
+    "crafted_mortar_and_pestle": {
+      "conditions": {
+        "recipe_id": "jsg_core:mortar_and_pestle"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.crafted_mortar_and_pestle.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:mortar_and_pestle",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.crafted_mortar_and_pestle.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_mortar_and_pestle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

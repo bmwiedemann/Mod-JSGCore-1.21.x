@@ -1,0 +1,78 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/netherrack",
+        "x": 270,
+        "y": 270
+      }
+    ]
+  }
+}

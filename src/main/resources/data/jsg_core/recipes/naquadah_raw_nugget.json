@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:raw_naquadah_nugget",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/naquadah"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jsg_core:naquadah_raw_nugget"
+  }
+}

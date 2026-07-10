@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:end_stone_bricks_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:end_stone_bricks"
+    },
+    "C": {
+      "item": "jsg_core:six_symbol_end_stone_bricks_cartouche"
+    }
+  },
+  "pattern": [
+    "B ",
+    "C "
+  ],
+  "result": {
+    "item": "jsg_core:seven_symbol_end_stone_bricks_cartouche"
+  },
+  "show_notification": true
+}

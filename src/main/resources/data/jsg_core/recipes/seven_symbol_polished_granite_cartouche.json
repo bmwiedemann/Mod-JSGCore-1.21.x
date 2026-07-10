@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:polished_granite_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:polished_granite"
+    },
+    "C": {
+      "item": "jsg_core:six_symbol_polished_granite_cartouche"
+    }
+  },
+  "pattern": [
+    "B ",
+    "C "
+  ],
+  "result": {
+    "item": "jsg_core:seven_symbol_polished_granite_cartouche"
+  },
+  "show_notification": true
+}

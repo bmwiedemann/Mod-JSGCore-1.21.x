@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/copper_ingot_exposed_obtained",
+  "criteria": {
+    "has_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:weathered_copper_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.copper_ingot_weathered_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:weathered_copper_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.copper_ingot_weathered_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_copper"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

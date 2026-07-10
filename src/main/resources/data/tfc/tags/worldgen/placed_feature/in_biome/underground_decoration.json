@@ -1,0 +1,12 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "jsg_core:blue_crystal_geode",
+    "jsg_core:ender_crystal_geode",
+    "jsg_core:pegasus_crystal_geode",
+    "jsg_core:red_crystal_geode",
+    "jsg_core:white_crystal_geode",
+    "jsg_core:yellow_crystal_geode"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "jsg_core:progress/crafted_mortar_and_pestle",
+  "criteria": {
+    "crafted_crushed_calcite": {
+      "conditions": {
+        "recipe_id": "jsg_core:crushed_calcite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.crafted_crushed_calcite.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:crushed_calcite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.crafted_crushed_calcite.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_crushed_calcite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

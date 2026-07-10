@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_naquadah_alloy_block": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:storage_blocks/naquadah_alloy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:naquadah_alloy_block_to_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_naquadah_alloy_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:naquadah_alloy_block_to_ingot"
+    ]
+  },
+  "sends_telemetry_event": false
+}

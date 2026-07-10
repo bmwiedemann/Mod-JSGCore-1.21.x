@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:notebook_page",
+  "ingredients": [
+    {
+      "item": "jsg_core:page_notebook_filled"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:page_notebook_empty"
+  }
+}

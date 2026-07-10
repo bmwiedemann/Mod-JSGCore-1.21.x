@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/circuit_control_crystal_obtained",
+  "criteria": {
+    "has_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:crystal_upgrade_efficiency"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.efficiency_crystal_obtain.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:crystal_upgrade_efficiency"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.efficiency_crystal_obtain.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

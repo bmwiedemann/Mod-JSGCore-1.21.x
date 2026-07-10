@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/root",
+  "criteria": {
+    "has_page": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:page_notebook_empty"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.page_empty.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:page_notebook_empty"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.page_empty.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_page"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:titanium_ingot",
+  "ingredients": [
+    {
+      "tag": "jsg_core:storage_blocks/titanium"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jsg_core:titanium_ingot"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#jsg_core:has_trinium_generated",
+  "features": [
+    "jsg_core:trinium_ore"
+  ],
+  "step": "underground_ores"
+}

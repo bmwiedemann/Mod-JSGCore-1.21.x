@@ -1,0 +1,9 @@
+{
+  "misc.page.flip": {
+    "category": "ambient",
+    "subtitle": "jsg_core.subtitle.page_flip",
+    "sounds": [
+      "jsg_core:misc/page_flip"
+    ]
+  }
+}

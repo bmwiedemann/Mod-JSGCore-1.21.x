@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "jsg_core:block/crystal/red_crystal_block"
+    }
+  }
+}

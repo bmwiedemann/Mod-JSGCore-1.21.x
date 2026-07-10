@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:basic_energy_crystal",
+  "key": {
+    "C": {
+      "tag": "jsg_core:gems/red"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "I": {
+      "item": "jsg_core:circuit_control_naquadah"
+    },
+    "S": {
+      "tag": "jsg_core:gems/red_small"
+    }
+  },
+  "pattern": [
+    "SDC",
+    "DID",
+    "CDS"
+  ],
+  "result": {
+    "item": "jsg_core:basic_energy_crystal"
+  },
+  "show_notification": true
+}

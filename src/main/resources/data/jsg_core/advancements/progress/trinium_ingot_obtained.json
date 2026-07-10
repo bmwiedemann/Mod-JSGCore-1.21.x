@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/titanium_ingot_obtained",
+  "criteria": {
+    "has_trinium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:trinium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.trinium_ingot_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:trinium_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.trinium_ingot_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_trinium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

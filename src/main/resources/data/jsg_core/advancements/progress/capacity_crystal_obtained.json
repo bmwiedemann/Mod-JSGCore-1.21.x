@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/efficiency_crystal_obtained",
+  "criteria": {
+    "has_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:crystal_upgrade_capacity"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.capacity_crystal_obtain.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:crystal_upgrade_capacity"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.capacity_crystal_obtain.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

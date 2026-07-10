@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_trinium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:deepslate_trinium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:trinium_ingot_from_blasting_deepslate_trinium_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_deepslate_trinium_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:trinium_ingot_from_blasting_deepslate_trinium_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "jsg_core:block/ore/naquadah/raw_material"
+    }
+  }
+}

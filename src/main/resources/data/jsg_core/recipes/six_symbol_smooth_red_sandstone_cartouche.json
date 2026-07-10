@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:smooth_red_sandstone_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:smooth_red_sandstone"
+    }
+  },
+  "pattern": [
+    " B ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "item": "jsg_core:six_symbol_smooth_red_sandstone_cartouche"
+  },
+  "show_notification": true
+}

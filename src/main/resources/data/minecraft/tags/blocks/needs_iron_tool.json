@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#jsg_core:ores/naquadah",
+    "#jsg_core:ores/titanium",
+    "#jsg_core:storage_blocks/raw_naquadah",
+    "#jsg_core:storage_blocks/raw_titanium",
+    "#jsg_core:storage_blocks/naquadah",
+    "#jsg_core:storage_blocks/naquadah_alloy",
+    "#jsg_core:storage_blocks/titanium"
+  ]
+}

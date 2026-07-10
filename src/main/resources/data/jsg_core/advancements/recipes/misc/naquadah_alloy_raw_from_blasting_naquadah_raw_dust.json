@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_naquadah_raw_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:naquadah_raw_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:naquadah_alloy_raw_from_blasting_naquadah_raw_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_naquadah_raw_dust",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:naquadah_alloy_raw_from_blasting_naquadah_raw_dust"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#jsg_core:gems/blue",
+    "#jsg_core:gems/ender",
+    "#jsg_core:gems/pegasus",
+    "#jsg_core:gems/red",
+    "#jsg_core:gems/white",
+    "#jsg_core:gems/yellow",
+    "#jsg_core:gems/blue_small",
+    "#jsg_core:gems/ender_small",
+    "#jsg_core:gems/pegasus_small",
+    "#jsg_core:gems/red_small",
+    "#jsg_core:gems/white_small",
+    "#jsg_core:gems/yellow_small"
+  ]
+}

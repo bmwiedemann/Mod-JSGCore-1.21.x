@@ -1,0 +1,8 @@
+{
+  "parent": "jsg_core:block/ore/cube_ore_mirrored",
+  "textures": {
+    "normal": "minecraft:block/stone",
+    "particle": "minecraft:block/stone",
+    "overlay": "jsg_core:block/budding/budding_pegasus_crystal_overlay"
+  }
+}

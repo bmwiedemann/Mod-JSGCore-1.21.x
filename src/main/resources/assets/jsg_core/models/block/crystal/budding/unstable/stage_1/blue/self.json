@@ -1,0 +1,9 @@
+{
+  "parent": "jsg_core:block/ore/cube_ore_double",
+  "textures": {
+    "normal": "jsg_core:block/crystal/blue_crystal_block",
+    "particle": "jsg_core:block/crystal/blue_crystal_block",
+    "overlay": "jsg_core:block/budding/budding_unstable_overlay_stage_1",
+    "topOverlay": "jsg_core:block/budding/budding_blue_unstable_overlay_stage_1"
+  }
+}

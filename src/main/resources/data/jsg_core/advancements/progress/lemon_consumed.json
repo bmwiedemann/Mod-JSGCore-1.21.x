@@ -1,0 +1,36 @@
+{
+  "parent": "jsg_core:progress/lemon_trap_planted",
+  "criteria": {
+    "eat_lemon": {
+      "conditions": {
+        "item": {
+          "items": [
+            "jsg_core:slice_lemon"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.food_lemon_consumed.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:slice_lemon"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.food_lemon_consumed.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_lemon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

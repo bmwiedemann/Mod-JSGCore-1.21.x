@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:trinium_ingot_from_blasting_trinium_raw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_trinium_raw": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:trinium_raw"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_trinium_raw",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:trinium_ingot_from_blasting_trinium_raw"
+    ]
+  },
+  "sends_telemetry_event": false
+}

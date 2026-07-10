@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:gear_trinium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_trinium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:ingots/trinium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_trinium_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:gear_trinium"
+    ]
+  },
+  "sends_telemetry_event": false
+}

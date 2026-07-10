@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:trinium_dust",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/trinium"
+    },
+    {
+      "item": "jsg_core:mortar_and_pestle"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:trinium_dust"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:crushed_calcite",
+  "ingredients": [
+    {
+      "item": "jsg_core:mortar_and_pestle"
+    },
+    {
+      "item": "minecraft:calcite"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "jsg_core:crushed_calcite"
+  }
+}

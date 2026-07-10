@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:lemon",
+  "ingredients": [
+    {
+      "item": "jsg_core:trap_lemon"
+    },
+    {
+      "item": "jsg_core:knife"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:slice_lemon"
+  }
+}

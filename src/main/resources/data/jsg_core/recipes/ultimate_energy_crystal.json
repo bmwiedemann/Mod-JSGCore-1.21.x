@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:ultimate_energy_crystal",
+  "key": {
+    "A": {
+      "item": "jsg_core:advanced_energy_crystal"
+    },
+    "C": {
+      "tag": "jsg_core:gems/pegasus"
+    },
+    "N": {
+      "tag": "forge:ingots/netherite"
+    },
+    "S": {
+      "tag": "jsg_core:gems/pegasus_small"
+    },
+    "T": {
+      "tag": "forge:nether_stars"
+    }
+  },
+  "pattern": [
+    "SNA",
+    "CTC",
+    "ANS"
+  ],
+  "result": {
+    "item": "jsg_core:ultimate_energy_crystal"
+  },
+  "show_notification": true
+}

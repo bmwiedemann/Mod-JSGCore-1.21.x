@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:copper_ingot_oxidized",
+  "ingredients": [
+    [
+      {
+        "item": "minecraft:oxidized_copper"
+      },
+      {
+        "item": "minecraft:waxed_oxidized_copper"
+      }
+    ]
+  ],
+  "result": {
+    "count": 9,
+    "item": "jsg_core:oxidized_copper_ingot"
+  }
+}

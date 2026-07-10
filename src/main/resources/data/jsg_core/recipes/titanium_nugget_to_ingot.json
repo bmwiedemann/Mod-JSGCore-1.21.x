@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:titanium_ingot",
+  "key": {
+    "#": {
+      "tag": "jsg_core:nuggets/titanium"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "jsg_core:titanium_ingot"
+  },
+  "show_notification": true
+}

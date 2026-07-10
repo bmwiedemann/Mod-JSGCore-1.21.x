@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/circuit_control_naquadah_obtained",
+  "criteria": {
+    "has_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:circuit_control_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.circuit_control_crystal_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:circuit_control_crystal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.circuit_control_crystal_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_circuit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

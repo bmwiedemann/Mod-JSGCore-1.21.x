@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_endstone_titanium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:endstone_titanium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:titanium_ingot_from_blasting_endstone_titanium_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_endstone_titanium_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:titanium_ingot_from_blasting_endstone_titanium_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

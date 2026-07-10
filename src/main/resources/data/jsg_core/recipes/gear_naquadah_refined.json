@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:gear_naquadah_refined",
+  "key": {
+    "#": {
+      "tag": "jsg_core:ingots/naquadah_refined"
+    }
+  },
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "result": {
+    "item": "jsg_core:gear_naquadah_refined"
+  },
+  "show_notification": true
+}

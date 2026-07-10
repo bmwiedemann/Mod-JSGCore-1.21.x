@@ -1,0 +1,7 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jsg_core:block/crystal/bud/small/small_pegasus_crystal_bud"
+  }
+}

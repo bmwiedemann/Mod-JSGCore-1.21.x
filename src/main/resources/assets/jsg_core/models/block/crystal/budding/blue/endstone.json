@@ -1,0 +1,8 @@
+{
+  "parent": "jsg_core:block/ore/cube_ore",
+  "textures": {
+    "normal": "minecraft:block/end_stone",
+    "particle": "minecraft:block/end_stone",
+    "overlay": "jsg_core:block/budding/budding_blue_crystal_overlay"
+  }
+}

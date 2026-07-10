@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jsg_core:block/crystal/budding/ender/stone"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/ender/stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

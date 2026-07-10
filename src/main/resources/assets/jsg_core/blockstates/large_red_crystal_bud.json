@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud"
+    },
+    "facing=west": {
+      "model": "jsg_core:block/crystal/large_red_crystal_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

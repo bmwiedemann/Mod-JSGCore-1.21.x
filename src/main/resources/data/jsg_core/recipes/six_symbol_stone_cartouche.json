@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:stone_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    " B ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "item": "jsg_core:six_symbol_stone_cartouche"
+  },
+  "show_notification": true
+}

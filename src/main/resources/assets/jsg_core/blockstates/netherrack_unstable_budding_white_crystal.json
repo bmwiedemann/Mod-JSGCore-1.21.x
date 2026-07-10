@@ -1,0 +1,226 @@
+{
+  "variants": {
+    "age=0": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/netherrack",
+        "x": 270,
+        "y": 270
+      }
+    ],
+    "age=1": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/netherrack",
+        "x": 270,
+        "y": 270
+      }
+    ],
+    "age=2": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/netherrack",
+        "x": 270,
+        "y": 270
+      }
+    ]
+  }
+}

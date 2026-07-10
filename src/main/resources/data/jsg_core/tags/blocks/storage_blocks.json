@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#jsg_core:storage_blocks/crystal",
+    "#jsg_core:storage_blocks/raw_naquadah",
+    "#jsg_core:storage_blocks/raw_titanium",
+    "#jsg_core:storage_blocks/raw_trinium",
+    "#jsg_core:storage_blocks/naquadah",
+    "#jsg_core:storage_blocks/naquadah_alloy",
+    "#jsg_core:storage_blocks/naquadah_refined",
+    "#jsg_core:storage_blocks/titanium",
+    "#jsg_core:storage_blocks/trinium"
+  ]
+}

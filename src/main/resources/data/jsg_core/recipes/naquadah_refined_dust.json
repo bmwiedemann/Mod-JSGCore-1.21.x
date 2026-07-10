@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:naquadah_refined_dust",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/naquadah_refined"
+    },
+    {
+      "item": "jsg_core:mortar_and_pestle"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:naquadah_refined_dust"
+  }
+}

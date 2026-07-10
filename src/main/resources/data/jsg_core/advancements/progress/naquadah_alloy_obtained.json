@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/raw_naquadah_bucket_obtained",
+  "criteria": {
+    "has_naquadah_alloy": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:naquadah_alloy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.naquadah_alloy_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:naquadah_alloy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.naquadah_alloy_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_naquadah_alloy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

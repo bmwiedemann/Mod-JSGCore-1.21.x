@@ -1,0 +1,60 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Created by Carter's Toaster aka Fredyman_95",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "jsg_core:block/jub/jub_universal",
+		"particle": "jsg_core:block/jub/jub_universal"
+	},
+	"elements": [
+		{
+			"name": "down-center",
+			"from": [5, 0, 5],
+			"to": [11, 11, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.5, 8]},
+			"faces": {
+				"north": {"uv": [5.5, 8, 2.5, 2.5], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [5.5, 8, 2.5, 2.5], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [2.5, 2.5, 5.5, 8], "texture": "#0"},
+				"west": {"uv": [5.5, 8, 2.5, 2.5], "rotation": 180, "texture": "#0"},
+				"up": {"uv": [10.5, 1, 13.5, 4], "texture": "#0"},
+				"down": {"uv": [13.5, 1, 10.5, 4], "rotation": 180, "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 45, 0],
+			"translation": [0, 0.25, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 45, 0],
+			"translation": [0, 0.25, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"firstperson_righthand": {
+			"translation": [2.75, 0, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"translation": [2.75, 0, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.35, 0.35, 0.34]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [-0.75, 0.5, 0],
+			"scale": [0.66, 0.66, 0.66]
+		},
+		"head": {
+			"translation": [0, 9.25, 2.25]
+		},
+		"fixed": {
+			"translation": [-0.25, 0, 2.25],
+			"scale": [0.7, 0.7, 0.7]
+		}
+	}
+}

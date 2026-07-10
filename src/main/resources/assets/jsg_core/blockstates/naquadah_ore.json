@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "":[
+      {
+        "model": "jsg_core:block/ore/naquadah/stone"
+      },
+      {
+        "model": "jsg_core:block/ore/naquadah/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/ore/naquadah/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/naquadah/stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

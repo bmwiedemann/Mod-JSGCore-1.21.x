@@ -1,0 +1,32 @@
+{
+  "parent": "jsg_core:progress/page_empty",
+  "criteria": {
+    "erase_page": {
+      "conditions": {
+        "recipe_id": "jsg_core:notebook_page_erase"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.page_erase.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "jsg_core:page_notebook_filled"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.page_erase.title"
+    }
+  },
+  "requirements": [
+    [
+      "erase_page"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

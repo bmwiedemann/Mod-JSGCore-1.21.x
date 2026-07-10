@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#jsg_core:plates/naquadah",
+    "#jsg_core:plates/naquadah_alloy",
+    "#jsg_core:plates/naquadah_refined",
+    "#jsg_core:plates/titanium",
+    "#jsg_core:plates/trinium"
+  ]
+}

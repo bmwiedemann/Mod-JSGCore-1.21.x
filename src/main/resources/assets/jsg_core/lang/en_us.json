@@ -1,0 +1,648 @@
+{
+
+  "_comment1": "------------------- CONFIG GUI --------------------",
+
+  "gui.jsg_core.config": "JSG: Core Configuration",
+  "gui.jsg_core.true": "Enabled",
+  "gui.jsg_core.false": "Disabled",
+  "gui.jsg_core.config_child.general": "General Configuration",
+  "gui.jsg_core.config_child.energy": "Energy Configuration",
+  "gui.jsg_core.config_child.computersintegration": "Computers Integration Configuration",
+
+  "_comment100": "----------------- CREATIVE TABS ------------------",
+
+  "itemGroup.jsg_core.transportation": "JSG: Transportation",
+  "itemGroup.jsg_core.resources": "JSG: Resources",
+  "itemGroup.jsg_core.building_blocks": "JSG: Building Blocks",
+  "itemGroup.jsg_core.tools": "JSG: Tools",
+  "itemGroup.jsg_core.upgrades": "JSG: Upgrades",
+  "itemGroup.jsg_core.energy": "JSG: Energy",
+  "itemGroup.jsg_core.fluids": "JSG: Fluids",
+  "itemGroup.jsg_core.integrations": "JSG: Integrations",
+  "itemGroup.jsg_core.cartouches": "JSG: Cartouches",
+
+  "_comment200": "----------------- Advancements ------------------",
+  "advancement.jsg_core.root.title": "Welcome to JSG",
+  "advancement.jsg_core.page_empty.title": "Better then papyrus",
+  "advancement.jsg_core.page_empty.description": "Craft Notebook Page to obtain addresses",
+  "advancement.jsg_core.page_erase.title": "Let's try it again...",
+  "advancement.jsg_core.page_erase.description": "Delete address from filled notebook page",
+  "advancement.jsg_core.crafted_mortar_and_pestle.title": "More than just bowl",
+  "advancement.jsg_core.crafted_mortar_and_pestle.description": "Craft mortar and pestle",
+  "advancement.jsg_core.crafted_crushed_calcite.title": "Crystal fertilizer",
+  "advancement.jsg_core.crafted_crushed_calcite.description": "Crush the calcite into dust",
+  "advancement.jsg_core.lemon_obtained.title": "Keep one with me all times",
+  "advancement.jsg_core.lemon_obtained.description": "Obtain Lemon",
+  "advancement.jsg_core.lemon_trap_planted.title": "One drop and I could die",
+  "advancement.jsg_core.lemon_trap_planted.description": "Obtain a lemon half",
+  "advancement.jsg_core.food_lemon_consumed.title": "I'm mortally allergic to citrus",
+  "advancement.jsg_core.food_lemon_consumed.description": "Consume lemon slices",
+  "advancement.jsg_core.copper_ingot_obtained.title": "How it shines",
+  "advancement.jsg_core.copper_ingot_obtained.description": "Smelt a copper ingot",
+  "advancement.jsg_core.copper_ingot_exposed_obtained.title": "What's happening to my copper?",
+  "advancement.jsg_core.copper_ingot_exposed_obtained.description": "Obtain an exposed copper ingot",
+  "advancement.jsg_core.copper_ingot_weathered_obtained.title": "Why is it green?",
+  "advancement.jsg_core.copper_ingot_weathered_obtained.description": "Obtain a weathered copper ingot",
+  "advancement.jsg_core.copper_ingot_oxidized_obtained.title": "Ancient Copper?",
+  "advancement.jsg_core.copper_ingot_oxidized_obtained.description": "Obtain Oxidized Copper Ingot",
+  "advancement.jsg_core.titanium_ingot_obtained.title": "Better then Iron",
+  "advancement.jsg_core.titanium_ingot_obtained.description": "Smelt a Titanium ingot",
+  "advancement.jsg_core.trinium_ingot_obtained.title": "Did you ask Xe'ls and T'akaya?!",
+  "advancement.jsg_core.trinium_ingot_obtained.description": "Smelt a Trinium ingot",
+  "advancement.jsg_core.cauldron_obtained.title": "Liquid Crafting",
+  "advancement.jsg_core.cauldron_obtained.description": "Use Cauldron for Crafting Advanced Alloys",
+  "advancement.jsg_core.circuit_control_naquadah_obtained.title": "Crystal based technology",
+  "advancement.jsg_core.circuit_control_naquadah_obtained.description": "Dip control circuit base in cauldron with molten naquadah alloy",
+  "advancement.jsg_core.circuit_control_crystal_obtained.title": "Advanced Circuits!",
+  "advancement.jsg_core.efficiency_crystal_obtain.title": "Increase the power output",
+  "advancement.jsg_core.efficiency_crystal_obtain.description": "Obtain Efficiency crystal",
+  "advancement.jsg_core.capacity_crystal_obtain.title": "Mark II Cold Fusion",
+  "advancement.jsg_core.capacity_crystal_obtain.description": "Obtain Capacity crystal",
+  "advancement.jsg_core.circuit_control_crystal_obtained.description": "Dip control circuit base in cauldron with molten trinium",
+  "advancement.jsg_core.raw_naquadah_bucket_obtained.title": "Ka'da!",
+  "advancement.jsg_core.raw_naquadah_bucket_obtained.description": "Melt Raw Naquadah Ingot in cauldron",
+  "advancement.jsg_core.naquadah_alloy_obtained.title": "Naqua... What?",
+  "advancement.jsg_core.naquadah_alloy_obtained.description": "Obtain a Naquadah alloy ingot",
+  "advancement.jsg_core.naquadah_alloy_refined_obtained.title": "Now that's HOT stuff",
+  "advancement.jsg_core.naquadah_alloy_refined_obtained.description": "Obtain a Refined Naquadah ingot",
+  "advancement.jsg_core.cluster_blue_obtained.title": "Here's a whole one",
+  "advancement.jsg_core.cluster_blue_obtained.description": "Obtain blue crystal cluster",
+  "advancement.jsg_core.cluster_red_obtained.title": "Its red not hot!",
+  "advancement.jsg_core.cluster_red_obtained.description": "Obtain red crystal cluster",
+  "advancement.jsg_core.cluster_ender_obtained.title": "Enderman loves it",
+  "advancement.jsg_core.cluster_ender_obtained.description": "Obtain ender crystal cluster",
+  "advancement.jsg_core.cluster_yellow_obtained.title": "Shining in the dark",
+  "advancement.jsg_core.cluster_yellow_obtained.description": "Obtain yellow crystal cluster",
+  "advancement.jsg_core.cluster_white_obtained.title": "Don't touch it!",
+  "advancement.jsg_core.cluster_white_obtained.description": "Obtain white crystal cluster",
+  "advancement.jsg_core.cluster_pegasus_obtained.title": "Cold ice crystal",
+  "advancement.jsg_core.cluster_pegasus_obtained.description": "Obtain pegasus crystal cluster",
+  "advancement.jsg_core.seed_blue_obtained.title": "These pieces might fit together",
+  "advancement.jsg_core.seed_blue_obtained.description": "Obtain blue crystal seed",
+  "advancement.jsg_core.seed_red_obtained.title": "Caution, it burns!",
+  "advancement.jsg_core.seed_red_obtained.description": "Obtain red crystal seed",
+  "advancement.jsg_core.seed_ender_obtained.title": "Looks quite familiar",
+  "advancement.jsg_core.seed_ender_obtained.description": "Obtain ender crystal seed",
+  "advancement.jsg_core.seed_yellow_obtained.title": "What should I do about it?",
+  "advancement.jsg_core.seed_yellow_obtained.description": "Obtain yellow crystal seed",
+  "advancement.jsg_core.seed_white_obtained.title": "Why would you touch it?!",
+  "advancement.jsg_core.seed_white_obtained.description": "Obtain white crystal seed",
+  "advancement.jsg_core.seed_pegasus_obtained.title": "It looks like ice cubes",
+  "advancement.jsg_core.seed_pegasus_obtained.description": "Obtain pegasus crystal seed",
+
+  "_comment300": "---------------------- GUI -----------------------",
+
+  "tooltip.general.hold_shift": "Hold %key% to view advanced tooltip!",
+
+  "_comment301": ">>> Options -> Key Binds <<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "key.categories.jsg_core": "JSG: Core",
+  "config.jsg_core.address_down": "Universe dialer address down",
+  "config.jsg_core.address_scroll": "Universe dialer address scroll",
+  "config.jsg_core.address_up": "Universe dialer address up",
+
+  "_comment302": ">>> Universal GUI text <<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "gui.upgrades": "Upgrades",
+  "gui.energyBuffer": "Energy buffer",
+
+  "_comment303": ">>> Notebook page / Notebook <<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.notebook.unnamed": "<unnamed>",
+
+  "_comment304": ">>> Energy <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "_comment306": "===>>> Config Tab <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "gui.configuration": "Configuration",
+
+  "_comment307": "===>>> Biome Overlay Tab <<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "gui.biome_overlay": "Biome overlay",
+  "gui.biome_overlay.normal": "Normal",
+  "gui.biome_overlay.frost": "Frosty",
+  "gui.biome_overlay.mossy": "Mossy",
+  "gui.biome_overlay.aged": "Aged",
+  "gui.biome_overlay.sooty": "Sooty",
+  "gui.biome_overlay.help": "Insert blocks to override",
+
+  "_comment308": ">>> Compatibility <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "_comment309": "===>>> JEI, JADE etc. - Recipes <<<<<<<<<<<<<<<<<<",
+
+  "gui.jei.category.cauldron.casting": "Cauldron casting",
+  "gui.jei.category.cauldron.smelting": "Cauldron smelting",
+
+  "_comment310": "===>>> Tinkers Construct <<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "material.jsg_core.titanium.encyclopedia": "Causes the tool to mine faster by half of the square root of the trait level times lost durability",
+  "material.jsg_core.titanium.flavor": "Material better than iron with better properties!",
+  "material.jsg_core.titanium.ranged": "Grants -25% durability and +20% projectile power per level",
+  "material.jsg_core.titanium.armor": "Reduce damage from fire immune mobs by 5% per level and reduces fire burn time",
+
+  "material.jsg_core.trinium.encyclopedia": "Grants +15% durability and melee damage per level",
+  "material.jsg_core.trinium.flavor": "Truly durable and lightweight material. Extraction requires a blessing from the Tonane tribe",
+  "material.jsg_core.trinium.ranged": "Grants +0.5% accuracy when not on the ground or ladder",
+  "material.jsg_core.trinium.armor": "Reduces damage from melee attacks by 10% per level and boosts movement speed, when using items by 5% per max level",
+
+  "material.jsg_core.naquadah_alloy_raw.encyclopedia": "Grants bonus mining speed at lower depth",
+  "material.jsg_core.naquadah_alloy_raw.flavor": "The raw version of naquadah is suitable not only for offerings to your gods.",
+  "material.jsg_core.naquadah_alloy_raw.ranged": "Grants -10% durability and +10% projectile power per level",
+  "material.jsg_core.naquadah_alloy_raw.armor": "Grants -10% movement speed per level",
+
+  "material.jsg_core.naquadah_alloy.encyclopedia": "Prevents 33% of damage at the cost of an extra 25% repair cost at first level",
+  "material.jsg_core.naquadah_alloy.flavor": "Probably the best conductor so far!",
+  "material.jsg_core.naquadah_alloy.ranged": "Has a 50% chance of doing up to 5 damage over time, more damage at higher levels",
+  "material.jsg_core.naquadah_alloy.armor": "Grants +10% protection per level against explosions and reduces explosion knockback",
+
+  "material.jsg_core.naquadah_alloy_refined.encyclopedia": "Grants -16% durability per level",
+  "material.jsg_core.naquadah_alloy_refined.flavor": "Highly reactive isotope of naquadah. Suitable as a fuel source for generators!",
+  "material.jsg_core.naquadah_alloy_refined.ranged": "Increases drop chances from mobs killed by arrows",
+  "material.jsg_core.naquadah_alloy_refined.armor": "Temporarily boosts melee damage by 1 after taking damage, capping at the total level across all armor",
+  
+  "_comment400": ">>> Notebook pages / Notebook <<<<<<<<<<<<<<<<<<<<",
+
+  "jsg_core.subtitle.page_flip": "Page flips",
+
+  "_comment500": "--------------------- ITEMS ----------------------",
+
+  "_comment501": ">>> Buckets <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.naquadah_molten_raw_bucket": "Molten Raw Naquadah Bucket",
+  "item.jsg_core.naquadah_molten_refined_bucket": "Molten Refined Naquadah Bucket",
+  "item.jsg_core.naquadah_molten_alloy_bucket": "Molten Naquadah Alloy Bucket",
+  "item.jsg_core.titanium_molten_bucket": "Molten Titanium Bucket",
+  "item.jsg_core.trinium_molten_bucket": "Molten Trinium Bucket",
+
+  "_comment502": ">>> Raw ores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.titanium_raw": "Raw Titanium Ore",
+  "item.jsg_core.trinium_raw": "Raw Trinium Ore",
+  "item.jsg_core.naquadah_raw": "Raw Naquadah Ore",
+
+  "_comment503": ">>> Ingots <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" ,
+
+  "item.jsg_core.titanium_ingot": "Titanium Ingot",
+  "item.jsg_core.trinium_ingot": "Trinium Ingot",
+  "item.jsg_core.naquadah_alloy_raw": "Raw Naquadah Alloy Ingot",
+  "item.jsg_core.naquadah_alloy": "Naquadah Alloy Ingot",
+  "item.jsg_core.naquadah_alloy_refined": "Refined Naquadah Ingot",
+
+  "item.jsg_core.exposed_copper_ingot": "Exposed Copper Ingot",
+  "item.jsg_core.weathered_copper_ingot": "Weathered Copper Ingot",
+  "item.jsg_core.oxidized_copper_ingot": "Oxidized Copper Ingot",
+
+  "_comment504": ">>> Nuggets <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.titanium_nugget": "Titanium Nugget",
+  "item.jsg_core.trinium_nugget": "Trinium Nugget",
+  "item.jsg_core.naquadah_raw_nugget": "Raw Naquadah Nugget",
+  "item.jsg_core.naquadah_nugget": "Naquadah Nugget",
+  "item.jsg_core.naquadah_refined_nugget": "Refined Naquadah Nugget",
+
+  "_comment505": ">>> Dusts <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.titanium_dust": "Titanium Dust",
+  "item.jsg_core.trinium_dust": "Trinium Dust",
+  "item.jsg_core.naquadah_raw_dust": "Raw Naquadah Dust",
+  "item.jsg_core.naquadah_dust": "Naquadah Dust",
+  "item.jsg_core.naquadah_refined_dust": "Refined Naquadah Dust",
+  "item.jsg_core.charcoal_stick_mixture": "Charcoal Mixture",
+
+  "_comment506": ">>> Gears <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.gear_titanium": "Titanium Gear",
+  "item.jsg_core.gear_trinium": "Trinium Gear",
+  "item.jsg_core.gear_naquadah_raw": "Raw Naquadah Gear",
+  "item.jsg_core.gear_naquadah": "Naquadah Gear",
+  "item.jsg_core.gear_naquadah_refined": "Refined Naquadah Gear",
+
+  "_comment507": ">>> Plates <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.plate_titanium": "Titanium Plate",
+  "item.jsg_core.plate_trinium": "Trinium Plate",
+  "item.jsg_core.plate_naquadah_raw": "Raw Naquadah Plate",
+  "item.jsg_core.plate_naquadah": "Naquadah Plate",
+  "item.jsg_core.plate_naquadah_refined": "Refined Naquadah Plate",
+
+  "_comment508": ">>> Natural Crystals and Crystal Seeds <<<<<<<<<<<",
+
+  "item.jsg_core.tokra_crystal": "Tok'ra Crystal",
+
+  "item.jsg_core.seed_blue_crystal": "Blue Crystal Seed",
+  "item.jsg_core.small_blue_crystal": "Small Blue Crystal",
+  "item.jsg_core.blue_crystal": "Blue Crystal",
+
+  "item.jsg_core.seed_red_crystal": "Red Crystal Seed",
+  "item.jsg_core.small_red_crystal": "Small Red Crystal",
+  "item.jsg_core.red_crystal": "Red Crystal",
+
+  "item.jsg_core.seed_ender_crystal": "Ender Crystal Seed",
+  "item.jsg_core.small_ender_crystal": "Small Ender Crystal",
+  "item.jsg_core.ender_crystal": "Ender Crystal",
+
+  "item.jsg_core.seed_yellow_crystal": "Yellow Crystal Seed",
+  "item.jsg_core.small_yellow_crystal": "Small Yellow Crystal",
+  "item.jsg_core.yellow_crystal": "Yellow Crystal",
+
+  "item.jsg_core.seed_white_crystal": "White Crystal Seed",
+  "item.jsg_core.small_white_crystal": "Small White Crystal",
+  "item.jsg_core.white_crystal": "White Crystal",
+
+  "item.jsg_core.seed_pegasus_crystal": "Pegasus Crystal Seed",
+  "item.jsg_core.small_pegasus_crystal": "Small Pegasus Crystal",
+  "item.jsg_core.pegasus_crystal": "Pegasus Crystal",
+
+  "_comment509": ">>> Upgrade Crystals <<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.crystal_upgrade_capacity": "Capacity Upgrade Crystal",
+  "item.jsg_core.crystal_upgrade_efficiency": "Efficiency Upgrade Crystal",
+
+  "_comment510": ">>> Control Circuits <<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.circuit_control_base": "Control Circuit Base",
+  "item.jsg_core.circuit_control_naquadah": "Naquadah Control Circuit",
+  "item.jsg_core.circuit_control_crystal": "Crystal Control Circuit",
+
+  "_comment511": ">>> Tools <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.tauri_ancient_adapter": "Tau'ri - Ancient Adapter",
+  "item.jsg_core.hammer": "JSG Hammer",
+  "item.jsg_core.screwdriver": "JSG Screwdriver",
+  "item.jsg_core.wrench": "JSG Wrench",
+  "item.jsg_core.mortar_and_pestle": "Mortar and Pestle",
+  "item.jsg_core.black_chalk": "Black Chalk",
+  "item.jsg_core.knife": "JSG Knife",
+  "item.jsg_core.trap_lemon": "Lemon Half",
+  "item.jsg_core.crushed_calcite": "Crushed Calcite",
+
+  "_comment512": ">>> Food <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.slice_lemon": "Lemon Slices",
+
+  "_comment513": ">>> Notebook Pages + Notebook <<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.page_notebook_empty": "Notebook Page",
+  "item.jsg_core.page_notebook_filled": "Notebook Page",
+  "item.jsg_core.page_notebook_filled.hold_shift": "Hold %key% to show the glyph IDs.",
+  "item.jsg_core.notebook": "Notebook",
+
+  "_comment514": ">>> Crafting Elements <<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.pestle": "Pestle",
+
+  "_comment515": "===>>> Tinkers Construct <<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "material.jsg_core.trinium": "Trinium",
+  "material.jsg_core.titanium": "Titanium",
+  "material.jsg_core.naquadah_alloy_raw": "Raw Naquadah",
+  "material.jsg_core.naquadah_alloy": "Naquadah Alloy",
+  "material.jsg_core.naquadah_alloy_refined": "Refined Naquadah",
+
+  "_comment516": "===>>> Create <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.incomplete_gear_titanium": "Incomplete Titanium Gear",
+  "item.jsg_core.incomplete_gear_trinium": "Incomplete Trinium Gear",
+  "item.jsg_core.incomplete_gear_naquadah_raw": "Incomplete Raw Naquadah Gear",
+  "item.jsg_core.incomplete_gear_naquadah": "Incomplete Naquadah Gear",
+  "item.jsg_core.incomplete_gear_naquadah_refined": "Incomplete Refined Naquadah Gear",
+  "item.jsg_core.incomplete_chocolate_bar": "Incomplete Chocolate Bar",
+
+  "_comment517": ">>> Energy <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.basic_energy_crystal": "Basic Energy Crystal",
+  "item.jsg_core.advanced_energy_crystal": "Advanced Energy Crystal",
+  "item.jsg_core.ultimate_energy_crystal": "Ultimate Energy Crystal",
+  "item.jsg_core.creative_energy_crystal": "Creative Energy Crystal",
+
+  "_comment600": "----------- BLOCKS / BLOCK ENTITIES --------------",
+
+  "_comment601": ">>> Special Blocks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.invisible_block": "You Can't See Me!",
+  "block.jsg_core.lemon": "Lemon",
+
+  "_comment602": ">>> Natural Blocks<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.brazier_coal": "Brazier Coal Block",
+  "block.jsg_core.static_smooth_sandstone": "Static Smooth Sandstone",
+
+  "_comment603": ">>> Ores <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.titanium_ore": "Titanium Ore",
+  "block.jsg_core.deepslate_titanium_ore": "Deepslate Titanium Ore",
+  "block.jsg_core.sand_titanium_ore": "Sandstone Titanium Ore",
+  "block.jsg_core.netherrack_titanium_ore": "Netherrack Titanium Ore",
+  "block.jsg_core.endstone_titanium_ore": "End Stone Titanium Ore",
+
+  "block.jsg_core.trinium_ore": "Trinium Ore",
+  "block.jsg_core.deepslate_trinium_ore": "Deepslate Trinium Ore",
+  "block.jsg_core.sand_trinium_ore": "Sandstone Trinium Ore",
+  "block.jsg_core.netherrack_trinium_ore": "Netherrack Trinium Ore",
+  "block.jsg_core.endstone_trinium_ore": "End Stone Trinium Ore",
+
+  "block.jsg_core.naquadah_ore": "Naquadah Ore",
+  "block.jsg_core.deepslate_naquadah_ore": "Deepslate Naquadah Ore",
+  "block.jsg_core.sand_naquadah_ore": "Sandstone Naquadah Ore",
+  "block.jsg_core.netherrack_naquadah_ore": "Netherrack Naquadah Ore",
+  "block.jsg_core.endstone_naquadah_ore": "End Stone Naquadah Ore",
+
+  "_comment604": ">>> Raw Materials Blocks <<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.raw_titanium_ore_block": "Block of Raw Titanium",
+  "block.jsg_core.raw_trinium_ore_block": "Block of Raw Trinium",
+  "block.jsg_core.raw_naquadah_ore_block": "Block of Raw Naquadah",
+
+  "_comment605": ">>> Materials Blocks <<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.titanium_block": "Titanium Block",
+  "block.jsg_core.trinium_block": "Trinium Block",
+  "block.jsg_core.naquadah_alloy_raw_block": "Raw Naquadah Block",
+  "block.jsg_core.naquadah_alloy_block": "Naquadah Block",
+  "block.jsg_core.naquadah_alloy_refined_block": "Refined Naquadah Block",
+
+  "block.jsg_core.blue_crystal_block": "Block of Blue Crystal",
+  "block.jsg_core.red_crystal_block": "Block of Red Crystal",
+  "block.jsg_core.ender_crystal_block": "Block of Ender Crystal",
+  "block.jsg_core.yellow_crystal_block": "Block of Yellow Crystal",
+  "block.jsg_core.white_crystal_block": "Block of White Crystal",
+  "block.jsg_core.pegasus_crystal_block": "Block of Pegasus Crystal",
+
+  "_comment606": ">>> Budding Blocks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.self_budding_blue_crystal": "Budding Blue Crystal",
+  "block.jsg_core.budding_blue_crystal": "Stone Budding Blue Crystal",
+  "block.jsg_core.deepslate_budding_blue_crystal": "Deepslate Budding Blue Crystal",
+  "block.jsg_core.sand_budding_blue_crystal": "Sandstone Budding Blue Crystal",
+  "block.jsg_core.endstone_budding_blue_crystal": "End Stone Budding Blue Crystal",
+  "block.jsg_core.netherrack_budding_blue_crystal": "Netherrack Budding Blue Crystal",
+
+  "block.jsg_core.self_budding_red_crystal": "Budding Red Crystal",
+  "block.jsg_core.budding_red_crystal": "Stone Budding Red Crystal",
+  "block.jsg_core.deepslate_budding_red_crystal": "Deepslate Budding Red Crystal",
+  "block.jsg_core.sand_budding_red_crystal": "Sandstone Budding Red Crystal",
+  "block.jsg_core.endstone_budding_red_crystal": "End Stone Budding Red Crystal",
+  "block.jsg_core.netherrack_budding_red_crystal": "Netherrack Budding Red Crystal",
+
+  "block.jsg_core.self_budding_ender_crystal": "Budding Ender Crystal",
+  "block.jsg_core.budding_ender_crystal": "Stone Budding Ender Crystal",
+  "block.jsg_core.deepslate_budding_ender_crystal": "Deepslate Budding Ender Crystal",
+  "block.jsg_core.sand_budding_ender_crystal": "Sandstone Budding Ender Crystal",
+  "block.jsg_core.endstone_budding_ender_crystal": "End Stone Budding Ender Crystal",
+  "block.jsg_core.netherrack_budding_ender_crystal": "Netherrack Budding Ender Crystal",
+
+  "block.jsg_core.self_budding_yellow_crystal": "Budding Yellow Crystal",
+  "block.jsg_core.budding_yellow_crystal": "Stone Budding Yellow Crystal",
+  "block.jsg_core.deepslate_budding_yellow_crystal": "Deepslate Budding Yellow Crystal",
+  "block.jsg_core.sand_budding_yellow_crystal": "Sandstone Budding Yellow Crystal",
+  "block.jsg_core.endstone_budding_yellow_crystal": "End Stone Budding Yellow Crystal",
+  "block.jsg_core.netherrack_budding_yellow_crystal": "Netherrack Budding Yellow Crystal",
+
+  "block.jsg_core.self_budding_white_crystal": "Budding White Crystal",
+  "block.jsg_core.budding_white_crystal": "Stone Budding White Crystal",
+  "block.jsg_core.deepslate_budding_white_crystal": "Deepslate Budding White Crystal",
+  "block.jsg_core.sand_budding_white_crystal": "Sandstone Budding White Crystal",
+  "block.jsg_core.endstone_budding_white_crystal": "End Stone Budding White Crystal",
+  "block.jsg_core.netherrack_budding_white_crystal": "Netherrack Budding White Crystal",
+
+  "block.jsg_core.self_budding_pegasus_crystal": "Budding Pegasus Crystal",
+  "block.jsg_core.budding_pegasus_crystal": "Stone Budding Pegasus Crystal",
+  "block.jsg_core.deepslate_budding_pegasus_crystal": "Deepslate Budding Pegasus Crystal",
+  "block.jsg_core.sand_budding_pegasus_crystal": "Sandstone Budding Pegasus Crystal",
+  "block.jsg_core.endstone_budding_pegasus_crystal": "End Stone Budding Pegasus Crystal",
+  "block.jsg_core.netherrack_budding_pegasus_crystal": "Netherrack Budding Pegasus Crystal",
+
+  "block.jsg_core.self_unstable_budding_blue_crystal": "Unstable Budding Blue Crystal",
+  "block.jsg_core.unstable_budding_blue_crystal": "Unstable Stone Budding Blue Crystal",
+  "block.jsg_core.deepslate_unstable_budding_blue_crystal": "Unstable Deepslate Budding Blue Crystal",
+  "block.jsg_core.sand_unstable_budding_blue_crystal": "Unstable Sandstone Budding Blue Crystal",
+  "block.jsg_core.endstone_unstable_budding_blue_crystal": "Unstable End Stone Budding Blue Crystal",
+  "block.jsg_core.netherrack_unstable_budding_blue_crystal": "Unstable Netherrack Budding Blue Crystal",
+
+  "block.jsg_core.self_unstable_budding_red_crystal": "Unstable Budding Red Crystal",
+  "block.jsg_core.unstable_budding_red_crystal": "Unstable Stone Budding Red Crystal",
+  "block.jsg_core.deepslate_unstable_budding_red_crystal": "Unstable Deepslate Budding Red Crystal",
+  "block.jsg_core.sand_unstable_budding_red_crystal": "Unstable Sandstone Budding Red Crystal",
+  "block.jsg_core.endstone_unstable_budding_red_crystal": "Unstable End Stone Budding Red Crystal",
+  "block.jsg_core.netherrack_unstable_budding_red_crystal": "Unstable Netherrack Budding Red Crystal",
+
+  "block.jsg_core.self_unstable_budding_ender_crystal": "Unstable Budding Ender Crystal",
+  "block.jsg_core.unstable_budding_ender_crystal": "Unstable Stone Budding Ender Crystal",
+  "block.jsg_core.deepslate_unstable_budding_ender_crystal": "Unstable Deepslate Budding Ender Crystal",
+  "block.jsg_core.sand_unstable_budding_ender_crystal": "Unstable Sandstone Budding Ender Crystal",
+  "block.jsg_core.endstone_unstable_budding_ender_crystal": "Unstable End Stone Budding Ender Crystal",
+  "block.jsg_core.netherrack_unstable_budding_ender_crystal": "Unstable Netherrack Budding Ender Crystal",
+
+  "block.jsg_core.self_unstable_budding_yellow_crystal": "Unstable Budding Yellow Crystal",
+  "block.jsg_core.unstable_budding_yellow_crystal": "Unstable Stone Budding Yellow Crystal",
+  "block.jsg_core.deepslate_unstable_budding_yellow_crystal": "Unstable Deepslate Budding Yellow Crystal",
+  "block.jsg_core.sand_unstable_budding_yellow_crystal": "Unstable Sandstone Budding Yellow Crystal",
+  "block.jsg_core.endstone_unstable_budding_yellow_crystal": "Unstable End Stone Budding Yellow Crystal",
+  "block.jsg_core.netherrack_unstable_budding_yellow_crystal": "Unstable Netherrack Budding Yellow Crystal",
+
+  "block.jsg_core.self_unstable_budding_white_crystal": "Unstable Budding White Crystal",
+  "block.jsg_core.unstable_budding_white_crystal": "Unstable Stone Budding White Crystal",
+  "block.jsg_core.deepslate_unstable_budding_white_crystal": "Unstable Deepslate Budding White Crystal",
+  "block.jsg_core.sand_unstable_budding_white_crystal": "Unstable Sandstone Budding White Crystal",
+  "block.jsg_core.endstone_unstable_budding_white_crystal": "Unstable End Stone Budding White Crystal",
+  "block.jsg_core.netherrack_unstable_budding_white_crystal": "Unstable Netherrack Budding White Crystal",
+
+  "block.jsg_core.self_unstable_budding_pegasus_crystal": "Unstable Budding Pegasus Crystal",
+  "block.jsg_core.unstable_budding_pegasus_crystal": "Unstable Stone Budding Pegasus Crystal",
+  "block.jsg_core.deepslate_unstable_budding_pegasus_crystal": "Unstable Deepslate Budding Pegasus Crystal",
+  "block.jsg_core.sand_unstable_budding_pegasus_crystal": "Unstable Sandstone Budding Pegasus Crystal",
+  "block.jsg_core.endstone_unstable_budding_pegasus_crystal": "Unstable End Stone Budding Pegasus Crystal",
+  "block.jsg_core.netherrack_unstable_budding_pegasus_crystal": "Unstable Netherrack Budding Pegasus Crystal",
+
+  "_comment608": ">>> Crystals buds and Crystals Clusters <<<<<<<<<<",
+
+  "block.jsg_core.small_blue_crystal_bud": "Small Blue Crystal Bud",
+  "block.jsg_core.medium_blue_crystal_bud": "Medium Blue Crystal Bud",
+  "block.jsg_core.large_blue_crystal_bud": "Large Blue Crystal Bud",
+  "block.jsg_core.blue_crystal_cluster": "Blue Crystal Cluster",
+
+  "block.jsg_core.small_red_crystal_bud": "Small Red Crystal Bud",
+  "block.jsg_core.medium_red_crystal_bud": "Medium Red Crystal Bud",
+  "block.jsg_core.large_red_crystal_bud": "Large Red Crystal Bud",
+  "block.jsg_core.red_crystal_cluster": "Red Crystal Cluster",
+
+  "block.jsg_core.small_ender_crystal_bud": "Small Ender Crystal Bud",
+  "block.jsg_core.medium_ender_crystal_bud": "Medium Ender Crystal Bud",
+  "block.jsg_core.large_ender_crystal_bud": "Large Ender Crystal Bud",
+  "block.jsg_core.ender_crystal_cluster": "Ender Crystal Cluster",
+
+  "block.jsg_core.small_yellow_crystal_bud": "Small Yellow Crystal Bud",
+  "block.jsg_core.medium_yellow_crystal_bud": "Medium Yellow Crystal Bud",
+  "block.jsg_core.large_yellow_crystal_bud": "Large Yellow Crystal Bud",
+  "block.jsg_core.yellow_crystal_cluster": "Yellow Crystal Cluster",
+
+  "block.jsg_core.small_white_crystal_bud": "Small White Crystal Bud",
+  "block.jsg_core.medium_white_crystal_bud": "Medium White Crystal Bud",
+  "block.jsg_core.large_white_crystal_bud": "Large White Crystal Bud",
+  "block.jsg_core.white_crystal_cluster": "White Crystal Cluster",
+
+  "block.jsg_core.small_pegasus_crystal_bud": "Small Pegasus Crystal Bud",
+  "block.jsg_core.medium_pegasus_crystal_bud": "Medium Pegasus Crystal Bud",
+  "block.jsg_core.large_pegasus_crystal_bud": "Large Pegasus Crystal Bud",
+  "block.jsg_core.pegasus_crystal_cluster": "Pegasus Crystal Cluster",
+
+  "_comment610": ">>> Cartouches <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.six_symbol_stone_cartouche": "Stone Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_stone_cartouche": "Stone Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_stone_cartouche": "Stone Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_smooth_sandstone_cartouche": "Smooth Sandstone Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_smooth_sandstone_cartouche": "Smooth Sandstone Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_smooth_sandstone_cartouche": "Smooth Sandstone Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_smooth_red_sandstone_cartouche": "Smooth Red Sandstone Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_smooth_red_sandstone_cartouche": "Smooth Red Sandstone Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_smooth_red_sandstone_cartouche": "Smooth Red Sandstone Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_polished_diorite_cartouche": "Polished Diorite Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_polished_diorite_cartouche": "Polished Diorite Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_polished_diorite_cartouche": "Polished Diorite Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_polished_granite_cartouche": "Polished Granite Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_polished_granite_cartouche": "Polished Granite Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_polished_granite_cartouche": "Polished Granite Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_polished_deepslate_cartouche": "Polished Deepslate Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_polished_deepslate_cartouche": "Polished Deepslate Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_polished_deepslate_cartouche": "Polished Deepslate Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_prismarine_bricks_cartouche": "Prismarine Bricks Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_prismarine_bricks_cartouche": "Prismarine Bricks Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_prismarine_bricks_cartouche": "Prismarine Bricks Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_netherrack_cartouche": "Netherrack Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_netherrack_cartouche": "Netherrack Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_netherrack_cartouche": "Netherrack Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_nether_bricks_cartouche": "Nether Bricks Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_nether_bricks_cartouche": "Nether Bricks Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_nether_bricks_cartouche": "Nether Bricks Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_red_nether_bricks_cartouche": "Red Nether Bricks Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_red_nether_bricks_cartouche": "Red Nether Bricks Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_red_nether_bricks_cartouche": "Red Nether Bricks Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_smooth_basalt_cartouche": "Smooth Basalt Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_smooth_basalt_cartouche": "Smooth Basalt Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_smooth_basalt_cartouche": "Smooth Basalt Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_end_stone_bricks_cartouche": "End Stone Bricks Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_end_stone_bricks_cartouche": "End Stone Bricks Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_end_stone_bricks_cartouche": "End Stone Bricks Cartouche with 8 symbols",
+  "block.jsg_core.six_symbol_purpur_block_cartouche": "Purpur Block Cartouche with 6 symbols",
+  "block.jsg_core.seven_symbol_purpur_block_cartouche": "Purpur Block Cartouche with 7 symbols",
+  "block.jsg_core.eight_symbol_purpur_block_cartouche": "Purpur Block Cartouche with 8 symbols",
+
+  "block.jsg_core.seven_symbol_stone_cartouche_with_origin": "Stone Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_stone_cartouche_with_origin": "Stone Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_stone_cartouche_with_origin": "Stone Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_smooth_sandstone_cartouche_with_origin": "Smooth Sandstone Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_smooth_sandstone_cartouche_with_origin": "Smooth Sandstone Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_smooth_sandstone_cartouche_with_origin": "Smooth Sandstone Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_smooth_red_sandstone_cartouche_with_origin": "Smooth Red Sandstone Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_smooth_red_sandstone_cartouche_with_origin": "Smooth Red Sandstone Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_smooth_red_sandstone_cartouche_with_origin": "Smooth Red Sandstone Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_polished_diorite_cartouche_with_origin": "Polished Diorite Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_polished_diorite_cartouche_with_origin": "Polished Diorite Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_polished_diorite_cartouche_with_origin": "Polished Diorite Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_polished_granite_cartouche_with_origin": "Polished Granite Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_polished_granite_cartouche_with_origin": "Polished Granite Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_polished_granite_cartouche_with_origin": "Polished Granite Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_polished_deepslate_cartouche_with_origin": "Polished Deepslate Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_polished_deepslate_cartouche_with_origin": "Polished Deepslate Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_polished_deepslate_cartouche_with_origin": "Polished Deepslate Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_prismarine_bricks_cartouche_with_origin": "Prismarine Bricks Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_prismarine_bricks_cartouche_with_origin": "Prismarine Bricks Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_prismarine_bricks_cartouche_with_origin": "Prismarine Bricks Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_netherrack_cartouche_with_origin": "Netherrack Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_netherrack_cartouche_with_origin": "Netherrack Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_netherrack_cartouche_with_origin": "Netherrack Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_nether_bricks_cartouche_with_origin": "Nether Bricks Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_nether_bricks_cartouche_with_origin": "Nether Bricks Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_nether_bricks_cartouche_with_origin": "Nether Bricks Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_red_nether_bricks_cartouche_with_origin": "Red Nether Bricks Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_red_nether_bricks_cartouche_with_origin": "Red Nether Bricks Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_red_nether_bricks_cartouche_with_origin": "Red Nether Bricks Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_smooth_basalt_cartouche_with_origin": "Smooth Basalt Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_smooth_basalt_cartouche_with_origin": "Smooth Basalt Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_smooth_basalt_cartouche_with_origin": "Smooth Basalt Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_end_stone_bricks_cartouche_with_origin": "End Stone Bricks Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_end_stone_bricks_cartouche_with_origin": "End Stone Bricks Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_end_stone_bricks_cartouche_with_origin": "End Stone Bricks Cartouche with 8 symbols and PoO",
+  "block.jsg_core.seven_symbol_purpur_block_cartouche_with_origin": "Purpur Block Cartouche with 6 symbols and PoO",
+  "block.jsg_core.eight_symbol_purpur_block_cartouche_with_origin": "Purpur Block Cartouche with 7 symbols and PoO",
+  "block.jsg_core.nine_symbol_purpur_block_cartouche_with_origin": "Purpur Block Cartouche with 8 symbols and PoO",
+
+  "_comment700": "--------------------- FLUIDS ---------------------",
+
+  "_comment701": ">>> eg. in GUI, JEI... <<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "fluid.jsg_core.naquadah_molten_raw": "Molten Raw Naquadah",
+  "fluid.jsg_core.naquadah_molten_refined": "Molten Refined Naquadah",
+  "fluid.jsg_core.naquadah_molten_alloy": "Molten Naquadah Alloy",
+  "fluid.jsg_core.titanium_molten": "Molten Titanium",
+  "fluid.jsg_core.trinium_molten": "Molten Trinium",
+
+  "_comment702": ">>> placed in world <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "block.jsg_core.naquadah_molten_raw": "Molten Raw Naquadah",
+  "block.jsg_core.naquadah_molten_refined": "Molten Refined Naquadah",
+  "block.jsg_core.naquadah_molten_alloy": "Molten Naquadah Alloy",
+  "block.jsg_core.titanium_molten": "Molten Titanium",
+  "block.jsg_core.trinium_molten": "Molten Trinium",
+
+  "_comment800": "------------------- Tool Tips --------------------",
+
+  "_comment801": ">>> Items <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "_comment802": "===>>> Natural Crystals and Crystal Seeds <<<<<<<<",
+
+  "item.jsg_core.seed_blue_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_blue_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of Blue Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "item.jsg_core.seed_red_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_red_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of Red Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "item.jsg_core.seed_ender_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_ender_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of Ender Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "item.jsg_core.seed_yellow_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_yellow_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of Yellow Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "item.jsg_core.seed_white_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_white_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of White Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "item.jsg_core.seed_pegasus_crystal.tooltip": "Use this seed to create a budding block.",
+  "item.jsg_core.seed_pegasus_crystal.tooltip.extended": "Right click with a seed onto a supported block:%nl%Block of Pegasus Crystal, Stone, Deepslate,%nl%Smooth Sandstone, Netherrack, End Stone.",
+
+  "_comment803": "===>>> Upgrade Crystals <<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.crystal_upgrade_capacity.tooltip": "Upgrade for DHDs and Rings",
+  "item.jsg_core.crystal_upgrade_capacity.tooltip.extended": "This crystal will increase capacity%nl%of DHD or enable one more slot for%nl%capacitor when placed in transport rings.%nl%%nl%§oThis upgrade can be combined%nl%§owith other DHD and rings upgrades!",
+
+  "item.jsg_core.crystal_upgrade_efficiency.tooltip": "Upgrade for DHDs",
+  "item.jsg_core.crystal_upgrade_efficiency.tooltip.extended": "This crystal will increase efficiency%nl%of DHD's Cold Fusion Reactor.%nl%This reactor will produce%nl%more power per 1mB of Naquadah.%nl%%nl%§oThis upgrade can be combined%nl%§owith other DHD upgrades!",
+
+  "_comment804": "===>>> Control Circuit <<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.circuit_control_base.tooltip": "Circuit core used as crafting resource",
+
+  "_comment805": "===>>> Tools <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.tauri_ancient_adapter.tooltip": "Plug 'n' Play Adapter",
+  "item.jsg_core.tauri_ancient_adapter.tooltip.extended": "No drivers needed to run this device",
+
+  "item.jsg_core.hammer.tooltip": "It's not an ordinary Hammer",
+  "item.jsg_core.hammer.tooltip.extended": "It's the JSG Hammer!",
+
+  "item.jsg_core.screwdriver.tooltip": "It's not an ordinary Screwdriver",
+  "item.jsg_core.screwdriver.tooltip.extended": "It's the JSG Screwdriver!",
+
+  "item.jsg_core.wrench.tooltip": "It's not an ordinary Wrench",
+  "item.jsg_core.wrench.tooltip.extended": "It's the JSG Wrench!",
+
+  "item.jsg_core.knife.tooltip": "It's not dull, because...",
+  "item.jsg_core.knife.tooltip.extended": "It's too sharp!",
+
+  "item.jsg_core.crushed_calcite.tooltip": "Can be used for speeding up the crystallization process.",
+  "item.jsg_core.crushed_calcite.tooltip.extended": "Boosting can reduce the likelihood of disruption of%nl%crystallization process",
+
+  "_comment850": "===>>> Notebook Pages + Notebook <<<<<<<<<<<<<<<<<",
+
+  "item.jsg_core.page_notebook.empty": "Empty"
+}

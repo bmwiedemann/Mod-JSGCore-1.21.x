@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:purpur_block_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:purpur_block"
+    },
+    "C": {
+      "item": "jsg_core:six_symbol_purpur_block_cartouche"
+    }
+  },
+  "pattern": [
+    "C ",
+    "B "
+  ],
+  "result": {
+    "item": "jsg_core:seven_symbol_purpur_block_cartouche_with_origin"
+  },
+  "show_notification": true
+}

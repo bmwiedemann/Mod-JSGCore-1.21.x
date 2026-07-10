@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "group": "jsg_core:titanium_ingot",
+  "ingredient": {
+    "item": "jsg_core:netherrack_titanium_ore"
+  },
+  "result": "jsg_core:titanium_ingot"
+}

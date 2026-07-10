@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/page_empty",
+  "criteria": {
+    "has_lemon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:lemon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.lemon_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:lemon"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.lemon_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_lemon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

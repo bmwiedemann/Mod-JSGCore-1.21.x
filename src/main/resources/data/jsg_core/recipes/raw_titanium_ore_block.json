@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:raw_titanium_ore_block",
+  "key": {
+    "#": {
+      "tag": "jsg_core:raw_materials/titanium"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "jsg_core:raw_titanium_ore_block"
+  },
+  "show_notification": true
+}

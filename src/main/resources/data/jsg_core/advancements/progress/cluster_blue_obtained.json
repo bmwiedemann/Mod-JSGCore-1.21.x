@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/page_empty",
+  "criteria": {
+    "has_cluster": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:blue_crystal_cluster"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.cluster_blue_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:blue_crystal_cluster"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.cluster_blue_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cluster"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

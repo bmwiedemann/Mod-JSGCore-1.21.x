@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/copper_ingot_obtained",
+  "criteria": {
+    "has_cauldron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cauldron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.cauldron_obtained.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:cauldron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.cauldron_obtained.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cauldron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

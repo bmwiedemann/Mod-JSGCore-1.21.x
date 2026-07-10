@@ -1,0 +1,17 @@
+{
+  "name": "jsg_core:dynamic_terrain_generation/cactus",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:feature_pool_element",
+        "projection": "terrain_matching",
+        "feature": {
+          "feature": "minecraft:patch_cactus",
+          "placement": []
+        }
+      }
+    }
+  ]
+}

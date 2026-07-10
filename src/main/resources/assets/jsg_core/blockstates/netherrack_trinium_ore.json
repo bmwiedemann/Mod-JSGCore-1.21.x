@@ -1,0 +1,78 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack"
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 90
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 270
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/netherrack",
+        "x": 270,
+        "y": 270
+      }
+    ]
+  }
+}

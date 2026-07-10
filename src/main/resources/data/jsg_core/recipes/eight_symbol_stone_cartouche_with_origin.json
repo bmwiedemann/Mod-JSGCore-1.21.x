@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:stone_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:stone"
+    },
+    "C": {
+      "item": "jsg_core:seven_symbol_stone_cartouche_with_origin"
+    }
+  },
+  "pattern": [
+    "B ",
+    "C "
+  ],
+  "result": {
+    "item": "jsg_core:eight_symbol_stone_cartouche_with_origin"
+  },
+  "show_notification": true
+}

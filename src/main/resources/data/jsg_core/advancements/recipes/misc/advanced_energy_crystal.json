@@ -1,0 +1,83 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_basic_energy_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:basic_energy_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:circuit_control_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:echo_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_small_yellow_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:gems/yellow_small"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:advanced_energy_crystal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:gems/yellow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_yellow_crystal",
+      "has_small_yellow_crystal",
+      "has_shard",
+      "has_basic_energy_crystal",
+      "has_circuit",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:advanced_energy_crystal"
+    ]
+  },
+  "sends_telemetry_event": false
+}

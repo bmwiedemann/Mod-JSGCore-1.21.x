@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#jsg_core:is_ocean",
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp",
+    "minecraft:jungle",
+    "minecraft:bamboo_jungle",
+    "minecraft:lush_caves"
+  ]
+}

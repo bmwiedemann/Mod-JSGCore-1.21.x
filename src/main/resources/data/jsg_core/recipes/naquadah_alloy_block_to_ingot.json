@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:naquadah_alloy_ingot",
+  "ingredients": [
+    {
+      "tag": "jsg_core:storage_blocks/naquadah_alloy"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "jsg_core:naquadah_alloy"
+  }
+}

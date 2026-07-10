@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "particle": "jsg_core:block/storage_block/naquadah_alloy_refined_block",
+    "all": "jsg_core:block/storage_block/naquadah_alloy_refined_block"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "":[
+      {
+        "model": "jsg_core:block/ore/trinium/stone"
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/trinium/stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

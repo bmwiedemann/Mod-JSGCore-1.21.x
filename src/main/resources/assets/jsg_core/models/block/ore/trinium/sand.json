@@ -1,0 +1,10 @@
+{
+  "parent": "jsg_core:block/ore/cube_bottom_top",
+  "textures": {
+    "bottomNormal": "minecraft:block/sandstone_bottom",
+    "sideNormal": "minecraft:block/sandstone",
+    "topNormal": "minecraft:block/sandstone_top",
+    "particle": "minecraft:block/sandstone",
+    "overlay": "jsg_core:block/ore/trinium_ore_overlay"
+  }
+}

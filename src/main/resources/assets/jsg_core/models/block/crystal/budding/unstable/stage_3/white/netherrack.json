@@ -1,0 +1,9 @@
+{
+  "parent": "jsg_core:block/ore/cube_ore_double",
+  "textures": {
+    "normal": "minecraft:block/netherrack",
+    "particle": "minecraft:block/netherrack",
+    "overlay": "jsg_core:block/budding/budding_unstable_overlay_stage_3",
+    "topOverlay": "jsg_core:block/budding/budding_white_unstable_overlay_stage_3"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "item/amethyst_bud",
+  "textures": {
+    "layer0": "jsg_core:block/crystal/cluster/white_crystal_cluster"
+  },
+  "display": {
+    "gui": {
+      "translation": [0, 0, 0]
+    }
+  }
+}

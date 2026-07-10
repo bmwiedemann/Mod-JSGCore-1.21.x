@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:raw_naquadah_ingot",
+  "key": {
+    "#": {
+      "tag": "jsg_core:nuggets/naquadah"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "jsg_core:naquadah_alloy_raw"
+  },
+  "show_notification": true
+}

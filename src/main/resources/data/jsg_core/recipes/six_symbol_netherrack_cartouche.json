@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:netherrack_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    " B ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "item": "jsg_core:six_symbol_netherrack_cartouche"
+  },
+  "show_notification": true
+}

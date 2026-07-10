@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#jsg_core:ingots/copper_exposed",
+    "#jsg_core:ingots/copper_oxidized",
+    "#jsg_core:ingots/copper_weathered",
+    "#jsg_core:ingots/naquadah",
+    "#jsg_core:ingots/naquadah_alloy",
+    "#jsg_core:ingots/naquadah_refined",
+    "#jsg_core:ingots/titanium",
+    "#jsg_core:ingots/trinium"
+  ]
+}

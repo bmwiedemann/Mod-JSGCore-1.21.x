@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_naquadah_refined_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:naquadah_refined_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:naquadah_alloy_refined_from_smelting_naquadah_refined_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_naquadah_refined_dust",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:naquadah_alloy_refined_from_smelting_naquadah_refined_dust"
+    ]
+  },
+  "sends_telemetry_event": false
+}

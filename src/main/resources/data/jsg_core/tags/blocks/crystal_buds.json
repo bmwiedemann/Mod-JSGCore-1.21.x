@@ -1,0 +1,28 @@
+{
+  "values": [
+    "jsg_core:small_white_crystal_bud",
+    "jsg_core:small_yellow_crystal_bud",
+    "jsg_core:small_ender_crystal_bud",
+    "jsg_core:small_pegasus_crystal_bud",
+    "jsg_core:small_red_crystal_bud",
+    "jsg_core:small_blue_crystal_bud",
+    "jsg_core:medium_white_crystal_bud",
+    "jsg_core:medium_yellow_crystal_bud",
+    "jsg_core:medium_ender_crystal_bud",
+    "jsg_core:medium_pegasus_crystal_bud",
+    "jsg_core:medium_red_crystal_bud",
+    "jsg_core:medium_blue_crystal_bud",
+    "jsg_core:large_white_crystal_bud",
+    "jsg_core:large_yellow_crystal_bud",
+    "jsg_core:large_ender_crystal_bud",
+    "jsg_core:large_pegasus_crystal_bud",
+    "jsg_core:large_red_crystal_bud",
+    "jsg_core:large_blue_crystal_bud",
+    "jsg_core:white_crystal_cluster",
+    "jsg_core:yellow_crystal_cluster",
+    "jsg_core:ender_crystal_cluster",
+    "jsg_core:pegasus_crystal_cluster",
+    "jsg_core:red_crystal_cluster",
+    "jsg_core:blue_crystal_cluster"
+  ]
+}

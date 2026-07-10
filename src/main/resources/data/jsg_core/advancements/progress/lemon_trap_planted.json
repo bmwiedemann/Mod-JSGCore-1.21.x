@@ -1,0 +1,38 @@
+{
+  "parent": "jsg_core:progress/lemon_obtained",
+  "criteria": {
+    "lemon_trap_planted": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jsg_core:trap_lemon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.jsg_core.lemon_trap_planted.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:trap_lemon"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.jsg_core.lemon_trap_planted.title"
+    }
+  },
+  "requirements": [
+    [
+      "lemon_trap_planted"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

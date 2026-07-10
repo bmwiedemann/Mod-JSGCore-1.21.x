@@ -1,0 +1,57 @@
+[
+  {
+    "processor_type": "minecraft:rule",
+    "rules": [
+      {
+        "location_predicate": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "input_predicate": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:gray_stained_glass",
+          "probability": 0.75
+        },
+        "output_state": {
+          "Name": "minecraft:fire"
+        }
+      },
+      {
+        "location_predicate": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "input_predicate": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:gray_stained_glass"
+        },
+        "output_state": {
+          "Name": "air"
+        }
+      },
+      {
+        "location_predicate": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "input_predicate": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:black_stained_glass",
+          "probability": 0.75
+        },
+        "output_state": {
+          "Name": "minecraft:soul_fire"
+        }
+      },
+      {
+        "location_predicate": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "input_predicate": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:black_stained_glass"
+        },
+        "output_state": {
+          "Name": "air"
+        }
+      }
+    ]
+  }
+]

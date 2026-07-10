@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:naquadah_plate",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/naquadah_alloy"
+    },
+    {
+      "item": "jsg_core:hammer"
+    }
+  ],
+  "result": {
+    "item": "jsg_core:plate_naquadah"
+  }
+}

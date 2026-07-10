@@ -1,0 +1,11 @@
+{
+  "values": [
+    "jsg_core:brazier_coal",
+    "#jsg_core:crystal_buds",
+    "#jsg_core:ores",
+    "#jsg_core:storage_blocks",
+    "#jsg_core:budding",
+    "#jsg_core:unstable_budding",
+    "#jsg_core:cartouches"
+  ]
+}

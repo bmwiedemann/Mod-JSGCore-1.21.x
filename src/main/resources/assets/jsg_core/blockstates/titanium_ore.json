@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "":[
+      {
+        "model": "jsg_core:block/ore/titanium/stone"
+      },
+      {
+        "model": "jsg_core:block/ore/titanium/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/ore/titanium/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/ore/titanium/stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

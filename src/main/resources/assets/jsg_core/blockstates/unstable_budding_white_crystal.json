@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "age=0": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/stone"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_1/white/stone_mirrored",
+        "y": 180
+      }
+    ],
+    "age=1": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/stone"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_2/white/stone_mirrored",
+        "y": 180
+      }
+    ],
+    "age=2": [
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/stone"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/stone_mirrored"
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/stone",
+        "y": 180
+      },
+      {
+        "model": "jsg_core:block/crystal/budding/unstable/stage_3/white/stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

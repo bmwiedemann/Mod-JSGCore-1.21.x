@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:red_crystal_block",
+  "key": {
+    "#": {
+      "item": "jsg_core:red_crystal"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "jsg_core:red_crystal_block"
+  },
+  "show_notification": true
+}
