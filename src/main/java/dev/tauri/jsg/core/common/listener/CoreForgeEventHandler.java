@@ -67,7 +67,8 @@ public class CoreForgeEventHandler {
                            Executor pBackgroundExecutor,
                            Executor pGameExecutor) -> pPreparationBarrier.wait(Unit.INSTANCE).thenRun(() -> {
             var recipesManager = event.getServerResources().getRecipeManager();
-            var recipes = recipesManager.getRecipes();
+            // getRecipes() is an immutable view on 1.21 - copy before adding
+            var recipes = new java.util.ArrayList<net.minecraft.world.item.crafting.RecipeHolder<?>>(recipesManager.getRecipes());
 
             recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_clone"), new NotebookCloneRecipe()));
             recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_creation"), new NotebookCreationRecipe()));
