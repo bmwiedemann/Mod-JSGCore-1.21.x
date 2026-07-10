@@ -34,10 +34,9 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
             modelBuffer = modelBuffers.get(textureAtlasSprite);
         if (modelBuffer == null) {
             Tesselator tesselator = Tesselator.getInstance();
-            BufferBuilder bufferbuilder = tesselator.getBuilder();
             modelBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
             if (!bufferbuilder.building()) {
-                bufferbuilder.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
+                BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
             }
             int vertexCount = model.vertices.length;
             for (int i = 0; i < vertexCount; i += 3) {

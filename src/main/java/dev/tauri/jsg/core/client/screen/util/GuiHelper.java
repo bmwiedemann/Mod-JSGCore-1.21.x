@@ -56,7 +56,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (xCoord + maxWidth), (yCoord + maxHeight), 0).setUv(textureSprite.getU1(), textureSprite.getV1());
         bufferbuilder.addVertex(matrix, (xCoord + maxWidth), (yCoord), 0).setUv(textureSprite.getU1(), (float) (textureSprite.getV0() + v));
         bufferbuilder.addVertex(matrix, (xCoord), (yCoord), 0).setUv(textureSprite.getU0(), (float) (textureSprite.getV0() + v));
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawTexturedRect(float x, float y, float textureX, float textureY, float width, float height) {
@@ -68,7 +68,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (x + width), (y + height), 0).setUv(((float) (textureX + width) * 0.00390625F), ((float) (textureY + height) * 0.00390625F));
         bufferbuilder.addVertex(matrix, (x + width), (y), 0).setUv(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F));
         bufferbuilder.addVertex(matrix, (x), (y), 0).setUv(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F));
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawTexturedModalRect(int x, int y, int u, int v, int width, int height) {
@@ -86,7 +86,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (float) (x + width), (float) (y + height), zLevel).setUv((float) (u + width) * 0.00390625F, (float) (v + height) * 0.00390625F);
         bufferbuilder.addVertex(matrix, (float) (x + width), (float) y, zLevel).setUv((float) (u + width) * 0.00390625F, (float) v * 0.00390625F);
         bufferbuilder.addVertex(matrix, (float) x, (float) y, zLevel).setUv((float) u * 0.00390625F, (float) v * 0.00390625F);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static boolean isPointInRegion(double rectX, double rectY, double rectWidth, double rectHeight, double pointX, double pointY) {
@@ -104,7 +104,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) width) * f), ((v + (float) height) * f1));
         bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) width) * f), (v * f1));
         bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1));
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawScaledCustomSizeModalRect(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height, float tileWidth, float tileHeight) {
@@ -118,7 +118,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1));
         bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) uWidth) * f), (v * f1));
         bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1));
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawScaledCustomSizeModalRectColor(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height, float tileWidth, float tileHeight, float r, float g, float b, float a) {
@@ -132,7 +132,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1)).setColor(r, g, b, a);
         bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) uWidth) * f), (v * f1)).setColor(r, g, b, a);
         bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1)).setColor(r, g, b, a);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 
     public static void drawRect(int left, int top, int right, int bottom, int color) {
@@ -154,16 +154,15 @@ public class GuiHelper {
         float f2 = (float) (color & 255) / 255.0F;
         Matrix4f matrix = currentStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         RenderSystem.enableBlend();
         //RenderSystem.setShaderColor(f, f1, f2, f3);
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
         bufferbuilder.addVertex(matrix, left, bottom, 0.0f).setColor(f, f1, f2, f3);
         bufferbuilder.addVertex(matrix, right, bottom, 0.0f).setColor(f, f1, f2, f3);
         bufferbuilder.addVertex(matrix, right, top, 0.0f).setColor(f, f1, f2, f3);
         bufferbuilder.addVertex(matrix, left, top, 0.0f).setColor(f, f1, f2, f3);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
         RenderSystem.disableBlend();
     }
 
@@ -196,7 +195,7 @@ public class GuiHelper {
         bufferbuilder.addVertex(mat, left, top, zLevel).setColor(startRed, startGreen, startBlue, startAlpha);
         bufferbuilder.addVertex(mat, left, bottom, zLevel).setColor(endRed, endGreen, endBlue, endAlpha);
         bufferbuilder.addVertex(mat, right, bottom, zLevel).setColor(endRed, endGreen, endBlue, endAlpha);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
 
         RenderSystem.disableBlend();
     }
@@ -298,7 +297,7 @@ public class GuiHelper {
                 vertexBuffer.addVertex(matrix4f, x, y + maskTop, zLevel).setUv(uLocalMin, vLocalMin);
             }
         }
-        BufferUploader.drawWithShader(vertexBuffer.end());
+        BufferUploader.drawWithShader(vertexBuffer.buildOrThrow());
         if (blend) {
             RenderSystem.disableBlend();
         }
@@ -449,6 +448,6 @@ public class GuiHelper {
         bufferbuilder.addVertex(matrix, x, y + h, 0).setUv(0, 1);
         bufferbuilder.addVertex(matrix, x + w, y + h, 0).setUv(1, 1);
         bufferbuilder.addVertex(matrix, x + w, y, 0).setUv(1, 0);
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
     }
 }

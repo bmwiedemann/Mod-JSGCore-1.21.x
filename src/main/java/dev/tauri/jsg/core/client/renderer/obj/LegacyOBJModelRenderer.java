@@ -31,12 +31,11 @@ public class LegacyOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
     @Override
     protected void renderModel(@Nullable VertexBuffer modelBuffer, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, boolean emissiveRendering, float r, float g, float b, float a, boolean noCulling, @Nullable TextureAtlasSprite textureAtlasSprite, @Nullable ResourceLocation usedTexture) {
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
         Matrix4f matrix = poseStack.last().pose();
 
         EmissiveRenderer.renderWithLightOverlay(poseStack, light, false, () -> {
             RenderSystem.setShaderColor(r, g, b, a);
-            bufferbuilder.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
+            BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.TRIANGLES, POSITION_TEX);
             var vertices = model.vertices;
             int vertexCount = vertices.length;
             var textureCoords = model.textureCoords;

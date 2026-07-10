@@ -157,15 +157,14 @@ public class CartoucheRenderer implements BlockEntityRenderer<CartoucheBE>, Link
                 symbol.bindIconTexture(origin);
 
                 Tesselator tessellator = Tesselator.getInstance();
-                BufferBuilder bufferbuilder = tessellator.getBuilder();
                 var matrix = poseStack.last().pose();
                 var normalMat = poseStack.last().setNormal();
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
+                BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
                 bufferbuilder.addVertex(matrix, finalXx, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
                 bufferbuilder.addVertex(matrix, finalXx + finalW, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
                 bufferbuilder.addVertex(matrix, finalXx + finalW, finalYy + finalH, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
                 bufferbuilder.addVertex(matrix, finalXx, finalYy + finalH, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
-                BufferUploader.drawWithShader(bufferbuilder.end());
+                BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
             });
             poseStack.popPose();
         }
