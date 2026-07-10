@@ -1,0 +1,97 @@
+plugins {
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+group = mod_group_id
+// No timestamp suffix: the JSG mod build references the built jar by a stable path.
+version = mod_version
+
+base {
+    archivesName = "jsg-core-" + minecraft_version
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        minecraftVersion = project.parchment_minecraft_version
+        mappingsVersion = project.parchment_mappings_version
+    }
+
+    accessTransformers.from file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+            programArgument '--nogui'
+        }
+        configureEach {
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+if (enable_oc2 != "true") {
+    sourceSets.main.java.exclude 'dev/tauri/jsg/core/common/integration/oc2/**'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        url "https://maven.squiddev.cc"
+        content {
+            includeGroup("cc.tweaked")
+        }
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    compileOnly "org.jspecify:jspecify:1.0.0"
+
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // CC:Tweaked keeps the "-forge" artifact naming for its NeoForge builds on 1.21.1
+    compileOnly "cc.tweaked:cc-tweaked-${minecraft_version}-core-api:${cct_version}"
+    compileOnly "cc.tweaked:cc-tweaked-${minecraft_version}-forge-api:${cct_version}"
+    localRuntime "cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}"
+
+    compileOnly "maven.modrinth:stellarview:${stellarview_version}"
+
+    // OC2 has no 1.21.x build (see enable_oc2 in gradle.properties)
+    //compileOnly "li.cil:oc2:1.0"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
