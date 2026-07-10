@@ -19,7 +19,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.DigDurabilityEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -143,8 +142,8 @@ public class ItemRegistryHelperGeneric extends RegistryHelper<Item, ItemRegistry
                     }
 
                     @Override
-                    public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment) {
-                        return (enchantment instanceof DigDurabilityEnchantment);
+                    public boolean supportsEnchantment(@Nonnull ItemStack stack, @Nonnull net.minecraft.core.Holder<Enchantment> enchantment) {
+                        return enchantment.is(net.minecraft.world.item.enchantment.Enchantments.UNBREAKING);
                     }
 
                     @Override
