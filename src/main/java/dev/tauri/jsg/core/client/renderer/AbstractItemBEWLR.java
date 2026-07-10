@@ -38,7 +38,7 @@ public abstract class AbstractItemBEWLR extends BlockEntityWithoutLevelRenderer 
     @ParametersAreNonnullByDefault
     public void renderByItem(ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack stack, MultiBufferSource bufferSource, int light, int overlay) {
         boolean renderGui = false;
-        float partialTick = Minecraft.getInstance().getPartialTick();
+        float partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
 
         stack.pushPose();
         switch (itemDisplayContext) {

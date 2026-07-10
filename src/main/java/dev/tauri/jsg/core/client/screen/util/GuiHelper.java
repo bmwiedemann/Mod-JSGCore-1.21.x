@@ -408,22 +408,38 @@ public class GuiHelper {
             graphics.blit(pAtlasLocation, pX, pY, pTextureX, pTextureY, pWidth, pHeight, texWidth, texHeight);
         } else if (pHeight == pVHeight) {
             graphics.blit(pAtlasLocation, pX, pY, pTextureX, pTextureY, pLeftSliceWidth, pHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX + pLeftSliceWidth, pY, pWidth - pRightSliceWidth - pLeftSliceWidth, pHeight, pTextureX + pLeftSliceWidth, pTextureY, pUWidth - pRightSliceWidth - pLeftSliceWidth, pVHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX + pLeftSliceWidth, pY, pWidth - pRightSliceWidth - pLeftSliceWidth, pHeight, pTextureX + pLeftSliceWidth, pTextureY, pUWidth - pRightSliceWidth - pLeftSliceWidth, pVHeight, texWidth, texHeight);
             graphics.blit(pAtlasLocation, pX + pWidth - pRightSliceWidth, pY, pTextureX + pUWidth - pRightSliceWidth, pTextureY, pRightSliceWidth, pHeight, texWidth, texHeight);
         } else if (pWidth == pUWidth) {
             graphics.blit(pAtlasLocation, pX, pY, pTextureX, pTextureY, pWidth, pTopSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX, pY + pTopSliceHeight, pWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX, pTextureY + pTopSliceHeight, pUWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX, pY + pTopSliceHeight, pWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX, pTextureY + pTopSliceHeight, pUWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
             graphics.blit(pAtlasLocation, pX, pY + pHeight - pBottomSliceHeight, pTextureX, pTextureY + pVHeight - pBottomSliceHeight, pWidth, pBottomSliceHeight, texWidth, texHeight);
         } else {
             graphics.blit(pAtlasLocation, pX, pY, pTextureX, pTextureY, pLeftSliceWidth, pTopSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX + pLeftSliceWidth, pY, pWidth - pRightSliceWidth - pLeftSliceWidth, pTopSliceHeight, pTextureX + pLeftSliceWidth, pTextureY, pUWidth - pRightSliceWidth - pLeftSliceWidth, pTopSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX + pLeftSliceWidth, pY, pWidth - pRightSliceWidth - pLeftSliceWidth, pTopSliceHeight, pTextureX + pLeftSliceWidth, pTextureY, pUWidth - pRightSliceWidth - pLeftSliceWidth, pTopSliceHeight, texWidth, texHeight);
             graphics.blit(pAtlasLocation, pX + pWidth - pRightSliceWidth, pY, pTextureX + pUWidth - pRightSliceWidth, pTextureY, pRightSliceWidth, pTopSliceHeight, texWidth, texHeight);
             graphics.blit(pAtlasLocation, pX, pY + pHeight - pBottomSliceHeight, pTextureX, pTextureY + pVHeight - pBottomSliceHeight, pLeftSliceWidth, pBottomSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX + pLeftSliceWidth, pY + pHeight - pBottomSliceHeight, pWidth - pRightSliceWidth - pLeftSliceWidth, pBottomSliceHeight, pTextureX + pLeftSliceWidth, pTextureY + pVHeight - pBottomSliceHeight, pUWidth - pRightSliceWidth - pLeftSliceWidth, pBottomSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX + pLeftSliceWidth, pY + pHeight - pBottomSliceHeight, pWidth - pRightSliceWidth - pLeftSliceWidth, pBottomSliceHeight, pTextureX + pLeftSliceWidth, pTextureY + pVHeight - pBottomSliceHeight, pUWidth - pRightSliceWidth - pLeftSliceWidth, pBottomSliceHeight, texWidth, texHeight);
             graphics.blit(pAtlasLocation, pX + pWidth - pRightSliceWidth, pY + pHeight - pBottomSliceHeight, pTextureX + pUWidth - pRightSliceWidth, pTextureY + pVHeight - pBottomSliceHeight, pRightSliceWidth, pBottomSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX, pY + pTopSliceHeight, pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX, pTextureY + pTopSliceHeight, pLeftSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX + pLeftSliceWidth, pY + pTopSliceHeight, pWidth - pRightSliceWidth - pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX + pLeftSliceWidth, pTextureY + pTopSliceHeight, pUWidth - pRightSliceWidth - pLeftSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
-            graphics.blitRepeating(pAtlasLocation, pX + pWidth - pRightSliceWidth, pY + pTopSliceHeight, pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX + pUWidth - pRightSliceWidth, pTextureY + pTopSliceHeight, pRightSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX, pY + pTopSliceHeight, pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX, pTextureY + pTopSliceHeight, pLeftSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX + pLeftSliceWidth, pY + pTopSliceHeight, pWidth - pRightSliceWidth - pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX + pLeftSliceWidth, pTextureY + pTopSliceHeight, pUWidth - pRightSliceWidth - pLeftSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
+            blitRepeating(graphics, pAtlasLocation, pX + pWidth - pRightSliceWidth, pY + pTopSliceHeight, pLeftSliceWidth, pHeight - pBottomSliceHeight - pTopSliceHeight, pTextureX + pUWidth - pRightSliceWidth, pTextureY + pTopSliceHeight, pRightSliceWidth, pVHeight - pBottomSliceHeight - pTopSliceHeight, texWidth, texHeight);
+        }
+    }
+
+    // vanilla removed GuiGraphics.blitRepeating in 1.21; local tiling replacement
+    private static void blitRepeating(GuiGraphics graphics, ResourceLocation atlas, int x, int y, int width, int height, int u, int v, int sourceWidth, int sourceHeight, int texWidth, int texHeight) {
+        if (sourceWidth <= 0 || sourceHeight <= 0) return;
+        int drawnX = 0;
+        while (drawnX < width) {
+            int drawW = Math.min(sourceWidth, width - drawnX);
+            int drawnY = 0;
+            while (drawnY < height) {
+                int drawH = Math.min(sourceHeight, height - drawnY);
+                graphics.blit(atlas, x + drawnX, y + drawnY, u, v, drawW, drawH, texWidth, texHeight);
+                drawnY += drawH;
+            }
+            drawnX += drawW;
         }
     }
 

@@ -104,7 +104,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
                     inputMap.put(typeId.toString(), defaultType.getPoODefaults().stream().map(ResourceLocation::toString).toList());
                     changed = true;
                 }
-                ORIGINS_TO_LOAD.put(defaultType, inputMap.get(typeId.toString()).stream().map(ResourceLocation::new).toList());
+                ORIGINS_TO_LOAD.put(defaultType, inputMap.get(typeId.toString()).stream().map(ResourceLocation::parse).toList());
             }
             if (tryLoadAddons(inputMap) || changed)
                 writeServer(jsonFile, inputMap);
@@ -135,7 +135,7 @@ public class PointOfOriginsLoader implements IPointOfOriginsLoader {
                     jsgPoOMap.put(typeId.toString(), jsgPoOTypeList);
                     changed.set(true);
 
-                    ORIGINS_TO_LOAD.put(defaultType, jsgPoOMap.get(typeId.toString()).stream().map(ResourceLocation::new).toList());
+                    ORIGINS_TO_LOAD.put(defaultType, jsgPoOMap.get(typeId.toString()).stream().map(ResourceLocation::parse).toList());
                 }
             } catch (Exception e) {
                 JSGCore.logger.error("Error while trying to read origins from addon {}:", namespaceFolder.getName(), e);

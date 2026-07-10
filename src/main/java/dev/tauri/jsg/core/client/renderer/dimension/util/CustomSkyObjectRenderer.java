@@ -72,7 +72,6 @@ public class CustomSkyObjectRenderer {
         RenderSystem.setShaderTexture(0, texture);
 
         var tessellator = Tesselator.getInstance();
-        var bufferBuilder = tessellator.getBuilder();
 
         var celestialAngle = getObjectCelestialAngle(level.getTimeOfDay(partialTick), false);
         poseStack.pushPose();
@@ -85,7 +84,7 @@ public class CustomSkyObjectRenderer {
         } else
             RenderSystem.setShaderColor(1, 1, 1, 1);
 
-        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        var bufferBuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
         bufferBuilder.addVertex(poseStack.last().pose(), -size, 100.0F, -size).setUv(
                 uvGetter.getUV(this, 0, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 0, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
@@ -102,7 +101,7 @@ public class CustomSkyObjectRenderer {
                 uvGetter.getUV(this, 3, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).first(),
                 uvGetter.getUV(this, 3, level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, fogType, setupFog).second()
         );
-        tessellator.end();
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
 
         poseStack.popPose();
     }

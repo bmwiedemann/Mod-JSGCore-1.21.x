@@ -85,10 +85,13 @@ public class RegistryHelper {
             }
         }
 
-        eventBus.addListener(EventPriority.NORMAL, false, FMLClientSetupEvent.class, event -> event.enqueueWork(() -> {
+        eventBus.addListener(EventPriority.NORMAL, false, FMLClientSetupEvent.class, event -> event.enqueueWork(() -> entityRendererRegisterRun.run()));
+
+        eventBus.addListener(EventPriority.NORMAL, false, net.neoforged.neoforge.client.event.RegisterMenuScreensEvent.class, event -> {
+            currentMenuScreensEvent = event;
             menuScreensRegisterRun.run();
-            entityRendererRegisterRun.run();
-        }));
+            currentMenuScreensEvent = null;
+        });
 
         eventBus.addListener(EventPriority.NORMAL, false, EntityRenderersEvent.RegisterRenderers.class, event -> blockEntityRenderers.get().forEach(r -> r.register(event)));
 
@@ -338,9 +341,13 @@ public class RegistryHelper {
         return () -> new MenuType<>(factory, FeatureFlags.DEFAULT_FLAGS);
     }
 
+    private static net.neoforged.neoforge.client.event.RegisterMenuScreensEvent currentMenuScreensEvent;
+
     @OnlyIn(Dist.CLIENT)
     public static <M extends AbstractContainerMenu, S extends Screen & MenuAccess<M>> void bindScreenToMenu(MenuType<M> menu, JSGScreenConstructor<M, S> screenConstructor) {
-        MenuScreens.register(menu, screenConstructor);
+        if (currentMenuScreensEvent == null)
+            throw new IllegalStateException("bindScreenToMenu must be called from the guiRegister runnable");
+        currentMenuScreensEvent.register(menu, screenConstructor);
     }
 
     @OnlyIn(Dist.CLIENT)

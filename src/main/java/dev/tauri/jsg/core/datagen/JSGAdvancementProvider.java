@@ -45,7 +45,7 @@ public class JSGAdvancementProvider implements AdvancementProvider.AdvancementGe
                         false,
                         false
                 )
-                .addCriterion("has_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(Tags.Items.STONE).build()
+                .addCriterion("has_stone", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(Tags.Items.STONES).build()
                 ))
                 .save(saver, CoreAdvancements.ROOT, fileHelper);
 

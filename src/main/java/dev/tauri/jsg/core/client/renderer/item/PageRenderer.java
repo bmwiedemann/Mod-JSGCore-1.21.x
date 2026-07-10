@@ -117,7 +117,7 @@ public class PageRenderer {
             poseStack.mulPose(Axis.XP.rotationDegrees(270));
             poseStack.translate(0.2, 0, -1.3);
 
-            HandHeldDeviceRenderer.renderArms(poseStack, source, light, HumanoidArm.RIGHT, Minecraft.getInstance().getPartialTick(), HandPosition.HOLD_PAGE);
+            HandHeldDeviceRenderer.renderArms(poseStack, source, light, HumanoidArm.RIGHT, Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true), HandPosition.HOLD_PAGE);
             poseStack.popPose();
         } else if (lastTransform == ItemDisplayContext.FIRST_PERSON_LEFT_HAND) {
             poseStack.mulPose(Axis.YP.rotationDegrees(-50));
@@ -134,7 +134,7 @@ public class PageRenderer {
             poseStack.mulPose(Axis.ZP.rotationDegrees(-10));
             poseStack.translate(-0.5f, 0.2f, -1.52f);
 
-            HandHeldDeviceRenderer.renderArms(poseStack, source, light, HumanoidArm.LEFT, Minecraft.getInstance().getPartialTick(), HandPosition.HOLD_PAGE);
+            HandHeldDeviceRenderer.renderArms(poseStack, source, light, HumanoidArm.LEFT, Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true), HandPosition.HOLD_PAGE);
             poseStack.popPose();
         } else {
             poseStack.popPose();
@@ -168,7 +168,7 @@ public class PageRenderer {
             float finalTopOffset = topOffset;
             EmissiveRenderer.renderWithLightOverlay(poseStack, light, false, () -> ITexture.bindTextureWithMc(tex), () -> {
                 Matrix4f matrix = poseStack.last().pose();
-                var normal = poseStack.last().setNormal();
+                var normal = poseStack.last();
                 Tesselator tessellator = Tesselator.getInstance();
                 BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
                 bufferbuilder
@@ -223,7 +223,7 @@ public class PageRenderer {
 
             poseStack.pushPose();
             Minecraft mc = Minecraft.getInstance();
-            Font font = mc.getBlockEntityRenderDispatcher().font;
+            Font font = mc.font;
             poseStack.translate(0.05f + (0.61f / 2), 0.935f, 0.011f);
             poseStack.scale(scale, -scale, scale);
             poseStack.translate(0, 0, -1.2);
@@ -263,7 +263,7 @@ public class PageRenderer {
         poseStack.mulPose(Axis.XP.rotationDegrees(180));
         poseStack.translate(-60, -30, 0);
         for (var line : lines) {
-            var lineComponent = Component.Serializer.fromJson(((CompoundTag) line).getString("component"));
+            var lineComponent = Component.Serializer.fromJson(((CompoundTag) line).getString("component"), net.minecraft.core.RegistryAccess.EMPTY);
             poseStack.pushPose();
             poseStack.scale(0.75f, 0.75f, 0.75f);
             poseStack.translate(0, -8 * lineIndex, 0);
@@ -278,7 +278,7 @@ public class PageRenderer {
         poseStack.pushPose();
         poseStack.scale(1, -1, 1);
         Minecraft mc = Minecraft.getInstance();
-        Font font = mc.getBlockEntityRenderDispatcher().font;
+        Font font = mc.font;
         font.drawInBatch(text, 0, 0, color, shadow, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
         poseStack.popPose();
     }
@@ -287,7 +287,7 @@ public class PageRenderer {
         poseStack.pushPose();
         poseStack.scale(1, -1, 1);
         Minecraft mc = Minecraft.getInstance();
-        Font font = mc.getBlockEntityRenderDispatcher().font;
+        Font font = mc.font;
         font.drawInBatch(text, 0, 0, color, shadow, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
         poseStack.popPose();
     }

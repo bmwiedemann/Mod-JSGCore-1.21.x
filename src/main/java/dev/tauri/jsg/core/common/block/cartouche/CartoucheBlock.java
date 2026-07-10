@@ -183,7 +183,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
     @Override
     @ParametersAreNonnullByDefault
     @SuppressWarnings("deprecation")
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pType) {
         return false;
     }
 
@@ -312,7 +312,7 @@ public class CartoucheBlock extends TickableBEBlock implements SimpleWaterlogged
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack itemStack, @Nullable BlockGetter blockGetter, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack itemStack, Item.TooltipContext context, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
         //ItemHelper.applyGenericToolTip(this.getDescriptionId(), components, tooltipFlag);
     }
 

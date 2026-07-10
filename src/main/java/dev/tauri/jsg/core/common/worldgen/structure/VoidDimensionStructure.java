@@ -72,14 +72,13 @@ public class VoidDimensionStructure extends Structure {
         int startY = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
         BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), startY, chunkPos.getMinBlockZ());
 
-        return JigsawPlacement.addPieces(
-                context, this.startPool,
+        return JigsawPlacement.addPieces(context, this.startPool,
                 this.startJigsawName,
                 this.size,
                 blockPos,
                 false,
                 this.projectStartToHeightMap,
-                this.maxDistanceFromCenter);
+                this.maxDistanceFromCenter, net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup.EMPTY, net.minecraft.world.level.levelgen.structure.structures.JigsawStructure.DEFAULT_DIMENSION_PADDING, net.minecraft.world.level.levelgen.structure.structures.JigsawStructure.DEFAULT_LIQUID_SETTINGS);
     }
 
     @NotNull

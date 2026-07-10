@@ -67,7 +67,7 @@ public class CoreTabs {
     @SubscribeEvent
     public static void buildTabsContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept(CoreItems.FOOD_LEMON);
+            event.accept(CoreItems.FOOD_LEMON.get());
         }
     }
 

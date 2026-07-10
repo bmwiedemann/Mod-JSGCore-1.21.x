@@ -11,6 +11,7 @@ public abstract class JSGEvent extends Event {
      * @return true if event canceled, false if not
      */
     public boolean post() {
-        return NeoForge.EVENT_BUS.post(this);
+        NeoForge.EVENT_BUS.post(this);
+        return this instanceof net.neoforged.bus.api.ICancellableEvent cancellable && cancellable.isCanceled();
     }
 }

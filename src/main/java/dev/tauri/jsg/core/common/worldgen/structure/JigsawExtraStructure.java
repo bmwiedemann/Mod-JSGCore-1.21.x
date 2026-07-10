@@ -44,7 +44,7 @@ public class JigsawExtraStructure extends Structure {
     public static DataResult<JigsawExtraStructure> verifyRange(JigsawExtraStructure structure) {
         int i = switch (structure.terrainAdaptation()) {
             case NONE -> 0;
-            case BURY, BEARD_THIN, BEARD_BOX -> 12;
+            case BURY, BEARD_THIN, BEARD_BOX, ENCAPSULATE -> 12;
         };
         return structure.maxDistanceFromCenter + i > MAX_TOTAL_STRUCTURE_RANGE ? DataResult.error(() -> ("Structure size including terrain adaptation must not exceed " + MAX_TOTAL_STRUCTURE_RANGE)) : DataResult.success(structure);
     }
@@ -72,7 +72,7 @@ public class JigsawExtraStructure extends Structure {
         ChunkPos chunkpos = pContext.chunkPos();
         int i = this.startHeight.sample(pContext.random(), new WorldGenerationContext(pContext.chunkGenerator(), pContext.heightAccessor()));
         BlockPos blockpos = new BlockPos(chunkpos.getMinBlockX(), i, chunkpos.getMinBlockZ());
-        return JigsawPlacement.addPieces(pContext, this.startPool, this.startJigsawName, this.maxDepth, blockpos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+        return JigsawPlacement.addPieces(pContext, this.startPool, this.startJigsawName, this.maxDepth, blockpos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter, net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup.EMPTY, net.minecraft.world.level.levelgen.structure.structures.JigsawStructure.DEFAULT_DIMENSION_PADDING, net.minecraft.world.level.levelgen.structure.structures.JigsawStructure.DEFAULT_LIQUID_SETTINGS);
     }
 
     @NotNull
