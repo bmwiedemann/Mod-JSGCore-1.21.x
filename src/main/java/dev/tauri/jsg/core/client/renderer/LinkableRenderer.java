@@ -31,8 +31,8 @@ public interface LinkableRenderer {
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         Matrix4f matrix = stack.last().pose();
         VertexConsumer vertexconsumer = bufferSource.getBuffer(RenderType.debugLineStrip(6.0D));
-        vertexconsumer.vertex(matrix, 0.5f, 0.5f, 0.5f).color(24f / 255f, 169f / 255f, 0f, 1f).endVertex();
-        vertexconsumer.vertex(matrix, (float) relative.x, (float) relative.y, (float) relative.z).color(0, 34f / 255f, 169f / 255f, 1f).endVertex();
+        vertexconsumer.addVertex(matrix, 0.5f, 0.5f, 0.5f).setColor(24f / 255f, 169f / 255f, 0f, 1f);
+        vertexconsumer.addVertex(matrix, (float) relative.x, (float) relative.y, (float) relative.z).setColor(0, 34f / 255f, 169f / 255f, 1f);
 
         var relativeNormal = relative.normalize();
         var titleX = 0.5 + (relativeNormal.x * 1.5f);

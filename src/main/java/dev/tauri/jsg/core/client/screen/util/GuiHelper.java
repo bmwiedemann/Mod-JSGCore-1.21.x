@@ -51,12 +51,11 @@ public class GuiHelper {
         Matrix4f matrix = currentStack.last().pose();
 
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, (xCoord), (yCoord + maxHeight), 0).uv(textureSprite.getU0(), textureSprite.getV1()).endVertex();
-        bufferbuilder.vertex(matrix, (xCoord + maxWidth), (yCoord + maxHeight), 0).uv(textureSprite.getU1(), textureSprite.getV1()).endVertex();
-        bufferbuilder.vertex(matrix, (xCoord + maxWidth), (yCoord), 0).uv(textureSprite.getU1(), (float) (textureSprite.getV0() + v)).endVertex();
-        bufferbuilder.vertex(matrix, (xCoord), (yCoord), 0).uv(textureSprite.getU0(), (float) (textureSprite.getV0() + v)).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, (xCoord), (yCoord + maxHeight), 0).setUv(textureSprite.getU0(), textureSprite.getV1());
+        bufferbuilder.addVertex(matrix, (xCoord + maxWidth), (yCoord + maxHeight), 0).setUv(textureSprite.getU1(), textureSprite.getV1());
+        bufferbuilder.addVertex(matrix, (xCoord + maxWidth), (yCoord), 0).setUv(textureSprite.getU1(), (float) (textureSprite.getV0() + v));
+        bufferbuilder.addVertex(matrix, (xCoord), (yCoord), 0).setUv(textureSprite.getU0(), (float) (textureSprite.getV0() + v));
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -64,12 +63,11 @@ public class GuiHelper {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Matrix4f matrix = currentStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, (x), (y + height), 0).uv(((float) (textureX) * 0.00390625F), ((float) (textureY + height) * 0.00390625F)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y + height), 0).uv(((float) (textureX + width) * 0.00390625F), ((float) (textureY + height) * 0.00390625F)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y), 0).uv(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
-        bufferbuilder.vertex(matrix, (x), (y), 0).uv(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, (x), (y + height), 0).setUv(((float) (textureX) * 0.00390625F), ((float) (textureY + height) * 0.00390625F));
+        bufferbuilder.addVertex(matrix, (x + width), (y + height), 0).setUv(((float) (textureX + width) * 0.00390625F), ((float) (textureY + height) * 0.00390625F));
+        bufferbuilder.addVertex(matrix, (x + width), (y), 0).setUv(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F));
+        bufferbuilder.addVertex(matrix, (x), (y), 0).setUv(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F));
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -83,12 +81,11 @@ public class GuiHelper {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Matrix4f matrix = currentStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, (float) x, (float) (y + height), zLevel).uv((float) u * 0.00390625F, (float) (v + height) * 0.00390625F).endVertex();
-        bufferbuilder.vertex(matrix, (float) (x + width), (float) (y + height), zLevel).uv((float) (u + width) * 0.00390625F, (float) (v + height) * 0.00390625F).endVertex();
-        bufferbuilder.vertex(matrix, (float) (x + width), (float) y, zLevel).uv((float) (u + width) * 0.00390625F, (float) v * 0.00390625F).endVertex();
-        bufferbuilder.vertex(matrix, (float) x, (float) y, zLevel).uv((float) u * 0.00390625F, (float) v * 0.00390625F).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, (float) x, (float) (y + height), zLevel).setUv((float) u * 0.00390625F, (float) (v + height) * 0.00390625F);
+        bufferbuilder.addVertex(matrix, (float) (x + width), (float) (y + height), zLevel).setUv((float) (u + width) * 0.00390625F, (float) (v + height) * 0.00390625F);
+        bufferbuilder.addVertex(matrix, (float) (x + width), (float) y, zLevel).setUv((float) (u + width) * 0.00390625F, (float) v * 0.00390625F);
+        bufferbuilder.addVertex(matrix, (float) x, (float) y, zLevel).setUv((float) u * 0.00390625F, (float) v * 0.00390625F);
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -102,12 +99,11 @@ public class GuiHelper {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Matrix4f matrix = currentStack.last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, x, y + height, 0.0f).uv((u * f), ((v + (float) height) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y + height), 0.0f).uv(((u + (float) width) * f), ((v + (float) height) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), y, 0.0f).uv(((u + (float) width) * f), (v * f1)).endVertex();
-        bufferbuilder.vertex(matrix, x, y, 0.0f).uv((u * f), (v * f1)).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, x, y + height, 0.0f).setUv((u * f), ((v + (float) height) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) width) * f), ((v + (float) height) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) width) * f), (v * f1));
+        bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1));
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -117,12 +113,11 @@ public class GuiHelper {
         Matrix4f matrix = currentStack.last().pose();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, x, (y + height), 0.0f).uv((u * f), ((v + (float) vHeight) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y + height), 0.0f).uv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1)).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), y, 0.0f).uv(((u + (float) uWidth) * f), (v * f1)).endVertex();
-        bufferbuilder.vertex(matrix, x, y, 0.0f).uv((u * f), (v * f1)).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, x, (y + height), 0.0f).setUv((u * f), ((v + (float) vHeight) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1));
+        bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) uWidth) * f), (v * f1));
+        bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1));
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -132,12 +127,11 @@ public class GuiHelper {
         Matrix4f matrix = currentStack.last().pose();
         RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-        bufferbuilder.vertex(matrix, x, (y + height), 0.0f).uv((u * f), ((v + (float) vHeight) * f1)).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), (y + height), 0.0f).uv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1)).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, (x + width), y, 0.0f).uv(((u + (float) uWidth) * f), (v * f1)).color(r, g, b, a).endVertex();
-        bufferbuilder.vertex(matrix, x, y, 0.0f).uv((u * f), (v * f1)).color(r, g, b, a).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+        bufferbuilder.addVertex(matrix, x, (y + height), 0.0f).setUv((u * f), ((v + (float) vHeight) * f1)).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, (x + width), (y + height), 0.0f).setUv(((u + (float) uWidth) * f), ((v + (float) vHeight) * f1)).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, (x + width), y, 0.0f).setUv(((u + (float) uWidth) * f), (v * f1)).setColor(r, g, b, a);
+        bufferbuilder.addVertex(matrix, x, y, 0.0f).setUv((u * f), (v * f1)).setColor(r, g, b, a);
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 
@@ -165,10 +159,10 @@ public class GuiHelper {
         RenderSystem.enableBlend();
         //RenderSystem.setShaderColor(f, f1, f2, f3);
         bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-        bufferbuilder.vertex(matrix, left, bottom, 0.0f).color(f, f1, f2, f3).endVertex();
-        bufferbuilder.vertex(matrix, right, bottom, 0.0f).color(f, f1, f2, f3).endVertex();
-        bufferbuilder.vertex(matrix, right, top, 0.0f).color(f, f1, f2, f3).endVertex();
-        bufferbuilder.vertex(matrix, left, top, 0.0f).color(f, f1, f2, f3).endVertex();
+        bufferbuilder.addVertex(matrix, left, bottom, 0.0f).setColor(f, f1, f2, f3);
+        bufferbuilder.addVertex(matrix, right, bottom, 0.0f).setColor(f, f1, f2, f3);
+        bufferbuilder.addVertex(matrix, right, top, 0.0f).setColor(f, f1, f2, f3);
+        bufferbuilder.addVertex(matrix, left, top, 0.0f).setColor(f, f1, f2, f3);
         BufferUploader.drawWithShader(bufferbuilder.end());
         RenderSystem.disableBlend();
     }
@@ -197,12 +191,11 @@ public class GuiHelper {
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
 
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-        bufferbuilder.vertex(mat, right, top, zLevel).color(startRed, startGreen, startBlue, startAlpha).endVertex();
-        bufferbuilder.vertex(mat, left, top, zLevel).color(startRed, startGreen, startBlue, startAlpha).endVertex();
-        bufferbuilder.vertex(mat, left, bottom, zLevel).color(endRed, endGreen, endBlue, endAlpha).endVertex();
-        bufferbuilder.vertex(mat, right, bottom, zLevel).color(endRed, endGreen, endBlue, endAlpha).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        bufferbuilder.addVertex(mat, right, top, zLevel).setColor(startRed, startGreen, startBlue, startAlpha);
+        bufferbuilder.addVertex(mat, left, top, zLevel).setColor(startRed, startGreen, startBlue, startAlpha);
+        bufferbuilder.addVertex(mat, left, bottom, zLevel).setColor(endRed, endGreen, endBlue, endAlpha);
+        bufferbuilder.addVertex(mat, right, bottom, zLevel).setColor(endRed, endGreen, endBlue, endAlpha);
         BufferUploader.drawWithShader(bufferbuilder.end());
 
         RenderSystem.disableBlend();
@@ -270,8 +263,7 @@ public class GuiHelper {
             RenderSystem.enableBlend();
         }
         //Note: We still use the tesselator as that is what GuiGraphics#innerBlit does
-        BufferBuilder vertexBuffer = Tesselator.getInstance().getBuilder();
-        vertexBuffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        BufferBuilder vertexBuffer = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
         Matrix4f matrix4f = currentStack.last().pose();
         for (int xTile = 0; xTile <= xTileCount; xTile++) {
             int width = (xTile == xTileCount) ? xRemainder : textureWidth;
@@ -300,10 +292,10 @@ public class GuiHelper {
                 float vLocalMax;
                 vLocalMin = vMin;
                 vLocalMax = vMax - vLocalDif;
-                vertexBuffer.vertex(matrix4f, x, y + textureHeight, zLevel).uv(uLocalMin, vLocalMax).endVertex();
-                vertexBuffer.vertex(matrix4f, shiftedX, y + textureHeight, zLevel).uv(uLocalMax, vLocalMax).endVertex();
-                vertexBuffer.vertex(matrix4f, shiftedX, y + maskTop, zLevel).uv(uLocalMax, vLocalMin).endVertex();
-                vertexBuffer.vertex(matrix4f, x, y + maskTop, zLevel).uv(uLocalMin, vLocalMin).endVertex();
+                vertexBuffer.addVertex(matrix4f, x, y + textureHeight, zLevel).setUv(uLocalMin, vLocalMax);
+                vertexBuffer.addVertex(matrix4f, shiftedX, y + textureHeight, zLevel).setUv(uLocalMax, vLocalMax);
+                vertexBuffer.addVertex(matrix4f, shiftedX, y + maskTop, zLevel).setUv(uLocalMax, vLocalMin);
+                vertexBuffer.addVertex(matrix4f, x, y + maskTop, zLevel).setUv(uLocalMin, vLocalMin);
             }
         }
         BufferUploader.drawWithShader(vertexBuffer.end());
@@ -452,12 +444,11 @@ public class GuiHelper {
         symbol.bindIconTexture(origin);
         Matrix4f matrix = graphics.pose().last().pose();
         Tesselator tessellator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuilder();
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferbuilder.vertex(matrix, x, y, 0).uv(0, 0).endVertex();
-        bufferbuilder.vertex(matrix, x, y + h, 0).uv(0, 1).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y + h, 0).uv(1, 1).endVertex();
-        bufferbuilder.vertex(matrix, x + w, y, 0).uv(1, 0).endVertex();
+        BufferBuilder bufferbuilder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferbuilder.addVertex(matrix, x, y, 0).setUv(0, 0);
+        bufferbuilder.addVertex(matrix, x, y + h, 0).setUv(0, 1);
+        bufferbuilder.addVertex(matrix, x + w, y + h, 0).setUv(1, 1);
+        bufferbuilder.addVertex(matrix, x + w, y, 0).setUv(1, 0);
         BufferUploader.drawWithShader(bufferbuilder.end());
     }
 }

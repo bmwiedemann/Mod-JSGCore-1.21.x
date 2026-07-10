@@ -159,12 +159,12 @@ public class CartoucheRenderer implements BlockEntityRenderer<CartoucheBE>, Link
                 Tesselator tessellator = Tesselator.getInstance();
                 BufferBuilder bufferbuilder = tessellator.getBuilder();
                 var matrix = poseStack.last().pose();
-                var normalMat = poseStack.last().normal();
+                var normalMat = poseStack.last().setNormal();
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.NEW_ENTITY);
-                bufferbuilder.vertex(matrix, finalXx, finalYy, finalZ).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).uv(0, 1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(finalPackedLight).normal(normalMat, 0, 0, 1).endVertex();
-                bufferbuilder.vertex(matrix, finalXx + finalW, finalYy, finalZ).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).uv(1, 1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(finalPackedLight).normal(normalMat, 0, 0, 1).endVertex();
-                bufferbuilder.vertex(matrix, finalXx + finalW, finalYy + finalH, finalZ).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).uv(1, 0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(finalPackedLight).normal(normalMat, 0, 0, 1).endVertex();
-                bufferbuilder.vertex(matrix, finalXx, finalYy + finalH, finalZ).color(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).uv(0, 0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(finalPackedLight).normal(normalMat, 0, 0, 1).endVertex();
+                bufferbuilder.addVertex(matrix, finalXx, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
+                bufferbuilder.addVertex(matrix, finalXx + finalW, finalYy, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
+                bufferbuilder.addVertex(matrix, finalXx + finalW, finalYy + finalH, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
+                bufferbuilder.addVertex(matrix, finalXx, finalYy + finalH, finalZ).setColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, finalAlpha).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(finalPackedLight).setNormal(normalMat, 0, 0, 1);
                 BufferUploader.drawWithShader(bufferbuilder.end());
             });
             poseStack.popPose();

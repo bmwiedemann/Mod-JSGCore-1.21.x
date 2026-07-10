@@ -66,19 +66,19 @@ public class LegacyOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
                 float texV3 = textureCoords[texCoordOffset + 5];
 
                 bufferbuilder
-                        .vertex(matrix, x1, y1, z1)
-                        .uv(texU1, texV1)
-                        .endVertex();
+                        .addVertex(matrix, x1, y1, z1)
+                        .setUv(texU1, texV1)
+                        ;
 
                 bufferbuilder
-                        .vertex(matrix, x2, y2, z2)
-                        .uv(texU2, texV2)
-                        .endVertex();
+                        .addVertex(matrix, x2, y2, z2)
+                        .setUv(texU2, texV2)
+                        ;
 
                 bufferbuilder
-                        .vertex(matrix, x3, y3, z3)
-                        .uv(texU3, texV3)
-                        .endVertex();
+                        .addVertex(matrix, x3, y3, z3)
+                        .setUv(texU3, texV3)
+                        ;
 
                 vertexOffset += 9;
                 texCoordOffset += 6;

@@ -44,9 +44,9 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
                 var uv1 = new Vector2f(model.textureCoords[i / 3 * 2], model.textureCoords[i / 3 * 2 + 1]);
                 uv1 = getCorrectUVWithSprite(uv1.getX(), uv1.getY(), textureAtlasSprite);
                 bufferbuilder
-                        .vertex(model.vertices[i], model.vertices[i + 1], model.vertices[i + 2])
-                        .uv(uv1.x, uv1.y)
-                        .endVertex();
+                        .addVertex(model.vertices[i], model.vertices[i + 1], model.vertices[i + 2])
+                        .setUv(uv1.x, uv1.y)
+                        ;
             }
             var rb = bufferbuilder.end();
             modelBuffer.bind();

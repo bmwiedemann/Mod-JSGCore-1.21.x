@@ -42,7 +42,7 @@ public class JSGAxisAlignedBB extends AABB {
     }
 
     public JSGAxisAlignedBB(BlockPos min, BlockPos max) {
-        super(min, max);
+        super(net.minecraft.world.phys.Vec3.atLowerCornerOf(min), net.minecraft.world.phys.Vec3.atLowerCornerOf(max));
     }
 
     public JSGAxisAlignedBB(BlockPos center, int radius) {
@@ -230,10 +230,9 @@ public class JSGAxisAlignedBB extends AABB {
 
     private static void renderLine(Matrix4f m, double x1, double y1, double z1, double x2, double y2, double z2, float r, float g, float b, float a) {
         Tesselator t = Tesselator.getInstance();
-        BufferBuilder buffer = t.getBuilder();
-        buffer.begin(VertexFormat.Mode.DEBUG_LINE_STRIP, DefaultVertexFormat.POSITION_COLOR);
-        buffer.vertex(m, (float) x1, (float) y1, (float) z1).color(r, g, b, a).endVertex();
-        buffer.vertex(m, (float) x2, (float) y2, (float) z2).color(r, g, b, a).endVertex();
-        t.end();
+        BufferBuilder buffer = t.begin(VertexFormat.Mode.DEBUG_LINE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+        buffer.addVertex(m, (float) x1, (float) y1, (float) z1).setColor(r, g, b, a);
+        buffer.addVertex(m, (float) x2, (float) y2, (float) z2).setColor(r, g, b, a);
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(buffer.buildOrThrow());
     }
 }

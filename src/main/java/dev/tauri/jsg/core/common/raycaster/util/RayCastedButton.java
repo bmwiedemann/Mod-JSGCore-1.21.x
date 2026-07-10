@@ -84,15 +84,14 @@ public class RayCastedButton {
         Matrix4f matrix = stack.last().pose();
 
         Tesselator t = Tesselator.getInstance();
-        BufferBuilder b = t.getBuilder();
-        b.begin(VertexFormat.Mode.DEBUG_LINE_STRIP, DefaultVertexFormat.POSITION_COLOR);
+        BufferBuilder b = t.begin(VertexFormat.Mode.DEBUG_LINE_STRIP, DefaultVertexFormat.POSITION_COLOR);
 
         for (var vertex : vectors) {
-            b.vertex(matrix, vertex.x, vertex.z, -vertex.y).color(1.0f, 1.0f, 1.0f, 1).endVertex();
+            b.addVertex(matrix, vertex.x, vertex.z, -vertex.y).setColor(1.0f, 1.0f, 1.0f, 1);
         }
-        b.vertex(matrix, vectors.get(0).x, vectors.get(0).z, -vectors.get(0).y).color(1.0f, 1.0f, 1.0f, 1).endVertex();
+        b.addVertex(matrix, vectors.get(0).x, vectors.get(0).z, -vectors.get(0).y).setColor(1.0f, 1.0f, 1.0f, 1);
 
-        t.end();
+        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(b.buildOrThrow());
         stack.popPose();
     }
 
