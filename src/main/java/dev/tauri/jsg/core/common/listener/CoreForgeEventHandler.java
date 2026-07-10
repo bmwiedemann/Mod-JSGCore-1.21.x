@@ -30,8 +30,8 @@ public class CoreForgeEventHandler {
 
     @SubscribeEvent
     public static void onClickWithCrystalSeed(PlayerInteractEvent.RightClickBlock e) {
-        if (e.getUseItem() == Event.Result.ALLOW) return;
-        if (e.getUseBlock() == Event.Result.ALLOW) return;
+        if (e.getUseItem() == net.neoforged.neoforge.common.util.TriState.TRUE) return;
+        if (e.getUseBlock() == net.neoforged.neoforge.common.util.TriState.TRUE) return;
         var item = e.getEntity().getItemInHand(e.getHand());
         if (item.isEmpty()) return;
         var bHit = e.getHitVec();
@@ -69,10 +69,10 @@ public class CoreForgeEventHandler {
             var recipesManager = event.getServerResources().getRecipeManager();
             var recipes = recipesManager.getRecipes();
 
-            recipes.add(new NotebookCloneRecipe());
-            recipes.add(new NotebookCreationRecipe());
-            recipes.add(new NotebookMergePageRecipe());
-            recipes.add(new NotebookMergeRecipe());
+            recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_clone"), new NotebookCloneRecipe()));
+            recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_creation"), new NotebookCreationRecipe()));
+            recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_merge_page"), new NotebookMergePageRecipe()));
+            recipes.add(new net.minecraft.world.item.crafting.RecipeHolder<>(dev.tauri.jsg.core.mapping.JSGMapping.rl(JSGCore.MOD_ID, "notebook_merge"), new NotebookMergeRecipe()));
 
             recipesManager.replaceRecipes(recipes);
             JSGCore.logger.info("Recipes successfully reloaded!");

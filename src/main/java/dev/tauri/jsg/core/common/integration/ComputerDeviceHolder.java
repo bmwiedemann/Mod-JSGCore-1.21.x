@@ -3,12 +3,12 @@ package dev.tauri.jsg.core.common.integration;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.integration.cctweaked.methods.ICCDevice;
 import dev.tauri.jsg.core.common.integration.oc2.methods.IOCDevice;
-import net.neoforged.neoforge.capabilities.Capability;
-import net.neoforged.neoforge.common.util.LazyOptional;
+
+import javax.annotation.Nullable;
 
 public class ComputerDeviceHolder implements dev.tauri.jsg.core.common.integration.IComputerDeviceHolder {
-    private LazyOptional<ICCDevice> ccDevice = LazyOptional.empty();
-    private LazyOptional<IOCDevice> ocDevice = LazyOptional.empty();
+    private ICCDevice ccDevice;
+    private IOCDevice ocDevice;
 
     public final ComputerDeviceProvider provider; // usually stargate block entity
 
@@ -16,32 +16,22 @@ public class ComputerDeviceHolder implements dev.tauri.jsg.core.common.integrati
         this.provider = provider;
     }
 
-    public <T> LazyOptional<T> getOrCreateDeviceBasedOnCap(Capability<T> cap) {
-        var cc = getOrCreateCCDevice(cap);
-        if (cc.isPresent()) return cc;
-        var oc = getOrCreateOCDevice(cap);
-        if (oc.isPresent()) return oc;
-        return LazyOptional.empty();
+    @Nullable
+    public ICCDevice getOrCreateCCDevice() {
+        if (!JSGCore.ccWrapper.isLoaded()) return null;
+        if (ccDevice == null) {
+            ccDevice = JSGCore.ccWrapper.createDevice(provider, provider.getDeviceType());
+        }
+        return ccDevice;
     }
 
-    public <T> LazyOptional<T> getOrCreateCCDevice(Capability<T> cap) {
-        if (!JSGCore.ccWrapper.isLoaded()) return LazyOptional.empty();
-        if (JSGCore.ccWrapper.checkCaps(cap)) {
-            if (ccDevice.isPresent()) return ccDevice.cast();
-            ccDevice = JSGCore.ccWrapper.createDevice(cap, provider, provider.getDeviceType());
-            return ccDevice.cast();
+    @Nullable
+    public IOCDevice getOrCreateOCDevice() {
+        if (!JSGCore.ocWrapper.isLoaded()) return null;
+        if (ocDevice == null) {
+            ocDevice = JSGCore.ocWrapper.createDevice(provider, provider.getDeviceType());
         }
-        return LazyOptional.empty();
-    }
-
-    public <T> LazyOptional<T> getOrCreateOCDevice(Capability<T> cap) {
-        if (!JSGCore.ocWrapper.isLoaded()) return LazyOptional.empty();
-        if (JSGCore.ocWrapper.checkCaps(cap)) {
-            if (ocDevice.isPresent()) return ocDevice.cast();
-            ocDevice = JSGCore.ocWrapper.createDevice(cap, provider, provider.getDeviceType());
-            return ocDevice.cast();
-        }
-        return LazyOptional.empty();
+        return ocDevice;
     }
 
 
@@ -61,43 +51,23 @@ public class ComputerDeviceHolder implements dev.tauri.jsg.core.common.integrati
 
     // WIRED SIGNALS
     public void sendSignalCC(String eventName, Object... objects) {
-        var caps = JSGCore.ccWrapper.getCaps();
-        if (caps.isEmpty()) return;
-        var opt = getOrCreateCCDevice(caps.get());
-        if (!opt.isPresent()) return;
-        var peripheral = opt.resolve().orElseThrow();
-        if (!(peripheral instanceof ICCDevice device)) return;
-        device.sendSignal(eventName, objects);
+        var device = getOrCreateCCDevice();
+        if (device != null) device.sendSignal(eventName, objects);
     }
 
     public void sendSignalOC(String eventName, Object... objects) {
-        var caps = JSGCore.ocWrapper.getCaps();
-        if (caps.isEmpty()) return;
-        var opt = getOrCreateCCDevice(caps.get());
-        if (!opt.isPresent()) return;
-        var peripheral = opt.resolve().orElseThrow();
-        if (!(peripheral instanceof IOCDevice device)) return;
-        device.sendSignal(eventName, objects);
+        var device = getOrCreateOCDevice();
+        if (device != null) device.sendSignal(eventName, objects);
     }
 
     // WIRELESS NETWORK CONNECTION
     public void connectToWirelessNetworkCC() {
-        var caps = JSGCore.ccWrapper.getCaps();
-        if (caps.isEmpty()) return;
-        var opt = getOrCreateCCDevice(caps.get());
-        if (!opt.isPresent()) return;
-        var peripheral = opt.resolve().orElseThrow();
-        if (!(peripheral instanceof ICCDevice device)) return;
-        device.connectToWirelessNetwork();
+        var device = getOrCreateCCDevice();
+        if (device != null) device.connectToWirelessNetwork();
     }
 
     public void disconnectFromWirelessNetworkCC() {
-        var caps = JSGCore.ccWrapper.getCaps();
-        if (caps.isEmpty()) return;
-        var opt = getOrCreateCCDevice(caps.get());
-        if (!opt.isPresent()) return;
-        var peripheral = opt.resolve().orElseThrow();
-        if (!(peripheral instanceof ICCDevice device)) return;
-        device.disconnectFromWirelessNetwork();
+        var device = getOrCreateCCDevice();
+        if (device != null) device.disconnectFromWirelessNetwork();
     }
 }

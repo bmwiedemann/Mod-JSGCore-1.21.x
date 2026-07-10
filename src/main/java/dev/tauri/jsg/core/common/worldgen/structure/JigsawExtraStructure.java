@@ -1,6 +1,7 @@
 package dev.tauri.jsg.core.common.worldgen.structure;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.tauri.jsg.core.common.registry.CoreStructureTypes;
@@ -23,7 +24,7 @@ import java.util.Optional;
 @SuppressWarnings("all")
 public class JigsawExtraStructure extends Structure {
     public static final int MAX_TOTAL_STRUCTURE_RANGE = 2048;
-    public static final Codec<JigsawExtraStructure> CODEC = ExtraCodecs.validate(RecordCodecBuilder.mapCodec((p_227640_) ->
+    public static final MapCodec<JigsawExtraStructure> CODEC = RecordCodecBuilder.<JigsawExtraStructure>mapCodec((p_227640_) ->
             p_227640_.group(settingsCodec(p_227640_),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((p_227656_) -> p_227656_.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((p_227654_) -> p_227654_.startJigsawName),
@@ -31,7 +32,7 @@ public class JigsawExtraStructure extends Structure {
                     HeightProvider.CODEC.fieldOf("start_height").forGetter((p_227649_) -> p_227649_.startHeight),
                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter((p_227646_) -> p_227646_.useExpansionHack),
                     Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((p_227644_) -> p_227644_.projectStartToHeightmap),
-                    Codec.intRange(1, MAX_TOTAL_STRUCTURE_RANGE).fieldOf("max_distance_from_center").forGetter((p_227642_) -> p_227642_.maxDistanceFromCenter)).apply(p_227640_, JigsawExtraStructure::new)), JigsawExtraStructure::verifyRange).codec();
+                    Codec.intRange(1, MAX_TOTAL_STRUCTURE_RANGE).fieldOf("max_distance_from_center").forGetter((p_227642_) -> p_227642_.maxDistanceFromCenter)).apply(p_227640_, JigsawExtraStructure::new)).validate(JigsawExtraStructure::verifyRange);
     public final Holder<StructureTemplatePool> startPool;
     public final Optional<ResourceLocation> startJigsawName;
     public final int maxDepth;
