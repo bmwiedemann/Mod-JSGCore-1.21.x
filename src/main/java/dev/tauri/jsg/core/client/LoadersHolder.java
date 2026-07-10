@@ -6,7 +6,7 @@ import dev.tauri.jsg.core.client.texture.ITextureLoader;
 import dev.tauri.jsg.core.common.loader.PointOfOriginsLoader;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.StartupMessageManager;
+import net.neoforged.fml.loading.progress.StartupNotificationManager;
 import net.neoforged.fml.loading.progress.ProgressMeter;
 
 import java.util.HashMap;
@@ -73,7 +73,7 @@ public class LoadersHolder {
 
                 profilerFiller.startTick();
                 profilerFiller.push("jsg_resources_" + id);
-                ProgressMeter progress = StartupMessageManager.addProgressBar(modName.get() + " - TESR loading", count);
+                ProgressMeter progress = StartupNotificationManager.addProgressBar(modName.get() + " - TESR loading", count);
                 if (t != null) {
                     t.loadTextures();
                     progress.increment();
@@ -91,7 +91,7 @@ public class LoadersHolder {
         // origins
         profilerFiller.startTick();
         profilerFiller.push("jsg_point_of_origins");
-        ProgressMeter progress = StartupMessageManager.addProgressBar("JSG: Core - Point of origins", PointOfOriginsLoader.INSTANCE.getTotalCount());
+        ProgressMeter progress = StartupNotificationManager.addProgressBar("JSG: Core - Point of origins", PointOfOriginsLoader.INSTANCE.getTotalCount());
         PointOfOriginsLoader.INSTANCE.loadResources(progress);
         progress.complete();
         profilerFiller.pop();

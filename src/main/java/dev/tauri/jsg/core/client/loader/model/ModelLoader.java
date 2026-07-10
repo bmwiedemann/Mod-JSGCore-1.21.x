@@ -9,9 +9,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.StartupMessageManager;
-import net.neoforged.fml.loading.progress.ProgressMeter;
 import net.neoforged.fml.loading.progress.StartupNotificationManager;
+import net.neoforged.fml.loading.progress.ProgressMeter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -60,7 +59,7 @@ public class ModelLoader implements IModelLoader {
 
             long start = System.currentTimeMillis();
 
-            ProgressMeter progress = StartupMessageManager.addProgressBar(modName.get() + " - Loading Models", modelPaths.size());
+            ProgressMeter progress = StartupNotificationManager.addProgressBar(modName.get() + " - Loading Models", modelPaths.size());
 
             JSGCore.logger.info("Started loading models for domain {}...", modId);
             for (String modelPath : modelPaths) {

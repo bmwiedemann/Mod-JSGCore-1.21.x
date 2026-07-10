@@ -4,18 +4,18 @@ import dev.tauri.jsg.core.common.config.values.JSGConfigValue;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.client.gui.widget.ForgeSlider;
+import net.neoforged.neoforge.client.gui.widget.ExtendedSlider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SliderConfigEntry extends AbstractConfigEntry {
-    protected ForgeSlider sliderButton;
+    protected ExtendedSlider sliderButton;
     protected JSGConfigValue.DoubleValue value;
 
     public SliderConfigEntry(Component component1, Component component2, int screenWidth, JSGConfigValue.DoubleValue value) {
         super(value);
         this.value = value;
-        this.sliderButton = new ForgeSlider(0, 0, 200, 20,
+        this.sliderButton = new ExtendedSlider(0, 0, 200, 20,
                 component1.copy().append(": "), component2,
                 value.getMin(), value.getMax(), value.get(), 0.05, 1, true);
     }

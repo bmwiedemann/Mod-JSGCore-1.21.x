@@ -63,13 +63,12 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
     protected void createDarkSky() {
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
         if (this.darkBuffer != null) {
             this.darkBuffer.close();
         }
 
         this.darkBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-        BufferBuilder.RenderedBuffer bufferbuilder$renderedbuffer = buildSkyDisc(bufferbuilder, -16.0F);
+        MeshData bufferbuilder$renderedbuffer = buildSkyDisc(tesselator, -16.0F);
         this.darkBuffer.bind();
         this.darkBuffer.upload(bufferbuilder$renderedbuffer);
         VertexBuffer.unbind();
@@ -77,13 +76,12 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
     protected void createLightSky() {
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
         if (this.skyBuffer != null) {
             this.skyBuffer.close();
         }
 
         this.skyBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-        BufferBuilder.RenderedBuffer bufferbuilder$renderedbuffer = buildSkyDisc(bufferbuilder, 16.0F);
+        MeshData bufferbuilder$renderedbuffer = buildSkyDisc(tesselator, 16.0F);
         this.skyBuffer.bind();
         this.skyBuffer.upload(bufferbuilder$renderedbuffer);
         VertexBuffer.unbind();
@@ -99,14 +97,13 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
     protected void createStars() {
         Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferbuilder = tesselator.getBuilder();
         RenderSystem.setShader(GameRenderer::getPositionShader);
         if (this.starBuffer != null) {
             this.starBuffer.close();
         }
 
         this.starBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-        BufferBuilder.RenderedBuffer renderedBuffer = drawStars(bufferbuilder, RandomSource.create(getStarsGenerationSeed()), getStarsCount());
+        MeshData renderedBuffer = drawStars(tesselator, RandomSource.create(getStarsGenerationSeed()), getStarsCount());
         this.starBuffer.bind();
         this.starBuffer.upload(renderedBuffer);
         VertexBuffer.unbind();
@@ -120,8 +117,8 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
      * @author Povstalec - modified by MineDragonCZ_
      * Commentary by Povstalec
      */
-    protected BufferBuilder.RenderedBuffer drawStars(BufferBuilder builder, RandomSource randomsource, int numberOfStars) {
-        builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+    protected MeshData drawStars(Tesselator tesselator, RandomSource randomsource, int numberOfStars) {
+        BufferBuilder builder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
         for (int i = 0; i < numberOfStars; ++i) {
             /*
@@ -255,26 +252,26 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
                          */
                         double projectedX = heightProjectionXZ * sinTheta - width * cosTheta;
                         double projectedZ = width * sinTheta + heightProjectionXZ * cosTheta;
-                        builder.addVertex(starX + projectedX, starY + heightProjectionY, starZ + projectedZ).setColor(starColor.getRed(), starColor.getGreen(), starColor.getBlue(), (int) (starColor.getAlpha() * alpha));
+                        builder.addVertex((float) (starX + projectedX), (float) (starY + heightProjectionY), (float) (starZ + projectedZ)).setColor(starColor.getRed(), starColor.getGreen(), starColor.getBlue(), (int) (starColor.getAlpha() * alpha));
                     }
                 }
             }
         }
-        return builder.end();
+        return builder.buildOrThrow();
     }
 
-    protected static BufferBuilder.RenderedBuffer buildSkyDisc(BufferBuilder pBuilder, float pY) {
+    protected static MeshData buildSkyDisc(Tesselator tesselator, float pY) {
         float f1 = 512.0F;
         float f = Math.signum(pY) * f1;
         RenderSystem.setShader(GameRenderer::getPositionShader);
-        pBuilder.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
-        pBuilder.addVertex(0.0D, pY, 0.0D);
+        BufferBuilder pBuilder = tesselator.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION);
+        pBuilder.addVertex(0.0F, pY, 0.0F);
 
         for (int i = -180; i <= 180; i += 45) {
             pBuilder.addVertex((f * Mth.cos((float) i * ((float) Math.PI / 180F))), pY, (f1 * Mth.sin((float) i * ((float) Math.PI / 180F))));
         }
 
-        return pBuilder.end();
+        return pBuilder.buildOrThrow();
     }
 
 
@@ -321,7 +318,9 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
     @Override
     @ParametersAreNonnullByDefault
     @SuppressWarnings("all")
-    public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+    public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+        PoseStack poseStack = new PoseStack();
+        poseStack.mulPose(modelViewMatrix);
         if (Integrations.STELLAR_VIEW.isLoaded()) {
             return StellarViewCompatibility.renderSky(level, ticks, partialTick, poseStack, camera, projectionMatrix, isFoggy, setupFog);
         }
@@ -423,7 +422,7 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
     @Override
     @ParametersAreNonnullByDefault
-    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
+    public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
         var tex = getCustomCloudsTexture();
         if (tex == null) return false;
         float f = level.effects().getCloudHeight();
@@ -457,19 +456,18 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
             if (this.generateClouds) {
                 this.generateClouds = false;
-                BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
                 if (this.cloudBuffer != null) {
                     this.cloudBuffer.close();
                 }
 
                 this.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-                BufferBuilder.RenderedBuffer bufferbuilder$renderedbuffer = this.buildClouds(bufferbuilder, d2, d3, d4, vec3);
+                MeshData bufferbuilder$renderedbuffer = this.buildClouds(Tesselator.getInstance(), d2, d3, d4, vec3);
                 this.cloudBuffer.bind();
                 this.cloudBuffer.upload(bufferbuilder$renderedbuffer);
                 VertexBuffer.unbind();
             }
 
-            RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
+            RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getRendertypeCloudsShader);
             RenderSystem.setShaderTexture(0, tex);
             FogRenderer.levelFogColor();
             poseStack.pushPose();
@@ -503,7 +501,7 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
 
     @SuppressWarnings("all")
-    private BufferBuilder.RenderedBuffer buildClouds(BufferBuilder pBuilder, double pX, double pY, double pZ, Vec3 pCloudColor) {
+    private MeshData buildClouds(Tesselator tesselator, double pX, double pY, double pZ, Vec3 pCloudColor) {
         float f = 4.0F;
         float f1 = 0.00390625F;
         int i = 8;
@@ -523,8 +521,8 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
         float f14 = f5 * 0.8F;
         float f15 = f6 * 0.8F;
         float f16 = f7 * 0.8F;
-        RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
-        pBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
+        RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getRendertypeCloudsShader);
+        BufferBuilder pBuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL);
         float f17 = (float) Math.floor(pY / 4.0D) * 4.0F;
         if (this.prevCloudsType == CloudStatus.FANCY) {
             for (int k = -3; k <= 4; ++k) {
@@ -532,52 +530,52 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
                     float f18 = (float) (k * 8);
                     float f19 = (float) (l * 8);
                     if (f17 > -5.0F) {
-                        pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + 8.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 0.0F), (double) (f19 + 8.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 0.0F), (double) (f19 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + 8.0F).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + 8.0F).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 8.0F, f17 + 0.0F, f19 + 0.0F).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 0.0F, f17 + 0.0F, f19 + 0.0F).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f11, f12, f13, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
                     }
 
                     if (f17 <= 5.0F) {
-                        pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 4.0F - 9.765625E-4F), (double) (f19 + 8.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 4.0F - 9.765625E-4F), (double) (f19 + 8.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 4.0F - 9.765625E-4F), (double) (f19 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
-                        pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 4.0F - 9.765625E-4F), (double) (f19 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 0.0F, f17 + 4.0F - 9.765625E-4F, f19 + 8.0F).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 8.0F, f17 + 4.0F - 9.765625E-4F, f19 + 8.0F).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 8.0F, f17 + 4.0F - 9.765625E-4F, f19 + 0.0F).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
+                        pBuilder.addVertex(f18 + 0.0F, f17 + 4.0F - 9.765625E-4F, f19 + 0.0F).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, 1.0F, 0.0F);
                     }
 
                     if (k > -1) {
                         for (int i1 = 0; i1 < 8; ++i1) {
-                            pBuilder.addVertex((double) (f18 + (float) i1 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) i1 + 0.0F), (double) (f17 + 4.0F), (double) (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) i1 + 0.0F), (double) (f17 + 4.0F), (double) (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) i1 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 8.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) i1 + 0.0F), (f17 + 4.0F), (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) i1 + 0.0F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + (float) i1 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(-1.0F, 0.0F, 0.0F);
                         }
                     }
 
                     if (k <= 1) {
                         for (int j2 = 0; j2 < 8; ++j2) {
-                            pBuilder.addVertex((double) (f18 + (float) j2 + 1.0F - 9.765625E-4F), (double) (f17 + 0.0F), (double) (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) j2 + 1.0F - 9.765625E-4F), (double) (f17 + 4.0F), (double) (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) j2 + 1.0F - 9.765625E-4F), (double) (f17 + 4.0F), (double) (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
-                            pBuilder.addVertex((double) (f18 + (float) j2 + 1.0F - 9.765625E-4F), (double) (f17 + 0.0F), (double) (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 8.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 8.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 4.0F), (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
+                            pBuilder.addVertex((f18 + (float) j2 + 1.0F - 9.765625E-4F), (f17 + 0.0F), (f19 + 0.0F)).setUv((f18 + (float) j2 + 0.5F) * 0.00390625F + f3, (f19 + 0.0F) * 0.00390625F + f4).setColor(f8, f9, f10, 0.8F).setNormal(1.0F, 0.0F, 0.0F);
                         }
                     }
 
                     if (l > -1) {
                         for (int k2 = 0; k2 < 8; ++k2) {
-                            pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 4.0F), (double) (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
-                            pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 4.0F), (double) (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
-                            pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 0.0F), (double) (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
-                            pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            pBuilder.addVertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            pBuilder.addVertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            pBuilder.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
+                            pBuilder.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) k2 + 0.0F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) k2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, -1.0F);
                         }
                     }
 
                     if (l <= 1) {
                         for (int l2 = 0; l2 < 8; ++l2) {
-                            pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 4.0F), (double) (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
-                            pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 4.0F), (double) (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
-                            pBuilder.addVertex((double) (f18 + 8.0F), (double) (f17 + 0.0F), (double) (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
-                            pBuilder.addVertex((double) (f18 + 0.0F), (double) (f17 + 0.0F), (double) (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            pBuilder.addVertex((f18 + 0.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            pBuilder.addVertex((f18 + 8.0F), (f17 + 4.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            pBuilder.addVertex((f18 + 8.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 8.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
+                            pBuilder.addVertex((f18 + 0.0F), (f17 + 0.0F), (f19 + (float) l2 + 1.0F - 9.765625E-4F)).setUv((f18 + 0.0F) * 0.00390625F + f3, (f19 + (float) l2 + 0.5F) * 0.00390625F + f4).setColor(f14, f15, f16, 0.8F).setNormal(0.0F, 0.0F, 1.0F);
                         }
                     }
                 }
@@ -588,14 +586,14 @@ public abstract class AbstractSkyEffects extends DimensionSpecialEffects.Overwor
 
             for (int l1 = -32; l1 < 32; l1 += 32) {
                 for (int i2 = -32; i2 < 32; i2 += 32) {
-                    pBuilder.addVertex((double) (l1 + 0), (double) f17, (double) (i2 + 32)).setUv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                    pBuilder.addVertex((double) (l1 + 32), (double) f17, (double) (i2 + 32)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                    pBuilder.addVertex((double) (l1 + 32), (double) f17, (double) (i2 + 0)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
-                    pBuilder.addVertex((double) (l1 + 0), (double) f17, (double) (i2 + 0)).setUv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    pBuilder.addVertex((l1 + 0), f17, (i2 + 32)).setUv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    pBuilder.addVertex((l1 + 32), f17, (i2 + 32)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 32) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    pBuilder.addVertex((l1 + 32), f17, (i2 + 0)).setUv((float) (l1 + 32) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
+                    pBuilder.addVertex((l1 + 0), f17, (i2 + 0)).setUv((float) (l1 + 0) * 0.00390625F + f3, (float) (i2 + 0) * 0.00390625F + f4).setColor(f5, f6, f7, 0.8F).setNormal(0.0F, -1.0F, 0.0F);
                 }
             }
         }
 
-        return pBuilder.end();
+        return pBuilder.buildOrThrow();
     }
 }
