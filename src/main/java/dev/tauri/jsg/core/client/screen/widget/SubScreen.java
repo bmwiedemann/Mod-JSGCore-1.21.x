@@ -212,10 +212,10 @@ public class SubScreen extends dev.tauri.jsg.core.client.screen.widget.Scrollabl
     }
 
     @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
-        if (ContainerEventHandler.super.mouseScrolled(pMouseX, pMouseY, pDelta))
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double pDelta) {
+        if (ContainerEventHandler.super.mouseScrolled(pMouseX, pMouseY, scrollX, pDelta))
             return true;
-        return super.mouseScrolled(pMouseX, pMouseY, pDelta);
+        return super.mouseScrolled(pMouseX, pMouseY, scrollX, pDelta);
     }
 
     @Override

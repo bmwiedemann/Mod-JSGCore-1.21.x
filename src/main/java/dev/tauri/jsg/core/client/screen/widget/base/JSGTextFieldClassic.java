@@ -48,7 +48,7 @@ public class JSGTextFieldClassic extends EditBox {
     public boolean charTyped(char c, int i) {
         if (!this.canConsumeInput()) {
             return false;
-        } else if (SharedConstants.isAllowedChatCharacter(c)) {
+        } else if (net.minecraft.util.StringUtil.isAllowedChatCharacter(c)) {
             if(!keyPressed(c, 0, 0)){
                 insertText(String.valueOf(c));
             }

@@ -82,8 +82,8 @@ public abstract class TabbedContainerScreen<T extends AbstractContainerMenu & de
     }
 
     @Override
-    public boolean mouseScrolled(double v, double v1, double v2) {
-        super.mouseScrolled(v, v1, v2);
+    public boolean mouseScrolled(double v, double v1, double scrollX, double v2) {
+        super.mouseScrolled(v, v1, scrollX, v2);
         int wheel = (int) v2;
         if (wheel != 0) {
             for (Tab tab : tabs) {

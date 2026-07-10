@@ -17,7 +17,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import dev.tauri.jsg.core.common.registry.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -26,13 +26,13 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class JSGRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public JSGRecipeProvider(PackOutput pOutput) {
-        super(pOutput);
+    public JSGRecipeProvider(PackOutput pOutput, java.util.concurrent.CompletableFuture<net.minecraft.core.HolderLookup.Provider> registries) {
+        super(pOutput, registries);
     }
 
     @Override
     @ParametersAreNonnullByDefault
-    protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+    protected void buildRecipes(net.minecraft.data.recipes.RecipeOutput pWriter) {
         CoreBlocks.CARTOUCHES.forEach((material, cartouches) -> {
             var baseBlock = CoreBlocks.CARTOUCHES_BLOCKS.get(material).get().getBlock();
             cartouches.forEach((type, cartouche) -> {
@@ -733,17 +733,17 @@ public class JSGRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @ParametersAreNonnullByDefault
-    protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
+    protected static void oreSmelting(net.minecraft.data.recipes.RecipeOutput pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
         oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_smelting");
     }
 
     @ParametersAreNonnullByDefault
-    protected static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+    protected static void oreBlasting(net.minecraft.data.recipes.RecipeOutput pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
         oreCooking(pFinishedRecipeConsumer, RecipeSerializer.BLASTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
     @ParametersAreNonnullByDefault
-    protected static void oreCooking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+    protected static void oreCooking(net.minecraft.data.recipes.RecipeOutput pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
         for (ItemLike itemlike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer)
                     .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))

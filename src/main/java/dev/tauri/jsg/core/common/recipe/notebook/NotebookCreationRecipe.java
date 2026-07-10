@@ -51,7 +51,7 @@ public class NotebookCreationRecipe extends ShapelessRecipe {
 
     @NotNull
     @ParametersAreNonnullByDefault
-    public ItemStack assemble(CraftingInput inv, HolderLookup.Provider pHolderLookup.Provider) {
+    public ItemStack assemble(CraftingInput inv, HolderLookup.Provider pRegistries) {
         var pages = new ListTag();
 
         for (int i = 0; i < inv.size(); i++) {

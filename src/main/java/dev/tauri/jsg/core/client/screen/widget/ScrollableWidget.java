@@ -101,7 +101,7 @@ public abstract class ScrollableWidget extends AbstractWidget {
     }
 
     @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double pDelta) {
         if (GuiHelper.isPointInRegion(getX(), getY(), getWidth(), getHeight(), pMouseX, pMouseY)) {
             this.setScrollAmount(this.getScrollAmount() - pDelta * this.scrollRate());
             return true;

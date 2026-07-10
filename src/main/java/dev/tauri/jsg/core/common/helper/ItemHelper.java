@@ -12,7 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 import javax.annotation.Nullable;
@@ -47,14 +48,14 @@ public class ItemHelper {
 
     @Nullable
     @ParametersAreNonnullByDefault
-    public static ItemStack getMapForTarget(TagKey<Structure> structure, Component displayName, MapDecoration.Type destinationType, ServerLevel level, BlockPos origin) {
+    public static ItemStack getMapForTarget(TagKey<Structure> structure, Component displayName, Holder<MapDecorationType> destinationType, ServerLevel level, BlockPos origin) {
         BlockPos blockpos = level.findNearestMapStructure(structure, origin, 100, true);
         if (blockpos == null)
             return null;
         ItemStack itemstack = MapItem.create(level, blockpos.getX(), blockpos.getZ(), (byte) 2, true, true);
         MapItem.renderBiomePreviewMap(level, itemstack);
         MapItemSavedData.addTargetDecoration(itemstack, blockpos, "+", destinationType);
-        itemstack.setHoverName(displayName);
+        itemstack.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, displayName);
         return itemstack;
     }
 }

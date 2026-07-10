@@ -32,8 +32,7 @@ public class SubScreenWithWidgets extends SubScreen {
     public void tick() {
         super.tick();
         widgets.forEach(widget -> {
-            if (widget instanceof EditBox box) box.tick();
-            else if (widget instanceof SubScreen screen) screen.tick();
+            if (widget instanceof SubScreen screen) screen.tick();
         });
     }
 

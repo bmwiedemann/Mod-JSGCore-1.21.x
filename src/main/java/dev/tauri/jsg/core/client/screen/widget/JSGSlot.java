@@ -166,7 +166,7 @@ public class JSGSlot extends Slot{
             int i = Math.min(Math.min(p_150658_, p_150657_.getCount()), this.getMaxStackSize(p_150657_) - itemstack.getCount());
             if (itemstack.isEmpty()) {
                 this.setByPlayer(p_150657_.split(i));
-            } else if (ItemStack.isSameItemSameTags(itemstack, p_150657_)) {
+            } else if (ItemStack.isSameItemSameComponents(itemstack, p_150657_)) {
                 p_150657_.shrink(i);
                 itemstack.grow(i);
                 this.setByPlayer(itemstack);

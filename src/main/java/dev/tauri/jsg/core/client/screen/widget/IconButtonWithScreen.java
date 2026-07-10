@@ -120,9 +120,9 @@ public class IconButtonWithScreen extends ButtonWithIcon implements ForegroundRe
     }
 
     @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double scrollX, double pDelta) {
         if (showScreen() && subScreen.mouseScrolled(pMouseX, pMouseY, pDelta)) return true;
-        return super.mouseScrolled(pMouseX, pMouseY, pDelta);
+        return super.mouseScrolled(pMouseX, pMouseY, scrollX, pDelta);
     }
 
     @Override

@@ -162,8 +162,8 @@ public abstract class Raycaster {
 
             for (BlockPos activatedBlock : blocks) {
                 var block = world.getBlockState(activatedBlock);
-                if (!event.isCanceled() && Raycaster.checkInstancesAndActivate(block, world, activatedBlock, player, event.getHand())) {
-                    event.setCanceled(true);
+                if (event instanceof net.neoforged.bus.api.ICancellableEvent cancellable && !cancellable.isCanceled() && Raycaster.checkInstancesAndActivate(block, world, activatedBlock, player, event.getHand())) {
+                    cancellable.setCanceled(true);
                     player.swing(event.getHand());
                     break;
                 }
