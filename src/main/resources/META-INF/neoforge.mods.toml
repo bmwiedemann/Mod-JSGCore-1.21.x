@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Right Reserved"
+
+[[mods]]
+    modId="jsg_core"
+    version="1.0.0.0-Dev"
+    displayName="JSG: Core"
+    displayURL="https://justsgmod.eu"
+    authors="Tau'ri Development"
+    description='''Core utilities for JSG and it's addons'''
+
+[[dependencies.jsg_core]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.jsg_core]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1,1.22)"
+    ordering="NONE"
+    side="BOTH"
