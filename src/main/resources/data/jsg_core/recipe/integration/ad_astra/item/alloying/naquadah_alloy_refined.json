@@ -21,7 +21,7 @@
   },
   "neoforge:conditions": [
     {
-      "type": "c:tag_empty",
+      "type": "neoforge:tag_empty",
       "tag": "c:dusts/quartz"
     },
     {

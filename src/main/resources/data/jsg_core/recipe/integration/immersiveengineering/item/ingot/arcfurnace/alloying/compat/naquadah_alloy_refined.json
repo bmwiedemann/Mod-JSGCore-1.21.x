@@ -31,9 +31,9 @@
   "time": 100,
   "neoforge:conditions": [
     {
-      "type": "c:not",
+      "type": "neoforge:not",
       "value": {
-        "type": "c:tag_empty",
+        "type": "neoforge:tag_empty",
         "tag": "c:dusts/quartz"
       }
     },
