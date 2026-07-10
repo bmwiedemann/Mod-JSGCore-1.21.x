@@ -1,11 +1,5 @@
 {
   "type": "thermal:pulverizer",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:ingots/trinium"
   },
@@ -14,5 +8,11 @@
       "item": "jsg_core:trinium_dust"
     }
   ],
-  "energy_mod": 0.7
+  "energy_mod": 0.7,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

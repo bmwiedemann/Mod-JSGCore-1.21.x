@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:arc_furnace",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "additives": [
     [
       {
@@ -34,5 +28,11 @@
       "count": 2
     }
   ],
-  "time": 100
+  "time": 100,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

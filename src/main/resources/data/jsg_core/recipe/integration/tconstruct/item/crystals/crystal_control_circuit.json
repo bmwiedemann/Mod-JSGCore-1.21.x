@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:casting_table",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "cast": {
     "item": "jsg_core:circuit_control_base"
   },
@@ -15,6 +9,13 @@
     "amount": 40,
     "tag": "c:molten_trinium"
   },
-  "result": {"id": "jsg_core:circuit_control_crystal"
-  }
+  "result": {
+    "id": "jsg_core:circuit_control_crystal"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

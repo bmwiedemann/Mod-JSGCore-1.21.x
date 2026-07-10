@@ -1,11 +1,5 @@
 {
   "type": "create:pressing",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "ingredients": [
     {
       "tag": "c:ingots/naquadah"
@@ -14,6 +8,12 @@
   "results": [
     {
       "item": "jsg_core:plate_naquadah_raw"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

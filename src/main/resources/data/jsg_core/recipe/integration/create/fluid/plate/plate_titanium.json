@@ -1,11 +1,5 @@
 {
   "type": "create:mixing",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "heatRequirement": "heated",
   "ingredients": [
     {
@@ -16,6 +10,12 @@
     {
       "amount": 90,
       "fluid": "jsg_core:titanium_molten_still"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

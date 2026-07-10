@@ -1,11 +1,5 @@
 {
   "type": "thermal:press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredients": [
     {
       "tag": "c:gems/white",
@@ -20,5 +14,11 @@
       "item": "jsg_core:white_crystal_block"
     }
   ],
-  "energy": 400
+  "energy": 400,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

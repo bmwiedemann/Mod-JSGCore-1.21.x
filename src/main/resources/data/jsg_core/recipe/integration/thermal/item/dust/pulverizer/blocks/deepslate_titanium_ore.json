@@ -1,11 +1,5 @@
 {
   "type": "thermal:pulverizer",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "item": "jsg_core:deepslate_titanium_ore"
   },
@@ -19,5 +13,11 @@
       "chance": 0.2
     }
   ],
-  "experience": 0.2
+  "experience": 0.2,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

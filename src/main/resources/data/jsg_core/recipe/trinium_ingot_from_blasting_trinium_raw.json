@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "jsg_core:trinium_raw"
   },
-  "result": "jsg_core:trinium_ingot"
+  "result": {
+    "id": "jsg_core:trinium_ingot"
+  }
 }

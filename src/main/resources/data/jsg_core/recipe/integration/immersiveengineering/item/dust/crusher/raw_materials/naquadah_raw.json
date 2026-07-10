@@ -1,16 +1,11 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 6000,
   "input": {
     "tag": "c:raw_materials/naquadah"
   },
-  "result": {"id": "jsg_core:naquadah_raw_dust"
+  "result": {
+    "id": "jsg_core:naquadah_raw_dust"
   },
   "secondaries": [
     {
@@ -18,6 +13,12 @@
       "output": {
         "item": "jsg_core:naquadah_raw_dust"
       }
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
     }
   ]
 }

@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "jsg_core:naquadah_ore"
   },
-  "result": "jsg_core:naquadah_alloy_raw"
+  "result": {
+    "id": "jsg_core:naquadah_alloy_raw"
+  }
 }

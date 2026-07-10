@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:melting",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "ingredient": {
     "tag": "c:plates/naquadah_refined"
   },
@@ -14,5 +8,11 @@
     "tag": "c:molten_naquadah_refined"
   },
   "temperature": 1250,
-  "time": 74
+  "time": 74,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

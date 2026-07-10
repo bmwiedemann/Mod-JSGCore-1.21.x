@@ -1,16 +1,17 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 3000,
   "input": {
     "tag": "c:ingots/titanium"
   },
-  "result": {"id": "jsg_core:titanium_dust"
+  "result": {
+    "id": "jsg_core:titanium_dust"
   },
-  "secondaries": []
+  "secondaries": [],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

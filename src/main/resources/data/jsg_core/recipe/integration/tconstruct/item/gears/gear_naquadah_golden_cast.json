@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:casting_table",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "cast": {
     "tag": "tconstruct:casts/multi_use/gear"
   },
@@ -14,6 +8,13 @@
     "amount": 360,
     "tag": "c:molten_naquadah_alloy"
   },
-  "result": {"id": "jsg_core:gear_naquadah"
-  }
+  "result": {
+    "id": "jsg_core:gear_naquadah"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

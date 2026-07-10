@@ -1,11 +1,5 @@
 {
   "type": "tconstruct:ore_melting",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "tconstruct"
-    }
-  ],
   "byproducts": [
     {
       "amount": 180,
@@ -22,5 +16,11 @@
     "tag": "c:molten_titanium"
   },
   "temperature": 950,
-  "time": 160
+  "time": 160,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
 }

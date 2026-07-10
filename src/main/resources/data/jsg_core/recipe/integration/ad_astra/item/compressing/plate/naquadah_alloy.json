@@ -1,11 +1,5 @@
 {
   "type": "ad_astra:compressing",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "ad_astra"
-    }
-  ],
   "cookingtime": 100,
   "energy": 20,
   "ingredient": {
@@ -14,5 +8,11 @@
   "result": {
     "count": 1,
     "id": "jsg_core:plate_naquadah"
-  }
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ad_astra"
+    }
+  ]
 }

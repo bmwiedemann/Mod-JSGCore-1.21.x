@@ -1,18 +1,5 @@
 {
   "type": "create:mixing",
-  "conditions": [
-    {
-      "type": "c:not",
-      "value" : {
-        "type" : "c:tag_empty",
-        "tag" : "c:dusts/iron"
-      }
-    },
-    {
-      "type": "c:mod_loaded",
-      "modid": "create"
-    }
-  ],
   "heatRequirement": "superheated",
   "ingredients": [
     [
@@ -32,6 +19,19 @@
     {
       "amount": 180,
       "fluid": "jsg_core:naquadah_molten_alloy_still"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "c:not",
+      "value": {
+        "type": "c:tag_empty",
+        "tag": "c:dusts/iron"
+      }
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
     }
   ]
 }

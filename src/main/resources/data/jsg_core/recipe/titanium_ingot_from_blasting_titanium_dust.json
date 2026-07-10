@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "jsg_core:titanium_dust"
   },
-  "result": "jsg_core:titanium_ingot"
+  "result": {
+    "id": "jsg_core:titanium_ingot"
+  }
 }

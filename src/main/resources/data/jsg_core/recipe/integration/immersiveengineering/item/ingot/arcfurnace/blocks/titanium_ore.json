@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:arc_furnace",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "additives": [],
   "energy": 102400,
   "input": {
@@ -22,5 +16,11 @@
   "slag": {
     "tag": "c:slag"
   },
-  "time": 200
+  "time": 200,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

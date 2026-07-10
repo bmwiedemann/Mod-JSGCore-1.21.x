@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 6000,
   "input": {
     "tag": "c:ores/trinium"
@@ -22,6 +16,12 @@
       "output": {
         "item": "jsg_core:titanium_dust"
       }
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
     }
   ]
 }

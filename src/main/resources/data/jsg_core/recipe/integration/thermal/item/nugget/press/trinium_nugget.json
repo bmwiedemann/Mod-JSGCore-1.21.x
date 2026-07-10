@@ -1,11 +1,5 @@
 {
   "type": "thermal:press",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredients": [
     {
       "item": "jsg_core:trinium_ingot"
@@ -20,5 +14,11 @@
       "count": 9
     }
   ],
-  "energy": 400
+  "energy": 400,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

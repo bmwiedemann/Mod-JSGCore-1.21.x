@@ -1,16 +1,17 @@
 {
   "type": "immersiveengineering:crusher",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "energy": 3000,
   "input": {
     "tag": "c:ingots/naquadah"
   },
-  "result": {"id": "jsg_core:naquadah_raw_dust"
+  "result": {
+    "id": "jsg_core:naquadah_raw_dust"
   },
-  "secondaries": []
+  "secondaries": [],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
 }

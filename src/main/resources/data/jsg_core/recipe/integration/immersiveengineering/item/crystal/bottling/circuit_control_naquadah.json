@@ -1,11 +1,5 @@
 {
   "type": "immersiveengineering:bottling_machine",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "immersiveengineering"
-    }
-  ],
   "fluid": {
     "amount": 40,
     "tag": "c:molten_naquadah_alloy"
@@ -16,6 +10,12 @@
   "results": [
     {
       "item": "jsg_core:circuit_control_naquadah"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
     }
   ]
 }

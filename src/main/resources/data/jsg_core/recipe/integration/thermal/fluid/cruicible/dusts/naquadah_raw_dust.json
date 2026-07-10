@@ -1,11 +1,5 @@
 {
   "type": "thermal:crucible",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "thermal"
-    }
-  ],
   "ingredient": {
     "tag": "c:dusts/naquadah"
   },
@@ -15,5 +9,11 @@
       "amount": 90
     }
   ],
-  "energy": 8100
+  "energy": 8100,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
 }

@@ -1,11 +1,5 @@
 {
   "type": "mekanism:crushing",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "mekanism"
-    }
-  ],
   "input": {
     "ingredient": {
       "tag": "c:plates/trinium"
@@ -13,5 +7,11 @@
   },
   "output": {
     "item": "jsg_core:trinium_dust"
-  }
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

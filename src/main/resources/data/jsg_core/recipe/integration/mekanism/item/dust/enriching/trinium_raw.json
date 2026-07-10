@@ -1,11 +1,5 @@
 {
   "type": "mekanism:enriching",
-  "conditions": [
-    {
-      "type": "c:mod_loaded",
-      "modid": "mekanism"
-    }
-  ],
   "input": {
     "amount": 3,
     "ingredient": {
@@ -15,5 +9,11 @@
   "output": {
     "count": 4,
     "item": "jsg_core:trinium_dust"
-  }
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }
