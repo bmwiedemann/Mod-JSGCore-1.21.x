@@ -3,7 +3,7 @@ package dev.tauri.jsg.core.common.entity;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 
 /**
  * Base class for all states(ex. RendererStates or GuiStates)

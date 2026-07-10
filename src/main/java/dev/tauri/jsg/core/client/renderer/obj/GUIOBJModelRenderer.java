@@ -70,7 +70,7 @@ public class GUIOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
             modelBuffer.bind();
         }, () -> {
             @SuppressWarnings("all")
-            Matrix4f projectionMatrix = (new Matrix4f()).setOrtho(0.0F, (float) ((double) Minecraft.getInstance().getWindow().getWidth() / Minecraft.getInstance().getWindow().getGuiScale()), (float) ((double) Minecraft.getInstance().getWindow().getHeight() / Minecraft.getInstance().getWindow().getGuiScale()), 0.0F, -1000.0F, net.minecraftforge.client.ForgeHooksClient.getGuiFarPlane());
+            Matrix4f projectionMatrix = (new Matrix4f()).setOrtho(0.0F, (float) ((double) Minecraft.getInstance().getWindow().getWidth() / Minecraft.getInstance().getWindow().getGuiScale()), (float) ((double) Minecraft.getInstance().getWindow().getHeight() / Minecraft.getInstance().getWindow().getGuiScale()), 0.0F, -1000.0F, net.neoforged.neoforge.client.ForgeHooksClient.getGuiFarPlane());
             modelBuffer.drawWithShader(poseStack.last().pose(), projectionMatrix, Objects.requireNonNull(RenderSystem.getShader()));
             VertexBuffer.unbind();
             GL46C.glDisable(GL46C.GL_DEPTH_CLAMP);

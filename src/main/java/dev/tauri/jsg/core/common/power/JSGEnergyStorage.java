@@ -1,8 +1,8 @@
 package dev.tauri.jsg.core.common.power;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
 /**
  * @author Povstalec, edited by VojtechSin

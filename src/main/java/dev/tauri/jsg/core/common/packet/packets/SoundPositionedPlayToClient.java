@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.common.sound.IPositionedSound;
 import dev.tauri.jsg.core.common.sound.PositionedSound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.NetworkDirection;
+import net.neoforged.neoforge.network.NetworkEvent;
 
 public class SoundPositionedPlayToClient extends PositionedPacket {
     public IPositionedSound soundEnum;

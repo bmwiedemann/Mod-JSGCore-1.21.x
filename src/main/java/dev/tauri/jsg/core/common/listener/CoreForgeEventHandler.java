@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.listener;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.block.crystal.CrystalColor;
 import dev.tauri.jsg.core.common.recipe.notebook.NotebookCloneRecipe;
@@ -16,15 +17,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Unit;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 import java.util.concurrent.Executor;
 
-@Mod.EventBusSubscriber(modid = JSGCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = JSGCore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class CoreForgeEventHandler {
 
     @SubscribeEvent

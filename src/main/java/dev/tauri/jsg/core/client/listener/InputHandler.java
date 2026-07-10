@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.client.listener;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.common.item.notebook.NotebookActionEnum;
 import dev.tauri.jsg.core.common.packet.JSGCorePacketHandler;
 import dev.tauri.jsg.core.common.packet.packets.NotebookActionPacketToServer;
@@ -10,16 +11,16 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 import javax.annotation.Nullable;
 
 import static com.mojang.blaze3d.platform.InputConstants.*;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT)
+@EventBusSubscriber(value = Dist.CLIENT)
 public class InputHandler {
     private static final KeyMapping ADDRESS_SCROLL = new KeyMapping("config.jsg_core.address_scroll", KEY_LSHIFT, "key.categories.jsg_core");
     private static final KeyMapping ADDRESS_UP = new KeyMapping("config.jsg_core.address_up", KEY_NUMPAD8, "key.categories.jsg_core");

@@ -5,8 +5,8 @@ import dev.tauri.jsg.core.common.worldgen.structure.FixedRotationStructure;
 import dev.tauri.jsg.core.common.worldgen.structure.JigsawExtraStructure;
 import dev.tauri.jsg.core.common.worldgen.structure.VoidDimensionStructure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class CoreStructureTypes {
     private static final DeferredRegister<StructureType<?>> REGISTER = JSGCore.REGISTRY_HELPER.structureType();

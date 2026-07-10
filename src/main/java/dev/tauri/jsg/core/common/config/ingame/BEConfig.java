@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.config.ingame.option.ConfigOptionsHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedHashMap;

@@ -3,7 +3,7 @@ package dev.tauri.jsg.core.common.blockentity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.slf4j.event.Level;
 
 import java.util.LinkedList;

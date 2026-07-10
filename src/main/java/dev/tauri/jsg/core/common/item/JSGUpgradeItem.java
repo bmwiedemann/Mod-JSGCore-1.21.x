@@ -2,7 +2,7 @@ package dev.tauri.jsg.core.common.item;
 
 import dev.tauri.jsg.core.common.util.IUpgrade;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;

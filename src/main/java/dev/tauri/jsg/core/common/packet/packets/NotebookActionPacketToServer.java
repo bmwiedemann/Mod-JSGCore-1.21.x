@@ -7,7 +7,7 @@ import dev.tauri.jsg.core.common.sound.JSGSoundHelper;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.NetworkEvent;
 
 public class NotebookActionPacketToServer extends JSGPacket {
     private NotebookActionEnum action;

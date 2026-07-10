@@ -2,7 +2,7 @@ package dev.tauri.jsg.core.common.registry;
 
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.entity.StateType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class CoreStateTypes {
     public static final RegistryObject<StateType> RENDERER_STATE = JSGCore.REGISTRY_HELPER.state().register("renderer_state", () -> new StateType("renderer_state"));

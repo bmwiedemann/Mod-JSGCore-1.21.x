@@ -3,11 +3,11 @@ package dev.tauri.jsg.core.common.config;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.client.ConfigScreenClientRegister;
 import dev.tauri.jsg.core.common.config.values.JSGConfigValue;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.fml.DistExecutor;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.config.ModConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class JSGCoreConfig {
     public static final JSGConfigChild C_ENERGY = new JSGConfigChild(() -> Energy.BUILDER, "Energy", JSGCore.MOD_ID);
 
     public static class General {
-        private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+        private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
         public static final JSGConfigValue.DoubleValue visualGlyphTransparency = C_GENERAL.add(new JSGConfigValue.DoubleValue(BUILDER,
                 "Notebook page Glyph transparency", 0.75, 0, 1, true,
@@ -28,7 +28,7 @@ public class JSGCoreConfig {
     }
 
     public static class ComputersIntegration {
-        private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+        private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
         public static final JSGConfigValue.IntValue wirelessRange = C_CC.add(new JSGConfigValue.IntValue(BUILDER,
                 "Devices wireless range", 20, 0, 150,
@@ -39,7 +39,7 @@ public class JSGCoreConfig {
     }
 
     public static class Energy {
-        private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+        private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
         public static final JSGConfigValue.LongValue basicEnergyCrystalCapacity = C_ENERGY.add(new JSGConfigValue.LongValue(BUILDER, "Basic energy crystal.Capacity", Integer.MAX_VALUE, 4608L, Long.MAX_VALUE,
                 "SIDE: SERVER/CLIENT"

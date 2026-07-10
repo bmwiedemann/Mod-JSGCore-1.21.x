@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.neoforged.neoforge.client.gui.overlay.ForgeGui;
 
 public class DebugTextureOverlay {
     public static void render(ForgeGui forgeGui, GuiGraphics graphics, float partialTicks, int packedLight, int packedOverlay) {

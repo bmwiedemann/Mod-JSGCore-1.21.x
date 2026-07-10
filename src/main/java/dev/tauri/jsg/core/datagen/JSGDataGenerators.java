@@ -1,13 +1,14 @@
 package dev.tauri.jsg.core.datagen;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.datagen.loot.JSGLootTableProvider;
 import dev.tauri.jsg.core.datagen.tag.*;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = JSGCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = JSGCore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class JSGDataGenerators {
     @SubscribeEvent
     public static void generate(GatherDataEvent event) {

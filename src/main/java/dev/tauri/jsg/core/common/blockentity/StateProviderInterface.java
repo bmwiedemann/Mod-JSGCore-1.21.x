@@ -7,7 +7,7 @@ import dev.tauri.jsg.core.common.packet.packets.StateUpdatePacketToClient;
 import dev.tauri.jsg.core.common.packet.packets.StateUpdateRequestToServer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * Implemented by {@link BlockEntity} which provides at least one {@link State}

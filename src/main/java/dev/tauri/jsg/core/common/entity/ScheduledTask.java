@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.blockentity.ScheduledTaskExecutorInterface;
 import dev.tauri.jsg.core.mapping.JSGMapping;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.common.util.INBTSerializable;
 
 import java.util.List;
 import java.util.Optional;

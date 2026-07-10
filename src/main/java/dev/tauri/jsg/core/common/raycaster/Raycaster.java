@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.raycaster;
 
+import net.neoforged.fml.common.EventBusSubscriber;
 import dev.tauri.jsg.core.JSGCore;
 import dev.tauri.jsg.core.common.raycaster.util.RayCastedButton;
 import dev.tauri.jsg.core.common.raycaster.util.RaycasterVertex;
@@ -12,16 +13,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("all")
-@Mod.EventBusSubscriber(modid = JSGCore.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = JSGCore.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public abstract class Raycaster {
     public static boolean checkInstancesAndActivate(BlockState clickedBlock, Level level, BlockPos pos, Player player, InteractionHand hand) {
         var raycasters = JSGCoreRegistries.R_RAYCASTER.get().getValues();
