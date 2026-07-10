@@ -1,6 +1,7 @@
 package dev.tauri.jsg.core.common.worldgen.structure;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.tauri.jsg.core.common.registry.CoreStructureTypes;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,7 @@ import java.util.Optional;
 @SuppressWarnings("all")
 public class VoidDimensionStructure extends Structure {
 
-    public static final Codec<VoidDimensionStructure> CODEC = RecordCodecBuilder.<VoidDimensionStructure>mapCodec(instance ->
+    public static final MapCodec<VoidDimensionStructure> CODEC = RecordCodecBuilder.<VoidDimensionStructure>mapCodec(instance ->
             instance.group(VoidDimensionStructure.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
@@ -30,7 +31,7 @@ public class VoidDimensionStructure extends Structure {
                     HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
                     Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightMap),
                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
-            ).apply(instance, VoidDimensionStructure::new)).codec();
+            ).apply(instance, VoidDimensionStructure::new));
 
     private final Holder<StructureTemplatePool> startPool;
     private final Optional<ResourceLocation> startJigsawName;

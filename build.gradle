@@ -46,7 +46,10 @@ neoForge {
 }
 
 if (enable_oc2 != "true") {
-    sourceSets.main.java.exclude 'dev/tauri/jsg/core/common/integration/oc2/**'
+    // Only the classes that touch li.cil.* - the wrapper interface and NotLoaded fallback stay,
+    // JSGCore resolves the Loaded implementation reflectively when oc2 is present.
+    sourceSets.main.java.exclude 'dev/tauri/jsg/core/common/integration/oc2/OCIntegrationLoaded.java'
+    sourceSets.main.java.exclude 'dev/tauri/jsg/core/common/integration/oc2/methods/AbstractOCMethods.java'
 }
 
 repositories {

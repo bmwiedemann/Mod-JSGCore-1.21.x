@@ -84,7 +84,7 @@ public class JSGJigsawPlacement extends JigsawPlacement {
                 if (size > 0) {
                     AABB aabb = new AABB((double) (i - maxDistanceFromCenter), (double) (i1 - maxDistanceFromCenter), (double) (j - maxDistanceFromCenter), (double) (i + maxDistanceFromCenter + 1), (double) (i1 + maxDistanceFromCenter + 1), (double) (j + maxDistanceFromCenter + 1));
                     VoxelShape voxelshape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(boundingbox)), BooleanOp.ONLY_FIRST);
-                    addPieces(context.randomState(), size, flag, chunkgenerator, structuretemplatemanager, levelheightaccessor, worldgenrandom, registry, poolelementstructurepiece, list, voxelshape);
+                    addPieces(context.randomState(), size, flag, chunkgenerator, structuretemplatemanager, levelheightaccessor, worldgenrandom, registry, poolelementstructurepiece, list, voxelshape, net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup.EMPTY, net.minecraft.world.level.levelgen.structure.structures.JigsawStructure.DEFAULT_LIQUID_SETTINGS);
                     list.forEach(builder::addPiece);
                 }
             }));

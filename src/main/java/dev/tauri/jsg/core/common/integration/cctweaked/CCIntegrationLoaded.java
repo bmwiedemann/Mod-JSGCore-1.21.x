@@ -1,22 +1,17 @@
 package dev.tauri.jsg.core.common.integration.cctweaked;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computercraft.api.peripheral.PeripheralCapability;
 import dev.tauri.jsg.core.common.integration.ComputerDeviceProvider;
+import dev.tauri.jsg.core.common.integration.ComputerDeviceHolder;
 import dev.tauri.jsg.core.common.integration.cctweaked.methods.AbstractCCMethods;
 import dev.tauri.jsg.core.common.integration.cctweaked.methods.ICCDevice;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.capabilities.Capability;
-import net.neoforged.neoforge.capabilities.CapabilityManager;
-import net.neoforged.neoforge.capabilities.CapabilityToken;
-import net.neoforged.neoforge.common.util.LazyOptional;
-
-import java.util.Optional;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 @SuppressWarnings("unused")
 public class CCIntegrationLoaded implements dev.tauri.jsg.core.common.integration.cctweaked.CCIntegrationWrapper {
-    private static final Capability<IPeripheral> CAP_PERIPHERAL = CapabilityManager.get(new CapabilityToken<>() {
-    });
-
 
     @Override
     public boolean isLoaded() {
@@ -24,17 +19,16 @@ public class CCIntegrationLoaded implements dev.tauri.jsg.core.common.integratio
     }
 
     @Override
-    public boolean checkCaps(Capability<?> caps) {
-        return caps == CAP_PERIPHERAL;
+    public ICCDevice createDevice(ComputerDeviceProvider provider, String deviceType) {
+        return (AbstractCCMethods<?>) CCDevice.valueOf(deviceType.toUpperCase()).constructor.construct((BlockEntity) provider);
     }
 
     @Override
-    public Optional<Capability<?>> getCaps() {
-        return Optional.of(CAP_PERIPHERAL);
-    }
-
-    @Override
-    public <T> LazyOptional<ICCDevice> createDevice(Capability<T> cap, ComputerDeviceProvider provider, String deviceType) {
-        return LazyOptional.of(() -> (AbstractCCMethods<?>) CCDevice.valueOf(deviceType.toUpperCase()).constructor.construct((BlockEntity) provider)).cast();
+    public void registerPeripheralBE(RegisterCapabilitiesEvent event, BlockEntityType<?> beType) {
+        event.registerBlockEntity(PeripheralCapability.get(), beType, (be, side) -> {
+            if (!(be instanceof ComputerDeviceProvider provider)) return null;
+            if (!(provider.getDeviceHolder() instanceof ComputerDeviceHolder holder)) return null;
+            return (IPeripheral) holder.getOrCreateCCDevice();
+        });
     }
 }

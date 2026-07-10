@@ -37,7 +37,6 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLPaths;
 import org.slf4j.LoggerFactory;
 
@@ -82,7 +81,7 @@ public class JSGCore {
         return Component.literal(ChatFormatting.AQUA + "Work In Progress Item!");
     }
 
-    public JSGCore() {
+    public JSGCore(IEventBus modEventBus) {
         ModList.get().getModContainerById(MOD_ID).ifPresentOrElse(container -> {
             MOD_VERSION_ONLY = container.getModInfo().getVersion().getQualifier();
             MOD_VERSION = MC_VERSION + "-" + MOD_VERSION_ONLY;
@@ -95,7 +94,6 @@ public class JSGCore {
 
         JSGCorePacketHandler.init();
 
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         JSGCoreRegistries.init();
         JSGCoreRegistries.register(modEventBus);
         JSGCoreRegistriesInit.init();

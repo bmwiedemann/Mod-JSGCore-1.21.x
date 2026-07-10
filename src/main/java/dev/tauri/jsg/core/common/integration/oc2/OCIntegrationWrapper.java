@@ -2,16 +2,17 @@ package dev.tauri.jsg.core.common.integration.oc2;
 
 import dev.tauri.jsg.core.common.integration.ComputerDeviceProvider;
 import dev.tauri.jsg.core.common.integration.oc2.methods.IOCDevice;
-import net.neoforged.neoforge.capabilities.Capability;
-import net.neoforged.neoforge.common.util.LazyOptional;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
-import java.util.Optional;
+import javax.annotation.Nullable;
 
 public interface OCIntegrationWrapper {
     boolean isLoaded();
-    boolean checkCaps(Capability<?> caps);
 
-    Optional<Capability<?>> getCaps();
+    @Nullable
+    IOCDevice createDevice(ComputerDeviceProvider tile, String deviceType);
 
-    <T> LazyOptional<IOCDevice> createDevice(Capability<T> cap, ComputerDeviceProvider provider, String deviceType);
+    default void registerPeripheralBE(RegisterCapabilitiesEvent event, BlockEntityType<?> beType) {
+    }
 }
