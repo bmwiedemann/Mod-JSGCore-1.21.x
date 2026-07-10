@@ -9,8 +9,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.NetworkDirection;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.NetworkDirection;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 import org.apache.commons.lang3.NotImplementedException;
 
 public class StateUpdateRequestToServer extends PositionedPacket {
@@ -39,7 +39,7 @@ public class StateUpdateRequestToServer extends PositionedPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         if (ctx.getDirection() != NetworkDirection.PLAY_TO_SERVER) return;
         ctx.setPacketHandled(true);
         ServerPlayer player = ctx.getSender();

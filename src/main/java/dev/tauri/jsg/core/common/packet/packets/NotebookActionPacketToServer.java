@@ -7,7 +7,7 @@ import dev.tauri.jsg.core.common.sound.JSGSoundHelper;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 
 public class NotebookActionPacketToServer extends JSGPacket {
     private NotebookActionEnum action;
@@ -39,7 +39,7 @@ public class NotebookActionPacketToServer extends JSGPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         ctx.setPacketHandled(true);
         var player = ctx.getSender();
         if (player == null) return;

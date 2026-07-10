@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.sound;
 
+import dev.tauri.jsg.core.common.packet.TargetPoint;
 import dev.tauri.jsg.core.client.sound.JSGSoundHelperClient;
 import dev.tauri.jsg.core.common.packet.JSGCorePacketHandler;
 import dev.tauri.jsg.core.common.packet.packets.SoundPositionedPlayToClient;
@@ -23,7 +24,7 @@ public class JSGSoundHelper {
         }
         if (play)
             world.gameEvent(GameEvent.BLOCK_ACTIVATE, pos, GameEvent.Context.of(world.getBlockState(pos)));
-        JSGCorePacketHandler.sendToClient(new SoundPositionedPlayToClient(pos, soundEnum, play), new PacketDistributor.TargetPoint(pos.getX(), pos.getY(), pos.getZ(), 512, world.dimension()));
+        JSGCorePacketHandler.sendToClient(new SoundPositionedPlayToClient(pos, soundEnum, play), new TargetPoint(pos.getX(), pos.getY(), pos.getZ(), 512, world.dimension()));
     }
 
     public static void playSoundEventClientSide(Level world, BlockPos pos, ISoundEvent soundEventEnum, float pitch) {

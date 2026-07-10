@@ -3,7 +3,7 @@ package dev.tauri.jsg.core.common.packet.packets;
 import dev.tauri.jsg.core.common.blockentity.ILinkable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 
 public class ClientLinkRequestStateToServer extends PositionedPacket {
 
@@ -16,7 +16,7 @@ public class ClientLinkRequestStateToServer extends PositionedPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         ctx.setPacketHandled(true);
         ctx.enqueueWork(() -> {
             var p = ctx.getSender();

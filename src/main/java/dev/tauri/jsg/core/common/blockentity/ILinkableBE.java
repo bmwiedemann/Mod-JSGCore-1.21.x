@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.blockentity;
 
+import dev.tauri.jsg.core.common.packet.TargetPoint;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -12,7 +13,7 @@ public interface ILinkableBE<T> {
 
     void setLinkedDevice(BlockPos devicePos);
 
-    void sendLinkedDeviceToClients(BlockPos sourcePos, PacketDistributor.TargetPoint targetPoint);
+    void sendLinkedDeviceToClients(BlockPos sourcePos, TargetPoint targetPoint);
 
     void sendLinkedDeviceToClient(BlockPos sourcePos, ServerPlayer player);
 

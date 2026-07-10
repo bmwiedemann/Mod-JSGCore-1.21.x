@@ -14,7 +14,7 @@ public class JSGCorePacketHandler {
         HANDLER.sendToServer(packet);
     }
 
-    public static void sendToClient(Object packet, PacketDistributor.TargetPoint point) {
+    public static void sendToClient(Object packet, TargetPoint point) {
         HANDLER.sendToClient(packet, point);
     }
 

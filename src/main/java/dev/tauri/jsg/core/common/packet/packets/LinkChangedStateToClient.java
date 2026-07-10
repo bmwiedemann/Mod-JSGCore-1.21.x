@@ -4,7 +4,7 @@ import dev.tauri.jsg.core.common.blockentity.ILinkable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.neoforged.neoforge.network.NetworkEvent;
+import dev.tauri.jsg.core.common.packet.PacketContext;
 
 public class LinkChangedStateToClient extends PositionedPacket {
     BlockPos linkedPos;
@@ -36,7 +36,7 @@ public class LinkChangedStateToClient extends PositionedPacket {
     }
 
     @Override
-    public void handle(NetworkEvent.Context ctx) {
+    public void handle(PacketContext ctx) {
         ctx.setPacketHandled(true);
         ctx.enqueueWork(() -> {
             var p = Minecraft.getInstance().player;

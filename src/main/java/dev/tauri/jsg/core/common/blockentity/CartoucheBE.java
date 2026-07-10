@@ -1,5 +1,6 @@
 package dev.tauri.jsg.core.common.blockentity;
 
+import dev.tauri.jsg.core.common.packet.TargetPoint;
 import dev.tauri.jsg.core.client.renderer.blockentity.cartouche.CartoucheRenderer;
 import dev.tauri.jsg.core.client.renderer.blockentity.cartouche.CartoucheRendererState;
 import dev.tauri.jsg.core.common.block.cartouche.CartoucheBlock;
@@ -192,13 +193,13 @@ public class CartoucheBE extends CamouflageBE implements ITickable, BEStateProvi
         super.setState(stateType, state);
     }
 
-    private PacketDistributor.TargetPoint targetPoint;
+    private TargetPoint targetPoint;
 
-    public PacketDistributor.TargetPoint getTargetPoint() {
+    public TargetPoint getTargetPoint() {
         if (getLevel() == null) return targetPoint;
         if (targetPoint == null) {
             var pos = getBlockPos();
-            targetPoint = new PacketDistributor.TargetPoint(pos.getX(), pos.getY(), pos.getZ(), 512, getLevel().dimension());
+            targetPoint = new TargetPoint(pos.getX(), pos.getY(), pos.getZ(), 512, getLevel().dimension());
         }
         return targetPoint;
     }
