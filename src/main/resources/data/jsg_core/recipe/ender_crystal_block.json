@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:ender_crystal_block",
+  "key": {
+    "#": {
+      "item": "jsg_core:ender_crystal"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {"id": "jsg_core:ender_crystal_block"
+  },
+  "show_notification": true
+}

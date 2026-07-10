@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:pestle",
+  "key": {
+    "#": {
+      "tag": "c:stone"
+    }
+  },
+  "pattern": [
+    "# ",
+    " #"
+  ],
+  "result": {"id": "jsg_core:pestle"
+  },
+  "show_notification": true
+}

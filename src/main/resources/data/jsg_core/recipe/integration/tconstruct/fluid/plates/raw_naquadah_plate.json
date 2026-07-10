@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:plates/naquadah"
+  },
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_naquadah"
+  },
+  "temperature": 1000,
+  "time": 65
+}

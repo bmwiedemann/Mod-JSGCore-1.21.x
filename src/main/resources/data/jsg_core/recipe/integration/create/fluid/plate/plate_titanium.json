@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:plates/titanium"
+    }
+  ],
+  "results": [
+    {
+      "amount": 90,
+      "fluid": "jsg_core:titanium_molten_still"
+    }
+  ]
+}

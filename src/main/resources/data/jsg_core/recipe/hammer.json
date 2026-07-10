@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "jsg_core:hammer",
+  "key": {
+    "I": {
+      "tag": "jsg_core:ingots/titanium"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    " I ",
+    " SI",
+    "S  "
+  ],
+  "result": {"id": "jsg_core:hammer"
+  },
+  "show_notification": true
+}

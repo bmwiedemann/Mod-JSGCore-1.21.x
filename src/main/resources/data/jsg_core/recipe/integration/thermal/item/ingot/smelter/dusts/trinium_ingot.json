@@ -1,0 +1,19 @@
+{
+  "type": "thermal:smelter",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:dusts/trinium"
+  },
+  "result": [
+    {
+      "item": "jsg_core:trinium_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5
+}

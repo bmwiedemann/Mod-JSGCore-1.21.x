@@ -1,0 +1,19 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "c:raw_materials/titanium"
+    }
+  },
+  "output": {
+    "count": 4,
+    "item": "jsg_core:titanium_dust"
+  }
+}

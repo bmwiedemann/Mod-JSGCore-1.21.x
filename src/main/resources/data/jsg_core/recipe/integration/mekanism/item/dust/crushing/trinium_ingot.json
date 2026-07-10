@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crushing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "tag": "c:ingots/trinium"
+    }
+  },
+  "output": {
+    "item": "jsg_core:trinium_dust"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "thermal:pulverizer",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:raw_materials/titanium"
+  },
+  "result": [
+    {
+      "item": "jsg_core:titanium_dust",
+      "chance": 1.25
+    }
+  ],
+  "experience": 0.1
+}

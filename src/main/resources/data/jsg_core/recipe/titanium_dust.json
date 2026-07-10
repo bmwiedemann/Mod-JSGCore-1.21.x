@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jsg_core:titanium_dust",
+  "ingredients": [
+    {
+      "tag": "jsg_core:ingots/titanium"
+    },
+    {
+      "item": "jsg_core:mortar_and_pestle"
+    }
+  ],
+  "result": {"id": "jsg_core:titanium_dust"
+  }
+}

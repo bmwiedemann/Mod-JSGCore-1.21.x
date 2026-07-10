@@ -1,0 +1,26 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "additives": [],
+  "energy": 102400,
+  "input": {
+    "tag": "c:ores/naquadah"
+  },
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "jsg_core:naquadah_alloy_raw"
+      },
+      "count": 2
+    }
+  ],
+  "slag": {
+    "tag": "c:slag"
+  },
+  "time": 200
+}

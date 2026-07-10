@@ -1,0 +1,19 @@
+{
+  "type": "immersiveengineering:metal_press",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "energy": 2400,
+  "input": {
+    "base_ingredient": {
+      "tag": "c:ingots/naquadah_refined"
+    },
+    "count": 4
+  },
+  "mold": "immersiveengineering:mold_gear",
+  "result": {"id": "jsg_core:gear_naquadah_refined"
+  }
+}

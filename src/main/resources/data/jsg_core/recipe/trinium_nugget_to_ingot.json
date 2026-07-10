@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:trinium_ingot",
+  "key": {
+    "#": {
+      "tag": "jsg_core:nuggets/trinium"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {"id": "jsg_core:trinium_ingot"
+  },
+  "show_notification": true
+}

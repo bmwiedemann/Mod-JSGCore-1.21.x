@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material_melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "input": "jsg_core:naquadah_alloy_raw",
+  "temperature": 1000,
+  "result": {
+    "tag": "c:molten_naquadah",
+    "amount": 90
+  }
+}

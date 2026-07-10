@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "cast": {
+    "item": "jsg_core:circuit_control_base"
+  },
+  "cast_consumed": true,
+  "cooling_time": 152,
+  "fluid": {
+    "amount": 40,
+    "tag": "c:molten_trinium"
+  },
+  "result": {"id": "jsg_core:circuit_control_crystal"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "ingredient": {
+    "tag": "c:nuggets/trinium"
+  },
+  "material": "jsg_core:trinium",
+  "needed": 9,
+  "value": 1
+}

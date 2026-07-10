@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jsg_core:titanium_block",
+  "key": {
+    "#": {
+      "tag": "jsg_core:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {"id": "jsg_core:titanium_block"
+  },
+  "show_notification": true
+}

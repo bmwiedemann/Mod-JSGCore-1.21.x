@@ -1,0 +1,38 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "additives": [
+    [
+      {
+        "tag": "c:ingots/iron"
+      },
+      {
+        "tag": "c:dusts/iron"
+      }
+    ]
+  ],
+  "energy": 51200,
+  "input": [
+    {
+      "tag": "c:ingots/naquadah"
+    },
+    {
+      "tag": "c:dusts/naquadah"
+    }
+  ],
+  "count": 1,
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "jsg_core:naquadah_alloy"
+      },
+      "count": 2
+    }
+  ],
+  "time": 100
+}

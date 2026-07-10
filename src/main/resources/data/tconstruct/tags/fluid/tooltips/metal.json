@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#c:molten_naquadah",
+    "#c:molten_naquadah_alloy",
+    "#c:molten_naquadah_refined",
+    "#c:molten_titanium",
+    "#c:molten_trinium"
+  ]
+}

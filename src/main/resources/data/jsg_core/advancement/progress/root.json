@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "has_stone": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/sandstone_top.png",
+    "description": {
+      "text": ""
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jsg_core:icon_root_advancement"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancement.jsg_core.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

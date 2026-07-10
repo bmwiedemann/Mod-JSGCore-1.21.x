@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg:smooth_sandstone_cartouche",
+  "key": {
+    "B": {
+      "item": "minecraft:smooth_sandstone"
+    },
+    "C": {
+      "item": "jsg_core:eight_symbol_smooth_sandstone_cartouche_with_origin"
+    }
+  },
+  "pattern": [
+    "B ",
+    "C "
+  ],
+  "result": {"id": "jsg_core:nine_symbol_smooth_sandstone_cartouche_with_origin"
+  },
+  "show_notification": true
+}

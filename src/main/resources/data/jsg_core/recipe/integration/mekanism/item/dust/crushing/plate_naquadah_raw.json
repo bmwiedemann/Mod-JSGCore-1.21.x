@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crushing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "tag": "c:plates/naquadah"
+    }
+  },
+  "output": {
+    "item": "jsg_core:naquadah_raw_dust"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:circuit_base",
+  "key": {
+    "B": {
+      "tag": "jsg_core:gems/blue"
+    },
+    "E": {
+      "tag": "jsg_core:gems/ender"
+    },
+    "P": {
+      "tag": "jsg_core:plates/titanium"
+    },
+    "R": {
+      "tag": "jsg_core:gems/red"
+    },
+    "W": {
+      "tag": "jsg_core:gems/white_small"
+    },
+    "Y": {
+      "tag": "jsg_core:gems/yellow"
+    }
+  },
+  "pattern": [
+    "PYP",
+    "BWE",
+    "PRP"
+  ],
+  "result": {"id": "jsg_core:circuit_control_base"
+  },
+  "show_notification": true
+}

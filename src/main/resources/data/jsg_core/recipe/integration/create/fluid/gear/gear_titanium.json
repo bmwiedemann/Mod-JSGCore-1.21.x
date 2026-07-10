@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:gears/titanium"
+    }
+  ],
+  "results": [
+    {
+      "amount": 360,
+      "fluid": "jsg_core:titanium_molten_still"
+    }
+  ]
+}

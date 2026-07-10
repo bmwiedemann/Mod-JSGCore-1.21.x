@@ -1,0 +1,40 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:not",
+      "value" : {
+        "type" : "c:tag_empty",
+        "tag" : "c:dusts/quartz"
+      }
+    },
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    [
+      {
+        "tag": "c:dusts/naquadah_alloy"
+      },
+      {
+        "tag": "c:ingots/naquadah_alloy"
+      }
+    ],
+    [
+      {
+        "tag": "c:gems/quartz"
+      },
+      {
+        "tag": "c:dusts/quartz"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "jsg_core:naquadah_refined_dust"
+    }
+  ]
+}

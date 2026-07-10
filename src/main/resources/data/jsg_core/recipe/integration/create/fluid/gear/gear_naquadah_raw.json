@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:gears/naquadah"
+    }
+  ],
+  "results": [
+    {
+      "amount": 360,
+      "fluid": "jsg_core:naquadah_molten_raw_still"
+    }
+  ]
+}

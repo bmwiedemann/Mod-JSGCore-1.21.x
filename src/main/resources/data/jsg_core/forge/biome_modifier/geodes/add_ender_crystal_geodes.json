@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#jsg_core:has_geodes_ender",
-  "features": [
-    "jsg_core:ender_crystal_geode"
-  ],
-  "step": "underground_ores"
-}

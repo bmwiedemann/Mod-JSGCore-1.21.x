@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "jsg_core:screwdriver",
+  "key": {
+    "B": {
+      "tag": "c:dyes/blue"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "N": {
+      "tag": "jsg_core:nuggets/titanium"
+    }
+  },
+  "pattern": [
+    "  N",
+    "BI ",
+    "IB "
+  ],
+  "result": {"id": "jsg_core:screwdriver"
+  },
+  "show_notification": true
+}

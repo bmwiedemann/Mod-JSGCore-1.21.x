@@ -1,0 +1,23 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "jsg_core:circuit_control_base"
+    },
+    {
+      "amount": 40,
+      "fluidTag": "c:molten_naquadah_alloy"
+    }
+  ],
+  "results": [
+    {
+      "item": "jsg_core:circuit_control_naquadah"
+    }
+  ]
+}

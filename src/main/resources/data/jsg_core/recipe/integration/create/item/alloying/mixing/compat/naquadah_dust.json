@@ -1,0 +1,40 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "type": "c:not",
+      "value" : {
+        "type" : "c:tag_empty",
+        "tag" : "c:dusts/iron"
+      }
+    },
+    {
+      "type": "c:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    [
+      {
+        "tag": "c:dusts/naquadah"
+      },
+      {
+        "tag": "c:ingots/naquadah"
+      }
+    ],
+    [
+      {
+        "tag": "c:ingots/iron"
+      },
+      {
+        "tag": "c:dusts/iron"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "jsg_core:naquadah_dust"
+    }
+  ]
+}

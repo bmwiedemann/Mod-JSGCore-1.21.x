@@ -1,0 +1,45 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "conditions": [
+    {
+      "type": "c:not",
+      "value": {
+        "type": "c:tag_empty",
+        "tag": "c:dusts/quartz"
+      }
+    },
+    {
+      "type": "c:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "additives": [
+    [
+      {
+        "tag": "c:gems/quartz"
+      },
+      {
+        "tag": "c:dusts/quartz"
+      }
+    ]
+  ],
+  "energy": 51200,
+  "input": [
+    {
+      "tag": "c:ingots/naquadah_alloy"
+    },
+    {
+      "tag": "c:dusts/naquadah_alloy"
+    }
+  ],
+  "count": 1,
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "jsg_core:naquadah_alloy_refined"
+      },
+      "count": 2
+    }
+  ],
+  "time": 100
+}

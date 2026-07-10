@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#jsg_core:has_budding_yellow",
+  "features": [
+    "jsg_core:budding_yellow_crystal"
+  ],
+  "step": "underground_ores"
+}

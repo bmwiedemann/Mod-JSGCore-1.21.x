@@ -1,0 +1,55 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glass_panes": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:glass_panes/colorless"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_teinium_gear": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:gears/trinium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsg_core:crystal_upgrade_efficiency"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "jsg_core:gems/white"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_glass_panes",
+      "has_teinium_gear",
+      "has_white_crystal",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsg_core:crystal_upgrade_efficiency"
+    ]
+  },
+  "sends_telemetry_event": false
+}

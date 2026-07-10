@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jsg_core:naquadah_refined_ingot",
+  "key": {
+    "#": {
+      "tag": "jsg_core:nuggets/naquadah_refined"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {"id": "jsg_core:naquadah_alloy_refined"
+  },
+  "show_notification": true
+}

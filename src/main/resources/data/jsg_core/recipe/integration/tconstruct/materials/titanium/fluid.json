@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material_melting",
+  "conditions": [
+    {
+      "type": "c:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "input": "jsg_core:titanium",
+  "temperature": 950,
+  "result": {
+    "tag": "c:molten_titanium",
+    "amount": 90
+  }
+}
