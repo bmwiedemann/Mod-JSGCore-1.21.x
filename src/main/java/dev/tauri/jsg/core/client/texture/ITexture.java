@@ -9,6 +9,7 @@ public interface ITexture {
 
     static void bindTextureWithMc(ResourceLocation location) {
         AbstractOBJModel.setActiveTexture(location);
+        dev.tauri.jsg.core.client.loader.texture.TextureLoader.ensureGuiTextureLoaded(location);
         RenderSystem.setShaderTexture(0, location);
     }
 }

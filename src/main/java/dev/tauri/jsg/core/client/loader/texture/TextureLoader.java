@@ -342,8 +342,53 @@ public class TextureLoader implements ITextureLoader {
         StartupNotificationManager.addModMessage("Loaded generated " + name);
     }
 
+    private static NativeImage bufferedToNative(java.awt.image.BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        NativeImage nativeImage = new NativeImage(width, height, true);
+        boolean hasAlpha = image.getColorModel().hasAlpha();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int argb = image.getRGB(x, y);
+                int a = hasAlpha ? (argb >>> 24) : 0xFF;
+                int r = (argb >> 16) & 0xFF;
+                int g = (argb >> 8) & 0xFF;
+                int b = argb & 0xFF;
+                nativeImage.setPixelRGBA(x, y, (a << 24) | (b << 16) | (g << 8) | r);
+            }
+        }
+        return nativeImage;
+    }
+
+    private static final java.util.Set<ResourceLocation> REGISTERED_GUI_TEXTURES = new java.util.HashSet<>();
+
+    /**
+     * Textures bound straight through the vanilla TextureManager (GUI backgrounds etc.) load
+     * fine when they are PNGs, but 1.21 rejects the jpg/webp files JSG ships. Lazily decode
+     * and register those once; later binds hit the registered DynamicTexture.
+     */
+    public static void ensureGuiTextureLoaded(ResourceLocation location) {
+        var path = location.getPath();
+        if (!(path.endsWith(".jpg") || path.endsWith(".jpeg") || path.endsWith(".webp"))) return;
+        if (!REGISTERED_GUI_TEXTURES.add(location)) return;
+        try {
+            var resource = Minecraft.getInstance().getResourceManager().getResource(location).orElseThrow();
+            try (var stream = resource.open()) {
+                new Texture(readTexture(stream, location), location).free();
+            }
+        } catch (Exception e) {
+            JSGCore.logger.error("Failed to load GUI texture {}", location, e);
+        }
+    }
+
     protected static NativeImage readTexture(InputStream inputStream, ResourceLocation location) throws IOException {
         var name = location.getPath();
+        if (name.endsWith(".jpg") || name.endsWith(".jpeg")) {
+            // 1.21 NativeImage.read validates a PNG signature, so JPEGs must go through ImageIO
+            var image = javax.imageio.ImageIO.read(inputStream);
+            if (image == null) throw new IOException("ImageIO could not decode " + location);
+            return bufferedToNative(image);
+        }
         if (!name.endsWith(".webp")) {
             return NativeImage.read(inputStream);
         }
