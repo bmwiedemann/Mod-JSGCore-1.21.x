@@ -23,8 +23,10 @@ public class SaveConfigToServer extends PositionedPacket {
 
     public SaveConfigToServer(FriendlyByteBuf buf) {
         super(buf);
+        // config decoding is deferred to handle(); consume the original so the strict
+        // 1.21 payload codec doesn't see unread bytes (that kicks the sender)
         configBuf = new FriendlyByteBuf(buf.copy());
-        //config.fromBytes(buf);
+        buf.skipBytes(buf.readableBytes());
     }
 
     @Override

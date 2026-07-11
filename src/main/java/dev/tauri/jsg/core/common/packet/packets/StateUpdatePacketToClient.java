@@ -52,7 +52,15 @@ public class StateUpdatePacketToClient extends PositionedPacket {
     public void fromBytes(FriendlyByteBuf buf) {
         super.fromBytes(buf);
         stateType = StateType.byId(buf.readResourceLocation());
-        stateBuf = buf.copy();
+        // State decoding is deferred to handle(). Copy the payload and consume the original:
+        // the 1.21 payload codec treats unread bytes as a decode error and kicks the player.
+        var copy = buf.copy();
+        if (buf instanceof net.minecraft.network.RegistryFriendlyByteBuf registryBuf) {
+            stateBuf = new net.minecraft.network.RegistryFriendlyByteBuf(copy, registryBuf.registryAccess());
+        } else {
+            stateBuf = copy;
+        }
+        buf.skipBytes(buf.readableBytes());
     }
 
     @Override
