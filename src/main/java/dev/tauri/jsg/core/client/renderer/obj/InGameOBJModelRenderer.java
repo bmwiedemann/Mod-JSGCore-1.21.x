@@ -116,7 +116,11 @@ public class InGameOBJModelRenderer extends IOBJModelRenderer<OBJModel> {
             modelBuffer.bind();
         }, () -> {
             Matrix4f projection = RenderSystem.getProjectionMatrix();
-            modelBuffer.drawWithShader(poseStack.last().pose(), projection, Objects.requireNonNull(RenderSystem.getShader()));
+            // 1.21: the camera rotation lives in the global model-view (the BER pose only holds the
+            // camera-relative translation), so compose both - passing the pose alone renders the
+            // model in view space, gluing it to the camera
+            Matrix4f modelView = new Matrix4f(RenderSystem.getModelViewMatrix()).mul(poseStack.last().pose());
+            modelBuffer.drawWithShader(modelView, projection, Objects.requireNonNull(RenderSystem.getShader()));
             VertexBuffer.unbind();
         });
     }
