@@ -21,6 +21,7 @@ public class StateUpdatePacketToClient extends PositionedPacket {
     private State state;
 
     private ByteBuf stateBuf;
+    private ByteBuf encodedState;
 
     public StateUpdatePacketToClient(BlockPos pos, Supplier<StateType> stateType, State state) {
         this(pos, stateType.get(), state);
@@ -35,6 +36,10 @@ public class StateUpdatePacketToClient extends PositionedPacket {
         }
 
         this.state = state;
+        // NeoForge encodes payloads lazily on the Netty thread; states reference live BE
+        // collections, so serialize now on the sender's thread (1.20.1 SimpleChannel semantics).
+        this.encodedState = io.netty.buffer.Unpooled.buffer();
+        state.toBytes(encodedState);
     }
 
     public StateUpdatePacketToClient(FriendlyByteBuf buf) {
@@ -45,7 +50,8 @@ public class StateUpdatePacketToClient extends PositionedPacket {
     public void toBytes(FriendlyByteBuf buf) {
         super.toBytes(buf);
         buf.writeResourceLocation(stateType.getId());
-        state.toBytes(buf);
+        // Non-consuming copy: the packet is encoded twice (size-measuring pass + real encode).
+        buf.writeBytes(encodedState, encodedState.readerIndex(), encodedState.readableBytes());
     }
 
     @Override
