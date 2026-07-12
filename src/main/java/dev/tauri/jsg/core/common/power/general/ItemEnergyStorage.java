@@ -56,6 +56,6 @@ public class ItemEnergyStorage extends JSGEnergyStorage {
 
     @Override
     public void onEnergyChanged() {
-        ItemNBT.getOrCreateTag(stack).putLong("energy", energy);
+        ItemNBT.update(stack, tag -> tag.putLong("energy", energy));
     }
 }
