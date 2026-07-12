@@ -28,8 +28,11 @@ public abstract class Raycaster {
         var raycasters = JSGCoreRegistries.R_RAYCASTER.get().stream().toList();
         if (raycasters == null) return false;
         for (var raycaster : raycasters) {
-            if (raycaster.testBlockState(clickedBlock))
-                return raycaster.onActivated(level, pos, player, hand);
+            if (raycaster.testBlockState(clickedBlock)) {
+                boolean activated = raycaster.onActivated(level, pos, player, hand);
+                JSGCore.logger.debug("Raycaster {} matched {} at {} -> activated={}", raycaster.getClass().getSimpleName(), clickedBlock.getBlock(), pos, activated);
+                return activated;
+            }
         }
         return false;
     }
@@ -50,6 +53,7 @@ public abstract class Raycaster {
 
     public boolean onActivated(Level level, BlockPos pos, Player player, InteractionHand hand) {
         var btn = getRaycastedButton(level, pos, player, hand);
+        JSGCore.logger.debug("Raycaster {}: ray hit button {}", getClass().getSimpleName(), btn == null ? "none" : btn.buttonId);
         if (btn == null) return false;
         return buttonClicked(level, player, btn.buttonId, pos, hand);
     }
@@ -152,6 +156,7 @@ public abstract class Raycaster {
         if (event.getHand() != InteractionHand.MAIN_HAND) return;
 
         if (!player.isSpectator()) {
+            JSGCore.logger.debug("Raycaster right-click ({}): {} raycasters registered", event.getClass().getSimpleName(), JSGCoreRegistries.R_RAYCASTER.get().size());
             BlockPos pos = player.blockPosition();
             Direction playerFacing = player.getDirection();
 
