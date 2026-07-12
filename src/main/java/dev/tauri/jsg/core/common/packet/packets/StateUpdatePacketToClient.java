@@ -82,6 +82,7 @@ public class StateUpdatePacketToClient extends PositionedPacket {
                     state.fromBytes(stateBuf);
 
                     te.setState(stateType, state);
+                    JSGCore.logger.debug("applied state {} at {}", stateType.getId(), pos);
                 } else {
                     throw new NotImplementedException("State not implemented on " + te.getClass().getCanonicalName());
                 }

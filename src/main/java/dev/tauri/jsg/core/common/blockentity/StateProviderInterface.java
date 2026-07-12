@@ -22,6 +22,7 @@ public interface StateProviderInterface extends IStateProvider {
 
     @Override
     default void sendState(StateType type, State state) {
+        dev.tauri.jsg.core.JSGCore.logger.debug("sendState {} from {} target={}", type.getId(), getStateHandlerBlockPos(), getTargetPoint());
         JSGCorePacketHandler.sendToClient(new StateUpdatePacketToClient(getStateHandlerBlockPos(), type, state), getTargetPoint());
     }
 
