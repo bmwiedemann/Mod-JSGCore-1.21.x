@@ -61,21 +61,26 @@ public abstract class Raycaster {
     @Nullable
     public RayCastedButton getRaycastedButton(Level level, BlockPos pos, Player player, InteractionHand hand) {
         var rotation = getRotation(level, pos, player);
-        Vec3 lookVec = player.getLookAngle();
+        Vec3 eye = player.position().add(0, player.getEyeHeight(player.getPose()), 0);
+        Vec3 look = player.getLookAngle();
+        List<Integer> enabledIds = new ArrayList<>();
+        List<Vec3> firstPolygon = null;
+        RayCastedButton hit = null;
         for (RayCastedButton btn : getButtons()) {
             if (!isButtonEnabled(level, player, btn.buttonId, pos, hand)) continue;
-            List<Vector3f> veritices = btn.vectors;
+            enabledIds.add(btn.buttonId);
             List<Vec3> polygon = new ArrayList<>();
-            for (var v : veritices) {
+            for (var v : btn.vectors) {
                 polygon.add(getTransposed(v, rotation, level, pos, player).getVec3());
             }
-            int n = veritices.size();
-
-            if (doesRayIntersectPolygon(player.position().add(0, player.getEyeHeight(player.getPose()), 0), player.getLookAngle(), polygon)) {
-                return btn;
+            if (firstPolygon == null) firstPolygon = polygon;
+            if (hit == null && doesRayIntersectPolygon(eye, look, polygon)) {
+                hit = btn;
             }
         }
-        return null;
+        JSGCore.logger.debug("Raycaster {}: rotation={} eye={} look={} enabled={} firstEnabledPolygon={}",
+                getClass().getSimpleName(), rotation, eye, look, enabledIds, firstPolygon);
+        return hit;
     }
 
     public float getScale() {
