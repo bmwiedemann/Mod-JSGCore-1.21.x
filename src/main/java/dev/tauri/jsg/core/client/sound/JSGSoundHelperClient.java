@@ -34,7 +34,6 @@ public class JSGSoundHelperClient {
 
     public static void playPositionedSoundClientSide(BlockPos pos, IPositionedSound soundEnum, boolean play) {
         if (pos == null) return;
-        dev.tauri.jsg.core.JSGCore.logger.debug("playPositionedSound {} at {} play={}", soundEnum, pos, play);
         JSGPositionedSound soundRecord = getRecord(soundEnum, pos);
 
         if (play)
@@ -44,7 +43,6 @@ public class JSGSoundHelperClient {
     }
 
     public static void playSoundEventClientSide(BlockPos pos, ISoundEvent sound, float volumeModifier, float pitchModifier) {
-        dev.tauri.jsg.core.JSGCore.logger.debug("playSoundEventClientSide {} at {} vol={}", sound.getLocation(), pos, sound.getVolume() * volumeModifier);
         Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(sound.getInstance().get(), SoundSource.AMBIENT, sound.getVolume() * volumeModifier, pitchModifier, RandomSource.create(), pos));
     }
 

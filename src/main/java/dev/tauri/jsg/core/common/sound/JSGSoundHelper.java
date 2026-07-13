@@ -28,7 +28,6 @@ public class JSGSoundHelper {
     }
 
     public static void playSoundEventClientSide(Level world, BlockPos pos, ISoundEvent soundEventEnum, float pitch) {
-        dev.tauri.jsg.core.JSGCore.logger.debug("playSoundEvent {} at {} vol={} (side={})", soundEventEnum.getLocation(), pos, soundEventEnum.getVolume(), world.isClientSide ? "client" : "server");
         world.gameEvent(GameEvent.BLOCK_ACTIVATE, pos, GameEvent.Context.of(world.getBlockState(pos)));
         world.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, soundEventEnum.getInstance().get(), SoundSource.BLOCKS, soundEventEnum.getVolume(), pitch);
     }
@@ -43,7 +42,6 @@ public class JSGSoundHelper {
 
     @SuppressWarnings("deprecation")
     public static void playSoundToPlayer(ServerPlayer player, ISoundEvent soundEventEnum, BlockPos pos) {
-        dev.tauri.jsg.core.JSGCore.logger.debug("playSoundToPlayer {} to {} at {} vol={}", soundEventEnum.getLocation(), player.getScoreboardName(), pos, soundEventEnum.getVolume());
         player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(soundEventEnum.getInstance().get()), SoundSource.BLOCKS, pos.getX(), pos.getY(), pos.getZ(), soundEventEnum.getVolume(), 1, player.getRandom().nextLong()));
     }
 }
