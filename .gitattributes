@@ -1,0 +1,5 @@
+# The pristine 1.20.1 sources carry mixed line endings (Java = CRLF,
+# generated JSON = LF). Freeze them: never let git convert EOLs on
+# checkin/checkout, so each file keeps its original style and diffs
+# against the 1.20 branch stay clean.
+* -text
